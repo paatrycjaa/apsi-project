@@ -1,0 +1,70 @@
+{% load static %}
+<!-- Base for html files in the app. It includes dependencies and creates navbar. -->
+
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}">
+
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/img/favicon.ico' %}"/>
+
+    <title>{% block title %}{% endblock %}</title>
+
+    {% block extra_head %}{% endblock %}
+
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <header class="site-header">
+      <!-- Navigation bar -->
+      <nav class="navbar navbar-expand-lg navbar-dark static-top" style="background-color: #054a82;">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <a class="navbar-brand" href="{% url '' %}">
+                <img src="{% static 'assets/img/logo.png' %}" width="25" height="25" alt=""></a>
+              <a class="nav-item nav-link" href="{% url '' %}">IDEAS</a>
+              <a class="nav-item nav-link" href="{% url '' %}">INSPIRATION PORTAL</a>
+            </div>
+
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="{% url 'login' %}">LOG IN</a>
+                <a class="nav-item nav-link" href="{% url 'logout' %}">LOG OUT</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page contents -->
+    <div class="container-fluid">
+      {% block content %} {% endblock %}
+    </div>
+
+    <!-- Angular Modules -->
+    <script type="text/javascript" src="{% static 'app/app.module.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'app/components/idea-addition/ideaAddition.controller.js' %}"></script>
+    <script type="text/javascript" src="{% static 'app/components/idea-addition/ideaAddition.service.js' %}"></script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>    
+  </body>
+</html>
