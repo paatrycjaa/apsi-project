@@ -1,0 +1,113 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="6081B2D5-F3C5-67C4-082A-948F2BA55EC2" name="Decyzja">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-18 19:39:32 UTC</createdTime>
+<generatorID>D0CD3AB0-C9A2-A3F8-175A-41FFEA48DB56</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="uzasadnienie" id="BD944DD3-6239-CDB0-E7CB-0284CF978E36">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-18 19:39:32 UTC</createdTime>
+<generatorID>196709D3-52FB-B0E5-CAC7-625127AF58D6</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1000</dataTypeSize>
+<ownDataTypeParameters>1000,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Rodzaj_decyzji_Rodzaj_decyzji_ID" id="B49DBAFD-2CBD-0FA2-B998-03510824F5D6">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-18 19:39:32 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="186F17B4-A589-2BA6-32BA-EC11B6ACF08B" referredColumn="F9BFFAEF-0EE2-AABB-B6F7-EFC364E9196A"/>
+</associations>
+</Column>
+<Column name="Czlonek_komisji_Użytkownik_Użytkownik_ID" id="CD99FE99-1270-F8FD-07CE-3CDAB5CAB170">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-18 19:39:32 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="0774D72A-B183-FC56-1B84-0A1ECA766719" referredColumn="0620C941-CE40-4BC0-A2B2-6309B224276C"/>
+</associations>
+</Column>
+<Column name="Pomysł_Pomysł_ID" id="6F239D6B-2520-D790-FA47-DCE8D06CF743">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-18 19:39:32 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="0E84BEB3-027E-0188-FF19-9E219794E692" referredColumn="0C2C016B-E064-F407-BEA0-B25616641D36"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="6A87F0AA-1DDD-7967-BC5B-3994CD5D739B" name="Decyzja__IDX">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-18 19:39:32 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>2911C268-DF08-5682-6CC7-DE5D07BEF32C</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="6F239D6B-2520-D790-FA47-DCE8D06CF743"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="385C21C3-ED85-8210-B8A1-A6C106F270D6" name="Decyzja_Rodzaj_decyzji_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-18 19:39:32 UTC</createdTime>
+<generatorID>40961EF9-4DBF-EA88-05F7-FE7CFB1854FE</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B49DBAFD-2CBD-0FA2-B998-03510824F5D6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="82945216-4291-55D8-601E-6DAB604301EA" name="Decyzja_Czlonek_komisji_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-18 19:39:32 UTC</createdTime>
+<generatorID>DDA2D87A-435B-CFB2-D15B-2E3934554202</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CD99FE99-1270-F8FD-07CE-3CDAB5CAB170"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F5CFDDDC-BB62-156B-2D2D-C86579F00693" name="Decyzja_Pomysł_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-18 19:39:32 UTC</createdTime>
+<generatorID>2911C268-DF08-5682-6CC7-DE5D07BEF32C</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6F239D6B-2520-D790-FA47-DCE8D06CF743"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

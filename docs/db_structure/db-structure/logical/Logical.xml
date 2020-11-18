@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="688B0D0D-2ADD-ECFB-9540-97AE78C0DA51" mainViewID="ADA21424-A63D-B171-784F-ED6BBE4BB756">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-16 14:29:38 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>
