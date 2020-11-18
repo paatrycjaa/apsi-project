@@ -1,0 +1,74 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="FDE8B655-F8E0-1665-6F93-527E0D5F71DC" name="Załącznik_posta">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-18 19:39:32 UTC</createdTime>
+<generatorID>69497887-E600-95F1-7586-83EA986F9FB7</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Załącznik_Załącznik_ID" id="9ED2EE20-6505-E770-4651-90EE88AA94CA">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-18 19:39:32 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B9608A25-D35F-F841-D44F-BD800713E1AA" referredColumn="148D1737-AD33-4830-9385-629A9E7D8FA4"/>
+</associations>
+</Column>
+<Column name="Post_Post_ID" id="8AF655E8-D0EF-83FC-16B1-8C63ABCF60CA">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-18 19:39:32 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7A420018-AD2C-7737-6BAA-4C2C366242B6" referredColumn="43C6B092-2DFD-C1FA-334B-3F273CA10B10"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="79094385-C59B-9206-60B6-73D0F155FC67" name="Załącznik_posta_PK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-18 19:39:32 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<indexColumnUsage>
+<colUsage columnID="9ED2EE20-6505-E770-4651-90EE88AA94CA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0808D6F1-61A7-193B-AFAD-BA5730E2DBA3" name="Załącznik_posta_Załącznik_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-18 19:39:32 UTC</createdTime>
+<generatorID>90B589E0-B96A-A44C-0712-B61D6B52B869</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9ED2EE20-6505-E770-4651-90EE88AA94CA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CFD0CB4B-4F1F-A196-2192-DB925F50B368" name="Załącznik_posta_Post_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-18 19:39:32 UTC</createdTime>
+<generatorID>04A294CF-8675-B391-85ED-C8F187C57010</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8AF655E8-D0EF-83FC-16B1-8C63ABCF60CA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

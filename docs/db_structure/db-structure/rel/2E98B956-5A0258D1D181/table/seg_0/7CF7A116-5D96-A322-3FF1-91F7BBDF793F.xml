@@ -1,0 +1,62 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7CF7A116-5D96-A322-3FF1-91F7BBDF793F" name="Załącznik">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-18 19:39:32 UTC</createdTime>
+<generatorID>37DFFFD9-2AF5-BE35-C3B6-1E1915A241D0</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Załącznik_ID" id="148D1737-AD33-4830-9385-629A9E7D8FA4">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-18 19:39:32 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<isSurrogateColumn>true</isSurrogateColumn>
+</Column>
+<Column name="nazwa_pliku" id="EC71B2F1-E36B-44D4-ECA8-D36B6C5CE04B">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-18 19:39:32 UTC</createdTime>
+<generatorID>AA07AB0B-7DF6-99CE-A60D-1365739B03F0</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>200</dataTypeSize>
+<ownDataTypeParameters>200,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="rozmiar" id="10396240-4040-C1F9-ACAA-FA11F9808260">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-18 19:39:32 UTC</createdTime>
+<generatorID>571730AD-3047-7F92-EAD1-A4D4063F3D96</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D5DEB724-39E6-3197-0149-044E771511C6" name="Załącznik_PK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-18 19:39:32 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<indexColumnUsage>
+<colUsage columnID="148D1737-AD33-4830-9385-629A9E7D8FA4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

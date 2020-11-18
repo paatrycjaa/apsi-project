@@ -1,0 +1,85 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="FFE11A38-DD0C-565A-0C2B-B24767214EB6" name="Ustawienia_oceniania">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-18 19:39:32 UTC</createdTime>
+<generatorID>30097584-8375-8109-16FD-A0DAF3644795</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="waga" id="0FF608BE-EC55-0D4B-A32B-AA8A4611E658">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-18 19:39:32 UTC</createdTime>
+<generatorID>755FF362-B0EB-DC3D-EC77-04D4B8CA566C</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Grupa_uzytkownikow_Grupa_uzytkownikow_ID" id="1E049E6B-9D54-ED6A-6CD7-18A07C060CF4">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-18 19:39:32 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="0B61D6E4-24A2-8042-3258-C07B4599720A" referredColumn="0F50EC95-F113-82F9-4F8E-13F832817661"/>
+</associations>
+</Column>
+<Column name="Pomysł_Pomysł_ID" id="4C6B6097-B285-2214-DD40-BD381A5A3027">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-18 19:39:32 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B5D3AFE9-B7D2-7611-EF9B-7119FDE0F6B0" referredColumn="0C2C016B-E064-F407-BEA0-B25616641D36"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="2148BCF7-1830-1DD8-AAC1-9753D78363C4" name="Ustawienia_oceniania__IDX">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-18 19:39:32 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>B24CBB3B-4F7E-64CD-7FAE-1BA674B6B79A</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="1E049E6B-9D54-ED6A-6CD7-18A07C060CF4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="986465F1-89A7-5B11-DC2E-642BA1D9D66F" name="Ustawienia_oceniania_Grupa_uzytkownikow_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-18 19:39:32 UTC</createdTime>
+<generatorID>B24CBB3B-4F7E-64CD-7FAE-1BA674B6B79A</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1E049E6B-9D54-ED6A-6CD7-18A07C060CF4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A4F7916E-9AAE-1F2F-8561-AC66FBF5429B" name="Ustawienia_oceniania_Pomysł_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-18 19:39:32 UTC</createdTime>
+<generatorID>69A1DCCE-B045-1021-DA09-88AA221F9683</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4C6B6097-B285-2214-DD40-BD381A5A3027"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

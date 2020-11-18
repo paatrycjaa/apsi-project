@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_10" directorySegmentName="seg_0" id="40961EF9-4DBF-EA88-05F7-FE7CFB1854FE">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-18 18:47:14 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<engineerTo>
+<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>8CAD346F-2BD8-19E7-3B7D-19ADB24E6CD9</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>D0CD3AB0-C9A2-A3F8-175A-41FFEA48DB56</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

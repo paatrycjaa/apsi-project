@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="db-structure" id="12D22F6B-78D9-C73F-A378-91459D361D70" version="3.5">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-16 14:29:38 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>12D22F6B-78D9-C73F-A378-91459D361D70</designId>
+</OSDM_Design>
