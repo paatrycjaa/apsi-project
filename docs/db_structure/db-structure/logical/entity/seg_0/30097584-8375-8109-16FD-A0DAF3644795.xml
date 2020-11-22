@@ -15,16 +15,70 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="waga" id="755FF362-B0EB-DC3D-EC77-04D4B8CA566C">
-<createdBy>napiad</createdBy>
-<createdTime>2020-11-18 19:25:49 UTC</createdTime>
+<Attribute name="ustawienia_id" id="816A1C92-6283-5015-592E-A8BCD68815C0">
+<createdBy>lkost</createdBy>
+<createdTime>2020-11-22 20:32:17 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<engineerTo>
+<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="klucz" id="EC0A0718-4377-7446-B26C-155FD7324F78">
+<createdBy>lkost</createdBy>
+<createdTime>2020-11-22 20:43:02 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<engineerTo>
+<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="wartosc" id="70F2E811-E9A4-963F-8D28-674F53E9B201">
+<createdBy>lkost</createdBy>
+<createdTime>2020-11-22 18:49:34 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<engineerTo>
+<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="opis" id="491FD5C6-E537-608F-8EAF-5A15C3723072">
+<createdBy>lkost</createdBy>
+<createdTime>2020-11-22 20:43:31 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
 <item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
-<use>0</use>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT040</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="179A5974-A948-FDFD-98D1-35D83AB311FD" name="Ustawienia oceniania PK">
+<createdBy>lkost</createdBy>
+<createdTime>2020-11-22 20:32:21 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<engineerTo>
+<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>816A1C92-6283-5015-592E-A8BCD68815C0</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
 </Entity>

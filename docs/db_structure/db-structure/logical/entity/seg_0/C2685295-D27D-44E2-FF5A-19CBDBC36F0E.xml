@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="C2685295-D27D-44E2-FF5A-19CBDBC36F0E" name="Użytkownik">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="C2685295-D27D-44E2-FF5A-19CBDBC36F0E" name="Uzytkownik">
 <createdBy>napiad</createdBy>
 <createdTime>2020-11-16 14:36:32 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
@@ -15,7 +15,7 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="czyAdministrator" id="3A71E47C-84F2-12E9-7DF3-90732334AA7A">
+<Attribute name="czy_administrator" id="3A71E47C-84F2-12E9-7DF3-90732334AA7A">
 <createdBy>napiad</createdBy>
 <createdTime>2020-11-18 18:54:52 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>

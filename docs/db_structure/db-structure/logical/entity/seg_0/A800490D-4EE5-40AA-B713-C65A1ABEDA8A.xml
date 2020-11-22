@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="9E6DE388-4F10-78BC-BAA6-339A328E1B1E" name="Post">
-<createdBy>napiad</createdBy>
-<createdTime>2020-11-18 18:56:28 UTC</createdTime>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="A800490D-4EE5-40AA-B713-C65A1ABEDA8A" name="Status Pomyslu">
+<createdBy>lkost</createdBy>
+<createdTime>2020-11-22 18:44:48 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
 <item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
@@ -15,9 +15,9 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="tytul" id="8AD433B8-A375-8A18-D7A6-F56CF5CF2EBB">
+<Attribute name="status" id="3042157E-35B5-5F75-056E-D2D3B31F5A3B">
 <createdBy>lkost</createdBy>
-<createdTime>2020-11-22 19:32:31 UTC</createdTime>
+<createdTime>2020-11-22 18:53:11 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
 <item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
@@ -25,20 +25,21 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>200</dataTypeSize>
-<ownDataTypeParameters>200,,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="tresc" id="69EACD7E-6DF2-6B5A-D35F-8066403194E3">
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="8D4E4452-078D-FD7A-316F-94956BF1601C" name="Status Pomyslu PK">
 <createdBy>lkost</createdBy>
-<createdTime>2020-11-22 19:32:53 UTC</createdTime>
+<createdTime>2020-11-22 18:53:32 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
 <item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
 </engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT040</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-</attributes>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>3042157E-35B5-5F75-056E-D2D3B31F5A3B</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
 </Entity>
