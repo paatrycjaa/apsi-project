@@ -15,6 +15,18 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="zalacznik_id" id="8FC2FBC8-FD0A-A1F8-2414-BC9B18FAF020">
+<createdBy>lkost</createdBy>
+<createdTime>2020-11-24 20:43:01 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<engineerTo>
+<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 <Attribute name="nazwa_pliku" id="AA07AB0B-7DF6-99CE-A60D-1365739B03F0">
 <createdBy>napiad</createdBy>
 <createdTime>2020-11-18 19:10:41 UTC</createdTime>
@@ -22,7 +34,6 @@
 <engineerTo>
 <item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
@@ -43,4 +54,18 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="7042C54B-5FAE-9DFB-1B44-4BE309AE52B9" name="Zalacznik PK">
+<createdBy>lkost</createdBy>
+<createdTime>2020-11-24 20:43:11 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<engineerTo>
+<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>8FC2FBC8-FD0A-A1F8-2414-BC9B18FAF020</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
 </Entity>

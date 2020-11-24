@@ -15,6 +15,18 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="post_id" id="BF22E88D-BE15-C92D-8A5C-46CFBD742199">
+<createdBy>lkost</createdBy>
+<createdTime>2020-11-24 20:44:30 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<engineerTo>
+<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 <Attribute name="tytul" id="8AD433B8-A375-8A18-D7A6-F56CF5CF2EBB">
 <createdBy>lkost</createdBy>
 <createdTime>2020-11-22 19:32:31 UTC</createdTime>
@@ -40,5 +52,59 @@
 <logicalDatatype>LOGDT040</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="watek_id" id="623AC541-F385-163E-5C10-F414F1602CD1">
+<createdBy>lkost</createdBy>
+<createdTime>2020-11-24 20:45:01 UTC</createdTime>
+<generatorID>BE9BA70B-438B-0331-B870-918C41F564E8</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<engineerTo>
+<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+</engineerTo>
+<referedAttribute>3835B7E3-5E15-0D85-E35A-C8185DB1E17A</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="uzytkownik_id" id="80FC456B-FA8F-9B41-E46E-9B94BC4C5548">
+<createdBy>lkost</createdBy>
+<createdTime>2020-11-24 20:47:33 UTC</createdTime>
+<generatorID>813B390D-0066-D592-AF14-43ABEFE451E3</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<engineerTo>
+<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+</engineerTo>
+<referedAttribute>75F4E93C-03A5-C643-C5A1-7F28EFAEF1A3</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="data_dodania" id="DC2AD227-C116-FA23-6FFF-475DAEF36B52">
+<createdBy>lkost</createdBy>
+<createdTime>2020-11-24 20:51:55 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<engineerTo>
+<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="E6472690-5391-AF66-88B2-8B6DDF93DFA6" name="Post PK">
+<createdBy>lkost</createdBy>
+<createdTime>2020-11-24 20:44:43 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<engineerTo>
+<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>BF22E88D-BE15-C92D-8A5C-46CFBD742199</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
 </Entity>

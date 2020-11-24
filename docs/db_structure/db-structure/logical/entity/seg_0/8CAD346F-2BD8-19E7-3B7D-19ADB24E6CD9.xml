@@ -15,7 +15,7 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="rodzaj" id="959D0A2D-58D1-05E6-1984-DCBB7181B6B7">
+<Attribute name="rodzaj_decyzji_id" id="959D0A2D-58D1-05E6-1984-DCBB7181B6B7">
 <createdBy>napiad</createdBy>
 <createdTime>2020-11-18 18:46:49 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
@@ -29,4 +29,18 @@
 <ownDataTypeParameters>100,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="F0DCFA2B-95CC-1639-FF84-DBD13CD458B8" name="Rodzaj decyzji PK">
+<createdBy>lkost</createdBy>
+<createdTime>2020-11-24 20:44:21 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<engineerTo>
+<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>959D0A2D-58D1-05E6-1984-DCBB7181B6B7</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
 </Entity>

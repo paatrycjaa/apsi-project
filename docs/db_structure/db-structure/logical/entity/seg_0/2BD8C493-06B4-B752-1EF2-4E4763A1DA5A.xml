@@ -15,6 +15,18 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="pomysl_id" id="991C7A00-AA80-C4AF-ACBF-7A4F6E7EF2BD">
+<createdBy>lkost</createdBy>
+<createdTime>2020-11-24 20:43:46 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<engineerTo>
+<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 <Attribute name="tematyka" id="833D976C-88D3-09A2-EE65-B8D6B9FA5182">
 <createdBy>napiad</createdBy>
 <createdTime>2020-11-18 19:13:04 UTC</createdTime>
@@ -97,5 +109,47 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="status" id="067B6BA7-64CF-7A75-37E8-88A100E08F6C">
+<createdBy>lkost</createdBy>
+<createdTime>2020-11-24 20:42:12 UTC</createdTime>
+<generatorID>672700AE-D86F-C3EB-9867-81CF85906FD9</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<engineerTo>
+<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+</engineerTo>
+<referedAttribute>3042157E-35B5-5F75-056E-D2D3B31F5A3B</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="uzytkownik_id" id="1E45ABF4-8957-1029-31BF-1FFB8D12367F">
+<createdBy>lkost</createdBy>
+<createdTime>2020-11-24 20:47:33 UTC</createdTime>
+<generatorID>7DEF49CE-8F4C-EAC2-92B8-581276B5CA8A</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<engineerTo>
+<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+</engineerTo>
+<referedAttribute>75F4E93C-03A5-C643-C5A1-7F28EFAEF1A3</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="072BA7E2-71D6-92F0-5A13-9D8AF96EF939" name="Pomysl PK">
+<createdBy>lkost</createdBy>
+<createdTime>2020-11-24 20:43:58 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<engineerTo>
+<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>991C7A00-AA80-C4AF-ACBF-7A4F6E7EF2BD</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
 </Entity>
