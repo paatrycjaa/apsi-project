@@ -1,8 +1,9 @@
-from django.urls import path
+from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('ideas', views.ideas, name='ideas'),
-    path('add-idea', views.add_idea, name='add_idea'),
+    url(r'^$', views.home, name='home'),
+    url(r'^ideas$', views.ideas, name='ideas'),
+    url(r'^add-idea$', views.add_idea, name='add_idea'),
+    url(r'^ajax/(?P<ajax_request>\w+)/$', views.ajax, name='ajax')
 ]

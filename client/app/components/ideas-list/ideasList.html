@@ -3,4 +3,41 @@
 
 {% block content %}
 <h1>Innovation ideas</h1>
+
+{% verbatim %}
+<div ng-controller="ideasListController" ng-init="init()">  
+    <div style="display: inline-block">
+      <form role="form">
+        <input type="text" class="form-control" placeholder="Filter..." ng-model="searchStr">
+      </form>
+    </div>
+    <div class="idea-block" ng-repeat="idea in ideas | filter:searchStr">
+        <table class="table">
+            <tr>
+                <th style="width: 25%">Temat</th>
+                <td>{{ idea.tematyka }}</td>
+            </tr>
+            <tr>
+                <th>Opis</th>
+                <td>{{ idea.opis }}</td>
+            </tr>
+            <tr>
+                <th>Planowane Korzyści</th>
+                <td>{{ idea.planowane_korzysci }}</td>
+            </tr>
+            <tr>
+                <th>Planowane Koszty</th>
+                <td>{{ idea.planowane_koszty }}</td>
+            </tr>
+            <tr>
+                <th>Ocena ważona</th>
+                <td>{{ idea.ocena_wazona }}</td>
+            </tr>
+        </table>
+    </div>
+  </div>
+
+</div>
+{% endverbatim %}
+
 {% endblock %}
