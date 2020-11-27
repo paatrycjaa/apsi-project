@@ -28,16 +28,16 @@
         <div class="container-fluid">
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
-              <a class="navbar-brand" href="{% url '' %}">
+              <a class="navbar-brand" href="{% url 'home' %}">
                 <img src="{% static 'assets/img/logo.png' %}" width="25" height="25" alt=""></a>
-              <a class="nav-item nav-link" href="{% url '' %}">IDEAS</a>
-              <a class="nav-item nav-link" href="{% url '' %}">INSPIRATION PORTAL</a>
+              <a class="nav-item nav-link" href="{% url 'ideas' %}">IDEAS</a>
+              <a class="nav-item nav-link" href="{% url 'home' %}">INSPIRATION PORTAL</a>
             </div>
 
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
-                <a class="nav-item nav-link" href="{% url 'login' %}">LOG IN</a>
-                <a class="nav-item nav-link" href="{% url 'logout' %}">LOG OUT</a>
+                <a class="nav-item nav-link" href="{% url 'home' %}">LOG IN</a>
+                <a class="nav-item nav-link" href="{% url 'home' %}">LOG OUT</a>
             </div>
           </div>
         </div>
@@ -54,6 +54,9 @@
 
     <script type="text/javascript" src="{% static 'app/components/idea-addition/ideaAddition.controller.js' %}"></script>
     <script type="text/javascript" src="{% static 'app/components/idea-addition/ideaAddition.service.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'app/components/ideas-list/ideasList.controller.js' %}"></script>
+    <script type="text/javascript" src="{% static 'app/components/ideas-list/ideasList.service.js' %}"></script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
