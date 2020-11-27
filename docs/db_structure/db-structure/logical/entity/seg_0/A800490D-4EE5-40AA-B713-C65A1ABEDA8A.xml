@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="8CAD346F-2BD8-19E7-3B7D-19ADB24E6CD9" name="Rodzaj decyzji">
-<createdBy>napiad</createdBy>
-<createdTime>2020-11-18 18:46:33 UTC</createdTime>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="A800490D-4EE5-40AA-B713-C65A1ABEDA8A" name="Status Pomyslu">
+<createdBy>lkost</createdBy>
+<createdTime>2020-11-22 18:44:48 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
 <item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
@@ -15,9 +15,9 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="rodzaj_decyzji_id" id="959D0A2D-58D1-05E6-1984-DCBB7181B6B7">
-<createdBy>napiad</createdBy>
-<createdTime>2020-11-18 18:46:49 UTC</createdTime>
+<Attribute name="status" id="3042157E-35B5-5F75-056E-D2D3B31F5A3B">
+<createdBy>lkost</createdBy>
+<createdTime>2020-11-22 18:53:11 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
 <item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
@@ -25,21 +25,20 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>100</dataTypeSize>
-<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="F0DCFA2B-95CC-1639-FF84-DBD13CD458B8" name="Rodzaj decyzji PK">
+<identifier id="8D4E4452-078D-FD7A-316F-94956BF1601C" name="Status Pomyslu PK">
 <createdBy>lkost</createdBy>
-<createdTime>2020-11-24 20:44:21 UTC</createdTime>
+<createdTime>2020-11-22 18:53:32 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
 <item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>959D0A2D-58D1-05E6-1984-DCBB7181B6B7</attributeRef>
+<attributeRef>3042157E-35B5-5F75-056E-D2D3B31F5A3B</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

@@ -1,19 +1,18 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_17" directorySegmentName="seg_0" id="69A1DCCE-B045-1021-DA09-88AA221F9683">
-<createdBy>napiad</createdBy>
-<createdTime>2020-11-18 19:38:10 UTC</createdTime>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_21" directorySegmentName="seg_0" id="672700AE-D86F-C3EB-9867-81CF85906FD9">
+<createdBy>lkost</createdBy>
+<createdTime>2020-11-22 18:45:31 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
 <item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
 </engineerTo>
-<targetPk>179A5974-A948-FDFD-98D1-35D83AB311FD</targetPk>
 <identifying>false</identifying>
 <optionalSource>false</optionalSource>
 <optionalTarget>true</optionalTarget>
 <sourceCardinality>*</sourceCardinality>
 <sourceEntity>2BD8C493-06B4-B752-1EF2-4E4763A1DA5A</sourceEntity>
 <targetCardinalityString>1</targetCardinalityString>
-<targetEntity>30097584-8375-8109-16FD-A0DAF3644795</targetEntity>
+<targetEntity>A800490D-4EE5-40AA-B713-C65A1ABEDA8A</targetEntity>
 <transferable>true</transferable>
 <deleteRule>NO ACTION</deleteRule>
 </Relation>

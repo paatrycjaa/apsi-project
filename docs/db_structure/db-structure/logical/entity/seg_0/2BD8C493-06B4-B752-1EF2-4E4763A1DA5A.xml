@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="2BD8C493-06B4-B752-1EF2-4E4763A1DA5A" name="Pomysł">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="2BD8C493-06B4-B752-1EF2-4E4763A1DA5A" name="Pomysl">
 <createdBy>napiad</createdBy>
 <createdTime>2020-11-16 14:34:48 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
@@ -15,6 +15,18 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="pomysl_id" id="991C7A00-AA80-C4AF-ACBF-7A4F6E7EF2BD">
+<createdBy>lkost</createdBy>
+<createdTime>2020-11-24 20:43:46 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<engineerTo>
+<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 <Attribute name="tematyka" id="833D976C-88D3-09A2-EE65-B8D6B9FA5182">
 <createdBy>napiad</createdBy>
 <createdTime>2020-11-18 19:13:04 UTC</createdTime>
@@ -69,32 +81,6 @@
 <dataTypePrecision>2</dataTypePrecision>
 <ownDataTypeParameters>,2,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="czyZablokowany" id="D90D6DF6-F055-3367-238D-DE383AA53074">
-<createdBy>napiad</createdBy>
-<createdTime>2020-11-18 19:15:47 UTC</createdTime>
-<ownerDesignName>db-structure</ownerDesignName>
-<engineerTo>
-<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT006</logicalDatatype>
-<dataTypeSize>1</dataTypeSize>
-<ownDataTypeParameters>1,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="czyUsuniety" id="8F9A421E-E311-175A-9D93-80CDC5FE2BA2">
-<createdBy>napiad</createdBy>
-<createdTime>2020-11-18 19:16:09 UTC</createdTime>
-<ownerDesignName>db-structure</ownerDesignName>
-<engineerTo>
-<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT006</logicalDatatype>
-<dataTypeSize>1</dataTypeSize>
-<ownDataTypeParameters>1,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="ocena_wazona" id="2E64F66D-90AC-6629-75A9-854E7D8B9DF0">
 <createdBy>napiad</createdBy>
 <createdTime>2020-11-18 19:19:39 UTC</createdTime>
@@ -109,5 +95,61 @@
 <dataTypePrecision>4</dataTypePrecision>
 <ownDataTypeParameters>,4,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="ustawienia_id" id="50624498-F3DF-C8F6-945A-D5B3F890ED55">
+<createdBy>lkost</createdBy>
+<createdTime>2020-11-22 20:32:58 UTC</createdTime>
+<generatorID>69A1DCCE-B045-1021-DA09-88AA221F9683</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<engineerTo>
+<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+</engineerTo>
+<referedAttribute>816A1C92-6283-5015-592E-A8BCD68815C0</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="status" id="067B6BA7-64CF-7A75-37E8-88A100E08F6C">
+<createdBy>lkost</createdBy>
+<createdTime>2020-11-24 20:42:12 UTC</createdTime>
+<generatorID>672700AE-D86F-C3EB-9867-81CF85906FD9</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<engineerTo>
+<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+</engineerTo>
+<referedAttribute>3042157E-35B5-5F75-056E-D2D3B31F5A3B</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="uzytkownik_id" id="1E45ABF4-8957-1029-31BF-1FFB8D12367F">
+<createdBy>lkost</createdBy>
+<createdTime>2020-11-24 20:47:33 UTC</createdTime>
+<generatorID>7DEF49CE-8F4C-EAC2-92B8-581276B5CA8A</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<engineerTo>
+<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+</engineerTo>
+<referedAttribute>75F4E93C-03A5-C643-C5A1-7F28EFAEF1A3</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="072BA7E2-71D6-92F0-5A13-9D8AF96EF939" name="Pomysl PK">
+<createdBy>lkost</createdBy>
+<createdTime>2020-11-24 20:43:58 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<engineerTo>
+<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>991C7A00-AA80-C4AF-ACBF-7A4F6E7EF2BD</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
 </Entity>
