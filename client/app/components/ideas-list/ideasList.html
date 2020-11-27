@@ -4,13 +4,20 @@
 {% block content %}
 <h1>Innovation ideas</h1>
 
-{% verbatim %}
 <div ng-controller="ideasListController" ng-init="init()">  
     <div style="display: inline-block">
-      <form role="form">
-        <input type="text" class="form-control" placeholder="Filter..." ng-model="searchStr">
-      </form>
+        <form role="form">
+            <input type="text" class="form-control" placeholder="Filter..." ng-model="searchStr">
+        </form>
     </div>
+    <div style="float: right;">
+        <a href="{% url 'add_idea' %}">
+            <button type="button" class="btn btn-primary">Dodaj nowy pomysł</button>
+        </a>
+    </div>
+
+    {% verbatim %}
+
     <div class="idea-block" ng-repeat="idea in ideas | filter:searchStr">
         <table class="table">
             <tr>

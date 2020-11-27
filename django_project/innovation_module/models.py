@@ -6,7 +6,7 @@ class Pomysl(models.Model):
     opis = models.TextField()
     planowane_korzysci = models.TextField(blank=True)
     planowane_koszty = models.TextField(blank=True)
-    ocena_wazona = models.FloatField(blank=True)
+    ocena_wazona = models.FloatField(null=True)
 
     status = models.ForeignKey(
         'StatusPomyslu',
