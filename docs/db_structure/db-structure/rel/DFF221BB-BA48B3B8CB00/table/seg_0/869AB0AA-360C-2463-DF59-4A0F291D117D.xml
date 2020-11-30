@@ -1,0 +1,63 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="869AB0AA-360C-2463-DF59-4A0F291D117D" name="Slowo_kluczowe">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-30 17:35:45 UTC</createdTime>
+<generatorID>99E9CD39-9908-E414-616F-5A248BEC5B82</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="slowo_kluczowe_id" id="4ABFF18E-BADF-CD56-66F3-9F20FD1A9BEB">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-30 17:35:45 UTC</createdTime>
+<generatorID>7A5F8986-933D-44AE-AE77-8D46685DCC40</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Pomysl_pomysl_id" id="4E3C8D3B-DE0D-F08D-7254-B071F09E1892">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-30 17:35:45 UTC</createdTime>
+<generatorID>1D8D66A5-5609-84FF-598B-4CFD380F1E7A</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1B1900D5-539F-6CBD-C87F-59B91D733AC4" referredColumn="3D9DC186-A5D5-E3EB-A827-90CD859CA48E"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A69C707D-1A53-620F-48DB-92572D07D994" name="Slowo_kluczowe_PK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-30 17:35:45 UTC</createdTime>
+<generatorID>BC4E01BE-37D6-C2B6-B502-89D029B4EB98</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4ABFF18E-BADF-CD56-66F3-9F20FD1A9BEB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2B4078E9-0E76-E7B0-0D88-503B47966A5C" name="Slowo_kluczowe_Pomysl_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-30 17:35:45 UTC</createdTime>
+<generatorID>40F307F8-4CC4-4BBE-0262-E567A27AE016</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4E3C8D3B-DE0D-F08D-7254-B071F09E1892"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="74109500-B48C-FC89-C444-7F9B4D209384" containerWithKeyObject="4E07870A-636C-2B4B-5A34-824D4C0BA7D9" localFKIndex="C0C7AD4C-66E5-6573-016B-1A366D66D343" name="Zalacznik_posta_Post_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-30 17:35:45 UTC</createdTime>
+<generatorID>04A294CF-8675-B391-85ED-C8F187C57010</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<referredTableLongName>Post</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>4A030600-FB14-EEB4-6073-5BEE9BF32366</referredTableID>
+<keyObject>815DDA85-D9B0-D238-A943-8DE25BFC4061</keyObject>
+<referredKeyID>815DDA85-D9B0-D238-A943-8DE25BFC4061</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>post_id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

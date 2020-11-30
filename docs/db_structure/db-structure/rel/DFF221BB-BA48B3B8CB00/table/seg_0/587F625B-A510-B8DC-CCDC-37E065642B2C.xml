@@ -1,0 +1,140 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="587F625B-A510-B8DC-CCDC-37E065642B2C" name="Decyzja">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-30 17:35:44 UTC</createdTime>
+<generatorID>D0CD3AB0-C9A2-A3F8-175A-41FFEA48DB56</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="decyzja_id" id="83B8224D-5ECC-6777-1C72-313EB2C65DF3">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-30 17:35:44 UTC</createdTime>
+<generatorID>CF9452B1-232B-8451-6005-BA78D123B100</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="uzasadnienie" id="9D6BF59B-2F93-6BD3-A350-05E971E9646B">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-30 17:35:44 UTC</createdTime>
+<generatorID>196709D3-52FB-B0E5-CAC7-625127AF58D6</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1000</dataTypeSize>
+<ownDataTypeParameters>1000,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Pomysl_pomysl_id" id="CE9C643F-2612-3CAD-7AD1-7285CEAA6C24">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-30 17:35:44 UTC</createdTime>
+<generatorID>D18BF20B-AA3D-EA83-CEBA-5B2D09219014</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="0F3945DD-1428-05E2-779D-AC92537170BE" referredColumn="3D9DC186-A5D5-E3EB-A827-90CD859CA48E"/>
+</associations>
+</Column>
+<Column name="Rodzaj_decyzji_rodzaj_decyzji_id" id="99C05467-51BC-70FA-3D3D-A191E991200F">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-30 17:35:44 UTC</createdTime>
+<generatorID>CC869802-F0FC-24CC-352F-CEA81CF43AD8</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="FB29BDBA-3A18-0481-F36B-CCC430427F64" referredColumn="885173E1-9813-C79A-F346-D46E10192607"/>
+</associations>
+</Column>
+<Column name="Czlonek_komisji_uzytkownik_id" id="CE43CD85-721C-E979-A952-561E51E4370D">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-30 17:35:44 UTC</createdTime>
+<generatorID>0F93BA26-2A01-CB1A-5942-9DA891509627</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A6E7FFD8-80E2-E22A-283D-6EA874C6D668" referredColumn="8E7E49AC-0B3C-4E94-83B1-EDA3F3A1FFFE"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="CD2C566A-41E8-751B-CADF-ECAEDCA95112" name="Decyzja_PK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-30 17:35:44 UTC</createdTime>
+<generatorID>2A770118-F6D8-D5BD-3403-8414D307E8F6</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="83B8224D-5ECC-6777-1C72-313EB2C65DF3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="24174BC0-5ADA-D1D0-8B46-7C2AD27D290B" name="Decyzja__IDX">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-30 17:35:45 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>2911C268-DF08-5682-6CC7-DE5D07BEF32C</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="CE9C643F-2612-3CAD-7AD1-7285CEAA6C24"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CBF0E5A4-9814-203D-BF07-76FB06627684" name="Decyzja_Rodzaj_decyzji_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-30 17:35:45 UTC</createdTime>
+<generatorID>40961EF9-4DBF-EA88-05F7-FE7CFB1854FE</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="99C05467-51BC-70FA-3D3D-A191E991200F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CEEEA6E2-52D4-7648-4D85-62377B13A47B" name="Decyzja_Czlonek_komisji_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-30 17:35:45 UTC</createdTime>
+<generatorID>DDA2D87A-435B-CFB2-D15B-2E3934554202</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CE43CD85-721C-E979-A952-561E51E4370D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="318CF6C5-0E1C-6C47-1764-EA9E042FB5B7" name="Decyzja_Pomysl_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-30 17:35:45 UTC</createdTime>
+<generatorID>2911C268-DF08-5682-6CC7-DE5D07BEF32C</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CE9C643F-2612-3CAD-7AD1-7285CEAA6C24"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

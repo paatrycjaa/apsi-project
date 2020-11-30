@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="FB29BDBA-3A18-0481-F36B-CCC430427F64" containerWithKeyObject="587F625B-A510-B8DC-CCDC-37E065642B2C" localFKIndex="CBF0E5A4-9814-203D-BF07-76FB06627684" name="Decyzja_Rodzaj_decyzji_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-30 17:35:45 UTC</createdTime>
+<generatorID>40961EF9-4DBF-EA88-05F7-FE7CFB1854FE</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<referredTableLongName>Rodzaj_decyzji</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>5D0E5442-C300-894B-843D-A704FC00CBB0</referredTableID>
+<keyObject>05C91A49-B20A-7F96-EB0D-034D1B17959F</keyObject>
+<referredKeyID>05C91A49-B20A-7F96-EB0D-034D1B17959F</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>rodzaj_decyzji_id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
