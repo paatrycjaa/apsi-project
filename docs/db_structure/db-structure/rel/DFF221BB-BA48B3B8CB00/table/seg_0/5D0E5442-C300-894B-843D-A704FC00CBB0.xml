@@ -1,0 +1,38 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="5D0E5442-C300-894B-843D-A704FC00CBB0" name="Rodzaj_decyzji">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-30 17:35:45 UTC</createdTime>
+<generatorID>8CAD346F-2BD8-19E7-3B7D-19ADB24E6CD9</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="rodzaj_decyzji_id" id="885173E1-9813-C79A-F346-D46E10192607">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-30 17:35:45 UTC</createdTime>
+<generatorID>959D0A2D-58D1-05E6-1984-DCBB7181B6B7</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="05C91A49-B20A-7F96-EB0D-034D1B17959F" name="Rodzaj_decyzji_PK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-30 17:35:45 UTC</createdTime>
+<generatorID>F0DCFA2B-95CC-1639-FF84-DBD13CD458B8</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="885173E1-9813-C79A-F346-D46E10192607"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

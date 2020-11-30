@@ -1,0 +1,51 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="CF419018-FF02-83A7-A7FB-4492CDF3654B" name="Czlonek_komisji">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-30 17:35:45 UTC</createdTime>
+<generatorID>D2854707-BB56-32F0-3A26-ABFB185A8592</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="uzytkownik_id" id="8E7E49AC-0B3C-4E94-83B1-EDA3F3A1FFFE">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-30 17:35:45 UTC</createdTime>
+<generatorID>75F4E93C-03A5-C643-C5A1-7F28EFAEF1A3</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="CE2431DF-4845-C214-8708-F6FE26DDB7CF" referredColumn="EECCCD62-84FC-382A-B45E-A11708B99975"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="9CC509E2-2167-350F-9416-E2AE75DCA5F4" name="Czlonek_komisji_PK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-30 17:35:45 UTC</createdTime>
+<generatorID>35CE9123-1415-1289-2BE1-445D850848E5</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8E7E49AC-0B3C-4E94-83B1-EDA3F3A1FFFE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="68CFAFE3-A119-AF14-8C8A-E5E821BEE5E5" name="Czlonek_komisji_Uzytkownik_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-11-30 17:35:45 UTC</createdTime>
+<generatorID>9B38C014-CF42-86F9-9D69-DAA9206F40CA</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8E7E49AC-0B3C-4E94-83B1-EDA3F3A1FFFE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
