@@ -4,3 +4,7 @@ __pycache__
 *.local
 *.local*
 *.DS_Store
+
+*.sqlite3
+
+.vscode
