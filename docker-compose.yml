@@ -3,6 +3,8 @@ version: '3'
 services:
   web:
     build: .
+    depends_on:
+      - db
     command:
       bash -c "./wait-for-it.sh db:3306 --
       python django_project/manage.py migrate &&
