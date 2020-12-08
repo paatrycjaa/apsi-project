@@ -69,7 +69,7 @@
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="BD0637E7-882B-A488-B85B-6CF3F5A3EB97" referredColumn="EECCCD62-84FC-382A-B45E-A11708B99975"/>
+<colAssociation fkAssociation="15C64BC5-6FF0-E995-E507-71BF0ADBD1BE" referredColumn="EECCCD62-84FC-382A-B45E-A11708B99975"/>
 </associations>
 </Column>
 <Column name="data_dodania" id="597317C8-92B6-3351-FB01-4B33A0DBE25C">
@@ -108,9 +108,9 @@
 <colUsage columnID="78F75DD9-8401-18EE-776A-24E731EBD8B0"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="C5AA5C7A-3791-F090-E0F8-14E9C6929F8E" name="Post_Uzytkownik_FK">
+<ind_PK_UK id="46310F9F-10FB-78F8-79BA-17E336FAA9C0" name="Post_Uzytkownik_FK">
 <createdBy>napiad</createdBy>
-<createdTime>2020-11-30 17:35:45 UTC</createdTime>
+<createdTime>2020-12-08 16:20:35 UTC</createdTime>
 <generatorID>813B390D-0066-D592-AF14-43ABEFE451E3</generatorID>
 <ownerDesignName>db-structure</ownerDesignName>
 <indexState>Foreign Key</indexState>
