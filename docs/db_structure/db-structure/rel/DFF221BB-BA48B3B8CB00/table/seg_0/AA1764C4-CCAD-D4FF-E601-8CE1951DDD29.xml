@@ -127,6 +127,29 @@
 <colAssociation fkAssociation="CC419D71-97E9-A56B-4869-46CF2B63B477" referredColumn="EECCCD62-84FC-382A-B45E-A11708B99975"/>
 </associations>
 </Column>
+<Column name="data_dodania" id="2B4E1477-2904-1925-DAC7-8821234FF43F">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-08 16:20:35 UTC</createdTime>
+<generatorID>3D406CE9-4716-4CEA-B625-47D4408785CA</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="data_ostatniej_edycji" id="CEDAA48C-8ACD-BFC6-2385-31A1312882AE">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-08 16:20:35 UTC</createdTime>
+<generatorID>D0CF0EE7-77BE-7C32-5C21-3C8CE8CD096C</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="8E1616D0-72C4-638B-652F-2A677E56AE02" name="Pomysl_PK">

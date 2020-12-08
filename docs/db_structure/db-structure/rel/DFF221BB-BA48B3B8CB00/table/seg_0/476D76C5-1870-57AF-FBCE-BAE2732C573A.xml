@@ -43,6 +43,17 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="data_dodania" id="CDBCF470-CD81-A016-4397-1AB63EEF89D2">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-08 16:20:35 UTC</createdTime>
+<generatorID>DF5F73DA-93C5-2B84-98D9-CF266433A72D</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="2F51F117-3DD9-A88E-F4FE-E7698DCE7A2F" name="Zalacznik_PK">

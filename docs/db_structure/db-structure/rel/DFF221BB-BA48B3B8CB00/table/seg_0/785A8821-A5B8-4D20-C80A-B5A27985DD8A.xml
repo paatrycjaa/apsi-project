@@ -73,6 +73,17 @@
 <colAssociation fkAssociation="2C299B8F-04D9-6452-F96E-737B22B45156" referredColumn="EECCCD62-84FC-382A-B45E-A11708B99975"/>
 </associations>
 </Column>
+<Column name="data" id="6F879163-7467-34CE-38E6-D3AEE28F075C">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-08 16:20:35 UTC</createdTime>
+<generatorID>25E328F8-94BC-0937-7041-B15DE7556784</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="150289A7-F3A7-9CCE-689B-A1B663C8A341" name="Ocena_PK">

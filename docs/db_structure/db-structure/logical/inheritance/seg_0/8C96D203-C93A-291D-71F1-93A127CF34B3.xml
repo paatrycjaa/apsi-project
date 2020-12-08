@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<InheritanceRelation class="oracle.dbtools.crest.model.design.logical.InheritanceRelation" name="Hierarchy_7" directorySegmentName="seg_0" id="8C96D203-C93A-291D-71F1-93A127CF34B3">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-07 20:09:16 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<engineerTo>
+<item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<nameOnSource>Super Type</nameOnSource>
+<nameOnTarget>Sub Type</nameOnTarget>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceEntity>C2685295-D27D-44E2-FF5A-19CBDBC36F0E</sourceEntity>
+<targetEntity>8A2A4F35-999B-A61D-63A0-66EEBF69E0D5</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</InheritanceRelation>

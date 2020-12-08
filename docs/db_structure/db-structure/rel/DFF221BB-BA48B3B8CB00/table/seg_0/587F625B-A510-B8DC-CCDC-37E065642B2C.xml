@@ -56,7 +56,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>100</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
@@ -77,6 +77,29 @@
 <associations>
 <colAssociation fkAssociation="A6E7FFD8-80E2-E22A-283D-6EA874C6D668" referredColumn="8E7E49AC-0B3C-4E94-83B1-EDA3F3A1FFFE"/>
 </associations>
+</Column>
+<Column name="data" id="98E936F5-D84D-904E-72B7-FAAE2308A85E">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-08 16:20:35 UTC</createdTime>
+<generatorID>43B27D6D-74B3-65E6-867D-8481A458820D</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="uzytkownik_id" id="3953192E-EF02-5BB1-9822-FC3D9CB560F7">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-08 16:20:35 UTC</createdTime>
+<generatorID>379AB6DB-47BF-07A3-E422-610279528430</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">

@@ -1,10 +1,11 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="BD0637E7-882B-A488-B85B-6CF3F5A3EB97" containerWithKeyObject="4A030600-FB14-EEB4-6073-5BEE9BF32366" localFKIndex="C5AA5C7A-3791-F090-E0F8-14E9C6929F8E" name="Post_Uzytkownik_FK">
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="47E8655D-6325-FA76-42C7-81EA2F9F4CC3" containerWithKeyObject="32E13E17-4B33-81EA-B4BA-3598F3BBBE28" localFKIndex="42A44DF6-2AD6-DC4B-F11B-74D3B9422611" name="Zwykly_uzytkownik_Uzytkownik_FK">
 <createdBy>napiad</createdBy>
-<createdTime>2020-11-30 17:35:45 UTC</createdTime>
-<generatorID>813B390D-0066-D592-AF14-43ABEFE451E3</generatorID>
+<createdTime>2020-12-08 16:20:35 UTC</createdTime>
+<generatorID>8C96D203-C93A-291D-71F1-93A127CF34B3</generatorID>
 <ownerDesignName>db-structure</ownerDesignName>
 <referredTableLongName>Uzytkownik</referredTableLongName>
+<arc>2C40CD49-AF93-8E05-054D-5899890893A8</arc>
 <deleteRule>NO ACTION</deleteRule>
 <referredTableID>3ED2BA8D-BC77-4989-9EDF-907524013B9A</referredTableID>
 <keyObject>26849C07-42EA-7952-A7EC-A6CD3080761E</keyObject>
