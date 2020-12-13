@@ -47,3 +47,22 @@ class UstawieniaOceniania(models.Model):
 
     def __str__(self):
         return self.ustawienia
+
+class Ocena(models.Model):
+    data = models.DateTimeField('%Y-%m-%d %H:%M:%S')
+    ocena_liczbowa = models.IntegerField()
+    opis = models.CharField(max_length=500)
+
+    pomysl = models.ForeignKey(
+        'Pomysl',
+        on_delete=models.CASCADE,
+    )
+
+    uzytkownik = models.ForeignKey(
+        'Uzytkownik',
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return self.ocena_liczbowa
+

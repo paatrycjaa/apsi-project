@@ -7,5 +7,7 @@ urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^ideas$', views.ideas, name='ideas'),
     url(r'^add-idea$', views.add_idea, name='add_idea'),
+    url(r'^opinions$', views.opinions, name='opinions'),
+    # url(r'^add-opinion$', views.add_idea, name='add_opinion'),
     url(r'^ajax/(?P<ajax_request>\w+)/$', csrf_exempt(views.ajax), name='ajax')
 ]

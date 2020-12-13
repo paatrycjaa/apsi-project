@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %} Opinions {% endblock %}
+
+{% block content %}
+<h1>Opinions</h1>
+
+<div ng-controller="opinionsListController" ng-init="init()">  
+    <div style="float: right;">
+        <a href="{% url 'add_idea' %}">
+            <button type="button" class="btn btn-primary">Dodaj opinie</button>
+        </a>
+    </div>
+    <div class="idea-block">
+        {% verbatim %}
+        <table class="idea-table">
+            <tr>
+                <th style="width: 25%">Temat</th>
+                <!-- <td>{{ idea.tematyka }}</td> -->
+                <td>{{ idea.opis }}</td>
+            </tr>
+            <tr>
+                <th>Opis</th>
+                <td>{{ idea.opis }}</td>
+            </tr>
+            <tr>
+                <th>Planowane Korzyści</th>
+                <td>{{ idea.planowane_korzysci }}</td>
+            </tr>
+            <tr>
+                <th>Planowane Koszty</th>
+                <td>{{ idea.planowane_koszty }}</td>
+            </tr>
+            <tr>
+                <th>Ocena ważona</th>
+                <td>{{ idea.ocena_wazona }}</td>
+            </tr>
+        </table>
+        {% endverbatim %}
+    </div>
+
+    <div class="opinion-block" ng-repeat="opinion in opinions | filter:searchStr">
+        {% verbatim %}
+        <table class="opinion-table">
+            <tr>
+                <th style="width: 25%">Data</th>
+                <td>{{ opinion.data }}</td>
+            </tr>
+            <tr>
+                <th>Ocena</th>
+                <td>{{ opinion.ocena_liczbowa }}</td>
+            </tr>
+            <tr>
+                <th>Opis</th>
+                <td>{{ opinion.opis }}</td>
+            </tr>
+        </table>
+        {% endverbatim %}
+    </div>
+  </div>
+</div>
+{% endblock %}
