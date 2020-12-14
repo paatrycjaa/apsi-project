@@ -16,14 +16,14 @@
         </a>
     </div>
 
-    <div class="idea-block" ng-repeat="idea in ideas | filter:searchStr">
+    <div class="idea-block" ng-repeat="(index, idea) in ideas | filter:searchStr">
         <a href="{% url 'opinions' %}">
             {% verbatim %}
-            <table class="table" >
+            <table class="table" ng-model="idea">
                 <tr>
                     <th style="width: 25%">Temat</th>
                     <td>{{ idea.tematyka }}</td>
-                    <td>{{ idea.$$hashKey }}</td>
+                    <!-- <td>{{ index}}</td> -->
                 </tr>
                 <tr>
                     <th>Opis</th>

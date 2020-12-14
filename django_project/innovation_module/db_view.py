@@ -15,13 +15,13 @@ def get_ideas(user = None):
 def get_ideas_json(user=None):
     return serialize(get_ideas(user))
 
-def get_opinions(uzytkownik, pomysl):
+def get_opinions(pomysl):
     return models.Ocena.objects.filter(
-        uzytkownik=uzytkownik, pomysl=pomysl
+        pomysl=pomysl
     )
 
-def get_opinions_json(uzytkownik, pomysl):
-    return serialize(get_opinions(uzytkownik, pomysl))
+def get_opinions_json(pomysl):
+    return serialize(get_opinions(pomysl))
 
 
 def add_idea(idea_json):
