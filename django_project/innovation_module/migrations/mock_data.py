@@ -120,8 +120,7 @@ def create_ocena(apps):
         user = random.choice([u for u in users if u is not idea.uzytkownik])
 
         m = Ocena(data=opinion[0], ocena_liczbowa=opinion[1], opis=opinion[2], pomysl=idea, uzytkownik=user)
-
-
+        m.save()
 
 
 class Migration(migrations.Migration):
