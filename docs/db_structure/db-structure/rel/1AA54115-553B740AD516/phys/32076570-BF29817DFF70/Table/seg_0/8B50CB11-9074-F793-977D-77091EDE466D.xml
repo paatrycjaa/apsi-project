@@ -1,0 +1,41 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="zalaczniki" directorySegmentName="seg_0" id="8B50CB11-9074-F793-977D-77091EDE466D">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:49:53 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="data_dodania" id="0EA0BBA6-7B05-344E-E9DE-AF23E7F56946">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:49:53 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="rozmiar" id="2E208C8C-E0D3-37CB-A251-3542A79B1AB5">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:49:53 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="zalacznik_id" id="94961FFA-41B7-6A73-D4CB-7ACAB4307B8E">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:49:53 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="nazwa_pliku" id="C48EAF8F-79D3-D083-5489-AF7136BF0F62">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:49:53 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="Zalacznik_PK" id="E0D20287-518E-FBA9-BC5E-B40CF3662E05">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:49:53 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>

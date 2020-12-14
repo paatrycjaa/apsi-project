@@ -1,0 +1,43 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="zalaczniki_pomyslow" directorySegmentName="seg_0" id="D57FAEC1-5264-9569-6BB9-1F128E053402">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:49:53 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="Pomysl_pomysl_id" id="656168DA-9AA3-7230-C402-8C75C87832C4">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:49:53 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="zalacznik_id" id="835DD0A0-0B2E-B159-26CB-01A334F3AB67">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:49:53 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="Zalacznik_pomysłu_Pomysl_FK" id="3ED562D3-E27D-089D-1831-BD72B619F92A">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:49:53 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="Zalacznik_pomysłu_Zalacznik_FK" id="4F3AC2FD-B64D-E497-F9E5-ADB5035D45B3">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:49:53 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="Zalacznik_pomysłu_PK" id="E3497490-1063-719D-78F0-500C1B1F16E8">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:49:53 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>

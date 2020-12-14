@@ -1,0 +1,68 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="decyzje" directorySegmentName="seg_0" id="FF7CA97C-9B31-4645-1B28-C2BB4914C9BA">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:49:53 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="uzasadnienie" id="0CC8C399-E0A5-8782-E486-6C10B6298A64">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:49:53 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="Pomysl_pomysl_id" id="476D3FD8-E947-B179-0F13-4F1729912DC3">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:49:53 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="data" id="9116881A-9B72-1E29-9D63-22A1CBCA6BBF">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:49:53 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="Czlonek_komisji_uzytkownik_id" id="99486028-DA9D-FE4E-936F-4D4A87985D47">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:49:53 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="Rodzaj_decyzji_rodzaj_decyzji_id" id="E0C3E30E-813F-609A-C4BD-AC4E955A69B7">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:49:53 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="decyzja_id" id="EAB8AE9C-E76B-6BF8-13C2-5BFFAF2820DA">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:49:53 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="Decyzja_Rodzaj_decyzji_FK" id="D55A3E91-20FB-71F6-DEA6-71657BCCCA6A">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:49:53 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="Decyzja_Czlonek_komisji_FK" id="DF6816CA-220A-F512-50E8-460955843F08">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:49:53 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="Decyzja_Pomysl_FK" id="F7980720-22F6-3E34-12B3-357A7C34348C">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:49:53 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="Decyzja_PK" id="BF96BD52-73DA-1040-9424-BA3D03B09512">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:49:53 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>

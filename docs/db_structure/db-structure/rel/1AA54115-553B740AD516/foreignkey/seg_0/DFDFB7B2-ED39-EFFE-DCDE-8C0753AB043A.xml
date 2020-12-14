@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="DFDFB7B2-ED39-EFFE-DCDE-8C0753AB043A" containerWithKeyObject="D57FAEC1-5264-9569-6BB9-1F128E053402" localFKIndex="3ED562D3-E27D-089D-1831-BD72B619F92A" name="Zalacznik_pomysłu_Pomysl_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:42:34 UTC</createdTime>
+<generatorID>D9294806-7266-97DF-2E37-D5C049F80244</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<referredTableLongName>Pomysl</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>287C55D9-6101-44AC-C25B-1A425C2B0E66</referredTableID>
+<keyObject>4BCD76D6-80D4-13EC-9E43-272C1C1DE4E3</keyObject>
+<referredKeyID>4BCD76D6-80D4-13EC-9E43-272C1C1DE4E3</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>pomysl_id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

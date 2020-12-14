@@ -1,0 +1,41 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="ustawienia_oceniania" directorySegmentName="seg_0" id="361778BB-9930-7BBE-4F15-E14981D81646">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:49:53 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="ustawienia_id" id="3D92193C-22E0-0CBD-C657-1771B4C93B00">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:49:53 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="wartosc" id="5F43CB40-E8D6-02E4-EA6E-2DC85E013B85">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:49:53 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="opis" id="87F56156-15B8-69CF-B573-811053998BFA">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:49:53 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="klucz" id="E1341392-58EF-DAD3-0B11-8F7421FE3958">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:49:53 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="Ustawienia_oceniania_PK" id="99880CED-C06D-3749-3DB1-CD108D386BD1">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:49:53 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>

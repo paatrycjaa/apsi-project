@@ -1,0 +1,78 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="EC2B41B0-C855-BB25-2FCD-0764E42D83DB" name="zalaczniki_postow">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:42:34 UTC</createdTime>
+<generatorID>69497887-E600-95F1-7586-83EA986F9FB7</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<ordsAlias>zalacznik_posta</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="zalacznik_id" id="CE0D92BD-404A-78B2-BD8F-A74510468C0A">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:42:34 UTC</createdTime>
+<generatorID>8FC2FBC8-FD0A-A1F8-2414-BC9B18FAF020</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D3C1C2A6-F85F-1EF2-15E2-6581DA15DDEB" referredColumn="94961FFA-41B7-6A73-D4CB-7ACAB4307B8E"/>
+</associations>
+</Column>
+<Column name="Post_post_id" id="91A9C331-8350-48C4-30E5-95795D3876D8">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:42:34 UTC</createdTime>
+<generatorID>60A0EBF2-6F63-59C7-F202-6FC67F21DD5E</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C911EF49-ADFD-025C-C8B7-57D3E509F40B" referredColumn="5B852E12-C9A2-617A-AB41-CF03A130A03F"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="F0543CE4-1FFA-642F-3A8E-52FBFC38B993" name="Zalacznik_posta_PK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:42:34 UTC</createdTime>
+<generatorID>7042C54B-5FAE-9DFB-1B44-4BE309AE52B9</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CE0D92BD-404A-78B2-BD8F-A74510468C0A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C6629C50-4E1C-C44E-BA2F-4ACAA14D4889" name="Zalacznik_posta_Zalacznik_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:42:34 UTC</createdTime>
+<generatorID>90B589E0-B96A-A44C-0712-B61D6B52B869</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CE0D92BD-404A-78B2-BD8F-A74510468C0A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BF55F42C-05D9-2322-E2D4-4D77DFEC93F7" name="Zalacznik_posta_Post_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:42:34 UTC</createdTime>
+<generatorID>04A294CF-8675-B391-85ED-C8F187C57010</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="91A9C331-8350-48C4-30E5-95795D3876D8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

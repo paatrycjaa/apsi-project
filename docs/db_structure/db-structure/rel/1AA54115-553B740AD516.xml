@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<relationalModel class="oracle.dbtools.crest.model.design.relational.RelationalDesign" name="Relational_2" id="1AA54115-F74E-90D6-6928-553B740AD516" mainViewID="3F3E8503-5395-3781-2354-C6FAC5A709E3">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:42:12 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+<selectedRDBMSSite>32076570-2523-435C-2E92-BF29817DFF70</selectedRDBMSSite>
+</relationalModel>

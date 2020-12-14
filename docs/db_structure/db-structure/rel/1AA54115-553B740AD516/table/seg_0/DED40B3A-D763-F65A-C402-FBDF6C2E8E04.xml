@@ -1,0 +1,125 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="DED40B3A-D763-F65A-C402-FBDF6C2E8E04" name="posty">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:42:34 UTC</createdTime>
+<generatorID>9E6DE388-4F10-78BC-BAA6-339A328E1B1E</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<ordsAlias>post</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="post_id" id="5B852E12-C9A2-617A-AB41-CF03A130A03F">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:42:34 UTC</createdTime>
+<generatorID>BF22E88D-BE15-C92D-8A5C-46CFBD742199</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="tytul" id="6F1B1F97-B5A0-6A3C-BE6A-E5FEC7154FB8">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:42:34 UTC</createdTime>
+<generatorID>8AD433B8-A375-8A18-D7A6-F56CF5CF2EBB</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>200</dataTypeSize>
+<ownDataTypeParameters>200,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="tresc" id="F2ECD04D-EA61-C322-8332-E23B03CB5613">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:42:34 UTC</createdTime>
+<generatorID>69EACD7E-6DF2-6B5A-D35F-8066403194E3</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1000</dataTypeSize>
+<ownDataTypeParameters>1000,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Watek_watek_id" id="5E406DD6-9D29-D3A9-5FF0-7272112CBC6C">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:42:34 UTC</createdTime>
+<generatorID>623AC541-F385-163E-5C10-F414F1602CD1</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="161CC04E-7299-174A-47A6-75AC19E63A32" referredColumn="69850553-7F9C-F777-C710-43D90D0FCC87"/>
+</associations>
+</Column>
+<Column name="Uzytkownik_uzytkownik_id" id="54A9B385-8656-D9FC-DFA5-A32EA4B993FD">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:42:34 UTC</createdTime>
+<generatorID>80FC456B-FA8F-9B41-E46E-9B94BC4C5548</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B26B4985-8BA7-5DB5-454C-DE31BF062B19" referredColumn="2C9E0DF1-73D6-9F22-424A-4A88274E9606"/>
+</associations>
+</Column>
+<Column name="data_dodania" id="C1AE2048-63C7-D542-1A02-EC2DA1A1E82B">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:42:34 UTC</createdTime>
+<generatorID>DC2AD227-C116-FA23-6FFF-475DAEF36B52</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D065E694-BC5D-B685-243C-32ECB7A82645" name="Post_PK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:42:34 UTC</createdTime>
+<generatorID>E6472690-5391-AF66-88B2-8B6DDF93DFA6</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5B852E12-C9A2-617A-AB41-CF03A130A03F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9A312DB7-F309-9C2A-ECB4-E9BA6CDB7927" name="Post_Watek_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:42:34 UTC</createdTime>
+<generatorID>BE9BA70B-438B-0331-B870-918C41F564E8</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5E406DD6-9D29-D3A9-5FF0-7272112CBC6C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4B359479-69CE-8E28-DE07-DFD3738EF23E" name="Post_Uzytkownik_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:42:34 UTC</createdTime>
+<generatorID>813B390D-0066-D592-AF14-43ABEFE451E3</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="54A9B385-8656-D9FC-DFA5-A32EA4B993FD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

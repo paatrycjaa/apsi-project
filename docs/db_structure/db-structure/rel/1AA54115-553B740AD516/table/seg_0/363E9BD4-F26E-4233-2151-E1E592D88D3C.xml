@@ -1,0 +1,126 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="363E9BD4-F26E-4233-2151-E1E592D88D3C" name="oceny">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:42:33 UTC</createdTime>
+<generatorID>CE61539B-A1FD-DB30-6D5A-478FEF480B4F</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<ordsAlias>ocena</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ocena_id" id="83F7B746-7467-E7F0-7A3F-4FC0869F3FC0">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:42:33 UTC</createdTime>
+<generatorID>0542C692-BD67-8610-2076-10EEA36509C0</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="data" id="0BBEF0E4-3158-7597-122E-3CB6631A705D">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:42:33 UTC</createdTime>
+<generatorID>25E328F8-94BC-0937-7041-B15DE7556784</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ocena_liczbowa" id="6CF82851-2F94-C743-2CB6-FEB37BF7D9C9">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:42:33 UTC</createdTime>
+<generatorID>CA442458-0F2F-31C4-55AC-468553AB9C63</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="opis" id="A6E3BB4C-43A0-7928-C7E5-633124801DE8">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:42:33 UTC</createdTime>
+<generatorID>5FC1A545-0358-DFC4-E68C-61BAEC56465B</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1000</dataTypeSize>
+<ownDataTypeParameters>1000,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Pomysl_pomysl_id" id="53637FC5-BD6C-4F9B-DE49-702D8793764C">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:42:33 UTC</createdTime>
+<generatorID>8ABDF5CA-9A27-EB91-2FC8-512C3CC3E1D1</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7F8212EC-EC66-949E-D4A6-F16DF649E4B2" referredColumn="D51BE36E-0E72-E075-3A3E-109AE5C557BF"/>
+</associations>
+</Column>
+<Column name="Uzytkownik_uzytkownik_id" id="B8A671C7-A266-93E0-44E2-FADDE2115F7A">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:42:33 UTC</createdTime>
+<generatorID>B7C7DCD2-1BB8-FB90-B5F6-54D2D2745072</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A0B8FCE8-6B9D-C12F-2A74-B9424A19EE16" referredColumn="2C9E0DF1-73D6-9F22-424A-4A88274E9606"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="4F9BEEFF-1798-E66C-5257-FBFA5F02615E" name="Ocena_PK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:42:33 UTC</createdTime>
+<generatorID>2867F32A-4A15-E4DA-0932-5F03CD789C15</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="83F7B746-7467-E7F0-7A3F-4FC0869F3FC0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9CE63F53-DE97-66DC-8B95-88FC5AE75ACC" name="Ocena_Uzytkownik_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:42:34 UTC</createdTime>
+<generatorID>F7C836A5-3173-5FC0-6022-78FEF8B2F6E2</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B8A671C7-A266-93E0-44E2-FADDE2115F7A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="81C77E39-775A-5C81-4692-94211F0F744C" name="Ocena_Pomysl_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-14 17:42:34 UTC</createdTime>
+<generatorID>0C1016E2-A945-5FE7-DE9E-946F3CA82D6E</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="53637FC5-BD6C-4F9B-DE49-702D8793764C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
