@@ -1,6 +1,6 @@
 angular.module('appIdeasListController', [])
-  .controller('ideasListController', ['$scope', '$interval', 'ideasListService',
-      function($scope, $interval, ideasListService) {
+  .controller('ideasListController', ['$scope', '$window', '$interval', 'ideasListService',
+      function($scope, $window, $interval, ideasListService) {
         
         $scope.ideas = [];
 
@@ -9,6 +9,10 @@ angular.module('appIdeasListController', [])
             $scope.ideas = response.data
             console.log($scope.ideas)
           });
+        }
+
+        $scope.openIdeaOpinions = function(id) {
+          $window.location.href = `/opinions/${id}/`;
         }
       }
 ]);

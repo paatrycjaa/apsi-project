@@ -3,8 +3,9 @@ from django.core import serializers
 import json
 
 def serialize(objects):
-    raw = serializers.serialize('python', objects)
-    return json.dumps([o['fields'] for o in raw])
+    # raw = serializers.serialize('python', objects)
+    # return json.dumps([o['fields'] for o in raw])
+    return serializers.serialize('json', objects)
 
 def get_ideas(user = None):
     if user is None:
@@ -12,12 +13,21 @@ def get_ideas(user = None):
     
     return models.Pomysl.objects.get(user=user)
 
+def get_idea(id):
+    return models.Pomysl.objects.filter(
+        pk=id
+    )
+
 def get_ideas_json(user=None):
     return serialize(get_ideas(user))
 
-def get_opinions(pomysl):
+def get_idea_json(id):
+    return serialize(get_idea(id))
+
+def get_opinions(id):
+    pomysl = models.Pomysl.objects.filter(pk=id)
     return models.Ocena.objects.filter(
-        pomysl=pomysl
+        pomysl=pomysl[0]
     )
 
 def get_opinions_json(pomysl):
