@@ -50,4 +50,20 @@ class Migration(migrations.Migration):
                 ('uzytkownik', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.Uzytkownik')),
             ],
         ),
+         migrations.AlterField(
+            model_name='pomysl',
+            name='ocena_wazona',
+            field=models.FloatField(null=True),
+        ),
+        migrations.CreateModel(
+            name='Ocena',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('data', models.DateTimeField(verbose_name='%Y-%m-%d %H:%M:%S')),
+                ('ocena_liczbowa', models.IntegerField()),
+                ('opis', models.CharField(max_length=500)),
+                ('pomysl', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.pomysl')),
+                ('uzytkownik', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.uzytkownik')),
+            ],
+        ),
     ]
