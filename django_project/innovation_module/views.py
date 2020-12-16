@@ -18,8 +18,8 @@ def opinions(request, idea_id):
     }
     return render(request, 'app/components/opinions-list/opinionsList.html', context)
 
-# def add_opinion(request):
-#     return render(request, 'app/components/idea-addition/ideaAddition.html')
+def add_opinion(request):
+    return render(request, 'app/components/opinion-addition/opinionAddition.html')
 
 def ajax(request, ajax_request, idea_id=None):
     if ajax_request == 'all_ideas':        

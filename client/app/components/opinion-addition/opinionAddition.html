@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %} Add innovation ideas {% endblock %}
+
+{% block content %}
+<h1>Dodaj opinię</h1>
+
+<script>
+    var redirect_url = "{% url 'ideas' %}"
+</script>
+
+<div ng-controller="opinionAdditionController" ng-init="init()">
+
+{% verbatim %}
+
+<form class="needs-validation" name = "ideaForm" novalidate>
+    <div class="form-group">
+        <label for="topic">Temat</label>          
+        <input name="topic" class="form-control" type="text" ng-model="ideaModel.topic" required>
+        <div class="invalid-feedback">
+            To pole jest wymagane!
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Opis</label>          
+        <textarea name="description" class="form-control" type="text" ng-model="ideaModel.description" rows="4" required></textarea>    
+        <div class="invalid-feedback">
+            To pole jest wymagane!
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="benefits">Planowane korzyści</label>          
+        <textarea name="benefits" class="form-control" type="text" ng-model="ideaModel.benefits" rows="3"></textarea> 
+    </div>
+
+    <div class="form-group">
+        <label for="costs">Planowane koszty</label>          
+        <textarea name="costs" class="form-control" type="text" ng-model="ideaModel.costs" rows="3"></textarea> 
+    </div>
+
+    <div class="form-group">
+        <label for="attachement">Załącznik</label>
+        <input type="file" class="form-control-file" ng-model="ideaModel.attachement" id="attachement">
+    </div>
+
+    <div class="form-group">
+        Ustawienia oceniania - jak można oceniać pomysł?
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="num_rating" ng-model="ideaModel.num_rating">
+            <label class="form-check-label" for="num_rating">
+            Ocena liczbowa
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="text_rating" ng-model="ideaModel.text_rating">
+            <label class="form-check-label" for="text_rating">
+                Ocena opisowa
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group" style="display: inline-block">
+        <button class="btn btn-primary" type="submit" ng-click="submit()">Dodaj</button>
+    </div>
+
+    <div class="row" ng-show="reponse_received" style="float: right; margin-right: 20px">
+        <p class="text-success" ng-if="status" style="font-size: x-large;">Pomysł dodany. Za chwilę zostaniesz przekierowany na stronę z pomysłami</p>
+        <p class="text-danger" ng-if="!status" style="font-size: x-large;">Wystąpił błąd podczas dodawania pomysłu</p>   
+    </div>   
+</form>
+
+{% endverbatim %}
+
+</div>
+
+{% endblock %}

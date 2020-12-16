@@ -4,5 +4,7 @@ var app = angular.module('app', [
     'appIdeasListController',
     'appIdeasListService',
     'appOpinionsListController',
-    'appOpinionsListService'
+    'appOpinionsListService',
+    'appOpinionAdditionController',
+    'appOpinionAdditionService',
 ]);
