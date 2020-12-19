@@ -2,33 +2,26 @@
 {% block title %} Opinions {% endblock %}
 
 {% block content %}
-<h1>Opinie na temat pomysłu</h1>
+<h1>Opinie na temat pomysłu: {{ idea.fields.tematyka }}</h1>
 
 <div ng-controller="opinionsListController" ng-init="init()">  
     <div class="idea-block">
-        <table class="idea-table" ng-init="idea_id={{idea_id}}">
+        <table class="opinion-table" ng-init="idea_id={{idea_id}}">
             {% verbatim %}
-            <tr id="idea-table-topic">
+            <!-- <tr id="opinion-table-topic">
                 <th style="width: 25%;">Temat:</th>
-                <td>{{ idea.fields.tematyka }}</td>
+                <td></td>
+            </tr> -->
+            <tr id="opinion-table-row">
+                <th style="width: 25%;">Opis:</th>
+                <td>{{ opinion.fields.description }}</td>
             </tr>
             <tr id="idea-table-row">
-                <th>Opis:</th>
-                <td>{{ idea.fields.opis }}</td>
-            </tr>
-            <tr id="idea-table-row">
-                <th>Planowane korzyści:</th>
-                <td>{{ idea.fields.planowane_korzysci }}</td>
-            </tr>
-            <tr id="idea-table-row">
-                <th>Planowane koszty:</th>
-                <td>{{ idea.fields.planowane_koszty }}</td>
-            </tr>
-            <tr id="idea-table-row">
-                <th>Ocena ważona:</th>
-                <td>{{ idea.fields.ocena_wazona }}</td>
+                <th style="width: 25%;">Ocena ważona:</th>
+                <td>{{ opinion.fields.rate }}</td>
+            
             {% endverbatim %}
-            </tr>
+            </tr>        
         </table>
     </div>
 

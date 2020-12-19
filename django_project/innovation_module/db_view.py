@@ -1,6 +1,7 @@
 from . import models
 from django.core import serializers
 import json
+import datetime
 
 def serialize(objects):
     # raw = serializers.serialize('python', objects)
@@ -32,6 +33,7 @@ def get_opinions(id):
 
 def get_opinions_json(pomysl):
     return serialize(get_opinions(pomysl))
+
 
 
 def add_idea(idea_json):
@@ -68,3 +70,41 @@ def add_idea(idea_json):
         status = False
     finally:
         return json.dumps({'status': status})
+
+
+
+def add_opinion(opinion_json,idea_id):
+
+    try:
+        data = json.loads(opinion_json)
+
+        if data['num_rating'] and data['text_rating']:
+            settings_val = 'num_text'
+        elif data['num_rating']:
+            settings_val = 'num_only'
+        elif data['text_rating']:
+            settings_val = 'text_only'
+        else:
+            settings_val = 'brak'
+
+        user = models.Uzytkownik.objects.first()
+        # status = models.StatusPomyslu.objects.get(status='Oczekujacy')
+        # settings = models.UstawieniaOceniania.objects.get(ustawienia=settings_val)
+
+        m = models.Ocena(data= datetime.datetime.now(), ocena_liczbowa=data['rate'], opis=data['description'],pomysl=idea_id, uzytkownik=user)
+        m.save()
+
+        status = True
+
+    except Exception as e:
+        print('error occured when adding opinion')
+        if hasattr(e, 'message'):
+            print(e.message)
+        else:
+            print(e)
+        status = False
+    finally:
+        return json.dumps({'status': status})
+
+
+

@@ -12,4 +12,5 @@ urlpatterns = [
     path('opinions/<int:idea_id>/', views.opinions),
     path('ajax/<ajax_request>/', csrf_exempt(views.ajax)),
     path('ajax/<ajax_request>/<int:idea_id>/', csrf_exempt(views.ajax))
+    #path('ajax/<ajax_request>/<int:opinion_id>/', csrf_exempt(views.ajax))
 ]

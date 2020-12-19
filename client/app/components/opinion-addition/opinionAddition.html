@@ -12,62 +12,41 @@
 
 {% verbatim %}
 
-<form class="needs-validation" name = "ideaForm" novalidate>
+<form class="needs-validation" name = "opinionForm" novalidate>
+
     <div class="form-group">
-        <label for="topic">Temat</label>          
-        <input name="topic" class="form-control" type="text" ng-model="ideaModel.topic" required>
+        <label for="description">Ocena opisowa</label>          
+        <textarea name="description" class="form-control" type="text" ng-model="opinion.description" rows="4" required></textarea>    
         <div class="invalid-feedback">
             To pole jest wymagane!
         </div>
     </div>
 
+
     <div class="form-group">
-        <label for="description">Opis</label>          
-        <textarea name="description" class="form-control" type="text" ng-model="ideaModel.description" rows="4" required></textarea>    
+        Ocena: <label><input type="radio" ng-model="opinion.rate" value="1" />1</label>
+        <label><input type="radio" ng-model="opinion.rate" value="2" />2</label>
+        <label><input type="radio" ng-model="opinion.rate" value="3" />3</label>
+        <label><input type="radio" ng-model="opinion.rate" value="4" />4</label>
+        <label><input type="radio" ng-model="opinion.rate" value="5" />5</label>
+        <label><input type="radio" ng-model="opinion.rate" value="6" />6</label>
+        <label><input type="radio" ng-model="opinion.rate" value="7" />7</label>
+        <label><input type="radio" ng-model="opinion.rate" value="8" />8</label>
+        <label><input type="radio" ng-model="opinion.rate" value="9" />9</label>
+        <label><input type="radio" ng-model="opinion.rate" value="10" />10</label>
         <div class="invalid-feedback">
             To pole jest wymagane!
         </div>
     </div>
 
-    <div class="form-group">
-        <label for="benefits">Planowane korzyści</label>          
-        <textarea name="benefits" class="form-control" type="text" ng-model="ideaModel.benefits" rows="3"></textarea> 
-    </div>
-
-    <div class="form-group">
-        <label for="costs">Planowane koszty</label>          
-        <textarea name="costs" class="form-control" type="text" ng-model="ideaModel.costs" rows="3"></textarea> 
-    </div>
-
-    <div class="form-group">
-        <label for="attachement">Załącznik</label>
-        <input type="file" class="form-control-file" ng-model="ideaModel.attachement" id="attachement">
-    </div>
-
-    <div class="form-group">
-        Ustawienia oceniania - jak można oceniać pomysł?
-
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="num_rating" ng-model="ideaModel.num_rating">
-            <label class="form-check-label" for="num_rating">
-            Ocena liczbowa
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="text_rating" ng-model="ideaModel.text_rating">
-            <label class="form-check-label" for="text_rating">
-                Ocena opisowa
-            </label>
-        </div>
-    </div>
 
     <div class="form-group" style="display: inline-block">
         <button class="btn btn-primary" type="submit" ng-click="submit()">Dodaj</button>
     </div>
 
     <div class="row" ng-show="reponse_received" style="float: right; margin-right: 20px">
-        <p class="text-success" ng-if="status" style="font-size: x-large;">Pomysł dodany. Za chwilę zostaniesz przekierowany na stronę z pomysłami</p>
-        <p class="text-danger" ng-if="!status" style="font-size: x-large;">Wystąpił błąd podczas dodawania pomysłu</p>   
+        <p class="text-success" ng-if="status" style="font-size: x-large;">Opinia dodana. Za chwilę zostaniesz przekierowany na stronę z pomysłami</p>
+        <p class="text-danger" ng-if="!status" style="font-size: x-large;">Wystąpił błąd podczas dodawania opinii</p>   
     </div>   
 </form>
 

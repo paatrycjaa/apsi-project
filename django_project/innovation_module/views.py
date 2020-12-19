@@ -31,4 +31,8 @@ def ajax(request, ajax_request, idea_id=None):
         return HttpResponse(db_view.get_idea_json(idea_id), content_type='application/json')
     if ajax_request == 'all_opinions':
         return HttpResponse(db_view.get_opinions_json(idea_id), content_type='application/json')
+    if ajax_request == 'submit_opinion':
+        body_unicode = request.body.decode('utf-8')
+        return HttpResponse(db_view.add_opinion(body_unicode,idea_id),content_type='application/json')
     return HttpResponseNotFound('Cannot handle ajax request')
+
