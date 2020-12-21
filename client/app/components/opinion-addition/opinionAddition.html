@@ -8,7 +8,7 @@
     var redirect_url = "{% url 'ideas' %}"
 </script>
 
-<div ng-controller="opinionAdditionController" ng-init="init()">
+<div ng-controller="opinionAdditionController" ng-init="init({{idea_id}})">
 
 {% verbatim %}
 

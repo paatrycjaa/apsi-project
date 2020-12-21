@@ -18,8 +18,11 @@ def opinions(request, idea_id):
     }
     return render(request, 'app/components/opinions-list/opinionsList.html', context)
 
-def add_opinion(request):
-    return render(request, 'app/components/opinion-addition/opinionAddition.html')
+def add_opinion(request,idea_id):
+    context = {
+        'idea_id': idea_id
+    }
+    return render(request, 'app/components/opinion-addition/opinionAddition.html',context)
 
 def ajax(request, ajax_request, idea_id=None):
     if ajax_request == 'all_ideas':        
@@ -33,6 +36,6 @@ def ajax(request, ajax_request, idea_id=None):
         return HttpResponse(db_view.get_opinions_json(idea_id), content_type='application/json')
     if ajax_request == 'submit_opinion':
         body_unicode = request.body.decode('utf-8')
-        return HttpResponse(db_view.add_opinion(body_unicode,idea_id),content_type='application/json')
+        return HttpResponse(db_view.add_opinion(body_unicode),content_type='application/json')
     return HttpResponseNotFound('Cannot handle ajax request')
 

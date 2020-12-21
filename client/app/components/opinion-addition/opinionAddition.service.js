@@ -1,9 +1,15 @@
 angular.module('appOpinionAdditionService', [])
   .service('opinionAdditionService',
     function($http) {
-       this.submitOpinion = function(data, callback) { 
+      this.getIdeaById = function(id, callback) {
+        return $http.get(`/ajax/get_idea/${id}/`).then(callback);
+      }
+      this.submitOpinion = function( data, callback) { 
+         var url = '/ajax/submit_opinion/'
          console.log(data)
          console.log(JSON.stringify(data))
-         return $http.post('/ajax/submit_opinion/', JSON.stringify(data)).then(callback) }
+         console.log(url)
+         return $http.post(url, JSON.stringify(data)).then(callback) }
+
     }
   );

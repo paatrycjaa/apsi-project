@@ -1,27 +1,37 @@
+
+
+
+
+
 {% extends "base.html" %}
 {% block title %} Opinions {% endblock %}
-
 {% block content %}
-<h1>Opinie na temat pomysłu: {{ idea.fields.tematyka }}</h1>
-
+<h1>Opinie na temat pomysłu</h1>
 <div ng-controller="opinionsListController" ng-init="init()">  
     <div class="idea-block">
-        <table class="opinion-table" ng-init="idea_id={{idea_id}}">
+        <table class="idea-table" ng-init="idea_id={{idea_id}}">
             {% verbatim %}
-            <!-- <tr id="opinion-table-topic">
+            <tr id="idea-table-topic">
                 <th style="width: 25%;">Temat:</th>
-                <td></td>
-            </tr> -->
-            <tr id="opinion-table-row">
-                <th style="width: 25%;">Opis:</th>
-                <td>{{ opinion.fields.description }}</td>
+                <td>{{ idea.fields.tematyka }}</td>
             </tr>
             <tr id="idea-table-row">
-                <th style="width: 25%;">Ocena ważona:</th>
-                <td>{{ opinion.fields.rate }}</td>
-            
+                <th>Opis:</th>
+                <td>{{ idea.fields.opis }}</td>
+            </tr>
+            <tr id="idea-table-row">
+                <th>Planowane korzyści:</th>
+                <td>{{ idea.fields.planowane_korzysci }}</td>
+            </tr>
+            <tr id="idea-table-row">
+                <th>Planowane koszty:</th>
+                <td>{{ idea.fields.planowane_koszty }}</td>
+            </tr>
+            <tr id="idea-table-row">
+                <th>Ocena ważona:</th>
+                <td>{{ idea.fields.ocena_wazona }}</td>
             {% endverbatim %}
-            </tr>        
+            </tr>
         </table>
     </div>
 
@@ -31,7 +41,6 @@
         </a>
     </div>
     <div style="clear: both;"></div>
-
     <div class="opinion-block" ng-repeat="opinion in opinions | filter:searchStr">
         {% verbatim %}
         <table class="opinion-table">

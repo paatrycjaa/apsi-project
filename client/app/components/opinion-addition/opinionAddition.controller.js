@@ -3,6 +3,7 @@ angular.module('appOpinionAdditionController', [])
       function($scope, $timeout, opinionAdditionService) {
 
          $scope.opinion = {
+           id: '',
            description : '',
            rate : 0
          }
@@ -14,8 +15,9 @@ angular.module('appOpinionAdditionController', [])
         //   text_rating : true
         // }        
                 
-        $scope.init = function() {
+        $scope.init = function(id) {
           // do edycji mozna tutaj pobierac dane o opinii
+          $scope.opinion.id=id
         }
 
          $scope.reponse_received = false
