@@ -17,7 +17,7 @@
 
     <div class="form-group" ng-show="settings.includes('text')">
         <label for="description">Ocena opisowa</label>          
-        <textarea name="description" class="form-control" type="text" ng-model="opinion.description" rows="4" ng-required="settings.includes('text')"></textarea>    
+        <textarea name="description" class="form-control" type="text" ng-model="opinion.description" rows="4" ng-required="settings.includes('text')" maxlength="500"></textarea>
         <div class="invalid-feedback">
             To pole jest wymagane!
         </div>

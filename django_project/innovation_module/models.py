@@ -50,8 +50,8 @@ class UstawieniaOceniania(models.Model):
 
 class Ocena(models.Model):
     data = models.DateTimeField('%Y-%m-%d %H:%M:%S')
-    ocena_liczbowa = models.IntegerField()
-    opis = models.CharField(max_length=500)
+    ocena_liczbowa = models.IntegerField(null=True)
+    opis = models.CharField(null=True, max_length=500)
 
     pomysl = models.ForeignKey(
         'Pomysl',

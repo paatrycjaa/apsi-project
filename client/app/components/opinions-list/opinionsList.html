@@ -22,7 +22,7 @@
                 <th>Planowane koszty:</th>
                 <td>{{ idea.fields.planowane_koszty }}</td>
             </tr>
-            <tr id="idea-table-row">
+            <tr id="idea-table-row" ng-if="idea.has_review">
                 <th>Ocena ważona:</th>
                 <td>{{ idea.fields.ocena_wazona }}</td>
             {% endverbatim %}
@@ -41,11 +41,11 @@
                 <th style="width: 25%">Data:</th>
                 <td>{{ opinion.fields.data }}</td>
             </tr>
-            <tr>
+            <tr ng-if="opinion.fields.ocena_liczbowa">
                 <th>Ocena:</th>
                 <td>{{ opinion.fields.ocena_liczbowa }}</td>
             </tr>
-            <tr>
+            <tr ng-if="opinion.fields.opis">
                 <th>Opis:</th>
                 <td>{{ opinion.fields.opis }}</td>
             </tr>
