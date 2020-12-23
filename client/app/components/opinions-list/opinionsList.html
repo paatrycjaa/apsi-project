@@ -1,15 +1,10 @@
-
-
-
-
-
 {% extends "base.html" %}
 {% block title %} Opinions {% endblock %}
 {% block content %}
 <h1>Opinie na temat pomysłu</h1>
-<div ng-controller="opinionsListController" ng-init="init()">  
+<div ng-controller="opinionsListController" ng-init="init({{idea_id}})">  
     <div class="idea-block">
-        <table class="idea-table" ng-init="idea_id={{idea_id}}">
+        <table class="idea-table">
             {% verbatim %}
             <tr id="idea-table-topic">
                 <th style="width: 25%;">Temat:</th>
@@ -36,9 +31,7 @@
     </div>
 
     <div style="float: right;">
-        <a href="{% url 'add_opinion' %}">
-            <button type="button" class="btn btn-primary">Dodaj opinie</button>
-        </a>
+        <button type="button" class="btn btn-primary" ng-click="addOpinion({{idea_id}})">Dodaj opinię</button>
     </div>
     <div style="clear: both;"></div>
     <div class="opinion-block" ng-repeat="opinion in opinions | filter:searchStr">

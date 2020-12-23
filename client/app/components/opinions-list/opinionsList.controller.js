@@ -15,22 +15,22 @@ angular.module('appOpinionsListController', [])
 
 
         $scope.init = function(id) {
-          // $scope.$watch("idea_id", function() {
+           $scope.$watch("idea_id", function() {
             
             $scope.idea_id=id
-            // console.log(id)
-            // opinionsListService.getIdeaById($scope.idea_id, function(response) {
-            //   $scope.idea = response.data[0]
-            //   console.log($scope.idea)
-            // });
+            console.log(id)
+            opinionsListService.getIdeaById($scope.idea_id, function(response) {
+              $scope.idea = response.data[0]
+              console.log($scope.idea)
+            });
 
 
 
-            // opinionsListService.getIdeaOpinions($scope.idea_id, function(response) {
-            //   $scope.opinions = response.data;
-            //   console.log($scope.opinions)
-            // })
-          // });
+            opinionsListService.getIdeaOpinions($scope.idea_id, function(response) {
+              $scope.opinions = response.data;
+              console.log($scope.opinions)
+            })
+          });
         }
       }
 ]);
