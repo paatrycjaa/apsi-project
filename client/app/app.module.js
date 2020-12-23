@@ -7,4 +7,5 @@ var app = angular.module('app', [
     'appOpinionsListService',
     'appOpinionAdditionController',
     'appOpinionAdditionService',
+    'appUtils',
 ]);

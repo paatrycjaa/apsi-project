@@ -86,7 +86,7 @@ def add_opinion(opinion_json):
         # status = models.StatusPomyslu.objects.get(status='Oczekujacy')
         # settings = models.UstawieniaOceniania.objects.get(ustawienia=settings_val)
         pomysl=models.Pomysl.objects.get(pk=data['id'])
- 
+
         m = models.Ocena(data=datetime.datetime.now(), ocena_liczbowa=data['rate'], opis=data['description'],pomysl=pomysl, uzytkownik=user)
         m.save()
 

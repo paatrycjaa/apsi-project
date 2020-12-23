@@ -3,6 +3,9 @@ from django.http import HttpResponse, HttpResponseNotFound
 
 from . import db_view
 
+# TODO remove later
+from . import models
+
 def home(request):
     return render(request, 'app/static/home.html')
 
@@ -18,11 +21,15 @@ def opinions(request, idea_id):
     }
     return render(request, 'app/components/opinions-list/opinionsList.html', context)
 
-def add_opinion(request,idea_id):
+def add_opinion(request, idea_id):
+    # TODO 
+    # move and use external method
+    settings = models.Pomysl.objects.get(pk=idea_id).ustawienia_oceniania
     context = {
-        'idea_id': idea_id
+        'idea_id': idea_id,
+        'settings': settings
     }
-    return render(request, 'app/components/opinion-addition/opinionAddition.html',context)
+    return render(request, 'app/components/opinion-addition/opinionAddition.html', context)
 
 def ajax(request, ajax_request, idea_id=None):
     if ajax_request == 'all_ideas':        
