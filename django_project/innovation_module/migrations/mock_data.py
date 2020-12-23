@@ -10,6 +10,7 @@ def make_migrations(apps, schema_editor):
     create_ustawienia_oceniania(apps)
     create_uzytkownik(apps)
     create_pomysl(apps)
+    create_ocena(apps)
 
 
 def create_status_pomyslu(apps):
@@ -91,6 +92,36 @@ def create_pomysl(apps):
         m = Pomysl(tematyka=i[0], opis=i[1], planowane_korzysci=i[2], planowane_koszty=i[3],
                    ocena_wazona=i[4], status=status, ustawienia_oceniania=setting, uzytkownik=user)
         m.save()
+
+
+def create_ocena(apps):
+    Ocena = apps.get_model(app, 'Ocena')
+    Uzytkownik = apps.get_model(app, 'Uzytkownik')
+    Pomysl = apps.get_model(app, 'Pomysl')
+
+    opinions = [
+        ('2020-12-10 12:00:00', 6, 'Bardzo dobry pomysl'),
+        ('2020-12-10 12:00:00', 6, 'Bardzo dobry pomysl'),
+        ('2020-12-10 12:00:00', 6, 'Bardzo dobry pomysl'),
+        ('2020-12-10 12:00:00', 6, 'Bardzo dobry pomysl'),
+        ('2020-12-10 12:00:00', 6, 'Bardzo dobry pomysl'),
+        ('2020-12-10 12:00:00', 6, 'Bardzo dobry pomysl'),
+        ('2020-12-10 12:00:00', 6, 'Bardzo dobry pomysl'),
+        ('2020-12-10 12:00:00', 6, 'Bardzo dobry pomysl'),
+        ('2020-12-10 12:00:00', 6, 'Bardzo dobry pomysl'),
+        ('2020-12-10 12:00:00', 6, 'Bardzo dobry pomysl'),
+    ]
+
+    users = Uzytkownik.objects.all()
+    ideas = Pomysl.objects.all()
+
+    for opinion in opinions:
+        idea = random.choice(ideas)
+        user = random.choice([u for u in users if u is not idea.uzytkownik])
+
+        m = Ocena(data=opinion[0], ocena_liczbowa=opinion[1], opis=opinion[2], pomysl=idea, uzytkownik=user)
+        m.save()
+
 
 class Migration(migrations.Migration):
 

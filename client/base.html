@@ -30,14 +30,14 @@
             <div class="navbar-nav mr-auto">
               <a class="navbar-brand" href="{% url 'home' %}">
                 <img src="{% static 'assets/img/logo.png' %}" width="25" height="25" alt=""></a>
-              <a class="nav-item nav-link" href="{% url 'ideas' %}">IDEAS</a>
-              <a class="nav-item nav-link" href="{% url 'home' %}">INSPIRATION PORTAL</a>
+              <a class="nav-item nav-link" href="{% url 'ideas' %}">POMYSŁY</a>
+              <a class="nav-item nav-link" href="{% url 'home' %}">PORTAL INNOWACJI</a>
             </div>
 
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
-                <a class="nav-item nav-link" href="{% url 'home' %}">LOG IN</a>
-                <a class="nav-item nav-link" href="{% url 'home' %}">LOG OUT</a>
+                <a class="nav-item nav-link" href="{% url 'home' %}">ZALOGUJ</a>
+                <a class="nav-item nav-link" href="{% url 'home' %}">WYLOGUJ</a>
             </div>
           </div>
         </div>
@@ -57,6 +57,15 @@
 
     <script type="text/javascript" src="{% static 'app/components/ideas-list/ideasList.controller.js' %}"></script>
     <script type="text/javascript" src="{% static 'app/components/ideas-list/ideasList.service.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'app/components/opinions-list/opinionsList.controller.js' %}"></script>
+    <script type="text/javascript" src="{% static 'app/components/opinions-list/opinionsList.service.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'app/components/opinion-addition/opinionAddition.controller.js' %}"></script>
+    <script type="text/javascript" src="{% static 'app/components/opinion-addition/opinionAddition.service.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'app/components/utils/utils.js' %}"></script>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
