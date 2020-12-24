@@ -65,29 +65,32 @@ def get_ideas(user = None):
     
     return Pomysl.objects.get(user=user)
 
-def get_idea(id):
+def get_idea(idea_id):
     return Pomysl.objects.filter(
-        pk=id
+        pk=idea_id
     )
 
 def get_ideas_json(user=None):
     return serialize(get_ideas(user))
 
-def get_idea_json(id):
-    return serialize(get_idea(id))
+def get_idea_json(idea_id):
+    return serialize(get_idea(idea_id))
 
-def get_settings(id):
-    return Pomysl.objects.get(pk=id).ustawienia_oceniania.ustawienia
+def get_settings(idea_id):
+    return Pomysl.objects.get(pk=idea_id).ustawienia_oceniania.ustawienia
 
-def can_opinion_be_added(id):
+def can_opinion_be_added(idea_id):
     status = models.StatusPomyslu.objects.get(status='Oczekujacy')
-    return Pomysl.objects.get(pk=id).status == status
+    return Pomysl.objects.get(pk=idea_id).status == status
 
-def update_average_rating(idea_id, new_rating):
+def update_average_rating(idea_id, new_rating, old_rating = None):
     """Should be called after new rating is saved to the database.
     """
     idea = Pomysl.objects.get(pk=idea_id)
     ratings_num = models.Ocena.objects.filter(pomysl=idea).count()
-    new_avg = (idea.ocena_wazona * (ratings_num - 1) + int(new_rating)) / ratings_num
+    if old_rating is None:
+        new_avg = (idea.ocena_wazona * (ratings_num - 1) + int(new_rating)) / ratings_num
+    else:
+        new_avg = (idea.ocena_wazona * ratings_num + int(new_rating) - int(old_rating)) / ratings_num
     idea.ocena_wazona = new_avg
     idea.save()

@@ -13,6 +13,9 @@ angular.module('appOpinionsListController', [])
           window.location.href = `/add-opinion/${id}/`; 
         }
 
+        $scope.editOpinion = function(opinion_id){
+          window.location.href = `/edit-opinion/${opinion_id}/`; 
+        }
 
         $scope.init = function(id) {
            $scope.$watch("idea_id", function() {
