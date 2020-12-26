@@ -1,10 +1,12 @@
 from . import models
 from django.core import serializers
 import json
+import datetime
 
 def serialize(objects):
-    raw = serializers.serialize('python', objects)
-    return json.dumps([o['fields'] for o in raw])
+    # raw = serializers.serialize('python', objects)
+    # return json.dumps([o['fields'] for o in raw])
+    return serializers.serialize('json', objects)
 
 def get_ideas(user = None):
     if user is None:
@@ -12,8 +14,26 @@ def get_ideas(user = None):
     
     return models.Pomysl.objects.get(user=user)
 
+def get_idea(id):
+    return models.Pomysl.objects.filter(
+        pk=id
+    )
+
 def get_ideas_json(user=None):
     return serialize(get_ideas(user))
+
+def get_idea_json(id):
+    return serialize(get_idea(id))
+
+def get_opinions(id):
+    pomysl = models.Pomysl.objects.filter(pk=id)
+    return models.Ocena.objects.filter(
+        pomysl=pomysl[0]
+    )
+
+def get_opinions_json(pomysl):
+    return serialize(get_opinions(pomysl))
+
 
 
 def add_idea(idea_json):
@@ -50,3 +70,38 @@ def add_idea(idea_json):
         status = False
     finally:
         return json.dumps({'status': status})
+
+
+
+def add_opinion(opinion_json):
+
+    data = json.loads(opinion_json)
+    user = models.Uzytkownik.objects.first()
+
+
+    try:
+        data = json.loads(opinion_json)
+
+        user = models.Uzytkownik.objects.first()
+        # status = models.StatusPomyslu.objects.get(status='Oczekujacy')
+        # settings = models.UstawieniaOceniania.objects.get(ustawienia=settings_val)
+        pomysl=models.Pomysl.objects.get(pk=data['id'])
+
+        m = models.Ocena(data=datetime.datetime.now(), ocena_liczbowa=data['rate'], opis=data['description'],pomysl=pomysl, uzytkownik=user)
+        m.save()
+
+        status = True
+        
+
+    except Exception as e:
+        print('error occured when adding opinion')
+        if hasattr(e, 'message'):
+            print(e.message)
+        else:
+            print(e)
+        status = False
+    finally:
+        return json.dumps({'status': status})
+
+
+
