@@ -42,20 +42,20 @@ def create_uzytkownik(apps):
     Uzytkownik = apps.get_model(app, 'Uzytkownik')
 
     users = [
-        ('Janusz', 'Chmielewski'),
-        ('Ludwik', 'Mróz'),
-        ('Fabian', 'Szczepański'),
-        ('Albert', 'Malinowski'),
-        ('Olaf', 'Rutkowski'),
-        ('Natasza', 'Sikorska'),
-        ('Ilona', 'Pietrzak'),
-        ('Nikola', 'Sikora'),
-        ('Wioletta', 'Adamska'),
-        ('Izabela', 'Sikorska')
+        ('Janusz', 'Chmielewski', '100000000'),
+        ('Ludwik', 'Mróz', '100000001'),
+        ('Fabian', 'Szczepański', '100000002'),
+        ('Albert', 'Malinowski', '100000003'),
+        ('Olaf', 'Rutkowski', '100000004'),
+        ('Natasza', 'Sikorska', '100000005'),
+        ('Ilona', 'Pietrzak', '100000006'),
+        ('Nikola', 'Sikora', '100000007'),
+        ('Wioletta', 'Adamska', '100000008'),
+        ('Izabela', 'Sikorska', '100000009')
     ]
 
     for user in users:
-        m = Uzytkownik(imie=user[0], nazwisko=user[1])
+        m = Uzytkownik(imie=user[0], nazwisko=user[1], sso=user[2])
         m.save()
 
 
