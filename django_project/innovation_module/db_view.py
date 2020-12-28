@@ -36,7 +36,7 @@ def get_opinions_json(pomysl):
 
 
 
-def add_idea(idea_json):
+def add_idea(idea_json, user):
 
     try:
         data = json.loads(idea_json)
@@ -50,7 +50,7 @@ def add_idea(idea_json):
         else:
             settings_val = 'brak'
 
-        user = models.Uzytkownik.objects.first()
+        user = models.Uzytkownik.objects.get(user_id=user.id)
         status = models.StatusPomyslu.objects.get(status='Oczekujacy')
         settings = models.UstawieniaOceniania.objects.get(ustawienia=settings_val)
 
@@ -73,7 +73,7 @@ def add_idea(idea_json):
 
 
 
-def add_opinion(opinion_json):
+def add_opinion(opinion_json, user):
 
     data = json.loads(opinion_json)
     user = models.Uzytkownik.objects.first()
@@ -82,7 +82,7 @@ def add_opinion(opinion_json):
     try:
         data = json.loads(opinion_json)
 
-        user = models.Uzytkownik.objects.first()
+        user = models.Uzytkownik.objects.get(user_id=user.id)
         # status = models.StatusPomyslu.objects.get(status='Oczekujacy')
         # settings = models.UstawieniaOceniania.objects.get(ustawienia=settings_val)
         pomysl=models.Pomysl.objects.get(pk=data['id'])
