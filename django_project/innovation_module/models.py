@@ -66,3 +66,33 @@ class Ocena(models.Model):
 
     def __str__(self):
         return self.ocena_liczbowa
+
+class CzlonekKomisji(models.Model):
+    uzytkownik = models.OneToOneField(
+        'Uzytkownik',
+        on_delete=models.CASCADE,
+        primary_key=True,
+    )
+
+    def __str__(self):
+        return self.uzytkownik
+
+class Administrator(models.Model):
+    uzytkownik = models.OneToOneField(
+        'Uzytkownik',
+        on_delete=models.CASCADE,
+        primary_key=True,
+    )
+
+    def __str__(self):
+        return self.uzytkownik
+
+class ZwyklyUzytkownik(models.Model):
+    uzytkownik = models.OneToOneField(
+        'Uzytkownik',
+        on_delete=models.CASCADE,
+        primary_key=True,
+    )
+
+    def __str__(self):
+        return self.uzytkownik

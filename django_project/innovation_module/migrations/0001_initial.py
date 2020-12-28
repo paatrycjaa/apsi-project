@@ -67,4 +67,22 @@ class Migration(migrations.Migration):
                 ('uzytkownik', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.uzytkownik')),
             ],
         ),
+        migrations.CreateModel(
+            name='Administrator',
+            fields=[
+                ('uzytkownik', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='innovation_module.uzytkownik')),
+            ],
+        ),
+        migrations.CreateModel(
+            name='CzlonekKomisji',
+            fields=[
+                ('uzytkownik', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='innovation_module.uzytkownik')),
+            ],
+        ),
+        migrations.CreateModel(
+            name='ZwyklyUzytkownik',
+            fields=[
+                ('uzytkownik', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='innovation_module.uzytkownik')),
+            ],
+        ),
     ]
