@@ -130,3 +130,5 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_URL = os.path.join(BASE_DIR, 'client/')
+
+LOGIN_REDIRECT_URL = '/'
