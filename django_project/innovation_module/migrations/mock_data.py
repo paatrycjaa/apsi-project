@@ -1,6 +1,7 @@
 import random 
 
-from django.contrib.auth.models import User
+from django.contrib.auth.hashers import make_password
+from django.conf import settings
 from django.db import migrations
 from django.db import migrations
 
@@ -42,30 +43,33 @@ def create_ustawienia_oceniania(apps):
 
 def create_uzytkownik(apps):
     Uzytkownik = apps.get_model(app, 'Uzytkownik')
+    User = apps.get_model(settings.AUTH_USER_MODEL)
 
     users = [
-        # name, surname, sso, username, email, password
-        ('Janusz', 'Chmielewski', '100', 'sso100', '', 'useruser'),
-        ('Ludwik', 'Mróz', '101', 'sso101', '', 'useruser'),
-        ('Fabian', 'Szczepański', '102', 'sso102', '', 'useruser'),
-        ('Albert', 'Malinowski', '103', 'sso103', '', 'useruser'),
-        ('Olaf', 'Rutkowski', '104', 'sso104', '', 'useruser'),
-        ('Natasza', 'Sikorska', '105', 'sso105', '', 'useruser'),
-        ('Ilona', 'Pietrzak', '106', 'sso106', '', 'useruser'),
-        ('Nikola', 'Sikora', '107', 'sso107', '', 'useruser'),
-        ('Wioletta', 'Adamska', '108', 'sso108', '', 'useruser'),
-        ('Izabela', 'Sikorska', '109', 'sso109', '', 'useruser')
+        # name, surname, sso, username, email, password, is superuser, is staff
+        ('Janusz', 'Chmielewski', '100', 'sso100', '', 'useruser', True, True),
+        ('Ludwik', 'Mróz', '101', 'sso101', '', 'useruser', False, False),
+        ('Fabian', 'Szczepański', '102', 'sso102', '', 'useruser', False, False),
+        ('Albert', 'Malinowski', '103', 'sso103', '', 'useruser', False, False),
+        ('Olaf', 'Rutkowski', '104', 'sso104', '', 'useruser', False, False),
+        ('Natasza', 'Sikorska', '105', 'sso105', '', 'useruser', False, False),
+        ('Ilona', 'Pietrzak', '106', 'sso106', '', 'useruser', False, False),
+        ('Nikola', 'Sikora', '107', 'sso107', '', 'useruser', False, False),
+        ('Wioletta', 'Adamska', '108', 'sso108', '', 'useruser', False, False),
+        ('Izabela', 'Sikorska', '109', 'sso109', '', 'useruser', False, False)
     ]
 
-    for _user in users:
-        u = User.objects.create_user(_user[3], _user[4], _user[5])
-        u.first_name = _user[0]
-        u.last_name = _user[1]
+    for user in users:
+        u, _ = User.objects.get_or_create(username=user[3], email=user[4], first_name=user[0], last_name=user[1], is_superuser=user[6], is_staff=user[7])
+        u.password = make_password(user[5])
         u.save()
-        
-        u = User.objects.get(username=_user[3])
-        m = Uzytkownik(imie=_user[0], nazwisko=_user[1], sso=_user[2])
-        m.save()
+
+        Uzytkownik.objects.create(
+            user=u, 
+            imie=user[0], 
+            nazwisko=user[1], 
+            sso=user[2]
+        )
 
 def add_role_to_uzytkownik(apps):
     Uzytkownik = apps.get_model(app, 'Uzytkownik')
