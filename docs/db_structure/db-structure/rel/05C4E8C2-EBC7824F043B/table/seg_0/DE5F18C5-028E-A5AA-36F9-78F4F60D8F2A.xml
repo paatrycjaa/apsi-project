@@ -1,16 +1,16 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="361778BB-9930-7BBE-4F15-E14981D81646" name="ustawienia_oceniania">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="DE5F18C5-028E-A5AA-36F9-78F4F60D8F2A" name="Ustawienia_oceniania">
 <createdBy>napiad</createdBy>
-<createdTime>2020-12-14 17:42:34 UTC</createdTime>
+<createdTime>2020-12-27 20:53:09 UTC</createdTime>
 <generatorID>30097584-8375-8109-16FD-A0DAF3644795</generatorID>
 <ownerDesignName>db-structure</ownerDesignName>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="ustawienia_id" id="3D92193C-22E0-0CBD-C657-1771B4C93B00">
+<Column name="ustawienia_id" id="5A8CF7B8-3E17-37BA-BC4B-86D297794B7C">
 <createdBy>napiad</createdBy>
-<createdTime>2020-12-14 17:42:34 UTC</createdTime>
+<createdTime>2020-12-27 20:53:09 UTC</createdTime>
 <generatorID>816A1C92-6283-5015-592E-A8BCD68815C0</generatorID>
 <ownerDesignName>db-structure</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -19,31 +19,30 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="opis" id="87F56156-15B8-69CF-B573-811053998BFA">
+<Column name="opis" id="BD933478-0B22-1FAC-5164-1AA6B0C8A526">
 <createdBy>napiad</createdBy>
-<createdTime>2020-12-14 17:42:34 UTC</createdTime>
+<createdTime>2020-12-27 20:53:09 UTC</createdTime>
 <generatorID>491FD5C6-E537-608F-8EAF-5A15C3723072</generatorID>
 <ownerDesignName>db-structure</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>200</dataTypeSize>
-<ownDataTypeParameters>200,,</ownDataTypeParameters>
+<logicalDatatype>LOGDT040</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="99880CED-C06D-3749-3DB1-CD108D386BD1" name="Ustawienia_oceniania_PK">
+<ind_PK_UK id="787A19C7-DFFF-D1A0-5D08-07F9FE95C675" name="Ustawienia_oceniania_PK">
 <createdBy>napiad</createdBy>
-<createdTime>2020-12-14 17:42:34 UTC</createdTime>
+<createdTime>2020-12-27 20:53:09 UTC</createdTime>
 <generatorID>179A5974-A948-FDFD-98D1-35D83AB311FD</generatorID>
 <ownerDesignName>db-structure</ownerDesignName>
 <pk>true</pk>
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="3D92193C-22E0-0CBD-C657-1771B4C93B00"/>
+<colUsage columnID="5A8CF7B8-3E17-37BA-BC4B-86D297794B7C"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

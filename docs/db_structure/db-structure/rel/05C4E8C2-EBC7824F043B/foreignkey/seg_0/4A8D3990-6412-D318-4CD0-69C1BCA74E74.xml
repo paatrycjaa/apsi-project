@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="4A8D3990-6412-D318-4CD0-69C1BCA74E74" containerWithKeyObject="39BF7452-34EC-D44C-A2F8-2B1DC45BEB8E" localFKIndex="7ED06C7D-55CC-1CE3-BC32-C24CE91C3327" name="Post_Watek_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-27 20:53:09 UTC</createdTime>
+<generatorID>BE9BA70B-438B-0331-B870-918C41F564E8</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<referredTableLongName>Watek</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>C0CBB9A5-31FF-A8C5-B89A-E0B4B4794B1D</referredTableID>
+<keyObject>26A64028-9105-BCCF-915D-AA4E55410E52</keyObject>
+<referredKeyID>26A64028-9105-BCCF-915D-AA4E55410E52</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>watek_id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

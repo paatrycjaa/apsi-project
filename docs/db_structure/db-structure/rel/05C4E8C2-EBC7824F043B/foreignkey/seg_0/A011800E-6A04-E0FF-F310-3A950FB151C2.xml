@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="A011800E-6A04-E0FF-F310-3A950FB151C2" containerWithKeyObject="0C5F57C9-1A57-720C-4F92-F8BAFBD96382" localFKIndex="70883753-56BD-DEA3-580A-390A2E2EDD6B" name="Czlonek_komisji_Uzytkownik_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-27 20:53:09 UTC</createdTime>
+<generatorID>9B38C014-CF42-86F9-9D69-DAA9206F40CA</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<referredTableLongName>Uzytkownik</referredTableLongName>
+<arc>0AB5CF12-B837-66DD-0704-EA1253F73732</arc>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>3B132F86-F3FE-9089-F5E8-E63A9CAE8933</referredTableID>
+<keyObject>429C244B-8FA1-1622-8307-C25D65CFCB86</keyObject>
+<referredKeyID>429C244B-8FA1-1622-8307-C25D65CFCB86</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>uzytkownik_id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

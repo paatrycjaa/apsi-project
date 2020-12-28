@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="E339AC44-A3FB-17E1-E59F-0C7275EE4D93" containerWithKeyObject="2574203E-20B3-43FA-6B58-EEBC0BE0F071" localFKIndex="39C5390E-6E89-B304-12C9-41CFDC1DFBAE" name="Zalacznik_pomysłu_Zalacznik_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-27 20:53:09 UTC</createdTime>
+<generatorID>553A47DD-154D-DB13-09F9-AA0610EE9D87</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<referredTableLongName>Zalacznik</referredTableLongName>
+<arc>190C59FB-2165-0FFC-6EFE-F3F1E354E7FA</arc>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>A28CC788-4196-CBB8-8FC1-BD06C8A4725B</referredTableID>
+<keyObject>C29C99E1-4128-6E8C-8AB5-7A9A56538C85</keyObject>
+<referredKeyID>C29C99E1-4128-6E8C-8AB5-7A9A56538C85</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>zalacznik_id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

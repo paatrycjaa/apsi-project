@@ -1,18 +1,17 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E2AFEDA9-9C56-E1FA-FB3A-1E14AD5AACEB" name="watki">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A28CC788-4196-CBB8-8FC1-BD06C8A4725B" name="Zalacznik">
 <createdBy>napiad</createdBy>
-<createdTime>2020-12-14 17:42:34 UTC</createdTime>
-<generatorID>877556EE-0003-7FCC-AFDA-3F440308FAD9</generatorID>
+<createdTime>2020-12-27 20:53:09 UTC</createdTime>
+<generatorID>37DFFFD9-2AF5-BE35-C3B6-1E1915A241D0</generatorID>
 <ownerDesignName>db-structure</ownerDesignName>
-<ordsAlias>watek</ordsAlias>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="watek_id" id="69850553-7F9C-F777-C710-43D90D0FCC87">
+<Column name="zalacznik_id" id="B2753991-410D-01C0-29C4-096D0FAE71F2">
 <createdBy>napiad</createdBy>
-<createdTime>2020-12-14 17:42:34 UTC</createdTime>
-<generatorID>3835B7E3-5E15-0D85-E35A-C8185DB1E17A</generatorID>
+<createdTime>2020-12-27 20:53:09 UTC</createdTime>
+<generatorID>8FC2FBC8-FD0A-A1F8-2414-BC9B18FAF020</generatorID>
 <ownerDesignName>db-structure</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -20,10 +19,10 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="temat" id="AA195F13-3766-EED9-4DD0-6084377B5D04">
+<Column name="nazwa_pliku" id="DC426D5D-EEC5-0EC8-A71B-55FED72B1FF5">
 <createdBy>napiad</createdBy>
-<createdTime>2020-12-14 17:42:34 UTC</createdTime>
-<generatorID>7BCE8053-448D-6BC9-7212-38C55133BF42</generatorID>
+<createdTime>2020-12-27 20:53:09 UTC</createdTime>
+<generatorID>AA07AB0B-7DF6-99CE-A60D-1365739B03F0</generatorID>
 <ownerDesignName>db-structure</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -32,10 +31,10 @@
 <ownDataTypeParameters>200,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="data_dodania" id="D74EF3F0-D3C9-DC8E-5979-B4CE6F875F11">
+<Column name="data_dodania" id="8370A374-BCFB-9A1B-98A7-A07C79420A05">
 <createdBy>napiad</createdBy>
-<createdTime>2020-12-14 17:42:34 UTC</createdTime>
-<generatorID>77B13B8E-C6CD-6A66-01F3-BC392141B751</generatorID>
+<createdTime>2020-12-27 20:53:09 UTC</createdTime>
+<generatorID>DF5F73DA-93C5-2B84-98D9-CF266433A72D</generatorID>
 <ownerDesignName>db-structure</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -43,29 +42,30 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="data_ostatniego_posta" id="C65099D2-3465-B4E4-B75D-58B582B9F458">
+<Column name="rozmiar" id="C748C6BC-8E94-2112-F52C-AE352080606A">
 <createdBy>napiad</createdBy>
-<createdTime>2020-12-27 21:15:13 UTC</createdTime>
+<createdTime>2020-12-27 20:53:09 UTC</createdTime>
+<generatorID>571730AD-3047-7F92-EAD1-A4D4063F3D96</generatorID>
 <ownerDesignName>db-structure</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT008</logicalDatatype>
+<logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="0A127FAF-7957-3FAD-A030-903E988B37C6" name="Watek_PK">
+<ind_PK_UK id="C29C99E1-4128-6E8C-8AB5-7A9A56538C85" name="Zalacznik_PK">
 <createdBy>napiad</createdBy>
-<createdTime>2020-12-14 17:42:34 UTC</createdTime>
-<generatorID>FE6B03E8-5C3D-38AB-8767-AB93F26C063C</generatorID>
+<createdTime>2020-12-27 20:53:09 UTC</createdTime>
+<generatorID>7042C54B-5FAE-9DFB-1B44-4BE309AE52B9</generatorID>
 <ownerDesignName>db-structure</ownerDesignName>
 <pk>true</pk>
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="69850553-7F9C-F777-C710-43D90D0FCC87"/>
+<colUsage columnID="B2753991-410D-01C0-29C4-096D0FAE71F2"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

@@ -1,0 +1,77 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="2574203E-20B3-43FA-6B58-EEBC0BE0F071" name="Zalacznik_pomysłu">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-27 20:53:09 UTC</createdTime>
+<generatorID>96801640-C289-BB55-1585-A527EC4E91CE</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="zalacznik_id" id="61E2820C-B5CC-B053-5F62-E0D7A851420D">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-27 20:53:09 UTC</createdTime>
+<generatorID>8FC2FBC8-FD0A-A1F8-2414-BC9B18FAF020</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E339AC44-A3FB-17E1-E59F-0C7275EE4D93" referredColumn="B2753991-410D-01C0-29C4-096D0FAE71F2"/>
+</associations>
+</Column>
+<Column name="Pomysl_pomysl_id" id="ABE7686D-F21A-9496-0583-113805AB1DF3">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-27 20:53:09 UTC</createdTime>
+<generatorID>EDD844ED-F191-0D1C-D917-459D3ED1856A</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6F998386-CB8B-F081-095F-A6AA534640F1" referredColumn="F44496F4-146E-0F79-4AD4-C71EE266BFC1"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="8B527DCF-57F0-0ED0-3C55-5E26FF3F1A91" name="Zalacznik_pomysłu_PK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-27 20:53:09 UTC</createdTime>
+<generatorID>7042C54B-5FAE-9DFB-1B44-4BE309AE52B9</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="61E2820C-B5CC-B053-5F62-E0D7A851420D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="39C5390E-6E89-B304-12C9-41CFDC1DFBAE" name="Zalacznik_pomysłu_Zalacznik_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-27 20:53:09 UTC</createdTime>
+<generatorID>553A47DD-154D-DB13-09F9-AA0610EE9D87</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="61E2820C-B5CC-B053-5F62-E0D7A851420D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="DE9B80A7-3C96-CB85-123F-CF0D4689CC6F" name="Zalacznik_pomysłu_Pomysl_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-27 20:53:09 UTC</createdTime>
+<generatorID>D9294806-7266-97DF-2E37-D5C049F80244</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="ABE7686D-F21A-9496-0583-113805AB1DF3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

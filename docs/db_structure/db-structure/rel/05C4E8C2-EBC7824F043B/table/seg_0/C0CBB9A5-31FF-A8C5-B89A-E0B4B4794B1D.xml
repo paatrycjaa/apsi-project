@@ -1,17 +1,16 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E2AFEDA9-9C56-E1FA-FB3A-1E14AD5AACEB" name="watki">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C0CBB9A5-31FF-A8C5-B89A-E0B4B4794B1D" name="Watek">
 <createdBy>napiad</createdBy>
-<createdTime>2020-12-14 17:42:34 UTC</createdTime>
+<createdTime>2020-12-27 20:53:09 UTC</createdTime>
 <generatorID>877556EE-0003-7FCC-AFDA-3F440308FAD9</generatorID>
 <ownerDesignName>db-structure</ownerDesignName>
-<ordsAlias>watek</ordsAlias>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="watek_id" id="69850553-7F9C-F777-C710-43D90D0FCC87">
+<Column name="watek_id" id="0392443B-B8BC-0358-5B01-9F8A613ECE9F">
 <createdBy>napiad</createdBy>
-<createdTime>2020-12-14 17:42:34 UTC</createdTime>
+<createdTime>2020-12-27 20:53:09 UTC</createdTime>
 <generatorID>3835B7E3-5E15-0D85-E35A-C8185DB1E17A</generatorID>
 <ownerDesignName>db-structure</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -20,9 +19,9 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="temat" id="AA195F13-3766-EED9-4DD0-6084377B5D04">
+<Column name="temat" id="12E7FBA3-4D17-AB8E-A43F-76B0591B7D81">
 <createdBy>napiad</createdBy>
-<createdTime>2020-12-14 17:42:34 UTC</createdTime>
+<createdTime>2020-12-27 20:53:09 UTC</createdTime>
 <generatorID>7BCE8053-448D-6BC9-7212-38C55133BF42</generatorID>
 <ownerDesignName>db-structure</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -32,9 +31,9 @@
 <ownDataTypeParameters>200,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="data_dodania" id="D74EF3F0-D3C9-DC8E-5979-B4CE6F875F11">
+<Column name="data_dodania" id="EF319D6B-5A33-B98F-98D6-5FD62E5B1482">
 <createdBy>napiad</createdBy>
-<createdTime>2020-12-14 17:42:34 UTC</createdTime>
+<createdTime>2020-12-27 20:53:09 UTC</createdTime>
 <generatorID>77B13B8E-C6CD-6A66-01F3-BC392141B751</generatorID>
 <ownerDesignName>db-structure</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -43,29 +42,18 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="data_ostatniego_posta" id="C65099D2-3465-B4E4-B75D-58B582B9F458">
-<createdBy>napiad</createdBy>
-<createdTime>2020-12-27 21:15:13 UTC</createdTime>
-<ownerDesignName>db-structure</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT008</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="0A127FAF-7957-3FAD-A030-903E988B37C6" name="Watek_PK">
+<ind_PK_UK id="26A64028-9105-BCCF-915D-AA4E55410E52" name="Watek_PK">
 <createdBy>napiad</createdBy>
-<createdTime>2020-12-14 17:42:34 UTC</createdTime>
+<createdTime>2020-12-27 20:53:09 UTC</createdTime>
 <generatorID>FE6B03E8-5C3D-38AB-8767-AB93F26C063C</generatorID>
 <ownerDesignName>db-structure</ownerDesignName>
 <pk>true</pk>
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="69850553-7F9C-F777-C710-43D90D0FCC87"/>
+<colUsage columnID="0392443B-B8BC-0358-5B01-9F8A613ECE9F"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>
