@@ -25,6 +25,24 @@ def get_ideas_json(user=None):
 def get_idea_json(id):
     return serialize(get_idea(id))
 
+####
+
+def get_threads():
+    return models.Watek.objects.all()
+
+def get_threads_json():
+    return serialize(get_threads())
+
+def get_thread(id):
+    return models.Watek.objects.filter(
+        pk=id
+    )
+
+def get_thread_json():
+    return serialize(get_thread())
+
+###
+
 def get_opinions(id):
     pomysl = models.Pomysl.objects.filter(pk=id)
     return models.Ocena.objects.filter(
@@ -102,6 +120,5 @@ def add_opinion(opinion_json, user):
         status = False
     finally:
         return json.dumps({'status': status})
-
 
 
