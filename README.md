@@ -12,5 +12,5 @@ Project for Analysis and design of information systems course at WUT-EITI
 ## Run with docker
 To set up and run django development server together with MySQL database use:
 ```
-docker-compose up
+(sudo) docker-compose up
 ```
