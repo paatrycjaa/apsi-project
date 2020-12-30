@@ -31,6 +31,9 @@ def add_opinion(request, idea_id):
     }
     return render(request, 'app/components/opinion-addition/opinionAddition.html', context)
 
+def threads(request):
+    return render(request, 'app/components/forum-threads/forumThreads.html')
+
 def ajax(request, ajax_request, idea_id=None):
     if ajax_request == 'all_ideas':        
         return HttpResponse(db_view.get_ideas_json(), content_type='application/json')

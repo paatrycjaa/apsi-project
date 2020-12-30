@@ -96,3 +96,31 @@ class ZwyklyUzytkownik(models.Model):
 
     def __str__(self):
         return self.uzytkownik
+
+class Watek(models.Model):
+    temat = models.CharField(max_length=200)
+    data_dodania = models.DateTimeField('%Y-%m-%d %H:%M:%S')
+    data_ostatniego_posta = models.DateTimeField('%Y-%m-%d %H:%M:%S', blank=True)
+
+    def __str__(self):
+        return self.temat + ' ' + self.data_dodania + ' ' + self.data_ostatniego_posta
+
+
+class Post(models.Model):
+    tytul = models.CharField(max_length=200)
+    tresc = models.TextField()
+    data_dodania = models.DateTimeField('%Y-%m-%d %H:%M:%S')
+
+    watek = models.ForeignKey(
+        'Watek',
+        on_delete=models.CASCADE,
+    )
+
+    uzytkownik = models.ForeignKey(
+        'Uzytkownik',
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        self.tytul + ': ' + self.tresc[:50] + '...'
+
