@@ -30,9 +30,10 @@ class Uzytkownik(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     imie = models.CharField(max_length=200)
     nazwisko = models.CharField(max_length=300)
+    sso = models.CharField(max_length=9)
     
     def __str__(self):
-        return self.imie + ' ' + self.nazwisko
+        return self.imie + ' ' + self.nazwisko + ' ' + self.sso
 
 
 class StatusPomyslu(models.Model):
@@ -66,3 +67,32 @@ class Ocena(models.Model):
     def __str__(self):
         return self.ocena_liczbowa
 
+class CzlonekKomisji(models.Model):
+    uzytkownik = models.OneToOneField(
+        'Uzytkownik',
+        on_delete=models.CASCADE,
+        primary_key=True,
+    )
+
+    def __str__(self):
+        return self.uzytkownik
+
+class Administrator(models.Model):
+    uzytkownik = models.OneToOneField(
+        'Uzytkownik',
+        on_delete=models.CASCADE,
+        primary_key=True,
+    )
+
+    def __str__(self):
+        return self.uzytkownik
+
+class ZwyklyUzytkownik(models.Model):
+    uzytkownik = models.OneToOneField(
+        'Uzytkownik',
+        on_delete=models.CASCADE,
+        primary_key=True,
+    )
+
+    def __str__(self):
+        return self.uzytkownik
