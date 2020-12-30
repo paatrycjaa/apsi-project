@@ -14,7 +14,7 @@ def serialize(objects):
 def idea_exists(topic):
     Pomysl.objects.filter(tematyka=topic).count() > 0
 
-def add_idea(idea_json):
+def add_idea(idea_json, user):
 
     try:
         data = json.loads(idea_json)
@@ -34,7 +34,7 @@ def add_idea(idea_json):
             settings_val = 'brak'
        
 
-        user = models.Uzytkownik.objects.first()
+        user = models.Uzytkownik.objects.get(user_id=user.id)
         status = models.StatusPomyslu.objects.get(status='Oczekujacy')
         settings = models.UstawieniaOceniania.objects.get(ustawienia=settings_val)
 
@@ -55,9 +55,9 @@ def add_idea(idea_json):
             print(e)
             message = e.__str__()
         status = False
-        
     finally:
-        return json.dumps({'status': status, 'message': message})
+        return json.dumps({'status': status})
+
 
 def get_ideas(user = None):
     if user is None:

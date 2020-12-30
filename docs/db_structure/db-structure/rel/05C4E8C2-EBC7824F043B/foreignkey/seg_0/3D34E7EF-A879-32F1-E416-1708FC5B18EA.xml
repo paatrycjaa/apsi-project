@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="3D34E7EF-A879-32F1-E416-1708FC5B18EA" containerWithKeyObject="88835B09-0C7C-2970-18DB-12266E7E98A8" localFKIndex="E20A468C-2F61-B93B-6C9C-F6CE1356E863" name="Pomysl_Ustawienia_oceniania_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-27 20:53:09 UTC</createdTime>
+<generatorID>69A1DCCE-B045-1021-DA09-88AA221F9683</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<referredTableLongName>Ustawienia_oceniania</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>DE5F18C5-028E-A5AA-36F9-78F4F60D8F2A</referredTableID>
+<keyObject>787A19C7-DFFF-D1A0-5D08-07F9FE95C675</keyObject>
+<referredKeyID>787A19C7-DFFF-D1A0-5D08-07F9FE95C675</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ustawienia_id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

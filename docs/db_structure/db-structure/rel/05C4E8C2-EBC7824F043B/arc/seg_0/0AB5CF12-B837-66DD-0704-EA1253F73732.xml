@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKArc class="oracle.dbtools.crest.model.design.relational.FKArc" directorySegmentName="seg_0" id="0AB5CF12-B837-66DD-0704-EA1253F73732" name="FKArc_1">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-27 20:53:09 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<mandatory>false</mandatory>
+<reverseArc>true</reverseArc>
+<table>3B132F86-F3FE-9089-F5E8-E63A9CAE8933</table>
+<fkeys>
+<fkeyID>28CB0DD7-AFF0-3B64-6462-63CF579F1629</fkeyID>
+<fkeyID>6573DBAC-62B5-CEE6-46F4-5411878DE0C1</fkeyID>
+<fkeyID>A011800E-6A04-E0FF-F310-3A950FB151C2</fkeyID>
+</fkeys>
+</FKArc>

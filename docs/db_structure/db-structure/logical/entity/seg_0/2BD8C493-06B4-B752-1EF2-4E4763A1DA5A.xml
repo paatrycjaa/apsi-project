@@ -4,6 +4,7 @@
 <createdTime>2020-11-16 14:34:48 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
+<item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
 <item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
@@ -20,6 +21,7 @@
 <createdTime>2020-11-24 20:43:46 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
+<item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
 <item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
@@ -32,6 +34,7 @@
 <createdTime>2020-11-18 19:13:04 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
+<item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
 <item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
@@ -45,6 +48,7 @@
 <createdTime>2020-11-18 19:13:23 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
+<item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
 <item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
@@ -58,6 +62,7 @@
 <createdTime>2020-12-07 20:18:27 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
+<item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
 <item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
@@ -70,6 +75,7 @@
 <createdTime>2020-12-07 20:26:12 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
+<item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
 <item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
@@ -83,6 +89,7 @@
 <createdTime>2020-11-18 19:13:49 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
+<item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
 <item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
@@ -97,6 +104,7 @@
 <createdTime>2020-11-18 19:14:14 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
+<item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
 <item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
@@ -106,26 +114,13 @@
 <dataTypePrecision>2</dataTypePrecision>
 <ownDataTypeParameters>,2,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="ocena_wazona" id="2E64F66D-90AC-6629-75A9-854E7D8B9DF0">
-<createdBy>napiad</createdBy>
-<createdTime>2020-11-18 19:19:39 UTC</createdTime>
-<ownerDesignName>db-structure</ownerDesignName>
-<engineerTo>
-<item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT021</logicalDatatype>
-<dataTypePrecision>4</dataTypePrecision>
-<ownDataTypeParameters>,4,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="ustawienia_id" id="50624498-F3DF-C8F6-945A-D5B3F890ED55">
 <createdBy>lkost</createdBy>
 <createdTime>2020-11-22 20:32:58 UTC</createdTime>
 <generatorID>69A1DCCE-B045-1021-DA09-88AA221F9683</generatorID>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
+<item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
 <item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
 <referedAttribute>816A1C92-6283-5015-592E-A8BCD68815C0</referedAttribute>
@@ -140,6 +135,7 @@
 <generatorID>672700AE-D86F-C3EB-9867-81CF85906FD9</generatorID>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
+<item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
 <item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
 <referedAttribute>3042157E-35B5-5F75-056E-D2D3B31F5A3B</referedAttribute>
@@ -154,6 +150,7 @@
 <generatorID>7DEF49CE-8F4C-EAC2-92B8-581276B5CA8A</generatorID>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
+<item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
 <item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
 <referedAttribute>75F4E93C-03A5-C643-C5A1-7F28EFAEF1A3</referedAttribute>
@@ -169,6 +166,7 @@
 <createdTime>2020-11-24 20:43:58 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
+<item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
 <item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
 <pk>true</pk>

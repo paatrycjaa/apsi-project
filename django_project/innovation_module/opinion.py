@@ -46,7 +46,7 @@ def get_edit_opinion_json(opinion_id):
 
     return data
 
-def add_opinion(opinion_json):
+def add_opinion(opinion_json, user):
     try:
         data = json.loads(opinion_json)
         idea_id = data['idea_id']
@@ -57,7 +57,7 @@ def add_opinion(opinion_json):
 
         settings = idea.get_settings(idea_id)
 
-        user = models.Uzytkownik.objects.first()
+        user = models.Uzytkownik.objects.get(user_id=user.id)
         pomysl=models.Pomysl.objects.get(pk=idea_id)
 
         m = models.Ocena(data=datetime.datetime.now(), pomysl=pomysl, uzytkownik=user)
