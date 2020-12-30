@@ -12,7 +12,7 @@ Project for Analysis and design of information systems course at WUT-EITI
 ## Run with docker
 To set up and run django development server together with MySQL database use:
 ```
-docker-compose up
+(sudo) docker-compose up
 ```
 
 ## Database modifications
@@ -20,7 +20,7 @@ If database modifications are made one needs to ensure that a new volume is used
 Volumes can be listed using:
 ```
 docker volume ls
-``` 
+```
 To check which container uses given volume run:
 ```
 docker ps -a --filter volume=<VOLUME_NAME>
