@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block title %} Add idea decision {% endblock %}
+
+
+{% block content %}
+<div ng-controller="decisionAdditionController" ng-init="init({{idea_id}})">  
+    <div class="idea-block">
+        <table class="idea-table">
+            {% verbatim %}
+            <tr id="idea-table-topic">
+                <th style="width: 25%;">Temat:</th>
+                <td>{{ idea.fields.tematyka }}</td>
+            </tr>
+            <tr id="idea-table-row">
+                <th>Opis pomysłu:</th>
+                <td>{{ idea.fields.opis }}</td>
+            </tr>
+            <tr id="idea-table-row">
+                <th>Słowa kluczowe:</th>
+                <td>{{ idea.fields.slowa_kluczowe }}</td>
+            </tr>
+            <tr id="idea-table-row">
+                <th>Planowane korzyści:</th>
+                <td>{{ idea.fields.planowane_korzysci }}</td>
+            </tr>
+            <tr id="idea-table-row">
+                <th>Planowane koszty:</th>
+                <td>{{ idea.fields.planowane_koszty }}</td>
+            </tr>
+            <tr id="idea-table-row">
+                <th>Załączniki:</th>
+                <td>{{ idea.fields.planowane_koszty }}</td>
+                <th>Linki:</th>
+                <td>{{ idea.fields.planowane_koszty }}</td>
+            </tr>
+            <tr id="idea-table-row">
+                <th>Ocena ważona:</th>
+                <td>{{ idea.fields.ocena_wazona }}</td>
+            </tr>
+        </table>
+        <!-- <label class="ocena" style="float: right; width: 1000px;height: 5000px;">
+            <h3>
+                Ocena ważona:
+                {{ idea.fields.ocena_wazona }}
+            </h3> 
+        </label> -->
+        {% endverbatim %}
+    </div>
+
+    <div style="clear: both;"></div>
+    Oceny użytkowników:
+    <div class="opinion-block" ng-repeat="opinion in opinions | filter:searchStr">
+        {% verbatim %}
+        <table class="opinion-table">
+            <tr>
+                <th style="width: 25%">Data:</th>
+                <td>{{ opinion.fields.data }}</td>
+            </tr>
+            <tr>
+                <th>Ocena:</th>
+                <td>{{ opinion.fields.ocena_liczbowa }}</td>
+            </tr>
+            <tr>
+                <th>Opis:</th>
+                <td>{{ opinion.fields.opis }}</td>
+            </tr>
+        </table>
+        {% endverbatim %}
+    </div>
+
+    <form class="form-decision">
+        <div class="form-group" ng-show="settings.includes('text')"></div>
+            Decyzja:<br>
+            <label><input name="werdykt" type="radio" ng-model="decision.werdykt" value="Zaakceptuj" required/>Zaakceptuj</label><br>
+            <label><input name="werdykt" type="radio" ng-model="decision.werdykt" value="Odrzuć" />Odrzuć</label><br>
+            <label><input name="werdykt" type="radio" ng-model="decision.werdykt" value="Prośba o uzupełnienie" />Prośba o uzupełnienie</label><br>
+            <label><input name="werdykt" type="radio" ng-model="decision.werdykt" value="Odłóż" />Odłóż</label><br>
+            
+            <label for="description">Uzasadnienie</label>          
+            <textarea name="description" class="form-control" type="text" ng-model="decision.description" rows="4"  required></textarea>  
+        </div>
+
+
+    
+
+        <div class="form-group" style="float: right;">
+            <button class="btn btn-primary" type="submit" ng-click="submit()">Zatwierdź</button>
+        </div>
+
+        <div class="row" ng-show="reponse_received" style="float: right; margin-right: 20px">
+            <p class="text-success" ng-if="status" style="font-size: x-large;">Decyzja dodana. Za chwilę zostaniesz przekierowany na stronę z pomysłami do rozpatrzenia</p>
+            <p class="text-danger" ng-if="!status" style="font-size: x-large;">Wystąpił błąd podczas dodawania decyzji</p>   
+        </div>
+    </form>
+   
+    
+  </div>
+  
+</div>
+{% endblock %}
