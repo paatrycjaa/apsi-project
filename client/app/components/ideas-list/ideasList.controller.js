@@ -14,5 +14,13 @@ angular.module('appIdeasListController', [])
         $scope.openIdeaOpinions = function(id) {
           $window.location.href = `/opinions/${id}/`;
         }
+
+        $scope.blockIdea = function(id) {
+          callback = (response) => {            
+            console.log(response);
+        };
+
+          ideasListService.editIdea({idea_id: id}, callback)
+        }
       }
 ]);

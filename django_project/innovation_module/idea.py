@@ -58,6 +58,35 @@ def add_idea(idea_json, user):
     finally:
         return json.dumps({'status': status})
 
+def edit_idea(idea_json):
+    try:
+        data = json.loads(idea_json)
+        print(data)
+        idea_id = data['idea_id']
+
+        idea = models.Pomysl.objects.get(pk=idea_id)
+
+        new_status = models.StatusPomyslu.objects.get(status='Zablokowany')
+
+        idea.status = new_status
+
+        idea.save()
+
+        message = "Idea edited"
+
+        status = True
+
+    except Exception as e:
+        print('error occured when editing idea')
+        if hasattr(e, 'message'):
+            print(e.message)
+            message = e.message
+        else:
+            print(e)
+            message = e.__str__()
+        status = False
+    finally:
+        return json.dumps({'status': status, 'message': message})
 
 def get_ideas(user = None):
     if user is None:
