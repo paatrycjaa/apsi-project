@@ -20,6 +20,15 @@ class Migration(migrations.Migration):
                 ('status', models.CharField(max_length=100, primary_key=True, serialize=False)),
             ],
         ),
+
+        migrations.CreateModel(
+            name='RodzajDecyzji',
+            fields=[
+                ('rodzaj_decyzji', models.CharField(max_length=100, primary_key=True, serialize=False)),
+            ],
+        ),
+
+
         migrations.CreateModel(
             name='UstawieniaOceniania',
             fields=[
@@ -66,4 +75,17 @@ class Migration(migrations.Migration):
                 ('uzytkownik', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.uzytkownik')),
             ],
         ),
+
+        migrations.CreateModel(
+            name='Decyzja',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('data', models.DateTimeField(verbose_name='%Y-%m-%d %H:%M:%S')),
+                ('uzasadnienie', models.CharField(max_length=1000)),
+                ('pomysl', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.pomysl')),
+                ('uzytkownik', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.uzytkownik')),
+                ('rodzaj_decyzji', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.pomysl')),
+            ],
+        ),
+
     ]

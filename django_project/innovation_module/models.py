@@ -66,3 +66,26 @@ class Ocena(models.Model):
     def __str__(self):
         return self.ocena_liczbowa
 
+class Decyzja(models.Model):
+    data=models.DateTimeField('%Y-%m-%d %H:%M:%S')
+    uzasadnienie=models.CharField(max_length=1000)
+    pomysl = models.ForeignKey(
+        'Pomysl',
+        on_delete=models.CASCADE,
+    )
+    uzytkownik = models.ForeignKey(
+        'Uzytkownik',
+        on_delete=models.CASCADE,
+    )
+    werdykt=models.ForeignKey(
+        'RodzajDecyzji',
+        on_delete=models.CASCADE,
+    )
+
+
+class RodzajDecyzji(models.Model):
+    rodzaj_decyzji = models.CharField(max_length=100, primary_key=True)
+
+    def __str__(self):
+        return self.rodzaj_decyzji
+

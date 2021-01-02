@@ -32,6 +32,7 @@
                 <img src="{% static 'assets/img/logo.png' %}" width="25" height="25" alt=""></a>
               <a class="nav-item nav-link" href="{% url 'ideas' %}">POMYSŁY</a>
               <a class="nav-item nav-link" href="{% url 'home' %}">PORTAL INNOWACJI</a>
+              <a class="nav-item nav-link" href="{% url 'ideasfiltered' %}">DECYZJE</a>
             </div>
 
             <!-- Navbar Right Side -->
@@ -63,6 +64,12 @@
 
     <script type="text/javascript" src="{% static 'app/components/opinion-addition/opinionAddition.controller.js' %}"></script>
     <script type="text/javascript" src="{% static 'app/components/opinion-addition/opinionAddition.service.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'app/components/ideas-filtered/ideasFiltered.controller.js' %}"></script>
+    <script type="text/javascript" src="{% static 'app/components/ideas-filtered/ideasFiltered.service.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'app/components/decision-addition/decisionAddition.controller.js' %}"></script>
+    <script type="text/javascript" src="{% static 'app/components/decision-addition/decisionAddition.service.js' %}"></script>
 
     <script type="text/javascript" src="{% static 'app/components/utils/utils.js' %}"></script>
 
