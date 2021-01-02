@@ -70,15 +70,14 @@
 
     <form class="form-decision">
         <div class="form-group" ng-show="settings.includes('text')"></div>
-            Decyzja:<br>
-            <label><input name="werdykt" type="radio" ng-model="decision.werdykt" value="Zaakceptuj" required/>Zaakceptuj</label><br>
-            <label><input name="werdykt" type="radio" ng-model="decision.werdykt" value="Odrzuć" />Odrzuć</label><br>
-            <label><input name="werdykt" type="radio" ng-model="decision.werdykt" value="Prośba o uzupełnienie" />Prośba o uzupełnienie</label><br>
-            <label><input name="werdykt" type="radio" ng-model="decision.werdykt" value="Odłóż" />Odłóż</label><br>
+        Decyzja:<br>
+        <label><input name="werdykt" type="radio" ng-model="decision.werdykt" value="Zaakceptuj" required/>Zaakceptuj</label><br>
+        <label><input name="werdykt" type="radio" ng-model="decision.werdykt" value="Odrzuć" />Odrzuć</label><br>
+        <label><input name="werdykt" type="radio" ng-model="decision.werdykt" value="Prośba o uzupełnienie" />Prośba o uzupełnienie</label><br>
+        <label><input name="werdykt" type="radio" ng-model="decision.werdykt" value="Odłóż" />Odłóż</label><br>
             
-            <label for="description">Uzasadnienie</label>          
-            <textarea name="description" class="form-control" type="text" ng-model="decision.description" rows="4"  required></textarea>  
-        </div>
+        <label for="description">Uzasadnienie</label>          
+        <textarea name="description" class="form-control" type="text" ng-model="decision.description" rows="4"  required></textarea> 
 
 
     
@@ -92,9 +91,6 @@
             <p class="text-danger" ng-if="!status" style="font-size: x-large;">Wystąpił błąd podczas dodawania decyzji</p>   
         </div>
     </form>
-   
-    
-  </div>
   
 </div>
 {% endblock %}

@@ -1,5 +1,5 @@
 angular.module('appDecisionAdditionController', [])
-  .controller('decisionAdditionController', ['$scope', 'decisionAdditionService',
+  .controller('decisionAdditionController', ['$scope','$timeout','$window', '$interval', 'decisionAdditionService', 'utils',
       
   
   function($scope, decisionAdditionService, $timeout, utils) {
