@@ -38,8 +38,8 @@ def get_thread(id):
         pk=id
     )
 
-def get_thread_json():
-    return serialize(get_thread())
+def get_thread_json(id):
+    return serialize(get_thread(id))
 
 ###
 
@@ -51,6 +51,17 @@ def get_opinions(id):
 
 def get_opinions_json(pomysl):
     return serialize(get_opinions(pomysl))
+
+def get_posts(id):
+    watek=models.Watek.objects.filter(pk=id)
+    print (id)
+    print (watek.count())
+    if watek.count() > 0 :
+        return models.Post.objects.filter(watek = watek[0])
+    return models.Post.objects.all()
+
+def get_posts_json(watek_id):
+    return serialize(get_posts(watek_id))
 
 
 

@@ -13,8 +13,12 @@ urlpatterns = [
     path('add-idea', views.add_idea, name='add_idea'),
     path('add-opinion/<int:idea_id>/', views.add_opinion, name='add_opinion'),
     path('opinions/<int:idea_id>/', views.opinions),
+    path('posts/<int:thread_id>/', views.posts),
     path('threads', views.threads, name = 'threads'),
+    path('add-thread', views.add_thread, name='add-thread'),
+    path('add-post/<int:thread_id>/', views.add_post),
     path('ajax/<ajax_request>/', csrf_exempt(views.ajax)),
-    path('ajax/<ajax_request>/<int:idea_id>/', csrf_exempt(views.ajax))
+    path('ajax/<ajax_request>/<int:idea_id>/', csrf_exempt(views.ajax)),
+    path('ajax/<ajax_request>/<int:thread_id>/', csrf_exempt(views.ajax))
     #path('ajax/<ajax_request>/<int:opinion_id>/', csrf_exempt(views.ajax))
 ]

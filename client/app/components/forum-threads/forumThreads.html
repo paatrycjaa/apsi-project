@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %} Add innovation ideas {% endblock %}
+{% block title %} Forum threads {% endblock %}
 
 {% block content %}
 
@@ -12,9 +12,9 @@
         </form>
     </div>
     <div style="float: right;">
-        <!-- <a href="{% url 'add_idea' %}"> -->
+        <a href="{% url 'add-thread' %}">
             <button type="button" class="btn btn-primary">Dodaj nowy wątek</button>
-        <!-- </a> -->
+        </a>
     </div>
 
     <div ng-repeat="thread in threads | filter:searchStr">
@@ -36,7 +36,7 @@
             </table>
         </div>
         <div style="float: right;">
-            <button type="button" class="btn btn-primary" >Przegladaj</button>
+            <button type="button" class="btn btn-primary"  ng-click="openThreadPosts(thread.pk)" >Przegladaj</button>
         </div>
         <div style="clear: both;"></div>
         {% endverbatim %}

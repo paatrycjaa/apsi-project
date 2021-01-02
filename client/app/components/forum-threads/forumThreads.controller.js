@@ -11,8 +11,8 @@ angular.module('appThreadsListController', [])
           });
         }
 
-        //$scope.openIdeaOpinions = function(id) {
-        //  $window.location.href = `/opinions/${id}/`;
-        //}
+        $scope.openThreadPosts = function(id) {
+          $window.location.href = `/posts/${id}/`;
+        }
       }
 ]);

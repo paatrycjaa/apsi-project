@@ -9,6 +9,8 @@ var app = angular.module('app', [
     'appOpinionAdditionService',
     'appThreadsListService',
     'appThreadsListController',
+    'appPostsListController',
+    'appPostsListService',
     'appUtils',
     'app'
 ]);
