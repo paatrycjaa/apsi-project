@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound
+from django.contrib.auth.decorators import login_required
 
 from . import idea
 from . import opinion
@@ -7,26 +8,32 @@ from . import opinion
 def home(request):
     return render(request, 'app/static/home.html')
 
+@login_required
 def ideas(request):
     return render(request, 'app/components/ideas-list/ideasList.html')
 
+@login_required
 def add_idea(request):
     return render(request, 'app/components/idea-addition/ideaAddition.html')
 
+@login_required
 def opinions(request, idea_id):
     context = {
         'idea_id': idea_id
     }
     return render(request, 'app/components/opinions-list/opinionsList.html', context)
 
+@login_required
 def add_opinion(request, idea_id):    
     context = opinion.get_add_opinion_json(idea_id)
     return render(request, 'app/components/opinion-addition/opinionAddition.html', context)
 
+@login_required
 def edit_opinion(request, opinion_id):    
     context = opinion.get_edit_opinion_json(opinion_id)
     return render(request, 'app/components/opinion-addition/opinionAddition.html', context)
 
+@login_required
 def ajax(request, ajax_request, object_id=None):
     if ajax_request == 'all_ideas':        
         return HttpResponse(idea.get_ideas_json(), content_type='application/json')
