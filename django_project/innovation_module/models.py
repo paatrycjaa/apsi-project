@@ -65,7 +65,8 @@ class Ocena(models.Model):
     )
 
     def __str__(self):
-        return self.ocena_liczbowa
+        return "Ocena id: {}, liczbowa: {}, opis: {}, uzytkownik: {}".format(
+            self.pk, self.ocena_liczbowa, self.opis, self.uzytkownik)
 
 class CzlonekKomisji(models.Model):
     uzytkownik = models.OneToOneField(
