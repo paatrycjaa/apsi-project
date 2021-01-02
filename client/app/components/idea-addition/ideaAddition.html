@@ -2,13 +2,12 @@
 {% block title %} Add innovation ideas {% endblock %}
 
 {% block content %}
-<h1>Dodaj pomysł</h1>
 
 <script>
     var redirect_url = "{% url 'ideas' %}"
 </script>
 
-<div ng-controller="ideaAdditionController" ng-init="init(idea_id)">
+<div ng-controller="ideaAdditionController" ng-init="init({{ideaModel.idea_id}})">
 
 {% verbatim %}
 
