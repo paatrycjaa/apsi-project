@@ -13,6 +13,8 @@ def make_migrations(apps, schema_editor):
     create_uzytkownik(apps)
     create_pomysl(apps)
     create_ocena(apps)
+    create_watek(apps)
+    create_post(apps)
     add_role_to_uzytkownik(apps)
 
 
