@@ -117,3 +117,4 @@ def edit_opinion(opinion_json):
         status = False
     finally:
         return json.dumps({'status': status})
+

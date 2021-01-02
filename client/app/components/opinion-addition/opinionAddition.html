@@ -2,14 +2,15 @@
 {% block title %} Add innovation ideas {% endblock %}
 
 {% block content %}
-<h1>Dodaj opinię</h1>
 
-<script>
-    var redirect_url = "{% url 'ideas' %}"
+<script>    
     var opinionSettings = "{{ settings }}"
+    var opinionId = "{{ opinion_id }}"
 </script>
 
 <div ng-controller="opinionAdditionController" ng-init="init({{idea_id}})">
+    <h1 ng-if="!opinion.opinion_id">Dodaj opinię</h1>
+    <h1 ng-if="opinion.opinion_id">Edytuj opinię</h1>
 
 {% verbatim %}
 
@@ -17,7 +18,7 @@
 
     <div class="form-group" ng-show="settings.includes('text')">
         <label for="description">Ocena opisowa</label>          
-        <textarea name="description" class="form-control" type="text" ng-model="opinion.description" rows="4" ng-required="settings.includes('text')"></textarea>    
+        <textarea name="description" class="form-control" type="text" ng-model="opinion.description" rows="4" ng-required="settings.includes('text')" maxlength="500"></textarea>
         <div class="invalid-feedback">
             To pole jest wymagane!
         </div>
@@ -42,7 +43,7 @@
 
 
     <div class="form-group" style="display: inline-block">
-        <button class="btn btn-primary" type="submit" ng-click="submit()">Dodaj</button>
+        <button class="btn btn-primary" type="submit" ng-click="submit()">Ok</button>
     </div>
 
     <div class="row" ng-show="reponse_received" style="float: right; margin-right: 20px">
