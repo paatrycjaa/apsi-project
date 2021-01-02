@@ -24,11 +24,7 @@ def get_thread_json(id):
 
 def get_posts(id):
     watek=models.Watek.objects.filter(pk=id)
-    print (id)
-    print (watek.count())
-    if watek.count() > 0 :
-        return models.Post.objects.filter(watek = watek[0])
-    return models.Post.objects.all()
+    return models.Post.objects.filter(watek = watek[0])
 
 def get_posts_json(watek_id):
     return serialize(get_posts(watek_id))
