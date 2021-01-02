@@ -62,7 +62,3 @@ def ajax_get_all_opinions(request, idea_id):
 def ajax_edit_opinion(request, opinion_id):
     body_unicode = request.body.decode('utf-8')
     return HttpResponse(opinion.edit_opinion(body_unicode), content_type='application/json')
-
-
-
-
