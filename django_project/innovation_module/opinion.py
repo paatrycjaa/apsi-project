@@ -17,8 +17,15 @@ def get_opinions(id):
         pomysl=pomysl[0]
     )
 
-def get_opinions_json(pomysl):
-    return serialize(get_opinions(pomysl))
+def get_opinions_json(pomysl, user):
+    user_obj = models.Uzytkownik.objects.get(user=user)
+    opinions = json.loads(serialize(get_opinions(pomysl)))
+    for op in opinions:
+        is_editable = False
+        if (op['fields']['uzytkownik'] == user_obj.pk):
+            is_editable= True
+        op['isEditable'] = is_editable
+    return json.dumps(opinions)
 
 def get_opinion(opinion_id):
     return models.Ocena.objects.get(pk=opinion_id)

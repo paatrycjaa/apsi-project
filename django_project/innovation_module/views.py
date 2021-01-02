@@ -45,7 +45,7 @@ def ajax(request, ajax_request, object_id=None):
     if ajax_request == 'get_idea':
         return HttpResponse(idea.get_idea_json(object_id), content_type='application/json')
     if ajax_request == 'all_opinions':
-        return HttpResponse(opinion.get_opinions_json(object_id), content_type='application/json')
+        return ajax_get_all_opinions(request, object_id)
     if ajax_request == 'get_opinion':
         return HttpResponse(opinion.get_opinion_json(object_id), content_type='application/json')
     if ajax_request == 'submit_opinion':
@@ -55,7 +55,14 @@ def ajax(request, ajax_request, object_id=None):
         return ajax_edit_opinion(request, int(json.loads(request.body)['opinion_id']))
     return HttpResponseNotFound('Cannot handle ajax request')
 
+def ajax_get_all_opinions(request, idea_id):
+    return HttpResponse(opinion.get_opinions_json(idea_id, request.user), content_type='application/json')
+
 @decorators.users_opinion
 def ajax_edit_opinion(request, opinion_id):
     body_unicode = request.body.decode('utf-8')
-    return HttpResponse(opinion.edit_opinion(body_unicode), content_type='application/json')  
+    return HttpResponse(opinion.edit_opinion(body_unicode), content_type='application/json')
+
+
+
+
