@@ -1,15 +1,22 @@
 angular.module('appDecisionAdditionController', [])
-  .controller('decisionAdditionController', ['$scope','$timeout','$window', '$interval', 'decisionAdditionService', 'utils',
-      
-  
+  .controller('decisionAdditionController', ['$scope', 'decisionAdditionService', '$timeout', 'utils',
+
+
   function($scope, decisionAdditionService, $timeout, utils) {
-        
+
         $scope.opinions = [];
+
+        $scope.decision = {
+          id: '',
+          werdykt : '',
+          description : ''
+        }
 
 
         $scope.init = function(id) {
+           $scope.decision.id=id;
            $scope.$watch("idea_id", function() {
-            
+
             $scope.idea_id=id
             console.log(id)
             decisionAdditionService.getIdeaById($scope.idea_id, function(response) {
@@ -26,12 +33,8 @@ angular.module('appDecisionAdditionController', [])
           });
         }
 
-        $scope.decision = {
-          id: '',
-          werdykt : '',
-          description : ''
-        }
         
+
         $scope.settings = '';
         $scope.reponse_received = false;
         $scope.status = true;
@@ -52,7 +55,6 @@ angular.module('appDecisionAdditionController', [])
           }
         }       
 
-        
+
       }
 ]);
-

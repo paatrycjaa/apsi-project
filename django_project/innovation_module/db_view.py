@@ -115,14 +115,15 @@ def add_decision(decision_json):
     try:
         data = json.loads(decision_json)
 
-        # user = models.Uzytkownik.objects.first()
-        # # status = models.StatusPomyslu.objects.get(status='Oczekujacy')
-        # # settings = models.UstawieniaOceniania.objects.get(ustawienia=settings_val)
-        # pomysl=models.Pomysl.objects.get(pk=data['id'])
+        user = models.Uzytkownik.objects.first()
+        # status = models.StatusPomyslu.objects.get(status='Oczekujacy')
+        # settings = models.UstawieniaOceniania.objects.get(ustawienia=settings_val)
+        pomysl=models.Pomysl.objects.get(pk=data['id'])
+        werdykt = models.RodzajDecyzji.objects.get(rodzaj_decyzji=data['werdykt'])
 
-        # m = models.Decyzja(data=datetime.datetime.now(), uzasadnienie=data['description'], pomysl=pomysl,
-        #                   werdykt=data['werdykt'], uzytkownik=user)
-        # m.save()
+        m = models.Decyzja(data=datetime.datetime.now(), uzasadnienie=data['description'], pomysl=pomysl,
+                          werdykt=werdykt, uzytkownik=user)
+        m.save()
 
         status = True
         
