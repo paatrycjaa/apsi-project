@@ -64,13 +64,14 @@ def ajax(request, ajax_request, object_id=None):
         return HttpResponse(opinion.get_opinion_json(object_id), content_type='application/json')
     if ajax_request == 'submit_opinion':
         body_unicode = request.body.decode('utf-8')
-        return HttpResponse(db_view.add_opinion(body_unicode),content_type='application/json')
+        return HttpResponse(opinion.add_opinion(body_unicode, request.user),content_type='application/json')
     if ajax_request == 'submit_decision':
         body_unicode = request.body.decode('utf-8')
         return HttpResponse(decision.add_decision(body_unicode),content_type='application/json')
-        return HttpResponse(opinion.add_opinion(body_unicode, request.user),content_type='application/json')
     if ajax_request == 'edit_opinion':
         return ajax_edit_opinion(request, int(json.loads(request.body)['opinion_id']))
+    if ajax_request == 'filtered_ideas':
+        return HttpResponse(decision.get_filtered_ideas_json('Oczekujący'), content_type='application/json')
     return HttpResponseNotFound('Cannot handle ajax request')
 
 def ajax_get_all_opinions(request, idea_id):
