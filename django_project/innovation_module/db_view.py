@@ -22,11 +22,6 @@ def get_idea(id):
 def get_ideas_json(user=None):
     return serialize(get_ideas(user))
 
-def get_filtered_ideas_json(stat):
-    return serialize(get_filtered_ideas(stat))
-
-def get_filtered_ideas(stat):
-    return models.Pomysl.objects.filter(status=stat)
 
 def get_idea_json(id):
     return serialize(get_idea(id))
@@ -106,42 +101,3 @@ def add_opinion(opinion_json):
         status = False
     finally:
         return json.dumps({'status': status})
-
-
-def add_decision(decision_json):
-
-    try:
-        data = json.loads(decision_json)
-
-        user = models.Uzytkownik.objects.first()
-        # status = models.StatusPomyslu.objects.get(status='Oczekujacy')
-        # settings = models.UstawieniaOceniania.objects.get(ustawienia=settings_val)
-        pomysl=models.Pomysl.objects.get(pk=data['id'])
-        werdykt = models.RodzajDecyzji.objects.get(rodzaj_decyzji=data['werdykt'])
-        
-
-        m = models.Decyzja(data=datetime.datetime.now(), uzasadnienie=data['description'], pomysl=pomysl,
-                          werdykt=werdykt, uzytkownik=user)
-        m.save()
-        
-        statusp = models.StatusPomyslu.objects.get(status=data['werdykt'])
-        pom = models.Pomysl.objects.get(id=data['id'])
-        pom.status=statusp
-        pom.save()
-
-
-        status = True
-        
-
-    except Exception as e:
-        print('error occured when adding decision')
-        if hasattr(e, 'message'):
-            print(e.message)
-        else:
-            print(e)
-        status = False
-    finally:
-        return json.dumps({'status': status})
-
-
-

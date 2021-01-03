@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound
 
-from . import db_view
+from . import db_view, decision
 
 # TODO remove later
 from . import models
@@ -44,7 +44,7 @@ def ajax(request, ajax_request, idea_id=None):
     if ajax_request == 'all_ideas':        
         return HttpResponse(db_view.get_ideas_json(), content_type='application/json')
     if ajax_request == 'filtered_ideas':        
-        return HttpResponse(db_view.get_filtered_ideas_json('Oczekujący'), content_type='application/json')
+        return HttpResponse(decision.get_filtered_ideas_json('Oczekujący'), content_type='application/json')
     if ajax_request == 'submit_idea':
         body_unicode = request.body.decode('utf-8')
         return HttpResponse(db_view.add_idea(body_unicode),content_type='application/json')
@@ -57,6 +57,6 @@ def ajax(request, ajax_request, idea_id=None):
         return HttpResponse(db_view.add_opinion(body_unicode),content_type='application/json')
     if ajax_request == 'submit_decision':
         body_unicode = request.body.decode('utf-8')
-        return HttpResponse(db_view.add_decision(body_unicode),content_type='application/json')
+        return HttpResponse(decision.add_decision(body_unicode),content_type='application/json')
     return HttpResponseNotFound('Cannot handle ajax request')
 
