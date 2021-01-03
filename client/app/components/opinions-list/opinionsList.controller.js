@@ -13,6 +13,9 @@ angular.module('appOpinionsListController', [])
           window.location.href = `/add-opinion/${id}/`; 
         }
 
+        $scope.editOpinion = function(opinion_id){
+          window.location.href = `/edit-opinion/${opinion_id}/`; 
+        }
 
         $scope.init = function(id) {
            $scope.$watch("idea_id", function() {
@@ -21,6 +24,8 @@ angular.module('appOpinionsListController', [])
             console.log(id)
             opinionsListService.getIdeaById($scope.idea_id, function(response) {
               $scope.idea = response.data[0]
+              $scope.idea.has_review = $scope.idea.fields.ocena_wazona != -1
+
               console.log($scope.idea)
             });
 

@@ -107,6 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOGIN_URL = '/login'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
@@ -130,3 +131,5 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_URL = os.path.join(BASE_DIR, 'client/')
+
+LOGIN_REDIRECT_URL = '/'

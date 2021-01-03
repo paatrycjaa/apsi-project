@@ -37,6 +37,16 @@
 <createdTime>2020-12-14 17:42:34 UTC</createdTime>
 <generatorID>77B13B8E-C6CD-6A66-01F3-BC392141B751</generatorID>
 <ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="data_ostatniego_posta" id="C65099D2-3465-B4E4-B75D-58B582B9F458">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-27 21:15:13 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>

@@ -3,17 +3,32 @@ angular.module('appOpinionAdditionController', [])
     function($scope, $timeout, opinionAdditionService, utils) {
 
       $scope.opinion = {
-        id: '',
+        idea_id: '',
+        opinion_id: '',
         description : '',
         rate : 0
       }
       
       $scope.settings = '';
 
-      $scope.init = function(id) {
+      $scope.init = function(idea_id) {
         // do edycji mozna tutaj pobierac dane o opinii
-        $scope.opinion.id = id;
+        $scope.opinion.idea_id = idea_id;
+        $scope.opinion.opinion_id = opinionId;
         $scope.settings = opinionSettings;
+
+        console.log(idea_id, opinionId, opinionSettings)
+
+        if(opinionId){
+          opinionAdditionService.getOpinionById(opinionId, function(response) {
+            console.log(response.data)
+            data = response.data[0]
+            $scope.opinion.description = data.fields.opis
+            $scope.opinion.rate = data.fields.ocena_liczbowa            
+
+          })
+        }
+
       }
 
       $scope.reponse_received = false;
@@ -22,16 +37,24 @@ angular.module('appOpinionAdditionController', [])
       $scope.submit = function() {
         const forms = document.getElementsByClassName('needs-validation');
         if (utils.isFormValid(forms)) {
-          opinionAdditionService.submitOpinion($scope.opinion, (response) => {            
+
+          callback = (response) => {            
             console.log(response);
             $scope.status = response.data.status;
-            $scope.reponse_received = true;
-            if ($scope.status === true) {
-              $timeout(() => { 
-                window.location.href = redirect_url;
-              }, 2000);
-            }
-          });
+          $scope.reponse_received = true;
+          if ($scope.status === true) {
+            $timeout(() => { 
+              window.location.href = "/opinions/" + $scope.opinion.idea_id;
+            }, 2000);
+          }
+        };
+
+          // opinion is edited
+          if($scope.opinion.opinion_id){
+            opinionAdditionService.editOpinion($scope.opinion, callback);
+          } else { // new opinion is added            
+            opinionAdditionService.submitOpinion($scope.opinion, callback);
+        }
         }
       }       
     }

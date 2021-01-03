@@ -129,7 +129,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
@@ -163,6 +164,24 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="D51BE36E-0E72-E075-3A3E-109AE5C557BF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E737B763-2DA4-25B5-498D-59E6484FC599" name="pomysly__IDXv3">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-27 10:57:36 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D51BE36E-0E72-E075-3A3E-109AE5C557BF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D33C6395-96AE-15A1-FAD2-DAA2CE087CD9" name="pomysly__IDXv2">
+<createdBy>napiad</createdBy>
+<createdTime>2020-12-27 10:58:02 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E07E164C-37FF-CF8D-BAEB-B70F07A6E39A"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="FF27B7F1-B140-367C-D8C0-079B880EB540" name="Pomysl_Ustawienia_oceniania_FK">

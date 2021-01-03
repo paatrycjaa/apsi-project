@@ -1,5 +1,7 @@
 import random 
 
+from django.contrib.auth.hashers import make_password
+from django.conf import settings
 from django.db import migrations
 from django.db import migrations
 
@@ -12,6 +14,7 @@ def make_migrations(apps, schema_editor):
     create_pomysl(apps)
     create_ocena(apps)
     create_rodzaj_decyzji(apps)
+    add_role_to_uzytkownik(apps)
 
 
 def create_status_pomyslu(apps):
@@ -50,24 +53,52 @@ def create_ustawienia_oceniania(apps):
 
 def create_uzytkownik(apps):
     Uzytkownik = apps.get_model(app, 'Uzytkownik')
+    User = apps.get_model(settings.AUTH_USER_MODEL)
 
     users = [
-        ('Janusz', 'Chmielewski'),
-        ('Ludwik', 'Mróz'),
-        ('Fabian', 'Szczepański'),
-        ('Albert', 'Malinowski'),
-        ('Olaf', 'Rutkowski'),
-        ('Natasza', 'Sikorska'),
-        ('Ilona', 'Pietrzak'),
-        ('Nikola', 'Sikora'),
-        ('Wioletta', 'Adamska'),
-        ('Izabela', 'Sikorska')
+        # name, surname, sso, username, email, password, is superuser, is staff
+        ('Janusz', 'Chmielewski', '100', 'sso100', '', 'useruser', True, True),
+        ('Ludwik', 'Mróz', '101', 'sso101', '', 'useruser', False, False),
+        ('Fabian', 'Szczepański', '102', 'sso102', '', 'useruser', False, False),
+        ('Albert', 'Malinowski', '103', 'sso103', '', 'useruser', False, False),
+        ('Olaf', 'Rutkowski', '104', 'sso104', '', 'useruser', False, False),
+        ('Natasza', 'Sikorska', '105', 'sso105', '', 'useruser', False, False),
+        ('Ilona', 'Pietrzak', '106', 'sso106', '', 'useruser', False, False),
+        ('Nikola', 'Sikora', '107', 'sso107', '', 'useruser', False, False),
+        ('Wioletta', 'Adamska', '108', 'sso108', '', 'useruser', False, False),
+        ('Izabela', 'Sikorska', '109', 'sso109', '', 'useruser', False, False)
     ]
 
     for user in users:
-        m = Uzytkownik(imie=user[0], nazwisko=user[1])
-        m.save()
+        u, _ = User.objects.get_or_create(username=user[3], email=user[4], first_name=user[0], last_name=user[1], is_superuser=user[6], is_staff=user[7])
+        u.password = make_password(user[5])
+        u.save()
 
+        Uzytkownik.objects.create(
+            user=u, 
+            imie=user[0], 
+            nazwisko=user[1], 
+            sso=user[2]
+        )
+
+def add_role_to_uzytkownik(apps):
+    Uzytkownik = apps.get_model(app, 'Uzytkownik')
+    CzlonekKomisji = apps.get_model(app, 'CzlonekKomisji')
+    Administrator = apps.get_model(app, 'Administrator')
+    ZwyklyUzytkownik = apps.get_model(app, 'ZwyklyUzytkownik')
+
+    users = Uzytkownik.objects.all()
+
+    a = Administrator(uzytkownik=users[0])
+    a.save()
+
+    for i in range(1, 3):
+        ck = CzlonekKomisji(uzytkownik=users[i])
+        ck.save()
+
+    for i in range(3, len(users)):
+        zu = ZwyklyUzytkownik(uzytkownik=users[i])
+        zu.save()
 
 def create_pomysl(apps):
 

@@ -30,9 +30,10 @@ class Uzytkownik(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     imie = models.CharField(max_length=200)
     nazwisko = models.CharField(max_length=300)
+    sso = models.CharField(max_length=9)
     
     def __str__(self):
-        return self.imie + ' ' + self.nazwisko
+        return self.imie + ' ' + self.nazwisko + ' ' + self.sso
 
 
 class StatusPomyslu(models.Model):
@@ -50,8 +51,8 @@ class UstawieniaOceniania(models.Model):
 
 class Ocena(models.Model):
     data = models.DateTimeField('%Y-%m-%d %H:%M:%S')
-    ocena_liczbowa = models.IntegerField()
-    opis = models.CharField(max_length=500)
+    ocena_liczbowa = models.IntegerField(null=True)
+    opis = models.CharField(null=True, max_length=500)
 
     pomysl = models.ForeignKey(
         'Pomysl',
@@ -64,7 +65,8 @@ class Ocena(models.Model):
     )
 
     def __str__(self):
-        return self.ocena_liczbowa
+        return "Ocena id: {}, liczbowa: {}, opis: {}, uzytkownik: {}".format(
+            self.pk, self.ocena_liczbowa, self.opis, self.uzytkownik)
 
 class Decyzja(models.Model):
     data=models.DateTimeField('%Y-%m-%d %H:%M:%S')
@@ -89,3 +91,32 @@ class RodzajDecyzji(models.Model):
     def __str__(self):
         return self.rodzaj_decyzji
 
+class CzlonekKomisji(models.Model):
+    uzytkownik = models.OneToOneField(
+        'Uzytkownik',
+        on_delete=models.CASCADE,
+        primary_key=True,
+    )
+
+    def __str__(self):
+        return self.uzytkownik
+
+class Administrator(models.Model):
+    uzytkownik = models.OneToOneField(
+        'Uzytkownik',
+        on_delete=models.CASCADE,
+        primary_key=True,
+    )
+
+    def __str__(self):
+        return self.uzytkownik
+
+class ZwyklyUzytkownik(models.Model):
+    uzytkownik = models.OneToOneField(
+        'Uzytkownik',
+        on_delete=models.CASCADE,
+        primary_key=True,
+    )
+
+    def __str__(self):
+        return self.uzytkownik

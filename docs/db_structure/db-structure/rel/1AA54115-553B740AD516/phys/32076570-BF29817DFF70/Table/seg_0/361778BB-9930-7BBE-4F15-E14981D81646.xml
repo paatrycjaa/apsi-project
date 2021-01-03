@@ -14,17 +14,7 @@
 <createdTime>2020-12-14 17:49:53 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 </ColumnProxy>
-<ColumnProxy name="wartosc" id="5F43CB40-E8D6-02E4-EA6E-2DC85E013B85">
-<createdBy>napiad</createdBy>
-<createdTime>2020-12-14 17:49:53 UTC</createdTime>
-<ownerDesignName>db-structure</ownerDesignName>
-</ColumnProxy>
 <ColumnProxy name="opis" id="87F56156-15B8-69CF-B573-811053998BFA">
-<createdBy>napiad</createdBy>
-<createdTime>2020-12-14 17:49:53 UTC</createdTime>
-<ownerDesignName>db-structure</ownerDesignName>
-</ColumnProxy>
-<ColumnProxy name="klucz" id="E1341392-58EF-DAD3-0B11-8F7421FE3958">
 <createdBy>napiad</createdBy>
 <createdTime>2020-12-14 17:49:53 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>

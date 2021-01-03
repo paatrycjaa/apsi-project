@@ -42,6 +42,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('imie', models.CharField(max_length=200)),
                 ('nazwisko', models.CharField(max_length=300)),
+                ('sso', models.CharField(max_length=9)),
                 ('user', models.OneToOneField(null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
@@ -69,8 +70,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('data', models.DateTimeField(verbose_name='%Y-%m-%d %H:%M:%S')),
-                ('ocena_liczbowa', models.IntegerField()),
-                ('opis', models.CharField(max_length=500)),
+                ('ocena_liczbowa', models.IntegerField(null=True)),
+                ('opis', models.CharField(null=True, max_length=500)),
                 ('pomysl', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.pomysl')),
                 ('uzytkownik', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.uzytkownik')),
             ],
@@ -88,4 +89,22 @@ class Migration(migrations.Migration):
             ],
         ),
 
+        migrations.CreateModel(
+            name='Administrator',
+            fields=[
+                ('uzytkownik', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='innovation_module.uzytkownik')),
+            ],
+        ),
+        migrations.CreateModel(
+            name='CzlonekKomisji',
+            fields=[
+                ('uzytkownik', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='innovation_module.uzytkownik')),
+            ],
+        ),
+        migrations.CreateModel(
+            name='ZwyklyUzytkownik',
+            fields=[
+                ('uzytkownik', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='innovation_module.uzytkownik')),
+            ],
+        ),
     ]
