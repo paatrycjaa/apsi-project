@@ -11,6 +11,7 @@ def make_migrations(apps, schema_editor):
     create_uzytkownik(apps)
     create_pomysl(apps)
     create_ocena(apps)
+    create_rodzaj_decyzji(apps)
 
 
 def create_status_pomyslu(apps):

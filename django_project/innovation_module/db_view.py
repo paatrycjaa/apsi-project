@@ -118,10 +118,12 @@ def add_decision(decision_json):
         # settings = models.UstawieniaOceniania.objects.get(ustawienia=settings_val)
         pomysl=models.Pomysl.objects.get(pk=data['id'])
         werdykt = models.RodzajDecyzji.objects.get(rodzaj_decyzji=data['werdykt'])
+        
 
         m = models.Decyzja(data=datetime.datetime.now(), uzasadnienie=data['description'], pomysl=pomysl,
                           werdykt=werdykt, uzytkownik=user)
         m.save()
+        
         statusp = models.StatusPomyslu.objects.get(status=data['werdykt'])
         pom = models.Pomysl.objects.get(id=data['id'])
         pom.status=statusp

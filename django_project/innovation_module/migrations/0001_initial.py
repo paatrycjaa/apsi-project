@@ -84,7 +84,7 @@ class Migration(migrations.Migration):
                 ('uzasadnienie', models.CharField(max_length=1000)),
                 ('pomysl', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.pomysl')),
                 ('uzytkownik', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.uzytkownik')),
-                ('rodzaj_decyzji', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.pomysl')),
+                ('werdykt', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.RodzajDecyzji')),
             ],
         ),
 
