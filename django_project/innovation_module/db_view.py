@@ -89,8 +89,6 @@ def add_opinion(opinion_json):
         data = json.loads(opinion_json)
 
         user = models.Uzytkownik.objects.first()
-        # status = models.StatusPomyslu.objects.get(status='Oczekujacy')
-        # settings = models.UstawieniaOceniania.objects.get(ustawienia=settings_val)
         pomysl=models.Pomysl.objects.get(pk=data['id'])
 
         m = models.Ocena(data=datetime.datetime.now(), ocena_liczbowa=data['rate'], opis=data['description'],pomysl=pomysl, uzytkownik=user)
@@ -124,6 +122,11 @@ def add_decision(decision_json):
         m = models.Decyzja(data=datetime.datetime.now(), uzasadnienie=data['description'], pomysl=pomysl,
                           werdykt=werdykt, uzytkownik=user)
         m.save()
+        statusp = models.StatusPomyslu.objects.get(status=data['werdykt'])
+        pom = models.Pomysl.objects.get(id=data['id'])
+        pom.status=statusp
+        pom.save()
+
 
         status = True
         

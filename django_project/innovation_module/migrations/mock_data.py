@@ -22,6 +22,15 @@ def create_status_pomyslu(apps):
         m = StatusPomyslu(status=status)
         m.save()
 
+def create_rodzaj_decyzji(apps):
+    RodzajDecyzji = apps.get_model(app, 'RodzajDecyzji')
+
+    rodzaje_decyzji = ['Zaakceptowany', 'Odrzucony', 'Prosba o uzupelnienie', 'Odlozony']
+
+    for rodzaj_decyzji in rodzaje_decyzji:
+        m = RodzajDecyzji(rodzaj_decyzji=rodzaj_decyzji)
+        m.save()
+
 
 def create_ustawienia_oceniania(apps):
     UstawieniaOceniania = apps.get_model(app, 'UstawieniaOceniania')
