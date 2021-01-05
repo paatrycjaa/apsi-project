@@ -76,7 +76,7 @@ class Decyzja(models.Model):
         on_delete=models.CASCADE,
     )
     uzytkownik = models.ForeignKey(
-        'Uzytkownik',
+        'CzlonekKomisji',
         on_delete=models.CASCADE,
     )
     werdykt=models.ForeignKey(

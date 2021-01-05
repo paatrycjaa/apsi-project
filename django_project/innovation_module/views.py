@@ -62,7 +62,7 @@ def ajax(request, ajax_request, object_id=None):
         return HttpResponse(opinion.add_opinion(body_unicode, request.user),content_type='application/json')
     if ajax_request == 'submit_decision':
         body_unicode = request.body.decode('utf-8')
-        return HttpResponse(decision.add_decision(body_unicode),content_type='application/json')
+        return HttpResponse(decision.add_decision(body_unicode, request.user),content_type='application/json')
     if ajax_request == 'edit_opinion':
         return ajax_edit_opinion(request, int(json.loads(request.body)['opinion_id']))
     if ajax_request == 'filtered_ideas':
