@@ -11,6 +11,10 @@ var app = angular.module('app', [
     'appThreadsListController',
     'appPostsListController',
     'appPostsListService',
+    'appThreadAdditionController',
+    'appThreadAdditionService',
+    'appPostAdditionController',
+    'appPostAdditionService',
     'appUtils',
     'app'
 ]);

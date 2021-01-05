@@ -1,16 +1,12 @@
 angular.module('appPostsListController', [])
-  .controller('postsListController', ['$scope', 'postsListService',
-      
-  
-  
-  
-  function($scope, postsListService) {
+  .controller('postsListController', ['$scope', 'postsListService', '$window', '$interval',  
+  function($scope, postsListService, $window, $interval) {
         
         $scope.posts = [];
 
-        $scope.addPost=function(){
-          id=$scope.thread_id
-          window.location.href = `/add-post/${id}/`; 
+        $scope.addPost=function(id){
+          console.log(id)
+          $window.location.href = `/add-post/${id}/`; 
         }
 
 

@@ -38,7 +38,10 @@ def threads(request):
 
 @login_required
 def add_post(request, thread_id):
-    return render(request, 'app/components/add-posts/addPosts.html')
+    context = {
+        'thread_id' : thread_id
+    }
+    return render(request, 'app/components/add-posts/addPosts.html', context)
 
 @login_required
 def add_thread(request):
@@ -79,6 +82,13 @@ def ajax(request, ajax_request, object_id=None):
         return HttpResponse(forum.get_thread_json(object_id), content_type='application/json')
     if ajax_request == 'all_posts' :
         return HttpResponse(forum.get_posts_json(object_id), content_type='application/json')
+    if ajax_request == 'submit_thread' :
+        body_unicode = request.body.decode('utf-8')
+        print(body_unicode)
+        return HttpResponse(forum.add_thread(body_unicode, request.user),content_type='application/json')
+    if ajax_request == 'submit_post' :
+        body_unicode = request.body.decode('utf-8')
+        return HttpResponse(forum.add_post(body_unicode, request.user),content_type='application/json')
     return HttpResponseNotFound('Cannot handle ajax request')
 
 def ajax_get_all_opinions(request, idea_id):
