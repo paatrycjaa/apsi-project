@@ -15,12 +15,12 @@ def get_filtered_ideas_json(stat):
 def get_filtered_ideas(stat):
     return models.Pomysl.objects.filter(status=stat)
 
-def add_decision(decision_json):
+def add_decision(decision_json, user):
 
     try:
         data = json.loads(decision_json)
 
-        user = models.Uzytkownik.objects.first()
+        user = models.CzlonekKomisji.objects.get(decyzja=user.id)
         pomysl=models.Pomysl.objects.get(pk=data['id'])
         werdykt = models.RodzajDecyzji.objects.get(rodzaj_decyzji=data['werdykt'])
         
