@@ -1,6 +1,6 @@
 angular.module('appPostsListController', [])
   .controller('postsListController', ['$scope', 'postsListService', '$window', '$interval',  
-  function($scope, postsListService, $window, $interval) {
+  function($scope, postsListService, $window) {
         
         $scope.posts = [];
 
