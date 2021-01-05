@@ -12,7 +12,7 @@ def home(request):
 @login_required
 def ideas(request):
     return render(request, 'app/components/ideas-list/ideasList.html')
-
+@login_required
 def ideasfiltered(request):
     return render(request,'app/components/ideas-filtered/ideasFiltered.html')
 
@@ -31,18 +31,13 @@ def opinions(request, idea_id):
 def add_opinion(request, idea_id):    
     context = opinion.get_add_opinion_json(idea_id)
     return render(request, 'app/components/opinion-addition/opinionAddition.html', context)
-
+@login_required
 def add_decision(request, idea_id):
     context = {
         'idea_id': idea_id,
     }
     return render(request, 'app/components/decision-addition/decisionAddition.html', context)
 
-def ajax(request, ajax_request, idea_id=None):
-    if ajax_request == 'all_ideas':        
-        return HttpResponse(db_view.get_ideas_json(), content_type='application/json')
-    if ajax_request == 'filtered_ideas':        
-        return HttpResponse(decision.get_filtered_ideas_json('Oczekujący'), content_type='application/json')
 @login_required
 @decorators.users_opinion
 def edit_opinion(request, opinion_id):    
