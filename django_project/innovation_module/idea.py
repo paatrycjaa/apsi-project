@@ -99,13 +99,31 @@ def update_average_rating(idea_id, new_rating, old_rating = None):
 def get_edit_idea_json(idea_id):
     idea = get_idea(idea_id).first()
     print(idea_id)
+    settings=idea.ustawienia_oceniania
+    # if settings.ustawienia=='num_text':
+    #     num=True
+    #     text=True
+    # elif settings.ustawienia=='num_only':
+    #     num=True
+    #     text=False
+    # elif settings.ustawienia=='text_only':
+    #     num=False
+    #     text=True
+    # else:
+    #     num=False
+    #     text=False
+    
     data = {
         'idea_id': idea_id,
         'topic': idea.tematyka,
         'description': idea.opis,
         'benefits': idea.planowane_korzysci,
         'costs': idea.planowane_koszty,
-        'settings': idea.ustawienia_oceniania,    #look at value
+        #'settings':idea.ustawienia_oceniania
+        'num_rating': 'num' in settings.ustawienia,
+        'text_rating': 'text' in settings.ustawienia
+        # 'num_rating': num,
+        # 'text_rating': text 
         }    
 
     return data
@@ -127,21 +145,26 @@ def edit_idea(idea_json,user):
         m.opis=data['description']
         m.planowane_korzysci=data['benefits']
         m.planowane_koszty=data['costs']
-        m.ustawienia_oceniania=data['settings']
                
-        # if data['num_rating'] and data['text_rating']:
-        #     settings_val = 'num_text'
-        # elif data['num_rating']:
-        #     settings_val = 'num_only'
-        # elif data['text_rating']:
-        #     settings_val = 'text_only'
-        # else:
-        #     settings_val = 'brak'
+        if data['num_rating'] and data['text_rating']:
+            settings_val = 'num_text'
+        elif data['num_rating']:
+            settings_val = 'num_only'
+        elif data['text_rating']:
+            settings_val = 'text_only'
+        else:
+            settings_val = 'brak'
        
 
-        # user = models.Uzytkownik.objects.get(user_id=user.id)
-        # status = models.StatusPomyslu.objects.get(status='Oczekujacy')
-        # settings = models.UstawieniaOceniania.objects.get(ustawienia=settings_val)
+        m.uzytkownik = models.Uzytkownik.objects.get(user_id=user.id)
+        m.status = models.StatusPomyslu.objects.get(status='Oczekujacy')
+        m.ustawienia_oceniania = models.UstawieniaOceniania.objects.get(ustawienia=settings_val)
+
+
+        # m = models.Pomysl(tematyka=data['topic'], opis=data['description'], planowane_korzysci=data['benefits'],
+        #                   planowane_koszty=data['costs'], uzytkownik=user, status=status, ustawienia_oceniania=settings,
+        #                   ocena_wazona=-1)
+
 
         m.save()
 
@@ -152,7 +175,7 @@ def edit_idea(idea_json,user):
 
         
     except Exception as e:
-        print('error occured when adding opinion')
+        print('error occured when editing data')
         if hasattr(e, 'message'):
             print(e.message)
         else:

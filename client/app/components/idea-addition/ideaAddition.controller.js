@@ -28,12 +28,10 @@ angular.module('appIdeaAdditionController', [])
               $scope.ideaModel.description = data.fields.opis  
               $scope.ideaModel.benefits =data.fields.planowane_korzysci
               $scope.ideaModel.costs =data.fields.planowane_koszty
-              //$scope.idea.attachement =data.fields.
-              //$scope.idea.num_rating = data.fields.
-              //$scope.idea.text_rating=  data.fields.
-              
- 
- 
+              $scope.ideaModel.attachement =data.fields.attachement
+              $scope.ideaModel.num_rating = data.fields.num_rating
+              $scope.ideaModel.text_rating=  data.fields.text_rating
+
             })
           }
 
@@ -46,6 +44,31 @@ angular.module('appIdeaAdditionController', [])
         $scope.submit = function() {
           const forms = document.getElementsByClassName('needs-validation');
           if (utils.isFormValid(forms)) {
+
+            callback = (response) => {            
+              console.log(response);
+              $scope.status = response.data.status;
+              $scope.reponse_received = true;
+              if ($scope.status === true) {
+                $timeout(() => { 
+                  window.location.href = "/ideas";
+                }, 2000);
+              }
+            };
+
+                    // opinion is edited
+          if($scope.ideaModel.idea_id){
+            ideaAdditionService.editIdea($scope.ideaModel, callback);
+          } else { // new opinion is added            
+            ideaAdditionService.submitIdea($scope.ideaModel, callback);
+          }
+          }
+      }
+  }
+]);
+
+
+
             // ideaAdditionService.submitIdea($scope.ideaModel,(response) => {            
             //   console.log(response)
             //   $scope.status = response.data.status
@@ -56,25 +79,3 @@ angular.module('appIdeaAdditionController', [])
             //     }, 2000);
             //   }
             // });
-
-            callback = (response) => {            
-              console.log(response);
-              $scope.status = response.data.status;
-              $scope.reponse_received = true;
-              if ($scope.status === true) {
-                $timeout(() => { 
-                  window.location.href = "/opinions/" + $scope.opinion.idea_id;
-                }, 2000);
-              }
-            };
-
-                    // opinion is edited
-          if($scope.ideaModel.idea_id){
-            ideaAdditionService.editIdea($scope.idea, callback);
-          } else { // new opinion is added            
-            ideaAdditionService.submitIdea($scope.idea, callback);
-          }
-          }
-      }
-  }
-]);
