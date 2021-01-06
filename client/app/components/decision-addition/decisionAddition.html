@@ -37,9 +37,9 @@
             </tr>
             <tr id="idea-table-row">
                 <th>Załączniki:</th>
-                <td>{{ idea.fields.planowane_koszty }}</td>
+                <td>{{ idea.fields.zalaczniki }}</td>
                 <th>Linki:</th>
-                <td>{{ idea.fields.planowane_koszty }}</td>
+                <td>{{ idea.fields.linki }}</td>
             </tr>
             <tr id="idea-table-row">
                 <th>Ocena ważona:</th>
@@ -55,27 +55,7 @@
         {% endverbatim %}
     </div>
 
-    <div style="clear: both;"></div>
-    Oceny użytkowników:
-    <div class="opinion-block" ng-repeat="opinion in opinions | filter:searchStr">
-        {% verbatim %}
-        <table class="opinion-table">
-            <tr>
-                <th style="width: 25%">Data:</th>
-                <td>{{ opinion.fields.data }}</td>
-            </tr>
-            <tr>
-                <th>Ocena:</th>
-                <td>{{ opinion.fields.ocena_liczbowa }}</td>
-            </tr>
-            <tr>
-                <th>Opis:</th>
-                <td>{{ opinion.fields.opis }}</td>
-            </tr>
-        </table>
-        {% endverbatim %}
-    </div>
-
+    
     <form class="form-decision">
         <div class="form-group" ng-show="settings.includes('text')"></div>
             Decyzja:<br>
@@ -99,6 +79,27 @@
             <p class="text-danger" ng-if="!status" style="font-size: x-large;">Wystąpił błąd podczas dodawania decyzji</p>   
         </div>
     </form>
+
+    <div style="clear: both;"></div>
+    Oceny użytkowników:
+    <div class="opinion-block" ng-repeat="opinion in opinions | filter:searchStr">
+        {% verbatim %}
+        <table class="opinion-table">
+            <tr>
+                <th style="width: 25%">Data:</th>
+                <td>{{ opinion.fields.data }}</td>
+            </tr>
+            <tr>
+                <th>Ocena:</th>
+                <td>{{ opinion.fields.ocena_liczbowa }}</td>
+            </tr>
+            <tr>
+                <th>Opis:</th>
+                <td>{{ opinion.fields.opis }}</td>
+            </tr>
+        </table>
+        {% endverbatim %}
+    </div>
 
 
   </div>
