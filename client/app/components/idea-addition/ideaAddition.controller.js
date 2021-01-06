@@ -23,14 +23,35 @@ angular.module('appIdeaAdditionController', [])
           if(idea_id){
             ideaAdditionService.getIdeaById(idea_id, function(response) {
               console.log(response.data)
-              data = response.data[0]  
+              data = response.data[0] 
+              settings=data.fields.ustawienia_oceniania
+              if(settings=='num_text'){
+                num=true
+                text=true
+              }
+              else if(settings.ustawienia=='num_only'){
+                num=true
+                text=false
+              }
+              else if(settings=='text_only'){
+                num=false
+                text=true
+                }
+              else{
+                num=false
+                text=false
+              }
+
+
               $scope.ideaModel.topic= data.fields.tematyka
               $scope.ideaModel.description = data.fields.opis  
               $scope.ideaModel.benefits =data.fields.planowane_korzysci
               $scope.ideaModel.costs =data.fields.planowane_koszty
               $scope.ideaModel.attachement =data.fields.attachement
-              $scope.ideaModel.num_rating = data.fields.num_rating
-              $scope.ideaModel.text_rating=  data.fields.text_rating
+              $scope.ideaModel.num_rating = num
+              $scope.ideaModel.text_rating = text
+
+              console.log(num, text)
 
             })
           }

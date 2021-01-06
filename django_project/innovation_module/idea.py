@@ -100,18 +100,19 @@ def get_edit_idea_json(idea_id):
     idea = get_idea(idea_id).first()
     print(idea_id)
     settings=idea.ustawienia_oceniania
-    # if settings.ustawienia=='num_text':
-    #     num=True
-    #     text=True
-    # elif settings.ustawienia=='num_only':
-    #     num=True
-    #     text=False
-    # elif settings.ustawienia=='text_only':
-    #     num=False
-    #     text=True
-    # else:
-    #     num=False
-    #     text=False
+    print(settings.ustawienia)
+    if settings.ustawienia=='num_text':
+        num=True
+        text=True
+    elif settings.ustawienia=='num_only':
+        num=True
+        text=False
+    elif settings.ustawienia=='text_only':
+        num=False
+        text=True
+    else:
+        num=False
+        text=False
     
     data = {
         'idea_id': idea_id,
@@ -126,6 +127,8 @@ def get_edit_idea_json(idea_id):
         # 'text_rating': text 
         }    
 
+    print('num' in settings.ustawienia)
+    print('text' in settings.ustawienia)
     return data
 
 
@@ -154,7 +157,8 @@ def edit_idea(idea_json,user):
             settings_val = 'text_only'
         else:
             settings_val = 'brak'
-       
+
+        print(settings_val)
 
         m.uzytkownik = models.Uzytkownik.objects.get(user_id=user.id)
         m.status = models.StatusPomyslu.objects.get(status='Oczekujacy')
