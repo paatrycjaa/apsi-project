@@ -2,9 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound
 from django.contrib.auth.decorators import login_required
 
+
 import json
 
-from . import idea, opinion, decorators, decision
+from . import idea, opinion, decorators, forum, decision
 
 def home(request):
     return render(request, 'app/static/home.html')
@@ -26,6 +27,28 @@ def opinions(request, idea_id):
         'idea_id': idea_id
     }
     return render(request, 'app/components/opinions-list/opinionsList.html', context)
+
+@login_required
+def posts(request, thread_id):
+    context = {
+        'thread_id' : thread_id
+    }
+    return render(request, 'app/components/forum-posts/forumPosts.html', context)
+
+@login_required
+def threads(request):
+    return render(request, 'app/components/forum-threads/forumThreads.html')
+
+@login_required
+def add_post(request, thread_id):
+    context = {
+        'thread_id' : thread_id
+    }
+    return render(request, 'app/components/add-posts/addPosts.html', context)
+
+@login_required
+def add_thread(request):
+    return render(request, 'app/components/add-threads/addThreads.html')
 
 @login_required
 def add_opinion(request, idea_id):    
@@ -67,6 +90,19 @@ def ajax(request, ajax_request, object_id=None):
         return ajax_edit_opinion(request, int(json.loads(request.body)['opinion_id']))
     if ajax_request == 'filtered_ideas':
         return HttpResponse(decision.get_filtered_ideas_json('Oczekujący'), content_type='application/json')
+    if ajax_request == 'all_threads' :
+        return HttpResponse(forum.get_threads_json(), content_type='application/json')
+    if ajax_request == 'get_thread' :
+        return HttpResponse(forum.get_thread_json(object_id), content_type='application/json')
+    if ajax_request == 'all_posts' :
+        return HttpResponse(forum.get_posts_json(object_id), content_type='application/json')
+    if ajax_request == 'submit_thread' :
+        body_unicode = request.body.decode('utf-8')
+        print(body_unicode)
+        return HttpResponse(forum.add_thread(body_unicode, request.user),content_type='application/json')
+    if ajax_request == 'submit_post' :
+        body_unicode = request.body.decode('utf-8')
+        return HttpResponse(forum.add_post(body_unicode, request.user),content_type='application/json')
     return HttpResponseNotFound('Cannot handle ajax request')
 
 def ajax_get_all_opinions(request, idea_id):
