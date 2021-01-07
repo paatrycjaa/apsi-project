@@ -7,5 +7,14 @@ var app = angular.module('app', [
     'appOpinionsListService',
     'appOpinionAdditionController',
     'appOpinionAdditionService',
+    'appThreadsListService',
+    'appThreadsListController',
+    'appPostsListController',
+    'appPostsListService',
+    'appThreadAdditionController',
+    'appThreadAdditionService',
+    'appPostAdditionController',
+    'appPostAdditionService',
     'appUtils',
+    'app'
 ]);

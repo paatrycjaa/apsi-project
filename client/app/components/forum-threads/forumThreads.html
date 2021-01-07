@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %} Forum threads {% endblock %}
+
+{% block content %}
+
+<h1>Forum inspiracji</h1>
+
+<div ng-controller="threadsListController" ng-init="init()">
+    <div style="display: inline-block">
+        <form role="form">
+            <input type="text" class="form-control" placeholder="Filter..." ng-model="searchStr">
+        </form>
+    </div>
+    <div style="float: right;">
+        <a href="{% url 'add-thread' %}">
+            <button type="button" class="btn btn-primary">Dodaj nowy wątek</button>
+        </a>
+    </div>
+
+    <div ng-repeat="thread in threads | filter:searchStr">
+        <div class="idea-block">
+            {% verbatim %}
+            <table class="table">
+                <tr>
+                    <th style="width: 25%">Temat:</th>
+                    <td>{{ thread.fields.temat }}</td>
+                </tr>
+                <tr>
+                    <th>Data dodania:</th>
+                    <td>{{ thread.fields.data_dodania }}</td>
+                </tr>
+                <tr>
+                    <th>Data ostatniego posta:</th>
+                    <td>{{ thread.fields.data_ostatniego_posta }}</td>
+                </tr>
+            </table>
+        </div>
+        <div style="float: right;">
+            <button type="button" class="btn btn-primary"  ng-click="openThreadPosts(thread.pk)" >Przegladaj</button>
+        </div>
+        <div style="clear: both;"></div>
+        {% endverbatim %}
+    </div>
+</div>
+
+{% endblock %}
