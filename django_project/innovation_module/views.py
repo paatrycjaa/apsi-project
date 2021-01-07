@@ -64,7 +64,10 @@ def ajax(request, ajax_request, object_id=None):
         return HttpResponse(idea.get_ideas_json(), content_type='application/json')
     if ajax_request == 'submit_idea':
         body_unicode = request.body.decode('utf-8')
-        return HttpResponse(idea.add_idea(body_unicode, request.user),content_type='application/json')        
+        return HttpResponse(idea.add_idea(body_unicode, request.user),content_type='application/json')   
+    if ajax_request == 'edit_idea':
+        body_unicode = request.body.decode('utf-8')
+        return HttpResponse(idea.edit_idea(body_unicode), content_type='application/json')     
     if ajax_request == 'get_idea':
         return HttpResponse(idea.get_idea_json(object_id), content_type='application/json')
     if ajax_request == 'all_opinions':
