@@ -8,7 +8,7 @@ from . import models
 
 
 def users_opinion(function):
-    """ Decorator for restricting access to not own opinion.
+    """ Decorator for restricting edit access to not user's opinion
     """
     @wraps(function)
     def wrap(request, opinion_id, *args, **kwargs):
@@ -16,6 +16,20 @@ def users_opinion(function):
         uzytkownik = models.Uzytkownik.objects.get(user=request.user)
         if uzytkownik == opinion.uzytkownik:
             return function(request, opinion_id, *args, **kwargs)
+        else:
+            raise PermissionDenied
+
+    return wrap
+
+def users_idea(function):
+    """ Decorator for restricting edit acces to not user's idea
+    """
+    @wraps(function)
+    def wrap(request, idea_id, *args, **kwargs):
+        idea = models.Pomysl.objects.get(pk=idea_id)
+        uzytkownik = models.Uzytkownik.objects.get(user=request.user)
+        if uzytkownik == idea.uzytkownik:
+            return function(request, idea_id, *args, **kwargs)
         else:
             raise PermissionDenied
 
