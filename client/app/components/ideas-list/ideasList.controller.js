@@ -23,8 +23,8 @@ angular.module('appIdeasListController', [])
           callback = (response) => {            
             console.log(response);
         };
-
           ideasListService.editIdea({idea_id: id}, callback)
+          $window.location.reload();
         }
       }
 ]);
