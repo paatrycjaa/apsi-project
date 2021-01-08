@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %} Innovation ideas {% endblock %}
+
+{% block content %}
+<h1>Pomysły użytkownika {{user.first_name}}</h1>
+
+<div ng-controller="myIdeasListController" ng-init="init()">  
+    <div style="display: inline-block">
+        <form role="form">
+            <input type="text" class="form-control" placeholder="Filter..." ng-model="searchStr">
+        </form>
+    </div>
+    <div style="float: right;">
+        <a href="{% url 'add_idea' %}">
+            <button type="button" class="btn btn-primary">Dodaj nowy pomysł</button>
+        </a>
+    </div>
+
+    <div ng-repeat="idea in user_ideas | filter:searchStr">
+        <div class="idea-block">
+            {% verbatim %}
+            <table class="table">
+                <tr>
+                    <th style="width: 25%">Temat:</th>
+                    <td>{{ idea.fields.tematyka }}</td>
+                </tr>
+                <tr>
+                    <th>Opis:</th>
+                    <td>{{ idea.fields.opis }}</td>
+                </tr>
+                <tr>
+                    <th>Planowane korzyści:</th>
+                    <td>{{ idea.fields.planowane_korzysci }}</td>
+                </tr>
+                <tr>
+                    <th>Planowane koszty:</th>
+                    <td>{{ idea.fields.planowane_koszty }}</td>
+                </tr>
+                <tr>
+                    <th>Ocena ważona:</th>
+                    <td>{{ idea.fields.ocena_wazona }}</td>
+                </tr>
+            </table>
+        </div>
+        {% endverbatim %}
+        <div class="btn-tollbar" style="float: right;">
+            {% if idea.fields.status%}
+            {% verbatim %}
+            <button type="button" class="btn btn-info">Edytuj</button>
+            {% endverbatim %}
+            {% endif %}
+
+            {% verbatim %}
+            <button type="button" class="btn btn-primary" ng-click="openIdeaOpinions(idea.pk)">Przegladaj</button>
+            {% endverbatim %}
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</div>
+{% endblock %}

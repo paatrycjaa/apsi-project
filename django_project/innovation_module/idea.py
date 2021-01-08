@@ -91,8 +91,8 @@ def edit_idea(idea_json):
 def get_ideas(user = None):
     if user is None:
         return Pomysl.objects.all()
-    
-    return Pomysl.objects.get(user=user)
+    user = models.Uzytkownik.objects.get(user_id=user.id)
+    return Pomysl.objects.filter(uzytkownik=user)
 
 def get_idea(idea_id):
     return Pomysl.objects.filter(

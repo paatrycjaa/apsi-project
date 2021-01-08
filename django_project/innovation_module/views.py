@@ -15,6 +15,10 @@ def ideas(request):
     return render(request, 'app/components/ideas-list/ideasList.html')
 
 @login_required
+def my_ideas(request):
+    return render(request, 'app/components/my-ideas-list/myIdeasList.html')
+
+@login_required
 def add_idea(request):
     return render(request, 'app/components/idea-addition/ideaAddition.html')
 
@@ -62,6 +66,8 @@ def edit_opinion(request, opinion_id):
 def ajax(request, ajax_request, object_id=None):
     if ajax_request == 'all_ideas':        
         return HttpResponse(idea.get_ideas_json(), content_type='application/json')
+    if ajax_request == 'user_ideas':        
+        return HttpResponse(idea.get_ideas_json(request.user), content_type='application/json')
     if ajax_request == 'submit_idea':
         body_unicode = request.body.decode('utf-8')
         return HttpResponse(idea.add_idea(body_unicode, request.user),content_type='application/json')   

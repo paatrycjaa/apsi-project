@@ -3,6 +3,8 @@ var app = angular.module('app', [
     'appIdeaAdditionService',
     'appIdeasListController',
     'appIdeasListService',
+    'appMyIdeasListController',
+    'appMyIdeasListService',
     'appOpinionsListController',
     'appOpinionsListService',
     'appOpinionAdditionController',
