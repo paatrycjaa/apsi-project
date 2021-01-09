@@ -15,6 +15,8 @@ urlpatterns = [
     path('add-opinion/<int:idea_id>/', views.add_opinion, name='add_opinion'),
     path('edit-opinion/<int:opinion_id>/', views.edit_opinion, name='edit_opinion'),
     path('opinions/<int:idea_id>/', views.opinions),
+    path('ideasfiltered', views.ideasfiltered, name='ideasfiltered'),
+    path('add_decision/<int:idea_id>/', views.add_decision, name='add_decision'),
     path('posts/<int:thread_id>/', views.posts),
     path('threads', views.threads, name = 'threads'),
     path('add-thread', views.add_thread, name='add-thread'),

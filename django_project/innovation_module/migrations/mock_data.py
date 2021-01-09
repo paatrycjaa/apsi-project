@@ -13,6 +13,7 @@ def make_migrations(apps, schema_editor):
     create_uzytkownik(apps)
     create_pomysl(apps)
     create_ocena(apps)
+    create_rodzaj_decyzji(apps)
     create_watek(apps)
     create_post(apps)
     add_role_to_uzytkownik(apps)
@@ -25,6 +26,15 @@ def create_status_pomyslu(apps):
 
     for status in statuses:
         m = StatusPomyslu(status=status)
+        m.save()
+
+def create_rodzaj_decyzji(apps):
+    RodzajDecyzji = apps.get_model(app, 'RodzajDecyzji')
+
+    rodzaje_decyzji = ['Zaakceptowany', 'Odrzucony', 'Prosba o uzupelnienie', 'Odlozony']
+
+    for rodzaj_decyzji in rodzaje_decyzji:
+        m = RodzajDecyzji(rodzaj_decyzji=rodzaj_decyzji)
         m.save()
 
 
