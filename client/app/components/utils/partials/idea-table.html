@@ -1,0 +1,30 @@
+<table class="table">
+    <tr>
+        <th style="width: 25%">Temat:</th>
+        <td>{{ idea.tematyka }}</td>
+    </tr>
+    <tr>
+        <th>Kategoria:</th>
+        <td>{{ idea.slowo_kluczowe_id }}</td>
+    </tr>
+    <tr>
+        <th>Opis:</th>
+        <td>{{ idea.opis }}</td>
+    </tr>
+    <tr>
+        <th>Planowane korzyści:</th>
+        <td>{{ idea.planowane_korzysci }}</td>
+    </tr>
+    <tr>
+        <th>Planowane koszty:</th>
+        <td>{{ idea.planowane_koszty }}</td>
+    </tr>
+    <tr ng-if="idea.ocena_wazona!=-1">
+        <th>Ocena ważona:</th>
+        <td>{{ idea.ocena_wazona }}</td>
+    </tr>
+    <tr ng-if="showAttachmentsCount">
+        <th>Załączniki:</th>
+        <td>{{ idea.attachment_count }}</td>
+    </tr>
+</table>

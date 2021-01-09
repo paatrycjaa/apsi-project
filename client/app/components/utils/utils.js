@@ -12,5 +12,6 @@ angular.module('appUtils', [])
         return isValid;
       }
     }
-  );
+);
+  
   

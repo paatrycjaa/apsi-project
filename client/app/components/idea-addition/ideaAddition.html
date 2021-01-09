@@ -13,8 +13,16 @@
 
 <form class="needs-validation" name = "ideaForm" novalidate>
     <div class="form-group">
-        <label for="topic">Temat</label>          
+        <label for="topic">Temat</label>        
         <input name="topic" class="form-control" type="text" ng-model="ideaModel.topic" required>
+        <div class="invalid-feedback">
+            To pole jest wymagane!
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="category">Kategoria</label>
+        <select name="category" class="form-control" ng-model="ideaModel.category" ng-options="x for x in keywords"></select>        
         <div class="invalid-feedback">
             To pole jest wymagane!
         </div>

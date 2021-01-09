@@ -7,6 +7,10 @@ import json
 
 from . import idea, opinion, decorators, forum, decision
 
+_ajax_requests = {
+    'get_keywords': lambda request: idea.get_keywords()
+}
+
 def home(request):
     return render(request, 'app/static/home.html')
 
@@ -82,9 +86,9 @@ def edit_idea(request, idea_id):
 @login_required
 def ajax(request, ajax_request, object_id=None):
     if ajax_request == 'all_ideas':        
-        return HttpResponse(idea.get_ideas_json(), content_type='application/json')
+        return HttpResponse(idea.get_ideas_json(request.user, False), content_type='application/json')
     if ajax_request == 'user_ideas':        
-        return HttpResponse(idea.get_ideas_json(request.user), content_type='application/json')
+        return HttpResponse(idea.get_ideas_json(request.user, True), content_type='application/json')
     if ajax_request == 'submit_idea':
         body_unicode = request.body.decode('utf-8')
         return HttpResponse(idea.add_idea(body_unicode, request.user),content_type='application/json')   
@@ -123,7 +127,10 @@ def ajax(request, ajax_request, object_id=None):
         return HttpResponse(opinion.edit_opinion(body_unicode),content_type='application/json')
     if ajax_request == 'edit_idea':
         body_unicode = request.body.decode('utf-8')
-        return HttpResponse(idea.edit_idea(body_unicode, request.user),content_type='application/json')         
+        return HttpResponse(idea.edit_idea(body_unicode, request.user),content_type='application/json')
+
+    if ajax_request == 'get_keywords':
+        return HttpResponse(idea.get_keywords(),content_type='application/json')
 
     return HttpResponseNotFound('Cannot handle ajax request')
 
@@ -134,3 +141,5 @@ def ajax_get_all_opinions(request, idea_id):
 def ajax_edit_opinion(request, opinion_id):
     body_unicode = request.body.decode('utf-8')
     return HttpResponse(opinion.edit_opinion(body_unicode), content_type='application/json')
+
+

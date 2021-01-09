@@ -8,7 +8,7 @@ angular.module('appMyIdeasListController', [])
         $scope.init = function() {
           myIdeasListService.getUserIdeas(function(response) {
             for (idea of response.data) {
-              if (idea.fields.status == 'Edycja') {
+              if (idea.status == 'Edycja') {
                 $scope.ideas_to_edit.push(idea);
               } else {
                 $scope.ideas_rest.push(idea);
@@ -32,4 +32,14 @@ angular.module('appMyIdeasListController', [])
           console.log('Redirect to idea edit');
         }
       }
-]);
+])
+.directive('myIdeaTable', function(){
+  return {
+    restrict: 'E',
+    scope: {
+      idea: '=',
+      showAttachmentsCount: '='
+    },
+    templateUrl: '/app/client/app/components/utils/partials/idea-table.html'
+  }
+});

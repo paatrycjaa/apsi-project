@@ -24,7 +24,7 @@ angular.module('appOpinionsListController', [])
             console.log(id)
             opinionsListService.getIdeaById($scope.idea_id, function(response) {
               $scope.idea = response.data[0]
-              $scope.idea.has_review = $scope.idea.fields.ocena_wazona != -1
+              $scope.idea.has_review = $scope.idea.ocena_wazona != -1
 
               console.log($scope.idea)
             });
@@ -39,3 +39,4 @@ angular.module('appOpinionsListController', [])
         }
       }
 ]);
+

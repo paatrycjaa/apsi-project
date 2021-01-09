@@ -8,23 +8,23 @@
             {% verbatim %}
             <tr id="idea-table-topic">
                 <th style="width: 25%;">Temat:</th>
-                <td>{{ idea.fields.tematyka }}</td>
+                <td>{{ idea.tematyka }}</td>
             </tr>
             <tr id="idea-table-row">
                 <th>Opis:</th>
-                <td>{{ idea.fields.opis }}</td>
+                <td>{{ idea.opis }}</td>
             </tr>
             <tr id="idea-table-row">
                 <th>Planowane korzyści:</th>
-                <td>{{ idea.fields.planowane_korzysci }}</td>
+                <td>{{ idea.planowane_korzysci }}</td>
             </tr>
             <tr id="idea-table-row">
                 <th>Planowane koszty:</th>
-                <td>{{ idea.fields.planowane_koszty }}</td>
+                <td>{{ idea.planowane_koszty }}</td>
             </tr>
             <tr id="idea-table-row" ng-if="idea.has_review">
                 <th>Ocena ważona:</th>
-                <td>{{ idea.fields.ocena_wazona }}</td>
+                <td>{{ idea.ocena_wazona }}</td>
             {% endverbatim %}
             </tr>
         </table>

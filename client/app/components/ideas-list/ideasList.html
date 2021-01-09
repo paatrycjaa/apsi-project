@@ -16,50 +16,27 @@
         </a>
     </div>
 
-    <div ng-repeat="idea in ideas | filter:searchStr">
-        <div ng-if='ideaVisible(idea)'>
+    <div ng-repeat="idea in ideas | filter:searchStr">        
             <div class="idea-block">
                 {% verbatim %}
-                <table class="table">
-                    <tr>
-                        <th style="width: 25%">Temat:</th>
-                        <td>{{ idea.fields.tematyka }}</td>
-                    </tr>
-                    <tr>
-                        <th>Opis:</th>
-                        <td>{{ idea.fields.opis }}</td>
-                    </tr>
-                    <tr>
-                        <th>Planowane korzyści:</th>
-                        <td>{{ idea.fields.planowane_korzysci }}</td>
-                    </tr>
-                    <tr>
-                        <th>Planowane koszty:</th>
-                        <td>{{ idea.fields.planowane_koszty }}</td>
-                    </tr>
-                    <tr>
-                        <th>Ocena ważona:</th>
-                        <td>{{ idea.fields.ocena_wazona }}</td>
-                    </tr>
-                </table>
+                <idea-table idea="idea" show-attachments-count="true"/>
             </div>
             {% endverbatim %}
             <div class="btn-tollbar" style="float: right;">
                 {% if user.is_superuser %}
                 {% verbatim %}
-                <button type="button" class="btn btn-danger" ng-click="blockIdea(idea.pk)">Zablokuj</button>
+                <button type="button" class="btn btn-danger" ng-click="blockIdea(idea.id)">Zablokuj</button>
                 {% endverbatim %}
                 {% endif %}
     
                 {% verbatim %}
-                <button type="button" class="btn btn-primary" ng-click="openIdeaOpinions(idea.pk)">Przegladaj</button>
+                <button type="button" class="btn btn-primary" ng-click="openIdeaOpinions(idea.id)">Przegladaj</button>
                 {% endverbatim %}
             </div>
-        </div>
         <div style="float: right;">
-            <button type="button" class="btn btn-primary" ng-click="editIdea(idea.pk)">Edytuj</button>
+            <button type="button" class="btn btn-primary" ng-click="editIdea(idea.id)">Edytuj</button>
         </div>
         <div style="clear: both;"></div>
-    </div>
+    
 </div>
 {% endblock %}

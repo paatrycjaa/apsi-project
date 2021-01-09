@@ -11,5 +11,8 @@ angular.module('appIdeaAdditionService', [])
         var url = '/ajax/edit_idea/'
         return $http.post(url, JSON.stringify(data)).then(callback)
       }
+      this.getKeywords = function(callback) {
+        return $http.get('/ajax/get_keywords').then(callback)
+      }
     }
   );

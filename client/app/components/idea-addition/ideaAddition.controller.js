@@ -5,13 +5,16 @@ angular.module('appIdeaAdditionController', [])
 
         $scope.ideaModel = {
           topic : '',
+          category: '',
           description : '',
           benefits : '',
           costs : '',
           attachement : '',
           num_rating : true,
           text_rating : true
-        }        
+        }
+        
+        $scope.keywords = []
                 
         $scope.init = function(idea_id) 
         {
@@ -24,18 +27,23 @@ angular.module('appIdeaAdditionController', [])
             ideaAdditionService.getIdeaById(idea_id, function(response) {
               
               data = response.data[0] 
-              settings=data.fields.ustawienia_oceniania
+              settings=data.ustawienia_oceniania
 
-              $scope.ideaModel.topic= data.fields.tematyka
-              $scope.ideaModel.description = data.fields.opis  
-              $scope.ideaModel.benefits =data.fields.planowane_korzysci
-              $scope.ideaModel.costs =data.fields.planowane_koszty
-              $scope.ideaModel.attachement =data.fields.attachement
+              $scope.ideaModel.topic= data.tematyka
+              $scope.ideaModel.description = data.opis  
+              $scope.ideaModel.benefits =data.planowane_korzysci
+              $scope.ideaModel.costs =data.planowane_koszty
+              $scope.ideaModel.attachement =data.attachement
+              $scope.ideaModel.category =data.slowakluczowe_id
               $scope.ideaModel.num_rating =  settings.includes('num')
               $scope.ideaModel.text_rating =  settings.includes('text')
 
             })
           }
+
+          ideaAdditionService.getKeywords(function(response){
+            $scope.keywords = response.data            
+          })
         }
 
         $scope.reponse_received = false
