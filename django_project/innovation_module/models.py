@@ -65,7 +65,31 @@ class Ocena(models.Model):
     )
 
     def __str__(self):
-        return self.ocena_liczbowa
+        return "Ocena id: {}, liczbowa: {}, opis: {}, uzytkownik: {}".format(
+            self.pk, self.ocena_liczbowa, self.opis, self.uzytkownik)
+
+class Decyzja(models.Model):
+    data=models.DateTimeField('%Y-%m-%d %H:%M:%S')
+    uzasadnienie=models.CharField(max_length=1000)
+    pomysl = models.ForeignKey(
+        'Pomysl',
+        on_delete=models.CASCADE,
+    )
+    uzytkownik = models.ForeignKey(
+        'CzlonekKomisji',
+        on_delete=models.CASCADE,
+    )
+    werdykt=models.ForeignKey(
+        'RodzajDecyzji',
+        on_delete=models.CASCADE,
+    )
+
+
+class RodzajDecyzji(models.Model):
+    rodzaj_decyzji = models.CharField(max_length=100, primary_key=True)
+
+    def __str__(self):
+        return self.rodzaj_decyzji
 
 class CzlonekKomisji(models.Model):
     uzytkownik = models.OneToOneField(
@@ -96,3 +120,32 @@ class ZwyklyUzytkownik(models.Model):
 
     def __str__(self):
         return self.uzytkownik
+
+
+class Watek(models.Model):
+    temat = models.CharField(max_length=200)
+    data_dodania = models.DateTimeField('%Y-%m-%d %H:%M:%S')
+    data_ostatniego_posta = models.DateTimeField('%Y-%m-%d %H:%M:%S', blank=True)
+
+    def __str__(self):
+        return self.temat + ' ' + self.data_dodania + ' ' + self.data_ostatniego_posta
+
+
+class Post(models.Model):
+    tytul = models.CharField(max_length=200)
+    tresc = models.TextField()
+    data_dodania = models.DateTimeField('%Y-%m-%d %H:%M:%S')
+
+    watek = models.ForeignKey(
+        'Watek',
+        on_delete=models.CASCADE,
+    )
+
+    uzytkownik = models.ForeignKey(
+        'Uzytkownik',
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        self.tytul + ': ' + self.tresc[:50] + '...'
+

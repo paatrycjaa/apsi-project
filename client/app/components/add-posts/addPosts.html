@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %} Add post {% endblock %}
+
+{% block content %}
+<h1>Dodaj post</h1>
+
+<div ng-controller="postAdditionController" ng-init="init({{thread_id}})">
+    {% verbatim %}
+    
+    <form class="needs-validation" name="threadForm" novalidate>
+        <div class="form-group">
+            <label for="thema">Temat</label>
+            <input name="thema" class="form-control" type="text" ng-model="postModel.thema" required>
+            <div class="invalid-feedback">
+                To pole jest wymagane!
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <label for="content">Treść</label>
+            <input name="content" class="form-control" type="text" ng-model="postModel.content"  rows="4" required>
+            <div class="invalid-feedback">
+                To pole jest wymagane!
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <label for="attachement">Załącznik</label>
+            <input type="file" class="form-control-file" ng-model="postModel.attachement" id="attachement">
+        </div>
+    
+        <div class="form-group" style="display: inline-block">
+            <button class="btn btn-primary" type="submit" ng-click="submit()">Dodaj</button>
+        </div>
+    
+        <div class="row" ng-show="reponse_received" style="float: right; margin-right: 20px">
+            <p class="text-success" ng-if="status" style="font-size: x-large;">Post dodany. Za chwilę zostaniesz przekierowany na stronę wątku</p>
+            <p class="text-danger" ng-if="!status" style="font-size: x-large;">Wystąpił błąd podczas dodawania postu</p>   
+        </div>   
+    </form>
+    {% endverbatim %}
+    </div>
+{% endblock %}

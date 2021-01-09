@@ -20,6 +20,15 @@ class Migration(migrations.Migration):
                 ('status', models.CharField(max_length=100, primary_key=True, serialize=False)),
             ],
         ),
+
+        migrations.CreateModel(
+            name='RodzajDecyzji',
+            fields=[
+                ('rodzaj_decyzji', models.CharField(max_length=100, primary_key=True, serialize=False)),
+            ],
+        ),
+
+
         migrations.CreateModel(
             name='UstawieniaOceniania',
             fields=[
@@ -67,6 +76,19 @@ class Migration(migrations.Migration):
                 ('uzytkownik', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.uzytkownik')),
             ],
         ),
+
+        migrations.CreateModel(
+            name='Decyzja',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('data', models.DateTimeField(verbose_name='%Y-%m-%d %H:%M:%S')),
+                ('uzasadnienie', models.CharField(max_length=1000)),
+                ('pomysl', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.pomysl')),
+                ('uzytkownik', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.uzytkownik')),
+                ('werdykt', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.RodzajDecyzji')),
+            ],
+        ),
+
         migrations.CreateModel(
             name='Administrator',
             fields=[
@@ -85,4 +107,24 @@ class Migration(migrations.Migration):
                 ('uzytkownik', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='innovation_module.uzytkownik')),
             ],
         ),
+        migrations.CreateModel(
+            name='Watek',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('temat', models.CharField(max_length=100)),
+                ('data_dodania', models.DateTimeField(verbose_name='%Y-%m-%d %H:%M:%S')),
+                ('data_ostatniego_posta', models.DateTimeField(verbose_name='%Y-%m-%d %H:%M:%S', blank=True))
+            ],
+        ),
+        migrations.CreateModel(
+            name='Post',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('tytul', models.CharField(max_length=100)),
+                ('tresc', models.TextField()),
+                ('watek', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.Watek')),
+                ('uzytkownik', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.Uzytkownik')),
+                ('data_dodania', models.DateTimeField(verbose_name='%Y-%m-%d %H:%M:%S'))
+            ],
+        )
     ]

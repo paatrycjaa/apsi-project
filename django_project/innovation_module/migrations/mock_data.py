@@ -13,6 +13,9 @@ def make_migrations(apps, schema_editor):
     create_uzytkownik(apps)
     create_pomysl(apps)
     create_ocena(apps)
+    create_rodzaj_decyzji(apps)
+    create_watek(apps)
+    create_post(apps)
     add_role_to_uzytkownik(apps)
 
 
@@ -23,6 +26,15 @@ def create_status_pomyslu(apps):
 
     for status in statuses:
         m = StatusPomyslu(status=status)
+        m.save()
+
+def create_rodzaj_decyzji(apps):
+    RodzajDecyzji = apps.get_model(app, 'RodzajDecyzji')
+
+    rodzaje_decyzji = ['Zaakceptowany', 'Odrzucony', 'Prosba o uzupelnienie', 'Odlozony']
+
+    for rodzaj_decyzji in rodzaje_decyzji:
+        m = RodzajDecyzji(rodzaj_decyzji=rodzaj_decyzji)
         m.save()
 
 
@@ -91,7 +103,6 @@ def add_role_to_uzytkownik(apps):
         zu.save()
 
 def create_pomysl(apps):
-
     Pomysl = apps.get_model(app, 'Pomysl')
     Uzytkownik = apps.get_model(app, 'Uzytkownik')
     StatusPomyslu = apps.get_model(app, 'StatusPomyslu')
@@ -114,7 +125,7 @@ def create_pomysl(apps):
     # statuses = StatusPomyslu.objects.all()
     settings = UstawieniaOceniania.objects.all()
 
-    for i in ideas:
+    for i in ideas[:4]:
         user = random.choice(users)
         # status = random.choice(statuses)
         status = StatusPomyslu.objects.get(status='Oczekujacy')
@@ -124,6 +135,15 @@ def create_pomysl(apps):
                    ocena_wazona=i[4], status=status, ustawienia_oceniania=setting, uzytkownik=user)
         m.save()
 
+    for idx, i in enumerate(ideas[4:]):
+        statuses = ['Oczekujacy', 'Edycja', 'Zablokowany', 'Odlozony', 'Zaakceptowany', 'Odrzucony']
+        user = Uzytkownik.objects.get(sso='109')
+        status = StatusPomyslu.objects.get(status=statuses[idx])
+        setting = random.choice(settings)
+
+        m = Pomysl(tematyka=i[0], opis=i[1], planowane_korzysci=i[2], planowane_koszty=i[3],
+                   ocena_wazona=i[4], status=status, ustawienia_oceniania=setting, uzytkownik=user)
+        m.save()
 
 def create_ocena(apps):
     Ocena = apps.get_model(app, 'Ocena')
@@ -151,6 +171,44 @@ def create_ocena(apps):
         user = random.choice([u for u in users if u is not idea.uzytkownik])
 
         m = Ocena(data=opinion[0], ocena_liczbowa=opinion[1], opis=opinion[2], pomysl=idea, uzytkownik=user)
+        m.save()
+
+def create_watek(apps):
+    Watek = apps.get_model(app, 'Watek')
+
+    threads = [
+        ('Temat 1', '2020-12-27 12:00:00', '2020-12-29 12:00:00'),
+        ('Temat 2', '2020-12-26 12:00:00', '2020-12-28 12:00:00'),
+        ('Temat 3', '2020-12-25 12:00:00', '2020-12-27 12:00:00'),
+    ]
+
+    for thread in threads:
+        m = Watek(temat=thread[0], data_dodania =thread[1], data_ostatniego_posta =thread[2])
+        m.save()
+    
+def create_post(apps):
+    Post = apps.get_model(app, 'Post')
+    Uzytkownik = apps.get_model(app, 'Uzytkownik')
+    Watek = apps.get_model(app, 'Watek')
+
+    posts = [
+        ('Tytul 1', 'Tresc posta', '2020-12-29 17:00:00'),
+        ('Tytul 2', 'Tresc posta', '2020-12-28 06:00:00'),
+        ('Tytul 3', 'Tresc posta', '2020-12-29 13:00:00'),
+        ('Tytul 4', 'Tresc posta', '2020-12-28 12:00:00'),
+        ('Tytul 5', 'Tresc posta', '2020-12-29 15:00:00'),
+        ('Tytul 6', 'Tresc posta', '2020-12-28 20:00:00'),
+        ('Tytul 7', 'Tresc posta', '2020-12-29 12:00:00'),
+    ]
+
+    users = Uzytkownik.objects.all()
+    threads = Watek.objects.all()
+
+    for post in posts:
+        user = random.choice(users)
+        thread = random.choice(threads)
+
+        m = Post(tytul=post[0], tresc=post[1], watek = thread, uzytkownik= user,data_dodania=post[2])
         m.save()
 
 

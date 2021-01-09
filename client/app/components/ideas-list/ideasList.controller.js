@@ -16,8 +16,20 @@ angular.module('appIdeasListController', [])
           });
         }
 
+        $scope.ideaVisible = function(idea) {
+          return idea.fields.status == 'Oczekujacy'
+        }
+
         $scope.openIdeaOpinions = function(id) {
           $window.location.href = `/opinions/${id}/`;
+        }
+
+        $scope.blockIdea = function(id) {
+          callback = (response) => {            
+            console.log(response);
+        };
+          ideasListService.editIdea({idea_id: id}, callback)
+          $window.location.reload();
         }
       }
 ]);
