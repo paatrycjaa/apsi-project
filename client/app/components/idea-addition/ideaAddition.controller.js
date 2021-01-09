@@ -22,41 +22,20 @@ angular.module('appIdeaAdditionController', [])
           
           if(idea_id){
             ideaAdditionService.getIdeaById(idea_id, function(response) {
-              console.log(response.data)
+              
               data = response.data[0] 
               settings=data.fields.ustawienia_oceniania
-              if(settings=='num_text'){
-                num=true
-                text=true
-              }
-              else if(settings.ustawienia=='num_only'){
-                num=true
-                text=false
-              }
-              else if(settings=='text_only'){
-                num=false
-                text=true
-                }
-              else{
-                num=false
-                text=false
-              }
-
 
               $scope.ideaModel.topic= data.fields.tematyka
               $scope.ideaModel.description = data.fields.opis  
               $scope.ideaModel.benefits =data.fields.planowane_korzysci
               $scope.ideaModel.costs =data.fields.planowane_koszty
               $scope.ideaModel.attachement =data.fields.attachement
-              $scope.ideaModel.num_rating = num
-              $scope.ideaModel.text_rating = text
-
-              console.log(num, text)
+              $scope.ideaModel.num_rating =  settings.includes('num')
+              $scope.ideaModel.text_rating =  settings.includes('text')
 
             })
           }
-
-     
         }
 
         $scope.reponse_received = false
@@ -90,13 +69,3 @@ angular.module('appIdeaAdditionController', [])
 
 
 
-            // ideaAdditionService.submitIdea($scope.ideaModel,(response) => {            
-            //   console.log(response)
-            //   $scope.status = response.data.status
-            //   $scope.reponse_received = true
-            //   if ($scope.status === true) {
-            //     $timeout(() => { 
-            //       window.location.href = redirect_url;
-            //     }, 2000);
-            //   }
-            // });
