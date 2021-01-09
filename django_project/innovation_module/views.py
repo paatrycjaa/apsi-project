@@ -71,6 +71,14 @@ def edit_opinion(request, opinion_id):
     context = opinion.get_edit_opinion_json(opinion_id)
     return render(request, 'app/components/opinion-addition/opinionAddition.html', context)
 
+
+@login_required
+def edit_idea(request, idea_id):    
+    context = idea.get_edit_idea_json(idea_id)
+    return render(request, 'app/components/idea-addition/ideaAddition.html', context)
+
+
+
 @login_required
 def ajax(request, ajax_request, object_id=None):
     if ajax_request == 'all_ideas':        
@@ -111,7 +119,12 @@ def ajax(request, ajax_request, object_id=None):
         return HttpResponse(forum.add_thread(body_unicode, request.user),content_type='application/json')
     if ajax_request == 'submit_post' :
         body_unicode = request.body.decode('utf-8')
-        return HttpResponse(forum.add_post(body_unicode, request.user),content_type='application/json')
+
+        return HttpResponse(opinion.edit_opinion(body_unicode),content_type='application/json')
+    if ajax_request == 'edit_idea':
+        body_unicode = request.body.decode('utf-8')
+        return HttpResponse(idea.edit_idea(body_unicode, request.user),content_type='application/json')         
+
     return HttpResponseNotFound('Cannot handle ajax request')
 
 def ajax_get_all_opinions(request, idea_id):

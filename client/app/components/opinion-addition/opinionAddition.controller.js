@@ -41,20 +41,20 @@ angular.module('appOpinionAdditionController', [])
           callback = (response) => {            
             console.log(response);
             $scope.status = response.data.status;
-          $scope.reponse_received = true;
-          if ($scope.status === true) {
-            $timeout(() => { 
-              window.location.href = "/opinions/" + $scope.opinion.idea_id;
-            }, 2000);
-          }
-        };
+            $scope.reponse_received = true;
+            if ($scope.status === true) {
+              $timeout(() => { 
+                window.location.href = "/opinions/" + $scope.opinion.idea_id;
+              }, 2000);
+            }
+         };
 
           // opinion is edited
           if($scope.opinion.opinion_id){
             opinionAdditionService.editOpinion($scope.opinion, callback);
           } else { // new opinion is added            
             opinionAdditionService.submitOpinion($scope.opinion, callback);
-        }
+          }
         }
       }       
     }

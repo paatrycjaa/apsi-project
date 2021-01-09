@@ -12,6 +12,7 @@ urlpatterns = [
     path('ideas', views.ideas, name='ideas'),
     path('my-ideas', views.my_ideas, name='my-ideas'),
     path('add-idea', views.add_idea, name='add_idea'),
+    path('edit-idea/<int:idea_id>/', views.edit_idea, name='edit_idea'),
     path('add-opinion/<int:idea_id>/', views.add_opinion, name='add_opinion'),
     path('edit-opinion/<int:opinion_id>/', views.edit_opinion, name='edit_opinion'),
     path('opinions/<int:idea_id>/', views.opinions),
