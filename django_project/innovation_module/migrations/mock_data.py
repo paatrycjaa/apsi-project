@@ -93,7 +93,6 @@ def add_role_to_uzytkownik(apps):
         zu.save()
 
 def create_pomysl(apps):
-
     Pomysl = apps.get_model(app, 'Pomysl')
     Uzytkownik = apps.get_model(app, 'Uzytkownik')
     StatusPomyslu = apps.get_model(app, 'StatusPomyslu')
@@ -116,7 +115,7 @@ def create_pomysl(apps):
     # statuses = StatusPomyslu.objects.all()
     settings = UstawieniaOceniania.objects.all()
 
-    for i in ideas:
+    for i in ideas[:4]:
         user = random.choice(users)
         # status = random.choice(statuses)
         status = StatusPomyslu.objects.get(status='Oczekujacy')
@@ -126,6 +125,15 @@ def create_pomysl(apps):
                    ocena_wazona=i[4], status=status, ustawienia_oceniania=setting, uzytkownik=user)
         m.save()
 
+    for idx, i in enumerate(ideas[4:]):
+        statuses = ['Oczekujacy', 'Edycja', 'Zablokowany', 'Odlozony', 'Zaakceptowany', 'Odrzucony']
+        user = Uzytkownik.objects.get(sso='109')
+        status = StatusPomyslu.objects.get(status=statuses[idx])
+        setting = random.choice(settings)
+
+        m = Pomysl(tematyka=i[0], opis=i[1], planowane_korzysci=i[2], planowane_koszty=i[3],
+                   ocena_wazona=i[4], status=status, ustawienia_oceniania=setting, uzytkownik=user)
+        m.save()
 
 def create_ocena(apps):
     Ocena = apps.get_model(app, 'Ocena')
