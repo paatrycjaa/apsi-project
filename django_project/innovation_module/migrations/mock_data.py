@@ -1,15 +1,19 @@
 import random 
+from datetime import timedelta
 
 from django.contrib.auth.hashers import make_password
 from django.conf import settings
 from django.db import migrations
-from django.db import migrations
+from django.utils.timezone import datetime
+from django.utils import timezone
+
 
 app = 'innovation_module'
 
 def make_migrations(apps, schema_editor):
     create_status_pomyslu(apps)
     create_ustawienia_oceniania(apps)
+    create_slowo_kluczowe(apps)
     create_uzytkownik(apps)
     create_pomysl(apps)
     create_ocena(apps)
@@ -17,6 +21,7 @@ def make_migrations(apps, schema_editor):
     create_watek(apps)
     create_post(apps)
     add_role_to_uzytkownik(apps)
+    create_zalacznik(apps)
 
 
 def create_status_pomyslu(apps):
@@ -37,6 +42,14 @@ def create_rodzaj_decyzji(apps):
         m = RodzajDecyzji(rodzaj_decyzji=rodzaj_decyzji)
         m.save()
 
+def create_slowo_kluczowe(apps):
+    SlowoKluczowe = apps.get_model(app, 'SlowoKluczowe')
+
+    slowo_kluczowe = ['Komputery', 'Robotyka', 'Infrastruktura', 'Inne']
+
+    for sk in slowo_kluczowe:
+        m = SlowoKluczowe(slowo_kluczowe = sk)
+        m.save()
 
 def create_ustawienia_oceniania(apps):
     UstawieniaOceniania = apps.get_model(app, 'UstawieniaOceniania')
@@ -107,6 +120,7 @@ def create_pomysl(apps):
     Uzytkownik = apps.get_model(app, 'Uzytkownik')
     StatusPomyslu = apps.get_model(app, 'StatusPomyslu')
     UstawieniaOceniania = apps.get_model(app, 'UstawieniaOceniania')
+    SlowoKluczowe = apps.get_model(app, 'SlowoKluczowe')
 
     ideas = [
         ('Nowe komputery', 'Kupmy wiecej komputerów', 'Będą nowe komputery', 'Koszty komputerów', '5'),
@@ -125,15 +139,21 @@ def create_pomysl(apps):
     # statuses = StatusPomyslu.objects.all()
     settings = UstawieniaOceniania.objects.all()
 
+    slowo_kluczowe = SlowoKluczowe.objects.get(slowo_kluczowe='Komputery')
+
     for i in ideas[:4]:
         user = random.choice(users)
         # status = random.choice(statuses)
-        status = StatusPomyslu.objects.get(status='Oczekujacy')
+        status = StatusPomyslu.objects.get(status='Oczekujacy')        
         setting = random.choice(settings)
 
+        date = timezone.localtime(timezone.now()) - timedelta(days=random.randint(1, 100))
+
         m = Pomysl(tematyka=i[0], opis=i[1], planowane_korzysci=i[2], planowane_koszty=i[3],
-                   ocena_wazona=i[4], status=status, ustawienia_oceniania=setting, uzytkownik=user)
+                   ocena_wazona=i[4], status_pomyslu=status, ustawienia_oceniania=setting, uzytkownik=user, slowo_kluczowe=slowo_kluczowe, data_dodania=date)
         m.save()
+
+    slowo_kluczowe = SlowoKluczowe.objects.get(slowo_kluczowe='Inne')
 
     for idx, i in enumerate(ideas[4:]):
         statuses = ['Oczekujacy', 'Edycja', 'Zablokowany', 'Odlozony', 'Zaakceptowany', 'Odrzucony']
@@ -141,8 +161,10 @@ def create_pomysl(apps):
         status = StatusPomyslu.objects.get(status=statuses[idx])
         setting = random.choice(settings)
 
+        date = timezone.localtime(timezone.now()) - timedelta(days=random.randint(1, 100))
+
         m = Pomysl(tematyka=i[0], opis=i[1], planowane_korzysci=i[2], planowane_koszty=i[3],
-                   ocena_wazona=i[4], status=status, ustawienia_oceniania=setting, uzytkownik=user)
+                   ocena_wazona=i[4], status_pomyslu=status, ustawienia_oceniania=setting, uzytkownik=user, slowo_kluczowe=slowo_kluczowe, data_dodania=date)
         m.save()
 
 def create_ocena(apps):
@@ -170,20 +192,27 @@ def create_ocena(apps):
         idea = random.choice(ideas)
         user = random.choice([u for u in users if u is not idea.uzytkownik])
 
-        m = Ocena(data=opinion[0], ocena_liczbowa=opinion[1], opis=opinion[2], pomysl=idea, uzytkownik=user)
+        settings = idea.ustawienia_oceniania.ustawienia
+
+        m = Ocena(data=opinion[0], pomysl=idea, uzytkownik=user)
+
+        if 'num' in settings:
+            m.ocena_liczbowa = opinion[1]
+
+        if 'text' in settings:
+            m.opiss = opinion[2]
+
         m.save()
 
 def create_watek(apps):
     Watek = apps.get_model(app, 'Watek')
 
-    threads = [
-        ('Temat 1', '2020-12-27 12:00:00', '2020-12-29 12:00:00'),
-        ('Temat 2', '2020-12-26 12:00:00', '2020-12-28 12:00:00'),
-        ('Temat 3', '2020-12-25 12:00:00', '2020-12-27 12:00:00'),
-    ]
+    threads = ['Temat 1', 'Temat 2', 'Temat 3']
 
     for thread in threads:
-        m = Watek(temat=thread[0], data_dodania =thread[1], data_ostatniego_posta =thread[2])
+        date = timezone.localtime(timezone.now()) - timedelta(days=random.randint(1, 100))
+        last_date = min(date + timedelta(days=random.randint(1, 50)), timezone.localtime(timezone.now()))
+        m = Watek(temat=thread, data_dodania =date, data_ostatniego_posta = last_date)
         m.save()
     
 def create_post(apps):
@@ -192,13 +221,13 @@ def create_post(apps):
     Watek = apps.get_model(app, 'Watek')
 
     posts = [
-        ('Tytul 1', 'Tresc posta', '2020-12-29 17:00:00'),
-        ('Tytul 2', 'Tresc posta', '2020-12-28 06:00:00'),
-        ('Tytul 3', 'Tresc posta', '2020-12-29 13:00:00'),
-        ('Tytul 4', 'Tresc posta', '2020-12-28 12:00:00'),
-        ('Tytul 5', 'Tresc posta', '2020-12-29 15:00:00'),
-        ('Tytul 6', 'Tresc posta', '2020-12-28 20:00:00'),
-        ('Tytul 7', 'Tresc posta', '2020-12-29 12:00:00'),
+        ('Tytul 1', 'Tresc posta'),
+        ('Tytul 2', 'Tresc posta'),
+        ('Tytul 3', 'Tresc posta'),
+        ('Tytul 4', 'Tresc posta'),
+        ('Tytul 5', 'Tresc posta'),
+        ('Tytul 6', 'Tresc posta'),
+        ('Tytul 7', 'Tresc posta'),
     ]
 
     users = Uzytkownik.objects.all()
@@ -207,8 +236,38 @@ def create_post(apps):
     for post in posts:
         user = random.choice(users)
         thread = random.choice(threads)
+        date = thread.data_ostatniego_posta
 
-        m = Post(tytul=post[0], tresc=post[1], watek = thread, uzytkownik= user,data_dodania=post[2])
+        m = Post(tytul=post[0], tresc=post[1], watek = thread, uzytkownik= user,data_dodania=date)
+        m.save()
+
+def create_zalacznik(apps):
+    Zalacznik = apps.get_model(app, 'Zalacznik')
+    Pomysl = apps.get_model(app, 'Pomysl')
+    Post = apps.get_model(app, 'Post')
+    ZalacznikPomyslu = apps.get_model(app, 'ZalacznikPomyslu')
+    ZalacznikPosta = apps.get_model(app, 'ZalacznikPosta')
+
+    zalaczniki = [
+        ('file1.txt', 0.01),
+        ('img1.jpg', 2),
+        ('file2.txt', 0.01),
+        ('img2.jpg', 2)
+    ]
+
+    for z in zalaczniki:
+        date = timezone.localtime(timezone.now()) - timedelta(days=random.randint(1, 100))
+        m = Zalacznik(nazwa_pliku=z[0], rozmar=z[1], data_dodania=date)
+        m.save()
+
+    attachments = Zalacznik.objects.all()
+
+    for i in range(2):
+        m = ZalacznikPomyslu(zalacznik = attachments[i], pomysl=Pomysl.objects.get(pk=i+1))
+        m.save()
+    
+    for i in range(2, 4):
+        m = ZalacznikPosta(zalacznik = attachments[i], post=Post.objects.get(pk=i-1))
         m.save()
 
 

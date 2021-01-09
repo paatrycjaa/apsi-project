@@ -1,14 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Pomysl(models.Model):
     tematyka = models.CharField(max_length=100)
     opis = models.TextField()
     planowane_korzysci = models.TextField(blank=True)
     planowane_koszty = models.TextField(blank=True)
     ocena_wazona = models.FloatField(null=True)
+    data_dodania = models.DateTimeField('%Y-%m-%d %H:%M:%S')
+    data_ostatniej_edycji = models.DateTimeField('%Y-%m-%d %H:%M:%S', null=True)
 
-    status = models.ForeignKey(
+    status_pomyslu = models.ForeignKey(
         'StatusPomyslu',
         on_delete=models.CASCADE,
     )
@@ -23,8 +26,21 @@ class Pomysl(models.Model):
         on_delete=models.CASCADE
     )
 
+    slowo_kluczowe = models.ForeignKey(
+        'SlowoKluczowe',
+        on_delete=models.CASCADE
+    )
+
     def __str__(self):
-        return self.tematyka + ': ' + self.opis[:50] + '...'
+        return self.tematyka
+
+
+class SlowoKluczowe(models.Model):
+    slowo_kluczowe = models.CharField(max_length=200, primary_key=True)
+
+    def __str__(self):
+        return self.slowo_kluczowe
+
 
 class Uzytkownik(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
@@ -42,12 +58,14 @@ class StatusPomyslu(models.Model):
     def __str__(self):
         return self.status
 
+
 class UstawieniaOceniania(models.Model):
     ustawienia = models.CharField(max_length=200, primary_key=True)
     opis = models.TextField(blank=True)
 
     def __str__(self):
         return self.ustawienia
+
 
 class Ocena(models.Model):
     data = models.DateTimeField('%Y-%m-%d %H:%M:%S')
@@ -68,6 +86,7 @@ class Ocena(models.Model):
         return "Ocena id: {}, liczbowa: {}, opis: {}, uzytkownik: {}".format(
             self.pk, self.ocena_liczbowa, self.opis, self.uzytkownik)
 
+
 class Decyzja(models.Model):
     data=models.DateTimeField('%Y-%m-%d %H:%M:%S')
     uzasadnienie=models.CharField(max_length=1000)
@@ -75,14 +94,17 @@ class Decyzja(models.Model):
         'Pomysl',
         on_delete=models.CASCADE,
     )
-    uzytkownik = models.ForeignKey(
+    czlonek_komisji = models.ForeignKey(
         'CzlonekKomisji',
         on_delete=models.CASCADE,
     )
-    werdykt=models.ForeignKey(
+    rodzaj_decyzji=models.ForeignKey(
         'RodzajDecyzji',
         on_delete=models.CASCADE,
     )
+
+    def __str__(self):
+        return "Decyzja {}, czlonek komisji: {}, data: {}".format(self.rodzaj_decyzji, self.czlonek_komisji, self.data)
 
 
 class RodzajDecyzji(models.Model):
@@ -147,5 +169,45 @@ class Post(models.Model):
     )
 
     def __str__(self):
-        self.tytul + ': ' + self.tresc[:50] + '...'
+        return self.tytul + '; dodano: ' + self.data_dodania
 
+
+class Zalacznik(models.Model):
+    nazwa_pliku = models.CharField(max_length=200)
+    data_dodania = models.DateTimeField('%Y-%m-%d %H:%M:%S')
+    rozmar = models.IntegerField(null=True)
+
+    def __str__(self):
+        return self.nazwa_pliku
+
+
+class ZalacznikPomyslu(models.Model):
+    zalacznik = models.OneToOneField(
+        'Zalacznik',
+        on_delete=models.CASCADE,
+        primary_key=True,
+    )
+
+    pomysl = models.ForeignKey(
+        'Pomysl',
+        on_delete=models.CASCADE
+    )
+
+    def __str__(self):
+        return self.zalacznik
+
+
+class ZalacznikPosta(models.Model):
+    zalacznik = models.OneToOneField(
+        'Zalacznik',
+        on_delete=models.CASCADE,
+        primary_key=True,
+    )
+
+    post = models.ForeignKey(
+        'Post',
+        on_delete=models.CASCADE
+    )
+
+    def __str__(self):
+        return self.zalacznik

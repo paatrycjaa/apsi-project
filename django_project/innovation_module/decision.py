@@ -26,7 +26,7 @@ def add_decision(decision_json, user):
         
 
         m = models.Decyzja(data=datetime.datetime.now(), uzasadnienie=data['description'], pomysl=pomysl,
-                          werdykt=werdykt, uzytkownik=user)
+                          rodzaj_decyzji=werdykt, czlonek_komisji=user)
         m.save()
         if(data['werdykt']!="Prosba o uzupelnienie"):
             statusp = models.StatusPomyslu.objects.get(status=data['werdykt'])

@@ -39,7 +39,7 @@ def add_idea(idea_json, user):
         settings = models.UstawieniaOceniania.objects.get(ustawienia=settings_val)
 
         m = models.Pomysl(tematyka=data['topic'], opis=data['description'], planowane_korzysci=data['benefits'],
-                          planowane_koszty=data['costs'], uzytkownik=user, status=status, ustawienia_oceniania=settings,
+                          planowane_koszty=data['costs'], uzytkownik=user, status_pomyslu=status, ustawienia_oceniania=settings,
                           ocena_wazona=-1)
         m.save()
 
@@ -68,7 +68,7 @@ def edit_idea(idea_json):
 
         new_status = models.StatusPomyslu.objects.get(status='Zablokowany')
 
-        idea.status = new_status
+        idea.status_pomyslu = new_status
 
         idea.save()
 
@@ -110,7 +110,7 @@ def get_settings(idea_id):
 
 def can_opinion_be_added(idea_id):
     status = models.StatusPomyslu.objects.get(status='Oczekujacy')
-    return Pomysl.objects.get(pk=idea_id).status == status
+    return Pomysl.objects.get(pk=idea_id).status_pomyslu == status
 
 def update_average_rating(idea_id, new_rating, old_rating = None):
     """Should be called after new rating is saved to the database.
@@ -172,7 +172,7 @@ def edit_idea(idea_json,user):
 
 
         m.uzytkownik = models.Uzytkownik.objects.get(user_id=user.id)
-        m.status = models.StatusPomyslu.objects.get(status='Oczekujacy')
+        m.status_pomyslu = models.StatusPomyslu.objects.get(status='Oczekujacy')
         m.ustawienia_oceniania = models.UstawieniaOceniania.objects.get(ustawienia=settings_val)
 
 
