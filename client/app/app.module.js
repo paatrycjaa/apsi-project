@@ -9,6 +9,8 @@ var app = angular.module('app', [
     'appOpinionAdditionService',
     'appIdeasFilteredController',
     'appIdeasFilteredService',
+    // 'appideasFilteredOdlozonyController',
+    // 'appideasFilteredOdlozonyService',
     'appDecisionAdditionController',
     'appDecisionAdditionService',
     'appThreadsListService',

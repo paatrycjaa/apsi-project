@@ -13,9 +13,18 @@ def home(request):
 @login_required
 def ideas(request):
     return render(request, 'app/components/ideas-list/ideasList.html')
+
 @login_required
 def ideasfiltered(request):
     return render(request,'app/components/ideas-filtered/ideasFiltered.html')
+
+# @login_required
+# def ideasfilteredOdlozony(request):
+#     return render(request,'app/components/ideas-filtered-Odlozony/ideasFilteredOdlozony.html')
+
+# @login_required
+# def ideasfilteredZablokowany(request):
+#     return render(request,'app/components/ideas-filtered-Zablokowany/ideasFilteredZablokowany.html')
 
 @login_required
 def add_idea(request):
@@ -89,7 +98,7 @@ def ajax(request, ajax_request, object_id=None):
     if ajax_request == 'edit_opinion':
         return ajax_edit_opinion(request, int(json.loads(request.body)['opinion_id']))
     if ajax_request == 'filtered_ideas':
-        return HttpResponse(decision.get_filtered_ideas_json('Oczekujący'), content_type='application/json')
+        return HttpResponse(decision.get_filtered_ideas_json("Oczekujacy"), content_type='application/json')
     if ajax_request == 'all_threads' :
         return HttpResponse(forum.get_threads_json(), content_type='application/json')
     if ajax_request == 'get_thread' :
