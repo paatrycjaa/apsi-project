@@ -1,32 +1,49 @@
 {% extends "base.html" %}
-{% block title %} Opinions {% endblock %}
+{% block title %} Podgląd pomysłu {% endblock %}
 {% block content %}
 <h1>Opinie na temat pomysłu</h1>
 <div ng-controller="opinionsListController" ng-init="init({{idea_id}})">  
     <div class="idea-block">
-        <table class="idea-table">
+        <table class="table idea-table" id="idea-table-row">
             {% verbatim %}
             <tr id="idea-table-topic">
                 <th style="width: 25%;">Temat:</th>
                 <td>{{ idea.tematyka }}</td>
             </tr>
-            <tr id="idea-table-row">
+            <tr>
+                <th>Kategoria:</th>
+                <td>{{ idea.slowo_kluczowe_id }}</td>
+            </tr>
+            <tr>
                 <th>Opis:</th>
                 <td>{{ idea.opis }}</td>
             </tr>
-            <tr id="idea-table-row">
+            <tr>
                 <th>Planowane korzyści:</th>
                 <td>{{ idea.planowane_korzysci }}</td>
             </tr>
-            <tr id="idea-table-row">
+            <tr>
                 <th>Planowane koszty:</th>
                 <td>{{ idea.planowane_koszty }}</td>
             </tr>
-            <tr id="idea-table-row" ng-if="idea.has_review">
+            <tr ng-if="idea.ocena_wazona!=-1">
                 <th>Ocena ważona:</th>
                 <td>{{ idea.ocena_wazona }}</td>
-            {% endverbatim %}
             </tr>
+            <tr>
+                <th>Załączniki</th>
+                <td>
+                    <ui>
+                        <li ng-repeat="att in idea.attachments">
+                            <a href="/file/{{att.pk}}" type="button" class="btn btn-link"> {{ att.zalacznik__nazwa_pliku }} </button>                             
+                        </li>
+                    </ui>
+
+                </td>
+            </tr>
+            
+            {% endverbatim %}
+
         </table>
     </div>
 

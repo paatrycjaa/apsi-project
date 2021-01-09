@@ -5,11 +5,28 @@ from django.contrib.auth.decorators import login_required
 
 import json
 
-from . import idea, opinion, decorators, forum, decision
+from . import idea, opinion, decorators, forum, decision, attachment
 
 _ajax_requests = {
-    'get_keywords': lambda request: idea.get_keywords()
-}
+    'get_keywords': lambda request, object_id: idea.get_keywords(),
+    'all_ideas': lambda request, object_id: idea.get_ideas_json(request.user, False),
+    'user_ideas': lambda request, object_id: idea.get_ideas_json(request.user, True),
+    'submit_idea': lambda request, object_id: idea.add_idea(request.body.decode('utf-8'), request.user),
+    'edit_idea': lambda request, object_id: idea.edit_idea(request.body.decode('utf-8'), request.user),
+    'get_idea': lambda request, object_id: idea.get_idea_json(object_id),
+    'all_opinions': lambda request, object_id: opinion.get_opinions_json(object_id, request.user),
+    'get_opinion': lambda request, object_id: opinion.get_opinion_json(object_id),
+    'submit_opinion': lambda request, object_id: opinion.add_opinion(request.body.decode('utf-8'), request.user),
+    'submit_decision': lambda request, object_id: decision.add_decision(request.body.decode('utf-8'), request.user),
+    'edit_opinion': lambda request, object_id: ajax_edit_opinion(request, int(json.loads(request.body)['opinion_id'])),
+    'filtered_ideas': lambda request, object_id: decision.get_filtered_ideas_json('Oczekujący'),
+    'get_thread': lambda request, object_id: forum.get_thread_json(object_id),
+    'all_threads': lambda request, object_id: forum.get_threads_json(),
+    'all_posts': lambda request, object_id: forum.get_posts_json(object_id),
+    'submit_thread': lambda request, object_id: forum.add_thread(request.body.decode('utf-8'), request.user),
+    'submit_post': lambda request, object_id: opinion.edit_opinion(request.body.decode('utf-8'))
+}    
+    
 
 def home(request):
     return render(request, 'app/static/home.html')
@@ -78,68 +95,32 @@ def edit_opinion(request, opinion_id):
 
 @login_required
 def edit_idea(request, idea_id):    
-    context = idea.get_edit_idea_json(idea_id)
+    context = {'idea_id': idea_id}
     return render(request, 'app/components/idea-addition/ideaAddition.html', context)
-
-
 
 @login_required
 def ajax(request, ajax_request, object_id=None):
-    if ajax_request == 'all_ideas':        
-        return HttpResponse(idea.get_ideas_json(request.user, False), content_type='application/json')
-    if ajax_request == 'user_ideas':        
-        return HttpResponse(idea.get_ideas_json(request.user, True), content_type='application/json')
-    if ajax_request == 'submit_idea':
-        body_unicode = request.body.decode('utf-8')
-        return HttpResponse(idea.add_idea(body_unicode, request.user),content_type='application/json')   
-    if ajax_request == 'edit_idea':
-        body_unicode = request.body.decode('utf-8')
-        return HttpResponse(idea.edit_idea(body_unicode), content_type='application/json')     
-    if ajax_request == 'get_idea':
-        return HttpResponse(idea.get_idea_json(object_id), content_type='application/json')
-    if ajax_request == 'all_opinions':
-        return ajax_get_all_opinions(request, object_id)
-    if ajax_request == 'get_opinion':
-        return HttpResponse(opinion.get_opinion_json(object_id), content_type='application/json')
-    if ajax_request == 'submit_opinion':
-        body_unicode = request.body.decode('utf-8')
-        return HttpResponse(opinion.add_opinion(body_unicode, request.user),content_type='application/json')
-    if ajax_request == 'submit_decision':
-        body_unicode = request.body.decode('utf-8')
-        return HttpResponse(decision.add_decision(body_unicode, request.user),content_type='application/json')
-    if ajax_request == 'edit_opinion':
-        return ajax_edit_opinion(request, int(json.loads(request.body)['opinion_id']))
-    if ajax_request == 'filtered_ideas':
-        return HttpResponse(decision.get_filtered_ideas_json('Oczekujący'), content_type='application/json')
-    if ajax_request == 'all_threads' :
-        return HttpResponse(forum.get_threads_json(), content_type='application/json')
-    if ajax_request == 'get_thread' :
-        return HttpResponse(forum.get_thread_json(object_id), content_type='application/json')
-    if ajax_request == 'all_posts' :
-        return HttpResponse(forum.get_posts_json(object_id), content_type='application/json')
-    if ajax_request == 'submit_thread' :
-        body_unicode = request.body.decode('utf-8')
-        print(body_unicode)
-        return HttpResponse(forum.add_thread(body_unicode, request.user),content_type='application/json')
-    if ajax_request == 'submit_post' :
-        body_unicode = request.body.decode('utf-8')
+    try:
+        data = _ajax_requests[ajax_request](request, object_id)
+        return HttpResponse(data, content_type='application/json')
+    except KeyError:
+        print('Key ', ajax_request, ' not found')
+        return HttpResponseNotFound('Cannot handle ajax request. Wrong request.')
+    except Exception as e:
+        print('error occured when editing data')
+        if hasattr(e, 'message'):
+            print(e.message)
+        else:
+            print(e)
+        return HttpResponseNotFound('Cannot handle ajax request. Server error.')
 
-        return HttpResponse(opinion.edit_opinion(body_unicode),content_type='application/json')
-    if ajax_request == 'edit_idea':
-        body_unicode = request.body.decode('utf-8')
-        return HttpResponse(idea.edit_idea(body_unicode, request.user),content_type='application/json')
-
-    if ajax_request == 'get_keywords':
-        return HttpResponse(idea.get_keywords(),content_type='application/json')
-
-    return HttpResponseNotFound('Cannot handle ajax request')
-
-def ajax_get_all_opinions(request, idea_id):
-    return HttpResponse(opinion.get_opinions_json(idea_id, request.user), content_type='application/json')
 
 @decorators.users_opinion
 def ajax_edit_opinion(request, opinion_id):
     body_unicode = request.body.decode('utf-8')
-    return HttpResponse(opinion.edit_opinion(body_unicode), content_type='application/json')
+    return opinion.edit_opinion(body_unicode)
 
 
+@login_required
+def download_file(request, file_id):
+    return attachment.download_file(file_id)

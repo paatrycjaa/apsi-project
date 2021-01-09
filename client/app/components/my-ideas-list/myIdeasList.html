@@ -19,7 +19,7 @@
     <div ng-repeat="idea in ideas_to_edit | filter:searchStr">
         <div class="idea-block">
             {% verbatim %}
-            <my-idea-table idea="idea" show-attachments-count="true"/>            
+            <my-idea-table idea="idea" show-attachments-count="true"/>
         </div>
         <div class="btn-tollbar" style="float: right;">
             <button type="button" id='block' class="btn btn-info" ng-click="editIdea(idea.id)">Edytuj</button>

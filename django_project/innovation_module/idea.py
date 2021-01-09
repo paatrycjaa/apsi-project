@@ -80,6 +80,7 @@ def edit_idea(idea_json):
         new_status = models.StatusPomyslu.objects.get(status='Zablokowany')
 
         idea.status_pomyslu = new_status
+        idea.data_ostatniej_edycji = timezone.localtime(timezone.now())
 
         idea.save()
 
@@ -109,15 +110,20 @@ def get_ideas(user, filter_user):
 
     return objs.annotate(attachment_count=Count('zalacznikpomyslu')).values()        
 
-def get_idea(idea_id):
-    return Pomysl.objects.filter(pk=idea_id).values()
-
 def get_ideas_json(user, filter_user):
     filter_status = not filter_user
     return serialize(get_ideas(user, filter_user), user, filter_status)
 
 def get_idea_json(idea_id):
-    return json.dumps(list(get_idea(idea_id)), cls=DjangoJSONEncoder)
+    ideas = Pomysl.objects.filter(pk=idea_id)
+    if len(ideas) == 0:
+        raise ValueError('idea_id: {} is not valid.'.format(idea_id))
+    
+    idea_dict = ideas.values()[0]
+
+    idea_dict['attachments'] = list(models.ZalacznikPomyslu.objects.filter(pomysl=ideas[0]).values('pk', 'zalacznik__nazwa_pliku'))
+
+    return json.dumps(idea_dict, cls=DjangoJSONEncoder)
 
 def get_settings(idea_id):
     return Pomysl.objects.get(pk=idea_id).ustawienia_oceniania.ustawienia
@@ -139,27 +145,7 @@ def update_average_rating(idea_id, new_rating, old_rating = None):
     idea.save()
 
 
-
-def get_edit_idea_json(idea_id):
-    idea = get_idea(idea_id).first()
-
-    settings=idea.ustawienia_oceniania
-    
-    data = {
-        'idea_id': idea_id,
-        'topic': idea.tematyka,
-        'description': idea.opis,
-        'benefits': idea.planowane_korzysci,
-        'costs': idea.planowane_koszty,
-        'num_rating': 'num' in settings.ustawienia,
-        'text_rating': 'text' in settings.ustawienia
-        }    
-
-    return data
-
-
-
-def edit_idea(idea_json,user):
+def edit_idea(idea_json, user):
     try:
         data = json.loads(idea_json)
 
