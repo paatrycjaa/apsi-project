@@ -4,6 +4,11 @@ angular.module('appIdeasListController', [])
         
         $scope.ideas = [];
 
+        $scope.editIdea = function(idea_id){
+          window.location.href = `/edit-idea/${idea_id}/`; 
+        }
+
+
         $scope.init = function() {
           ideasListService.getIdeas(function(response) {
             $scope.ideas = response.data
@@ -23,8 +28,8 @@ angular.module('appIdeasListController', [])
           callback = (response) => {            
             console.log(response);
         };
-
           ideasListService.editIdea({idea_id: id}, callback)
+          $window.location.reload();
         }
       }
 ]);

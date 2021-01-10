@@ -43,22 +43,21 @@
                     </tr>
                 </table>
             </div>
-            <div style="float: right;">
+            {% endverbatim %}
+            <div class="btn-tollbar" style="float: right;">
+                {% if user.is_superuser %}
+                {% verbatim %}
+                <button type="button" class="btn btn-danger" ng-click="blockIdea(idea.pk)">Zablokuj</button>
+                {% endverbatim %}
+                {% endif %}
+    
+                {% verbatim %}
                 <button type="button" class="btn btn-primary" ng-click="openIdeaOpinions(idea.pk)">Przegladaj</button>
+                {% endverbatim %}
             </div>
-            <div style="clear: both;"></div>
         </div>
-        {% endverbatim %}
-        <div class="btn-tollbar" style="float: right;">
-            {% if user.is_superuser %}
-            {% verbatim %}
-            <button type="button" class="btn btn-danger" ng-click="blockIdea(idea.pk)">Zablokuj</button>
-            {% endverbatim %}
-            {% endif %}
-
-            {% verbatim %}
-            <button type="button" class="btn btn-primary" ng-click="openIdeaOpinions(idea.pk)">Przegladaj</button>
-            {% endverbatim %}
+        <div style="float: right;">
+            <button type="button" class="btn btn-primary" ng-click="editIdea(idea.pk)">Edytuj</button>
         </div>
         <div style="clear: both;"></div>
     </div>
