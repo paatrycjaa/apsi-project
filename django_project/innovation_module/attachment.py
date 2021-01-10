@@ -36,5 +36,13 @@ def add_idea_attachment(idea, file_name, flie_size):
     zp = models.ZalacznikPomyslu(pomysl=idea, zalacznik=z)
     zp.save()
 
-    print('att added', z.pk, file_name, flie_size)
+    return z.pk
+
+def add_post_attachment(post, file_name, file_size):
+    z = models.Zalacznik(nazwa_pliku=file_name, data_dodania=timezone.localtime(timezone.now()), rozmar=file_size)
+    z.save()
+    
+    zp = models.ZalacznikPosta(post=post, zalacznik=z)
+    zp.save()
+
     return z.pk

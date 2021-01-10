@@ -10,13 +10,6 @@ from . import models
 from .models import Pomysl
 from . import attachment
 
-from django import forms
-
-class UploadFileForm(forms.Form):
-    title = forms.CharField(max_length=50)
-    file = forms.FileField()
-
-
 def serialize(objects, user, filter_status):
 
     if filter_status:
@@ -122,7 +115,7 @@ def get_ideas(user, filter_user):
         user_obj = models.Uzytkownik.objects.get(user_id=user.id)
         objs = objs.filter(uzytkownik=user_obj)
 
-    return objs.annotate(attachment_count=Count('zalacznikpomyslu')).values()        
+    return objs.annotate(attachment_count=Count('zalacznikpomyslu')).values()
 
 def get_ideas_json(user, filter_user):
     filter_status = not filter_user

@@ -2,8 +2,10 @@ import json
 import datetime
 
 from django.core import serializers
+from django.utils import timezone
 
 from . import models
+from . import attachment
 
 def serialize(objects):
     return serializers.serialize('json', objects)
@@ -64,15 +66,19 @@ def add_thread(thread_json, user):
     finally:
         return json.dumps({'status': status})
 
-def add_post(post_json, user):
+def add_post(request, user):
     try:
-        data = json.loads(post_json)
+        data = json.loads(request.POST['data'])
+
         user = models.Uzytkownik.objects.get(user_id=user.id)
         thread = models.Watek.objects.get(id=data['thread'])
         dt = datetime.datetime.now()
         post = models.Post(tytul=data['thema'], tresc=data['content'], watek=thread, uzytkownik = user, data_dodania=dt)
         post.save()
         models.Watek.objects.filter(id=data['thread']).update(data_ostatniego_posta = dt)
+
+        att_key = attachment.add_post_attachment(post, data['attachment'], data['attachment_size'])
+        attachment.save_file(request.FILES['file'], data['attachment'], att_key)
 
         message="Post został dodany"
         status = True

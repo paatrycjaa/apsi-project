@@ -67,8 +67,7 @@ angular.module('appIdeaAdditionController', [])
           const forms = document.getElementsByClassName('needs-validation');
           if (utils.isFormValid(forms)) {
 
-            callback = (response) => {            
-              console.log(response);
+            callback = (response) => {
               $scope.status = response.data.status;
               $scope.reponse_received = true;
               if ($scope.status === true) {

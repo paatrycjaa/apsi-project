@@ -24,7 +24,7 @@ _ajax_requests = {
     'all_threads': lambda request, object_id: forum.get_threads_json(),
     'all_posts': lambda request, object_id: forum.get_posts_json(object_id),
     'submit_thread': lambda request, object_id: forum.add_thread(request.body.decode('utf-8'), request.user),
-    'submit_post': lambda request, object_id: opinion.edit_opinion(request.body.decode('utf-8'))
+    'submit_post': lambda request, object_id: forum.add_post(request, request.user)
 }    
     
 
