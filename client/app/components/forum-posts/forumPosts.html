@@ -34,15 +34,26 @@
             <table class="table">
                 <tr>
                     <th style="width: 25%">Tytuł:</th>
-                    <td>{{ post.fields.tytul }}</td>
+                    <td>{{ post.tytul }}</td>
                 </tr>
                 <tr>
                     <th style="width: 25%">Treść:</th>
-                    <td>{{ post.fields.tresc }}</td>
+                    <td>{{ post.tresc }}</td>
                 </tr>
                 <tr>
                     <th>Data dodania:</th>
-                    <td>{{ post.fields.data_dodania }}</td>
+                    <td>{{ post.data_dodania }}</td>
+                </tr>
+                <tr ng-if="post.attachments">
+                    <th>Załączniki:</th>
+                    <td>
+                        <ui>
+                            <li ng-repeat="att in post.attachments">
+                                <a href="/file/{{att.pk}}" type="button" target="_blank" class="btn btn-link"> {{ att.zalacznik__nazwa_pliku }}  </a>
+                                <span> {{ att.rozmiar }} </span>                                
+                            </li>
+                        </ui>
+                    </td>
                 </tr>
             </table>
         </div>

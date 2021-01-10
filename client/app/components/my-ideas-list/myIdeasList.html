@@ -19,32 +19,11 @@
     <div ng-repeat="idea in ideas_to_edit | filter:searchStr">
         <div class="idea-block">
             {% verbatim %}
-            <table class="table">
-                <tr>
-                    <th style="width: 25%">Temat:</th>
-                    <td>{{ idea.fields.tematyka }}</td>
-                </tr>
-                <tr>
-                    <th>Opis:</th>
-                    <td>{{ idea.fields.opis }}</td>
-                </tr>
-                <tr>
-                    <th>Planowane korzyści:</th>
-                    <td>{{ idea.fields.planowane_korzysci }}</td>
-                </tr>
-                <tr>
-                    <th>Planowane koszty:</th>
-                    <td>{{ idea.fields.planowane_koszty }}</td>
-                </tr>
-                <tr>
-                    <th>Ocena ważona:</th>
-                    <td>{{ idea.fields.ocena_wazona }}</td>
-                </tr>
-            </table>
+            <my-idea-table idea="idea" show-attachments-count="true"/>
         </div>
         <div class="btn-tollbar" style="float: right;">
-            <button type="button" id='block' class="btn btn-info" ng-click="editIdea(idea.pk)">Edytuj</button>
-            <button type="button" class="btn btn-primary" ng-click="openIdeaOpinions(idea.pk)">Przegladaj</button>
+            <button type="button" id='block' class="btn btn-info" ng-click="editIdea(idea.id)">Edytuj</button>
+            <button type="button" class="btn btn-primary" ng-click="openIdeaOpinions(idea.id)">Przegladaj</button>
         </div>
         <div style="clear: both;"></div>
         {% endverbatim %}
@@ -53,31 +32,11 @@
     <div ng-repeat="idea in ideas_rest | filter:searchStr">
         <div class="idea-block">
             {% verbatim %}
-            <table class="table">
-                <tr>
-                    <th style="width: 25%">Temat:</th>
-                    <td>{{ idea.fields.tematyka }}</td>
-                </tr>
-                <tr>
-                    <th>Opis:</th>
-                    <td>{{ idea.fields.opis }}</td>
-                </tr>
-                <tr>
-                    <th>Planowane korzyści:</th>
-                    <td>{{ idea.fields.planowane_korzysci }}</td>
-                </tr>
-                <tr>
-                    <th>Planowane koszty:</th>
-                    <td>{{ idea.fields.planowane_koszty }}</td>
-                </tr>
-                <tr>
-                    <th>Ocena ważona:</th>
-                    <td>{{ idea.fields.ocena_wazona }}</td>
-                </tr>
-            </table>
+            <my-idea-table idea="idea" show-attachments-count="true"/>
         </div>
         <div class="btn-tollbar" style="float: right;">
-            <button type="button" class="btn btn-primary" ng-click="openIdeaOpinions(idea.pk)">Przegladaj</button>
+            <button type="button" id='block' class="btn btn-info" ng-click="editIdea(idea.id)">Edytuj (to delete)</button>
+            <button type="button" class="btn btn-primary" ng-click="openIdeaOpinions(idea.id)">Przegladaj</button>
         </div>
         <div style="clear: both;"></div>
         {% endverbatim %}

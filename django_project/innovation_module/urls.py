@@ -23,5 +23,6 @@ urlpatterns = [
     path('add-thread', views.add_thread, name='add-thread'),
     path('add-post/<int:thread_id>/', views.add_post),
     path('ajax/<ajax_request>/', csrf_exempt(views.ajax)),
-    path('ajax/<ajax_request>/<int:object_id>/', csrf_exempt(views.ajax))
+    path('ajax/<ajax_request>/<int:object_id>/', csrf_exempt(views.ajax)),
+    path('file/<int:file_id>/', views.download_file)    
 ]

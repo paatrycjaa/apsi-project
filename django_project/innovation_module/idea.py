@@ -2,20 +2,34 @@ import json
 import datetime
 
 from django.core import serializers
+from django.db.models import Count
+from django.core.serializers.json import DjangoJSONEncoder
+from django.utils import timezone
 
 from . import models
 from .models import Pomysl
+from . import attachment
 
-def serialize(objects):
-    return serializers.serialize('json', objects)
+def serialize(objects, user, filter_status):
+
+    if filter_status:
+        objects = [x for x in objects if x['status_pomyslu_id'] == 'Oczekujacy']
+    
+    for elem in objects:        
+        isCurrentUser = elem['uzytkownik_id'] == user
+        elem['is_current_user'] = isCurrentUser
+        elem.pop('uzytkownik_id')
+
+    return json.dumps(list(objects), cls=DjangoJSONEncoder)
 
 def idea_exists(topic):
     Pomysl.objects.filter(tematyka=topic).count() > 0
 
-def add_idea(idea_json, user):
+
+def add_idea(request, user):
 
     try:
-        data = json.loads(idea_json)
+        data = json.loads(request.POST['data'])
 
         if idea_exists(data['topic']):
             message = "Idea already exists"
@@ -35,13 +49,18 @@ def add_idea(idea_json, user):
         user = models.Uzytkownik.objects.get(user_id=user.id)
         status = models.StatusPomyslu.objects.get(status='Oczekujacy')
         settings = models.UstawieniaOceniania.objects.get(ustawienia=settings_val)
+        keyword = models.SlowoKluczowe.objects.get(slowo_kluczowe=data['category'])
 
-        m = models.Pomysl(tematyka=data['topic'], opis=data['description'], planowane_korzysci=data['benefits'],
-                          planowane_koszty=data['costs'], uzytkownik=user, status=status, ustawienia_oceniania=settings,
-                          ocena_wazona=-1)
+        m = models.Pomysl(tematyka=data['topic'], opis=data['description'], planowane_korzysci=data['benefits'], slowo_kluczowe=keyword,
+                          planowane_koszty=data['costs'], uzytkownik=user, status_pomyslu=status, ustawienia_oceniania=settings,
+                          ocena_wazona=-1, data_dodania=timezone.localtime(timezone.now()))
         m.save()
 
-        message = "Idea added"
+
+        att_key = attachment.add_idea_attachment(m, data['attachment'], data['attachment_size'])        
+        attachment.save_file(request.FILES['file'], data['attachment'], att_key)
+
+        message = "Idea added"        
         status = True
 
     except Exception as e:
@@ -61,7 +80,7 @@ def block_idea(idea_id):
         idea = models.Pomysl.objects.get(pk=idea_id)
         blocked_status = models.StatusPomyslu.objects.get(status='Zablokowany')
 
-        idea.status = blocked_status
+        idea.status_pomyslu = blocked_status
         idea.save()
 
         status = True
@@ -79,29 +98,37 @@ def block_idea(idea_id):
     finally:
         return json.dumps({'status': status, 'message': message})
 
-def get_ideas(user = None):
-    if user is None:
-        return Pomysl.objects.all()
-    user = models.Uzytkownik.objects.get(user_id=user.id)
-    return Pomysl.objects.filter(uzytkownik=user)
+def get_ideas(user, filter_user):
+    
+    objs = Pomysl.objects
+    
+    if filter_user:
+        user_obj = models.Uzytkownik.objects.get(user_id=user.id)
+        objs = objs.filter(uzytkownik=user_obj)
 
-def get_idea(idea_id):
-    return Pomysl.objects.filter(
-        pk=idea_id
-    )
+    return objs.annotate(attachment_count=Count('zalacznikpomyslu')).values()
 
-def get_ideas_json(user=None):
-    return serialize(get_ideas(user))
+def get_ideas_json(user, filter_user):
+    filter_status = not filter_user
+    return serialize(get_ideas(user, filter_user), user, filter_status)
 
 def get_idea_json(idea_id):
-    return serialize(get_idea(idea_id))
+    ideas = Pomysl.objects.filter(pk=idea_id)
+    if len(ideas) == 0:
+        raise ValueError('idea_id: {} is not valid.'.format(idea_id))
+    
+    idea_dict = ideas.values()[0]
+
+    idea_dict['attachments'] = list(models.ZalacznikPomyslu.objects.filter(pomysl=ideas[0]).values('pk', 'zalacznik__nazwa_pliku', 'zalacznik__rozmar'))
+
+    return json.dumps(idea_dict, cls=DjangoJSONEncoder)
 
 def get_settings(idea_id):
     return Pomysl.objects.get(pk=idea_id).ustawienia_oceniania.ustawienia
 
 def can_opinion_be_added(idea_id):
     status = models.StatusPomyslu.objects.get(status='Oczekujacy')
-    return Pomysl.objects.get(pk=idea_id).status == status
+    return Pomysl.objects.get(pk=idea_id).status_pomyslu == status
 
 def update_average_rating(idea_id, new_rating, old_rating = None):
     """Should be called after new rating is saved to the database.
@@ -116,29 +143,9 @@ def update_average_rating(idea_id, new_rating, old_rating = None):
     idea.save()
 
 
-
-def get_edit_idea_json(idea_id):
-    idea = get_idea(idea_id).first()
-
-    settings=idea.ustawienia_oceniania
-    
-    data = {
-        'idea_id': idea_id,
-        'topic': idea.tematyka,
-        'description': idea.opis,
-        'benefits': idea.planowane_korzysci,
-        'costs': idea.planowane_koszty,
-        'num_rating': 'num' in settings.ustawienia,
-        'text_rating': 'text' in settings.ustawienia
-        }    
-
-    return data
-
-
-
-def edit_idea(idea_json, user):
+def edit_idea(request, user):
     try:
-        data = json.loads(idea_json)
+        data = json.loads(request.POST['data'])
 
         if idea_exists(data['topic']):
             message = "Idea already exists"
@@ -160,14 +167,21 @@ def edit_idea(idea_json, user):
             settings_val = 'text_only'
         else:
             settings_val = 'brak'
-
-
-        m.uzytkownik = models.Uzytkownik.objects.get(user_id=user.id)
-        m.status = models.StatusPomyslu.objects.get(status='Oczekujacy')
+        
+        m.status_pomyslu = models.StatusPomyslu.objects.get(status='Oczekujacy')
         m.ustawienia_oceniania = models.UstawieniaOceniania.objects.get(ustawienia=settings_val)
-
+        m.data_ostatniej_edycji = timezone.localtime(timezone.now())
+        m.slowo_kluczowe = models.SlowoKluczowe.objects.get(slowo_kluczowe=data['category'])
 
         m.save()
+
+        try:
+            file = request.FILES['file']
+            #todo remove old file
+            att_key = attachment.add_idea_attachment(m, data['attachment'], data['attachment_size'])        
+            attachment.save_file(file, data['attachment'], att_key)
+        except:
+            pass
 
         message = "Idea added"
         status = True
@@ -177,8 +191,16 @@ def edit_idea(idea_json, user):
         print('error occured when editing data')
         if hasattr(e, 'message'):
             print(e.message)
+            message = e.message
         else:
             print(e)
+            message = e.__str__()
         status = False
     finally:
-        return json.dumps({'status': status})
+        return json.dumps({'status': status, 'message': message})
+
+ 
+def get_keywords():
+    keywords = models.SlowoKluczowe.objects.values_list('slowo_kluczowe', flat=True)
+    return json.dumps(list(keywords), cls=DjangoJSONEncoder)
+        

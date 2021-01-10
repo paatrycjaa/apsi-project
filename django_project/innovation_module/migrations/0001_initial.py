@@ -22,6 +22,13 @@ class Migration(migrations.Migration):
         ),
 
         migrations.CreateModel(
+            name='SlowoKluczowe',
+            fields=[
+                ('slowo_kluczowe', models.CharField(max_length=200, primary_key=True, serialize=False)),
+            ],
+        ),
+
+        migrations.CreateModel(
             name='RodzajDecyzji',
             fields=[
                 ('rodzaj_decyzji', models.CharField(max_length=100, primary_key=True, serialize=False)),
@@ -36,6 +43,7 @@ class Migration(migrations.Migration):
                 ('opis', models.TextField(blank=True)),
             ],
         ),
+
         migrations.CreateModel(
             name='Uzytkownik',
             fields=[
@@ -46,6 +54,28 @@ class Migration(migrations.Migration):
                 ('user', models.OneToOneField(null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
+
+        migrations.CreateModel(
+            name='Administrator',
+            fields=[
+                ('uzytkownik', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='innovation_module.uzytkownik')),
+            ],
+        ),
+
+        migrations.CreateModel(
+            name='CzlonekKomisji',
+            fields=[
+                ('uzytkownik', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='innovation_module.uzytkownik')),
+            ],
+        ),
+
+        migrations.CreateModel(
+            name='ZwyklyUzytkownik',
+            fields=[
+                ('uzytkownik', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='innovation_module.uzytkownik')),
+            ],
+        ),
+
         migrations.CreateModel(
             name='Pomysl',
             fields=[
@@ -54,17 +84,16 @@ class Migration(migrations.Migration):
                 ('opis', models.TextField()),
                 ('planowane_korzysci', models.TextField(blank=True)),
                 ('planowane_koszty', models.TextField(blank=True)),
-                ('ocena_wazona', models.FloatField(blank=True)),
-                ('status', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.StatusPomyslu')),
+                ('ocena_wazona', models.FloatField(null=True)),
+                ('data_dodania', models.DateTimeField('%Y-%m-%d %H:%M:%S')),
+                ('data_ostatniej_edycji', models.DateTimeField('%Y-%m-%d %H:%M:%S', null=True)),
+                ('slowo_kluczowe', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.SlowoKluczowe')),
+                ('status_pomyslu', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.StatusPomyslu')),
                 ('ustawienia_oceniania', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.UstawieniaOceniania')),
                 ('uzytkownik', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.Uzytkownik')),
             ],
         ),
-         migrations.AlterField(
-            model_name='pomysl',
-            name='ocena_wazona',
-            field=models.FloatField(null=True),
-        ),
+
         migrations.CreateModel(
             name='Ocena',
             fields=[
@@ -84,29 +113,11 @@ class Migration(migrations.Migration):
                 ('data', models.DateTimeField(verbose_name='%Y-%m-%d %H:%M:%S')),
                 ('uzasadnienie', models.CharField(max_length=1000)),
                 ('pomysl', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.pomysl')),
-                ('uzytkownik', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.uzytkownik')),
-                ('werdykt', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.RodzajDecyzji')),
+                ('czlonek_komisji', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.CzlonekKomisji')),
+                ('rodzaj_decyzji', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.RodzajDecyzji')),
             ],
         ),
 
-        migrations.CreateModel(
-            name='Administrator',
-            fields=[
-                ('uzytkownik', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='innovation_module.uzytkownik')),
-            ],
-        ),
-        migrations.CreateModel(
-            name='CzlonekKomisji',
-            fields=[
-                ('uzytkownik', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='innovation_module.uzytkownik')),
-            ],
-        ),
-        migrations.CreateModel(
-            name='ZwyklyUzytkownik',
-            fields=[
-                ('uzytkownik', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='innovation_module.uzytkownik')),
-            ],
-        ),
         migrations.CreateModel(
             name='Watek',
             fields=[
@@ -116,6 +127,7 @@ class Migration(migrations.Migration):
                 ('data_ostatniego_posta', models.DateTimeField(verbose_name='%Y-%m-%d %H:%M:%S', blank=True))
             ],
         ),
+
         migrations.CreateModel(
             name='Post',
             fields=[
@@ -125,6 +137,32 @@ class Migration(migrations.Migration):
                 ('watek', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.Watek')),
                 ('uzytkownik', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.Uzytkownik')),
                 ('data_dodania', models.DateTimeField(verbose_name='%Y-%m-%d %H:%M:%S'))
+            ],
+        ),
+
+        migrations.CreateModel(
+            name='Zalacznik',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('nazwa_pliku', models.CharField(max_length=200)),
+                ('data_dodania', models.DateTimeField('%Y-%m-%d %H:%M:%S')),
+                ('rozmar', models.IntegerField(null=True))
+            ],
+        ),
+
+        migrations.CreateModel(
+            name='ZalacznikPomyslu',
+            fields=[
+                ('zalacznik', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='innovation_module.Zalacznik')),
+                ('pomysl', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.Pomysl'))
+            ],
+        ),
+
+        migrations.CreateModel(
+            name='ZalacznikPosta',
+            fields=[
+                ('zalacznik', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='innovation_module.Zalacznik')),
+                ('post', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.Post'))
             ],
         )
     ]

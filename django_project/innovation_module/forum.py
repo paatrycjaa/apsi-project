@@ -2,8 +2,11 @@ import json
 import datetime
 
 from django.core import serializers
+from django.core.serializers.json import DjangoJSONEncoder
+from django.utils import timezone
 
 from . import models
+from . import attachment
 
 def serialize(objects):
     return serializers.serialize('json', objects)
@@ -27,8 +30,14 @@ def get_posts(id):
     return models.Post.objects.filter(watek = watek[0]).order_by('data_dodania')
 
 def get_posts_json(watek_id):
-    return serialize(get_posts(watek_id))
+    posts = get_posts(watek_id)
+    posts_values = posts.values()
 
+    for p, obj in zip(posts_values, posts):
+        p['attachments'] = list(models.ZalacznikPosta.objects.filter(post=obj).values('pk', 'zalacznik__nazwa_pliku', 'zalacznik__rozmar'))
+
+    return json.dumps(list(posts_values), cls=DjangoJSONEncoder)
+    
 def thread_exist(thema):
     models.Watek.objects.filter(temat=thema).count() > 0
 
@@ -64,15 +73,19 @@ def add_thread(thread_json, user):
     finally:
         return json.dumps({'status': status})
 
-def add_post(post_json, user):
+def add_post(request, user):
     try:
-        data = json.loads(post_json)
+        data = json.loads(request.POST['data'])
+
         user = models.Uzytkownik.objects.get(user_id=user.id)
         thread = models.Watek.objects.get(id=data['thread'])
         dt = datetime.datetime.now()
         post = models.Post(tytul=data['thema'], tresc=data['content'], watek=thread, uzytkownik = user, data_dodania=dt)
         post.save()
         models.Watek.objects.filter(id=data['thread']).update(data_ostatniego_posta = dt)
+
+        att_key = attachment.add_post_attachment(post, data['attachment'], data['attachment_size'])
+        attachment.save_file(request.FILES['file'], data['attachment'], att_key)
 
         message="Post został dodany"
         status = True

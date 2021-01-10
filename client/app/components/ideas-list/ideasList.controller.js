@@ -10,10 +10,6 @@ angular.module('appIdeasListController', [])
           });
         }
 
-        $scope.ideaVisible = function(idea) {
-          return idea.fields.status == 'Oczekujacy'
-        }
-
         $scope.openIdeaOpinions = function(id) {
           $window.location.href = `/opinions/${id}/`;
         }
@@ -24,4 +20,14 @@ angular.module('appIdeasListController', [])
           });
         }
       }
-]);
+])
+.directive('ideaTable', function(){
+  return {
+    restrict: 'E',
+    scope: {
+      idea: '=',
+      showAttachmentsCount: '='
+    },
+    templateUrl: '/app/client/app/components/utils/partials/idea-table.html'
+  }
+});

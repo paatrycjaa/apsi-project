@@ -11,6 +11,19 @@ angular.module('appUtils', [])
         });
         return isValid;
       }
+      this.sizeToString = (size) => {
+        mb = 1000000
+        kb = 1000
+        if(size > mb){
+          return (size / mb).toString() + ' MB'
+        }
+        if(size > kb) {
+          return  (size / kb).toString() + ' kB'
+        }
+
+        return  size.toString() + ' B'
+      }
     }
-  );
+);
+  
   
