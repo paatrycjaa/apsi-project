@@ -4,48 +4,9 @@
 <h1>Opinie na temat pomysłu</h1>
 <div ng-controller="opinionsListController" ng-init="init({{idea_id}})">  
     <div class="idea-block">
-        <table class="table idea-table" id="idea-table-row">
-            {% verbatim %}
-            <tr id="idea-table-topic">
-                <th style="width: 25%;">Temat:</th>
-                <td>{{ idea.tematyka }}</td>
-            </tr>
-            <tr>
-                <th>Kategoria:</th>
-                <td>{{ idea.slowo_kluczowe_id }}</td>
-            </tr>
-            <tr>
-                <th>Opis:</th>
-                <td>{{ idea.opis }}</td>
-            </tr>
-            <tr>
-                <th>Planowane korzyści:</th>
-                <td>{{ idea.planowane_korzysci }}</td>
-            </tr>
-            <tr>
-                <th>Planowane koszty:</th>
-                <td>{{ idea.planowane_koszty }}</td>
-            </tr>
-            <tr ng-if="idea.ocena_wazona!=-1">
-                <th>Ocena ważona:</th>
-                <td>{{ idea.ocena_wazona }}</td>
-            </tr>
-            <tr>
-                <th>Załączniki: </th>
-                <td>
-                    <ui>
-                        <li ng-repeat="att in idea.attachments">
-                            <a href="/file/{{att.pk}}" type="button" target="_blank" class="btn btn-link"> {{ att.zalacznik__nazwa_pliku }}  </a>
-                            <span> {{ att.rozmiar }} </span>                                
-                        </li>
-                    </ui>
-
-                </td>
-            </tr>
-            
-            {% endverbatim %}
-
-        </table>
+        {% verbatim %} 
+        <opinions-idea-table idea="idea"/>
+        {% endverbatim %}
     </div>
 
     <div style="float: right;">

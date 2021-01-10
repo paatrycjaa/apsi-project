@@ -29,5 +29,13 @@ angular.module('appOpinionsListController', [])
         
         }
       }
-]);
-
+])
+.directive('opinionsIdeaTable', function(){
+  return {
+    restrict: 'E',
+    scope: {
+      idea: '='
+    },
+    templateUrl: '/app/client/app/components/utils/partials/full-idea-table.html'
+  }
+});

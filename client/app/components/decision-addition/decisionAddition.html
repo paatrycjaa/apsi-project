@@ -13,45 +13,8 @@
 
 <div ng-controller="decisionAdditionController" ng-init="init({{idea_id}})">  
     <div class="idea-block">
-        <table class="idea-table">
-            {% verbatim %}
-            <tr id="idea-table-topic">
-                <th style="width: 25%;">Temat:</th>
-                <td>{{ idea.fields.tematyka }}</td>
-            </tr>
-            <tr id="idea-table-row">
-                <th>Opis pomysłu:</th>
-                <td>{{ idea.fields.opis }}</td>
-            </tr>
-            <tr id="idea-table-row">
-                <th>Słowa kluczowe:</th>
-                <td>{{ idea.fields.slowa_kluczowe }}</td>
-            </tr>
-            <tr id="idea-table-row">
-                <th>Planowane korzyści:</th>
-                <td>{{ idea.fields.planowane_korzysci }}</td>
-            </tr>
-            <tr id="idea-table-row">
-                <th>Planowane koszty:</th>
-                <td>{{ idea.fields.planowane_koszty }}</td>
-            </tr>
-            <tr id="idea-table-row">
-                <th>Załączniki:</th>
-                <td>{{ idea.fields.zalaczniki }}</td>
-                <th>Linki:</th>
-                <td>{{ idea.fields.linki }}</td>
-            </tr>
-            <tr id="idea-table-row">
-                <th>Ocena ważona:</th>
-                <td>{{ idea.fields.ocena_wazona }}</td>
-            </tr>
-        </table>
-        <!-- <label class="ocena" style="float: right; width: 1000px;height: 5000px;">
-            <h3>
-                Ocena ważona:
-                {{ idea.fields.ocena_wazona }}
-            </h3> 
-        </label> -->
+        {% verbatim %}
+        <decision-idea-table idea="idea"/>
         {% endverbatim %}
     </div>
 

@@ -20,8 +20,7 @@ angular.module('appDecisionAdditionController', [])
             $scope.idea_id=id
             console.log(id)
             decisionAdditionService.getIdeaById($scope.idea_id, function(response) {
-              $scope.idea = response.data[0]
-              console.log($scope.idea)
+              $scope.idea = response.data              
             });
 
 
@@ -57,4 +56,13 @@ angular.module('appDecisionAdditionController', [])
 
 
       }
-]);
+])
+.directive('decisionIdeaTable', function(){
+  return {
+    restrict: 'E',
+    scope: {
+      idea: '='
+    },
+    templateUrl: '/app/client/app/components/utils/partials/full-idea-table.html'
+  }
+});

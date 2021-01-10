@@ -114,7 +114,7 @@ class Migration(migrations.Migration):
                 ('uzasadnienie', models.CharField(max_length=1000)),
                 ('pomysl', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.pomysl')),
                 ('czlonek_komisji', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.CzlonekKomisji')),
-                ('werdykt', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.RodzajDecyzji')),
+                ('rodzaj_decyzji', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='innovation_module.RodzajDecyzji')),
             ],
         ),
 

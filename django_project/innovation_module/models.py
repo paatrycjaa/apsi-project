@@ -121,7 +121,7 @@ class CzlonekKomisji(models.Model):
     )
 
     def __str__(self):
-        return self.uzytkownik
+        return self.uzytkownik.__str__()
 
 class Administrator(models.Model):
     uzytkownik = models.OneToOneField(
@@ -131,7 +131,7 @@ class Administrator(models.Model):
     )
 
     def __str__(self):
-        return self.uzytkownik
+        return self.uzytkownik.__str__()
 
 class ZwyklyUzytkownik(models.Model):
     uzytkownik = models.OneToOneField(
@@ -141,7 +141,7 @@ class ZwyklyUzytkownik(models.Model):
     )
 
     def __str__(self):
-        return self.uzytkownik
+        return self.uzytkownik.__str__()
 
 
 class Watek(models.Model):
