@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 
 
 import json
@@ -12,7 +12,7 @@ _ajax_requests = {
     'all_ideas': lambda request, object_id: idea.get_ideas_json(request.user, False),
     'user_ideas': lambda request, object_id: idea.get_ideas_json(request.user, True),
     'submit_idea': lambda request, object_id: idea.add_idea(request, request.user),
-    'edit_idea': lambda request, object_id: idea.edit_idea(request, request.user),
+    'edit_idea': lambda request, object_id: idea.ajax_edit_idea(request, int(json.loads(request.POST['data'])['idea_id'])),
     'get_idea': lambda request, object_id: idea.get_idea_json(object_id),
     'all_opinions': lambda request, object_id: opinion.get_opinions_json(object_id, request.user),
     'get_opinion': lambda request, object_id: opinion.get_opinion_json(object_id),
@@ -24,7 +24,8 @@ _ajax_requests = {
     'all_threads': lambda request, object_id: forum.get_threads_json(),
     'all_posts': lambda request, object_id: forum.get_posts_json(object_id),
     'submit_thread': lambda request, object_id: forum.add_thread(request.body.decode('utf-8'), request.user),
-    'submit_post': lambda request, object_id: forum.add_post(request, request.user)
+    'submit_post': lambda request, object_id: forum.add_post(request, request.user),
+    'block_idea':  lambda request, object_id: ajax_block_idea(request, object_id)
 }    
     
 
@@ -94,13 +95,13 @@ def edit_opinion(request, opinion_id):
 
 
 @login_required
+@decorators.users_idea
 def edit_idea(request, idea_id):    
     context = {'idea_id': idea_id}
     return render(request, 'app/components/idea-addition/ideaAddition.html', context)
 
 @login_required
 def ajax(request, ajax_request, object_id=None):
-
     try:
         data = _ajax_requests[ajax_request](request, object_id)
         return HttpResponse(data, content_type='application/json')
@@ -125,4 +126,12 @@ def ajax_edit_opinion(request, opinion_id):
 @login_required
 def download_file(request, file_id):
     return attachment.download_file(file_id)
+    return HttpResponse(opinion.edit_opinion(body_unicode), content_type='application/json')
 
+@decorators.users_idea
+def ajax_edit_idea(request, idea_id):
+    return idea.edit_idea(request, request.user)
+
+@user_passes_test(lambda u : u.is_superuser)
+def ajax_block_idea(request, object_id):
+    return idea.block_idea(object_id)

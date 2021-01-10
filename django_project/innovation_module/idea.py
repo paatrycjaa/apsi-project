@@ -60,11 +60,34 @@ def add_idea(request, user):
         att_key = attachment.add_idea_attachment(m, data['attachment'], data['attachment_size'])        
         attachment.save_file(request.FILES['file'], data['attachment'], att_key)
 
-        message = "Idea added"
+        message = "Idea added"        
         status = True
 
     except Exception as e:
         print('error occured when adding idea')
+        if hasattr(e, 'message'):
+            print(e.message)
+            message = e.message
+        else:
+            print(e)
+            message = e.__str__()
+        status = False
+    finally:
+        return json.dumps({'status': status})
+
+def block_idea(idea_id):
+    try:
+        idea = models.Pomysl.objects.get(pk=idea_id)
+        blocked_status = models.StatusPomyslu.objects.get(status='Zablokowany')
+
+        idea.status_pomyslu = blocked_status
+        idea.save()
+
+        status = True
+        message = "Idea blocked"
+
+    except Exception as e:
+        print('error occured when blocking idea')
         if hasattr(e, 'message'):
             print(e.message)
             message = e.message
@@ -180,3 +203,4 @@ def edit_idea(request, user):
 def get_keywords():
     keywords = models.SlowoKluczowe.objects.values_list('slowo_kluczowe', flat=True)
     return json.dumps(list(keywords), cls=DjangoJSONEncoder)
+        
