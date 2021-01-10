@@ -249,9 +249,9 @@ def create_zalacznik(apps):
     ZalacznikPosta = apps.get_model(app, 'ZalacznikPosta')
 
     zalaczniki = [
-        ('file1.txt', 0.01),
+        ('file1.txt', 1),
         ('img1.jpg', 2),
-        ('file2.txt', 0.01),
+        ('file2.txt', 3),
         ('img2.jpg', 2)
     ]
 

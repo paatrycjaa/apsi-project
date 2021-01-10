@@ -37,8 +37,6 @@ def add_idea(request, user):
 
     try:
         data = json.loads(request.POST['data'])
-        
-        attachment.save_file(request.FILES['file'], data['attachment'])
 
         if idea_exists(data['topic']):
             message = "Idea already exists"
@@ -64,6 +62,10 @@ def add_idea(request, user):
                           planowane_koszty=data['costs'], uzytkownik=user, status_pomyslu=status, ustawienia_oceniania=settings,
                           ocena_wazona=-1, data_dodania=timezone.localtime(timezone.now()))
         m.save()
+
+
+        att_key = attachment.add_idea_attachment(m, data['attachment'], data['attachment_size'])        
+        attachment.save_file(request.FILES['file'], data['attachment'], att_key)
 
         message = "Idea added"
         status = True
@@ -133,7 +135,7 @@ def get_idea_json(idea_id):
     
     idea_dict = ideas.values()[0]
 
-    idea_dict['attachments'] = list(models.ZalacznikPomyslu.objects.filter(pomysl=ideas[0]).values('pk', 'zalacznik__nazwa_pliku'))
+    idea_dict['attachments'] = list(models.ZalacznikPomyslu.objects.filter(pomysl=ideas[0]).values('pk', 'zalacznik__nazwa_pliku', 'zalacznik__rozmar'))
 
     return json.dumps(idea_dict, cls=DjangoJSONEncoder)
 

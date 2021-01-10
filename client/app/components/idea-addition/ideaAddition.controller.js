@@ -8,6 +8,7 @@ angular.module('appIdeaAdditionController', [])
           category: '',
           description : '',
           attachment: '',
+          attachment_size: 0,
           benefits : '',
           costs : '',           
           num_rating : true,
@@ -18,8 +19,15 @@ angular.module('appIdeaAdditionController', [])
         
         $scope.keywords = []
 
+        const max_size = 10000000  // 10 MB
+
         $scope.uploadFile = function(files){
-          $scope.attachement = files[0]      
+          $scope.attachement = files[0] 
+          if($scope.attachement.size > max_size){
+            alert('Wybrany plik jest za duży. Maksymalny rozmiar to 10 MB.');            
+            $scope.attachement = ''
+            document.getElementById('attachment').value = ''
+          }          
         }
                 
         $scope.init = function(idea_id) 

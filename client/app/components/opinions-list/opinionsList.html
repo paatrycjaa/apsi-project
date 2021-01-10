@@ -35,7 +35,8 @@
                 <td>
                     <ui>
                         <li ng-repeat="att in idea.attachments">
-                            <a href="/file/{{att.pk}}" type="button" class="btn btn-link"> {{ att.zalacznik__nazwa_pliku }} </button>                             
+                            <a href="/file/{{att.pk}}" type="button" target="_blank" class="btn btn-link"> {{ att.zalacznik__nazwa_pliku }}  </a>
+                            <span> {{ att.rozmiar }} </span>                                
                         </li>
                     </ui>
 
