@@ -14,10 +14,6 @@ angular.module('appMyIdeasListController', [])
                 $scope.ideas_rest.push(idea);
               }
             }
-            console.log('Ideas to edit');
-            console.log($scope.ideas_to_edit);
-            console.log('Rest of ideas');
-            console.log($scope.ideas_rest);
           });
 
           
@@ -28,8 +24,7 @@ angular.module('appMyIdeasListController', [])
         }
 
         $scope.editIdea = function(id) {
-          // $window.location.href = `//${id}/`;
-          console.log('Redirect to idea edit');
+          $window.location.href = `/edit-idea/${id}/`;
         }
       }
 ]);

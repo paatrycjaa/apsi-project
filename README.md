@@ -33,3 +33,7 @@ Unused volumes can be removed using:
 ```
 docker volume prune
 ```
+### Connecting to running database in container
+```
+docker exec -it apsi-project_db_1 mysql -u root -proot ideas_db
+```
