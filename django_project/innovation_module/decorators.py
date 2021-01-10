@@ -22,7 +22,7 @@ def users_opinion(function):
     return wrap
 
 def users_idea(function):
-    """ Decorator for restricting edit acces to not user's idea
+    """ Decorator for restricting edit access to not user's idea
     """
     @wraps(function)
     def wrap(request, idea_id, *args, **kwargs):
