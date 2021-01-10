@@ -17,8 +17,7 @@ angular.module('appOpinionsListController', [])
             
           $scope.idea_id=id            
           opinionsListService.getIdeaById($scope.idea_id, function(response) {
-            $scope.idea = response.data
-            console.log(response.data)
+            $scope.idea = response.data            
             $scope.idea.attachments.forEach(att => {
               mb = 1000000
               kb = 1000
@@ -29,8 +28,6 @@ angular.module('appOpinionsListController', [])
               } else {
                 att.rozmiar = att.zalacznik__rozmar.toString() + ' B'
               }
-
-              
             });
           });
 
