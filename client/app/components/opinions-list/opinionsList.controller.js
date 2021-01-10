@@ -1,6 +1,6 @@
 angular.module('appOpinionsListController', [])
-  .controller('opinionsListController', ['$scope', 'opinionsListService',
-  function($scope, opinionsListService) {
+  .controller('opinionsListController', ['$scope', 'opinionsListService', 'utils',
+  function($scope, opinionsListService, utils) {
         
         $scope.opinions = [];
 
@@ -19,15 +19,7 @@ angular.module('appOpinionsListController', [])
           opinionsListService.getIdeaById($scope.idea_id, function(response) {
             $scope.idea = response.data            
             $scope.idea.attachments.forEach(att => {
-              mb = 1000000
-              kb = 1000
-              if(att.zalacznik__rozmar > mb){
-                att.rozmiar = (att.zalacznik__rozmar / mb).toString() + ' MB'
-              } else if(att.zalacznik__rozmar > kb) {
-                att.rozmiar = (att.zalacznik__rozmar / kb).toString() + ' kB'
-              } else {
-                att.rozmiar = att.zalacznik__rozmar.toString() + ' B'
-              }
+              att.rozmiar = utils.sizeToString(att.zalacznik__rozmar)
             });
           });
 

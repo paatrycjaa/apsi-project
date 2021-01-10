@@ -15,17 +15,17 @@ angular.module('appIdeaAdditionController', [])
           text_rating : true
         }
 
-        $scope.attachement = ''
+        $scope.attachment = ''
         
         $scope.keywords = []
 
         const max_size = 10000000  // 10 MB
 
         $scope.uploadFile = function(files){
-          $scope.attachement = files[0] 
-          if($scope.attachement.size > max_size){
+          $scope.attachment = files[0] 
+          if($scope.attachment.size > max_size){
             alert('Wybrany plik jest za duży. Maksymalny rozmiar to 10 MB.');            
-            $scope.attachement = ''
+            $scope.attachment = ''
             document.getElementById('attachment').value = ''
           }          
         }
@@ -36,28 +36,34 @@ angular.module('appIdeaAdditionController', [])
           $scope.ideaModel.idea_id = idea_id;
 
           console.log(idea_id)
-          
-          if(idea_id){
-            ideaAdditionService.getIdeaById(idea_id, function(response) {
-              
-              data = response.data[0] 
-              settings=data.ustawienia_oceniania
-
-              $scope.ideaModel.topic= data.tematyka
-              $scope.ideaModel.description = data.opis  
-              $scope.ideaModel.benefits =data.planowane_korzysci
-              $scope.ideaModel.costs = data.planowane_koszty
-              $scope.ideaModel.attachement = data.attachement
-              $scope.ideaModel.category = data.slowakluczowe_id
-              $scope.ideaModel.num_rating =  settings.includes('num')
-              $scope.ideaModel.text_rating =  settings.includes('text')
-
-            })
-          }
 
           ideaAdditionService.getKeywords(function(response){
             $scope.keywords = response.data            
           })
+          
+          if(idea_id){
+            ideaAdditionService.getIdeaById(idea_id, function(response) {
+
+              //todo
+              // display category
+              // display attachment
+              
+              data = response.data
+              settings=data.ustawienia_oceniania_id
+
+              $scope.ideaModel.topic= data.tematyka
+              $scope.ideaModel.description = data.opis              
+              $scope.ideaModel.benefits =data.planowane_korzysci
+              $scope.ideaModel.costs = data.planowane_koszty              
+              $scope.ideaModel.category = data.slowakluczowe_id
+              $scope.ideaModel.num_rating =  settings.includes('num')
+              $scope.ideaModel.text_rating =  settings.includes('text')
+
+              if(data.attachments){
+                $scope.ideaModel.attachment = data.attachments[0].zalacznik__nazwa_pliku
+              }
+            })
+          }
         }
 
         $scope.reponse_received = false
@@ -79,9 +85,9 @@ angular.module('appIdeaAdditionController', [])
 
                     // opinion is edited
           if($scope.ideaModel.idea_id){
-            ideaAdditionService.editIdea($scope.ideaModel, callback);
+            ideaAdditionService.editIdea($scope.ideaModel,  $scope.attachment, callback);
           } else { // new opinion is added            
-            ideaAdditionService.submitIdea($scope.ideaModel, $scope.attachement, callback);
+            ideaAdditionService.submitIdea($scope.ideaModel, $scope.attachment, callback);
           }
           }
       }

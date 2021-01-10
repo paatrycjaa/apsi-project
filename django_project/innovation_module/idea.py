@@ -73,38 +73,6 @@ def add_idea(request, user):
             message = e.__str__()
         status = False
     finally:
-        return json.dumps({'status': status})
-
-def edit_idea(idea_json):
-    
-    try:
-        data = json.loads(idea_json)
-        print(data)
-        idea_id = data['idea_id']
-
-        idea = models.Pomysl.objects.get(pk=idea_id)
-
-        new_status = models.StatusPomyslu.objects.get(status='Zablokowany')
-
-        idea.status_pomyslu = new_status
-        idea.data_ostatniej_edycji = timezone.localtime(timezone.now())
-
-        idea.save()
-
-        message = "Idea edited"
-
-        status = True
-
-    except Exception as e:
-        print('error occured when editing idea')
-        if hasattr(e, 'message'):
-            print(e.message)
-            message = e.message
-        else:
-            print(e)
-            message = e.__str__()
-        status = False
-    finally:
         return json.dumps({'status': status, 'message': message})
 
 def get_ideas(user, filter_user):
@@ -152,9 +120,9 @@ def update_average_rating(idea_id, new_rating, old_rating = None):
     idea.save()
 
 
-def edit_idea(idea_json, user):
+def edit_idea(request, user):
     try:
-        data = json.loads(idea_json)
+        data = json.loads(request.POST['data'])
 
         if idea_exists(data['topic']):
             message = "Idea already exists"
@@ -176,14 +144,21 @@ def edit_idea(idea_json, user):
             settings_val = 'text_only'
         else:
             settings_val = 'brak'
-
-
-        m.uzytkownik = models.Uzytkownik.objects.get(user_id=user.id)
+        
         m.status_pomyslu = models.StatusPomyslu.objects.get(status='Oczekujacy')
         m.ustawienia_oceniania = models.UstawieniaOceniania.objects.get(ustawienia=settings_val)
-
+        m.data_ostatniej_edycji = timezone.localtime(timezone.now())
+        m.slowo_kluczowe = models.SlowoKluczowe.objects.get(slowo_kluczowe=data['category'])
 
         m.save()
+
+        try:
+            file = request.FILES['file']
+            #todo remove old file
+            att_key = attachment.add_idea_attachment(m, data['attachment'], data['attachment_size'])        
+            attachment.save_file(file, data['attachment'], att_key)
+        except:
+            pass
 
         message = "Idea added"
         status = True
@@ -193,11 +168,13 @@ def edit_idea(idea_json, user):
         print('error occured when editing data')
         if hasattr(e, 'message'):
             print(e.message)
+            message = e.message
         else:
             print(e)
+            message = e.__str__()
         status = False
     finally:
-        return json.dumps({'status': status})
+        return json.dumps({'status': status, 'message': message})
 
  
 def get_keywords():
