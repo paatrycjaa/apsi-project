@@ -7,8 +7,6 @@ from . import models
 from .models import Pomysl
 
 def serialize(objects):
-    # raw = serializers.serialize('python', objects)
-    # return json.dumps([o['fields'] for o in raw])
     return serializers.serialize('json', objects)
 
 def idea_exists(topic):
@@ -58,26 +56,19 @@ def add_idea(idea_json, user):
     finally:
         return json.dumps({'status': status})
 
-def edit_idea(idea_json):
+def block_idea(idea_id):
     try:
-        data = json.loads(idea_json)
-        print(data)
-        idea_id = data['idea_id']
-
         idea = models.Pomysl.objects.get(pk=idea_id)
+        blocked_status = models.StatusPomyslu.objects.get(status='Zablokowany')
 
-        new_status = models.StatusPomyslu.objects.get(status='Zablokowany')
-
-        idea.status = new_status
-
+        idea.status = blocked_status
         idea.save()
 
-        message = "Idea edited"
-
         status = True
+        message = "Idea blocked"
 
     except Exception as e:
-        print('error occured when editing idea')
+        print('error occured when blocking idea')
         if hasattr(e, 'message'):
             print(e.message)
             message = e.message
@@ -145,7 +136,7 @@ def get_edit_idea_json(idea_id):
 
 
 
-def edit_idea(idea_json,user):
+def edit_idea(idea_json, user):
     try:
         data = json.loads(idea_json)
 
@@ -191,5 +182,3 @@ def edit_idea(idea_json,user):
         status = False
     finally:
         return json.dumps({'status': status})
-
- 

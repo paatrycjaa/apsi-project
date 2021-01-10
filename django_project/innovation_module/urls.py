@@ -24,5 +24,4 @@ urlpatterns = [
     path('add-post/<int:thread_id>/', views.add_post),
     path('ajax/<ajax_request>/', csrf_exempt(views.ajax)),
     path('ajax/<ajax_request>/<int:object_id>/', csrf_exempt(views.ajax))
-    #path('ajax/<ajax_request>/<int:opinion_id>/', csrf_exempt(views.ajax))
 ]
