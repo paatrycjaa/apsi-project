@@ -90,7 +90,7 @@ def ajax(request, ajax_request, object_id=None):
 
     if ajax_request == 'submit_idea':
         body_unicode = request.body.decode('utf-8')
-        return HttpResponse(idea.add_idea(body_unicode, request.user),content_type='application/json')   
+        return HttpResponse(idea.add_idea(body_unicode, request.user), content_type='application/json')   
 
     if ajax_request == 'edit_idea':
         return ajax_edit_idea(request, int(json.loads(request.body)['idea_id']))
@@ -109,11 +109,11 @@ def ajax(request, ajax_request, object_id=None):
 
     if ajax_request == 'submit_opinion':
         body_unicode = request.body.decode('utf-8')
-        return HttpResponse(opinion.add_opinion(body_unicode, request.user),content_type='application/json')
+        return HttpResponse(opinion.add_opinion(body_unicode, request.user), content_type='application/json')
 
     if ajax_request == 'submit_decision':
         body_unicode = request.body.decode('utf-8')
-        return HttpResponse(decision.add_decision(body_unicode, request.user),content_type='application/json')
+        return HttpResponse(decision.add_decision(body_unicode, request.user), content_type='application/json')
 
     if ajax_request == 'edit_opinion':
         return ajax_edit_opinion(request, int(json.loads(request.body)['opinion_id']))
@@ -132,11 +132,11 @@ def ajax(request, ajax_request, object_id=None):
 
     if ajax_request == 'submit_thread' :
         body_unicode = request.body.decode('utf-8')
-        return HttpResponse(forum.add_thread(body_unicode, request.user),content_type='application/json')
+        return HttpResponse(forum.add_thread(body_unicode, request.user), content_type='application/json')
 
     if ajax_request == 'submit_post' :
         body_unicode = request.body.decode('utf-8')
-        return HttpResponse(opinion.edit_opinion(body_unicode),content_type='application/json')      
+        return HttpResponse(forum.add_post(body_unicode, request.user), content_type='application/json')      
 
     return HttpResponseNotFound('Cannot handle ajax request')
 
