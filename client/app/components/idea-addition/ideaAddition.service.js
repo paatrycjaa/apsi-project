@@ -4,8 +4,19 @@ angular.module('appIdeaAdditionService', [])
       this.getIdeaById = function(id, callback) {
         return $http.get(`/ajax/get_idea/${id}/`).then(callback);
       }
-      this.submitIdea = function(data, callback) { 
-        return $http.post('/ajax/submit_idea/', JSON.stringify(data)).then(callback) }
+      this.submitIdea = function(data, file, callback) { 
+        var formData = new FormData();
+
+        data.attachment = file.name
+
+        formData.append('data', JSON.stringify(data));
+        formData.append('file', file);
+
+        return $http.post('/ajax/submit_idea/', formData, {
+          headers: {'Content-Type': undefined },
+          transformRequest: angular.identity
+      })
+      }
 
       this.editIdea = function( data, callback) { 
         var url = '/ajax/edit_idea/'

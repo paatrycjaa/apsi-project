@@ -7,14 +7,20 @@ angular.module('appIdeaAdditionController', [])
           topic : '',
           category: '',
           description : '',
+          attachment: '',
           benefits : '',
-          costs : '',
-          attachement : '',
+          costs : '',           
           num_rating : true,
           text_rating : true
         }
+
+        $scope.attachement = ''
         
         $scope.keywords = []
+
+        $scope.uploadFile = function(files){
+          $scope.attachement = files[0]      
+        }
                 
         $scope.init = function(idea_id) 
         {
@@ -32,9 +38,9 @@ angular.module('appIdeaAdditionController', [])
               $scope.ideaModel.topic= data.tematyka
               $scope.ideaModel.description = data.opis  
               $scope.ideaModel.benefits =data.planowane_korzysci
-              $scope.ideaModel.costs =data.planowane_koszty
-              $scope.ideaModel.attachement =data.attachement
-              $scope.ideaModel.category =data.slowakluczowe_id
+              $scope.ideaModel.costs = data.planowane_koszty
+              $scope.ideaModel.attachement = data.attachement
+              $scope.ideaModel.category = data.slowakluczowe_id
               $scope.ideaModel.num_rating =  settings.includes('num')
               $scope.ideaModel.text_rating =  settings.includes('text')
 
@@ -68,7 +74,7 @@ angular.module('appIdeaAdditionController', [])
           if($scope.ideaModel.idea_id){
             ideaAdditionService.editIdea($scope.ideaModel, callback);
           } else { // new opinion is added            
-            ideaAdditionService.submitIdea($scope.ideaModel, callback);
+            ideaAdditionService.submitIdea($scope.ideaModel, $scope.attachement, callback);
           }
           }
       }

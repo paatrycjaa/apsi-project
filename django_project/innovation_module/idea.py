@@ -8,6 +8,14 @@ from django.utils import timezone
 
 from . import models
 from .models import Pomysl
+from . import attachment
+
+from django import forms
+
+class UploadFileForm(forms.Form):
+    title = forms.CharField(max_length=50)
+    file = forms.FileField()
+
 
 def serialize(objects, user, filter_status):
 
@@ -24,10 +32,13 @@ def serialize(objects, user, filter_status):
 def idea_exists(topic):
     Pomysl.objects.filter(tematyka=topic).count() > 0
 
-def add_idea(idea_json, user):
+
+def add_idea(request, user):
 
     try:
-        data = json.loads(idea_json)
+        data = json.loads(request.POST['data'])
+        
+        attachment.save_file(request.FILES['file'], data['attachment'])
 
         if idea_exists(data['topic']):
             message = "Idea already exists"
@@ -70,6 +81,7 @@ def add_idea(idea_json, user):
         return json.dumps({'status': status})
 
 def edit_idea(idea_json):
+    
     try:
         data = json.loads(idea_json)
         print(data)

@@ -47,7 +47,7 @@
 
     <div class="form-group">
         <label for="attachement">Załącznik</label>
-        <input type="file" class="form-control-file" ng-model="ideaModel.attachement" id="attachement">
+        <input type="file" class="form-control-file" id="attachement" onchange="angular.element(this).scope().uploadFile( this.files )" />
     </div>
 
     <div class="form-group">

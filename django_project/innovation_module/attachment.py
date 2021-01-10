@@ -17,7 +17,11 @@ def download_file(file_id):
     
     return HttpResponseNotFound("File not found.")
 
-            # with open(file_path, 'rb') as fh:
-            #     response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
-            #     response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
-            #     return response
+def save_file(file, file_name):
+    file_path = os.path.join(settings.MEDIA_ROOT, file_name)
+    with open(file_path, 'wb+') as f:
+        for chunk in file.chunks():
+            f.write(chunk)
+
+def add_idea_attachment(idea, file_name):
+    pass

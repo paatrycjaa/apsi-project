@@ -11,7 +11,7 @@ _ajax_requests = {
     'get_keywords': lambda request, object_id: idea.get_keywords(),
     'all_ideas': lambda request, object_id: idea.get_ideas_json(request.user, False),
     'user_ideas': lambda request, object_id: idea.get_ideas_json(request.user, True),
-    'submit_idea': lambda request, object_id: idea.add_idea(request.body.decode('utf-8'), request.user),
+    'submit_idea': lambda request, object_id: idea.add_idea(request, request.user),
     'edit_idea': lambda request, object_id: idea.edit_idea(request.body.decode('utf-8'), request.user),
     'get_idea': lambda request, object_id: idea.get_idea_json(object_id),
     'all_opinions': lambda request, object_id: opinion.get_opinions_json(object_id, request.user),
@@ -100,6 +100,7 @@ def edit_idea(request, idea_id):
 
 @login_required
 def ajax(request, ajax_request, object_id=None):
+
     try:
         data = _ajax_requests[ajax_request](request, object_id)
         return HttpResponse(data, content_type='application/json')
@@ -124,3 +125,4 @@ def ajax_edit_opinion(request, opinion_id):
 @login_required
 def download_file(request, file_id):
     return attachment.download_file(file_id)
+
