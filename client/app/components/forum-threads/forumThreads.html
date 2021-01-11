@@ -35,11 +35,19 @@
                 </tr>
             </table>
         </div>
-        <div style="float: right;">
+        {% endverbatim %}
+        <div class="btn-tollbar" style="float: right;">
+            {% if user.is_superuser %}
+            {% verbatim %}
+            <button type="button" class="btn btn-danger" ng-click="removeThread(thread.pk)">Usuń</button>
+            {% endverbatim %}
+            {% endif %}
+
+            {% verbatim %}
             <button type="button" class="btn btn-primary"  ng-click="openThreadPosts(thread.pk)" >Przegladaj</button>
+            {% endverbatim %}            
         </div>
         <div style="clear: both;"></div>
-        {% endverbatim %}
     </div>
 </div>
 

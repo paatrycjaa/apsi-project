@@ -72,6 +72,26 @@ def add_thread(thread_json, user):
         status = False
     finally:
         return json.dumps({'status': status})
+    
+def remove_thread(thread_id):
+    try:
+        thread = models.Watek.objects.get(pk=thread_id)
+        thread.delete()
+
+        status = True
+        message = "Thread removed"
+
+    except Exception as e:
+        print('error occured when removing thread')
+        if hasattr(e, 'message'):
+            print(e.message)
+            message = e.message
+        else:
+            print(e)
+            message = e.__str__()
+        status = False
+    finally:
+        return json.dumps({'status': status, 'message': message})
 
 def add_post(request, user):
     try:
