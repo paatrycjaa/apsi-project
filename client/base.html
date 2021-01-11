@@ -22,6 +22,87 @@
 
   </head>
   <body class="d-flex flex-column min-vh-100">
+    <style>
+      /* ------------------------CZĘŚĆ-GÓRNA-MENU------------------------ */
+
+      /* wygląd głównego elementu - ol */
+      ol {
+        list-style-type:none;
+        padding:0;
+        margin:0;
+        font-size:18px;
+        height:2em;
+        line-height:2em;
+        text-align:center;
+        color: #000;
+      }
+
+      /* wygląd wszystkich elementów - a - znajdujących się w elemencie - ol */
+      ol a {
+        display:block;
+        text-decoration:none;
+        color:#000;
+        padding:0 5px;
+      }
+
+      /* wygląd elementów - li - wszystkich dzieci elementu - ol */
+      ol > li {
+        float:left;
+        margin-left:1px;
+        height:2em;
+      }
+
+      /* wygląd elementu - li - pierwszego dziecka elementu - ol */
+      ol > li:first-child {
+        margin-left:0;
+      }
+
+      /* wygląd elementów - li - wszystkich dzieci elementu - ol - po najechaniu kursorem myszki na element - li */
+      ol > li:hover {
+        background-color:#adc6f0;
+      }
+
+      /* wygląd elementu - a - dziecka elementu - li - będącego dzieckiem elementu - ol - po najechaniu kursorem myszki na element - li */
+      ol > li:hover > a {
+        color:#09C;
+      }
+
+      /* wygląd elementu - ul - dziecka elementu - li - będącego dzieckiem elementu - ol - po najechaniu kursorem myszki na element - li */
+      ol > li:hover > ul {
+        display:block;
+      }
+
+      /* ------------------------CZĘŚĆ-ROZWIJANA-MENU------------------------ */
+
+      /* wygląd głównych rozwijanych elementów - ul */
+      ol > li > ul {
+        display:none;
+        list-style-type:none;
+        padding:0;
+        margin:0;
+      }
+
+      /* wygląd elementu - li - w części rozwijanej */
+      ol > li > ul > li {
+        position:relative;
+        background-color:#EEE;
+      }
+
+      /* wygląd elementu - a - w części rozwijanej */
+      ol > li > ul > li > a {
+        border-top:1px solid #FFF;
+      }
+
+      /* wygląd elementu - li - w części rozwijanej, po najechaniu kursorem myszki na dany element - li */
+      ol > li > ul > li:hover {
+        background-color:#DDD;
+      }
+
+      /* wygląd elementu - a - w części rozwijanej, po najechaniu kursorem myszki na element - li */
+      ol > li > ul > li:hover > a {
+        color:#09C;
+      }
+    </style>
     <header class="site-header">
       <!-- Navigation bar -->
       <nav class="navbar navbar-expand-lg navbar-dark static-top" style="background-color: #054a82;">
@@ -31,10 +112,19 @@
               <a class="navbar-brand" href="{% url 'home' %}">
                 <img src="{% static 'assets/img/logo.png' %}" width="25" height="25" alt=""></a>
               {% if user.is_authenticated %}
-              <a class="nav-item nav-link" href="{% url 'ideas' %}">POMYSŁY</a>
-              <a class="nav-item nav-link" href="{% url 'ideasfiltered' %}">DECYZJE</a>
-              <a class="nav-item nav-link" href="{% url 'threads'%}">FORUM</a>
-              <a class="nav-item nav-link" href="{% url 'my-ideas'%}">MOJE POMYSŁY</a>
+              <ol>
+                <li><a class="nav-item nav-link" href="{% url 'home' %}">PORTAL INNOWACJI</a></li>
+                <li><a class="nav-item nav-link" href="{% url 'ideas' %}">POMYSŁY</a></li>
+                <li><a class="nav-item nav-link" >DECYZJE</a>
+                <ul>
+                  <li><a class="decision_panel" href="{% url 'ideasfiltered' %}">Oczekujące</a></li>
+                  <li><a class="decision_panel" href="{% url 'ideasfiltered' %}">Odłożone</a></li>
+                  <li><a class="decision_panel" href="{% url 'ideasfiltered' %}">Zablokowane</a></li>
+                </ul>
+                </li>
+                <li><a class="nav-item nav-link" href="{% url 'threads'%}">FORUM</a></li>
+                <li><a class="nav-item nav-link" href="{% url 'my-ideas'%}">MOJE POMYSŁY</a></li>
+              </ol>
               {% endif %}
               
             </div>
