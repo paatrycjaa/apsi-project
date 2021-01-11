@@ -4,7 +4,7 @@
 {% block content %}
 <h1>Pomysły oczekujące na decyzję</h1>
 
-<div ng-controller="ideasFilteredController" ng-init="init()">  
+<div ng-controller="ideasFilteredController" ng-init="init('{{status}}')">  
     <div style="display: inline-block">
         <form role="form">
             <input type="text" class="form-control" placeholder="Filter..." ng-model="searchStr">
@@ -39,7 +39,7 @@
             </table>
         </div>
         <div style="float: right;">
-            <button type="button" class="btn btn-primary" ng-click="openIdeaDecision(idea.pk)">Wydaj decyzję</button>
+            <button type="button" class="btn btn-primary" ng-if="status=='Oczekujacy'" ng-click="openIdeaDecision(idea.pk)">Wydaj decyzję</button>
         </div>
         <div style="clear: both;"></div>
         {% endverbatim %}

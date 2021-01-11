@@ -36,8 +36,11 @@ def home(request):
 def ideas(request):
     return render(request, 'app/components/ideas-list/ideasList.html')
 @login_required
-def ideasfiltered(request):
-    return render(request,'app/components/ideas-filtered/ideasFiltered.html')
+def ideasfiltered(request, status_pomyslu):
+    context = {
+        'status': status_pomyslu
+    }
+    return render(request,'app/components/ideas-filtered/ideasFiltered.html',context)
 
 @login_required
 def my_ideas(request):

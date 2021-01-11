@@ -117,9 +117,9 @@
                 <li><a class="nav-item nav-link" href="{% url 'ideas' %}">POMYSŁY</a></li>
                 <li><a class="nav-item nav-link" >DECYZJE</a>
                 <ul>
-                  <li><a class="decision_panel" href="{% url 'ideasfiltered' %}">Oczekujące</a></li>
-                  <li><a class="decision_panel" href="{% url 'ideasfiltered' %}">Odłożone</a></li>
-                  <li><a class="decision_panel" href="{% url 'ideasfiltered' %}">Zablokowane</a></li>
+                  <li><a class="decision_panel" href="{% url 'ideasfiltered' status_pomyslu='Oczekujacy' %}">Oczekujące</a></li>
+                  <li><a class="decision_panel" href="{% url 'ideasfiltered' status_pomyslu='Odlozony' %}">Odłożone</a></li>
+                  <li><a class="decision_panel" href="{% url 'ideasfiltered' status_pomyslu='Zablokowany' %}">Zablokowane</a></li>
                 </ul>
                 </li>
                 <li><a class="nav-item nav-link" href="{% url 'threads'%}">FORUM</a></li>
@@ -164,6 +164,8 @@
 
     <script type="text/javascript" src="{% static 'app/components/ideas-filtered/ideasFiltered.controller.js' %}"></script>
     <script type="text/javascript" src="{% static 'app/components/ideas-filtered/ideasFiltered.service.js' %}"></script>
+
+
 
     <script type="text/javascript" src="{% static 'app/components/decision-addition/decisionAddition.controller.js' %}"></script>
     <script type="text/javascript" src="{% static 'app/components/decision-addition/decisionAddition.service.js' %}"></script>
