@@ -98,6 +98,26 @@ def block_idea(idea_id):
     finally:
         return json.dumps({'status': status, 'message': message})
 
+def remove_idea(idea_id):
+    try:
+        idea = models.Pomysl.objects.get(pk=idea_id)
+        idea.delete()
+
+        status = True
+        message = "Idea removed"
+
+    except Exception as e:
+        print('error occured when removing idea')
+        if hasattr(e, 'message'):
+            print(e.message)
+            message = e.message
+        else:
+            print(e)
+            message = e.__str__()
+        status = False
+    finally:
+        return json.dumps({'status': status, 'message': message})
+
 def get_ideas(user, filter_user):
     
     objs = Pomysl.objects

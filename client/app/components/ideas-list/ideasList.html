@@ -17,24 +17,24 @@
     </div>
 
     <div ng-repeat="idea in ideas | filter:searchStr">        
-            <div class="idea-block">
-                {% verbatim %}
-                <idea-table idea="idea" show-attachments-count="true"/>
-            </div>
+        <div class="idea-block">
+            {% verbatim %}
+            <idea-table idea="idea" show-attachments-count="true"/>
+        </div>
+        {% endverbatim %}
+        <div class="btn-tollbar" style="float: right;">
+            {% if user.is_superuser %}
+            {% verbatim %}
+            <button type="button" class="btn btn-danger" ng-click="removeIdea(idea.id)">Usuń</button>
+            <button type="button" class="btn btn-warning" ng-click="blockIdea(idea.id)">Zablokuj</button>
             {% endverbatim %}
-            <div class="btn-tollbar" style="float: right;">
-                {% if user.is_superuser %}
-                {% verbatim %}
-                <button type="button" class="btn btn-danger" ng-click="blockIdea(idea.id)">Zablokuj</button>
-                {% endverbatim %}
-                {% endif %}
-    
-                {% verbatim %}
-                <button type="button" class="btn btn-primary" ng-click="openIdeaOpinions(idea.id)">Przegladaj</button>
-                {% endverbatim %}
-            </div>
+            {% endif %}
+
+            {% verbatim %}
+            <button type="button" class="btn btn-primary" ng-click="openIdeaOpinions(idea.id)">Przegladaj</button>
+            {% endverbatim %}
         </div>
         <div style="clear: both;"></div>
-    
+    </div>
 </div>
 {% endblock %}

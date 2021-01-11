@@ -19,6 +19,11 @@ angular.module('appIdeasListController', [])
             $window.location.reload();
           });
         }
+        $scope.removeIdea = function(id) {
+          ideasListService.removeIdea(id, () => {
+            $window.location.reload();
+          });
+        }
       }
 ])
 .directive('ideaTable', function(){
