@@ -101,10 +101,8 @@ def get_ideas(user, filter_user):
     user_obj = models.Uzytkownik.objects.get(user_id=user.id)
     
 
-    try:
-        normal_user = models.ZwyklyUzytkownik.objects.get(uzytkownik_id=user.id)
-    except models.ZwyklyUzytkownik.DoesNotExist:
-        normal_user = None
+    
+    normal_user = models.ZwyklyUzytkownik.objects.filter(uzytkownik_id=user.id)
 
     if normal_user:
         objs = [x for x in objs if x['status_pomyslu_id'] != 'Zablokowany']
