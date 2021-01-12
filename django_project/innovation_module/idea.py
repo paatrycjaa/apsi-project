@@ -100,12 +100,11 @@ def get_ideas(user, filter_user):
     objs = Pomysl.objects
     user_obj = models.Uzytkownik.objects.get(user_id=user.id)
     
-
-    
     normal_user = models.ZwyklyUzytkownik.objects.filter(uzytkownik_id=user.id)
-
-    if normal_user:
-        objs = [x for x in objs if x['status_pomyslu_id'] != 'Zablokowany']
+    print(normal_user.exists())
+    if normal_user.exists():
+        objs=models.Pomysl.objects.exclude(status_pomyslu='Zablokowany')
+        
     
     if filter_user:
         user_obj = models.Uzytkownik.objects.get(user_id=user.id)
