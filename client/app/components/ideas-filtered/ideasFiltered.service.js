@@ -5,7 +5,7 @@ angular.module('appIdeasFilteredService', [])
         return $http.get('/ajax/filtered_ideas/').then(callback);
       }
 
-      this.wznowpomysl = function( data, callback) { 
+      this.zmienstatuspomyslu = function( data, callback) { 
         var url = '/ajax/change_status/'
         console.log(data)
         console.log(JSON.stringify(data))

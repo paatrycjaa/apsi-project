@@ -34,11 +34,11 @@ angular.module('appIdeasFilteredController', [])
           status_update: ''
         }
 
-        $scope.wznow = function(id) {
+        $scope.zmienstatus = function(id, new_status) {
           $scope.statusup.id=id
-          $scope.statusup.status_update="Oczekujacy"
+          $scope.statusup.status_update=new_status
           console.log($scope.statusup)
-          ideasFilteredService.wznowpomysl($scope.statusup, (response) => {            
+          ideasFilteredService.zmienstatuspomyslu($scope.statusup, (response) => {            
             console.log(response);
             $window.location.reload();
           });

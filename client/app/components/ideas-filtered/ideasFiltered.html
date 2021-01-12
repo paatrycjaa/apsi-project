@@ -25,9 +25,9 @@
         <!-- {% endverbatim %} -->
         <div style="float: right;" >
                 <button type="button" class="btn btn-primary" ng-if="status=='Oczekujacy'" ng-click="openIdeaDecision(idea.id)">Wydaj decyzję</button>
-                <button type="button" class="btn btn-primary" ng-if="status=='Odlozony'" ng-click="wznow(idea.id)">Wznów</button>
-                <button type="button" class="btn btn-primary" ng-if="status=='Zablokowany'" ng-click="openIdeaDecision(idea.id)">Odrzuć</button>
-                <button type="button" class="btn btn-primary" ng-if="status=='Zablokowany'" ng-click="openIdeaDecision(idea.id)">Poproś o zmianę</button>
+                <button type="button" class="btn btn-primary" ng-if="status=='Odlozony'" ng-click="zmienstatus(idea.id, 'Oczekujacy')">Wznów</button>
+                <button type="button" class="btn btn-primary" ng-if="status=='Zablokowany'" ng-click="zmienstatus(idea.id, 'Odrzucony')">Odrzuć</button>
+                <button type="button" class="btn btn-primary" ng-if="status=='Zablokowany'" ng-click="zmienstatus(idea.id, 'Edycja')">Poproś o zmianę</button>
         </div>
         <div style="clear: both;"></div>
     </div>
