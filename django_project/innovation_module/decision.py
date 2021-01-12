@@ -14,7 +14,7 @@ def get_filtered_ideas_json(stat):
 
 def get_filtered_ideas(stat):
     status = models.StatusPomyslu.objects.get(status=stat)
-    return models.Pomysl.objects.filter(status_pomyslu=status)
+    return models.Pomysl.objects.all()
 
 def add_decision(decision_json, user):
 
@@ -42,6 +42,26 @@ def add_decision(decision_json, user):
 
     except Exception as e:
         print('error occured when adding decision')
+        if hasattr(e, 'message'):
+            print(e.message)
+        else:
+            print(e)
+        status = False
+    finally:
+        return json.dumps({'status': status})
+
+def change_status(status_update, user):
+    try:
+        data = json.loads(status_update)
+        statusp=status_update
+        pom = models.Pomysl.objects.get(id=data['id'])
+        pom.status_pomyslu=data['status_update']
+        pom.save()
+        status = True
+        
+
+    except Exception as e:
+        print('error occured when changing idea status')
         if hasattr(e, 'message'):
             print(e.message)
         else:
