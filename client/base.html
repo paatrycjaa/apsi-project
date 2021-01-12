@@ -115,11 +115,11 @@
               <ol>
                 <li><a class="nav-item nav-link" href="{% url 'home' %}">PORTAL INNOWACJI</a></li>
                 <li><a class="nav-item nav-link" href="{% url 'ideas' %}">POMYSŁY</a></li>
-                <li><a class="nav-item nav-link" >DECYZJE</a>
+                <li><a class="nav-item nav-link" >PANEL KOMISJI</a>
                 <ul>
-                  <li><a class="decision_panel" href="{% url 'ideasfiltered' status_pomyslu='Oczekujacy' %}">Oczekujące</a></li>
-                  <li><a class="decision_panel" href="{% url 'ideasfiltered' status_pomyslu='Odlozony' %}">Odłożone</a></li>
-                  <li><a class="decision_panel" href="{% url 'ideasfiltered' status_pomyslu='Zablokowany' %}">Zablokowane</a></li>
+                  <li><a class="decision_panel" href="{% url 'ideasfiltered' status_pomyslu='Oczekujacy' %}">Pomysły Oczekujące</a></li>
+                  <li><a class="decision_panel" href="{% url 'ideasfiltered' status_pomyslu='Odlozony' %}">Pomysły Odłożone</a></li>
+                  <li><a class="decision_panel" href="{% url 'ideasfiltered' status_pomyslu='Zablokowany' %}">Pomysły Zablokowane</a></li>
                 </ul>
                 </li>
                 <li><a class="nav-item nav-link" href="{% url 'threads'%}">FORUM</a></li>

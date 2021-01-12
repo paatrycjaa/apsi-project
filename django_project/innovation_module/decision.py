@@ -21,7 +21,7 @@ def add_decision(decision_json, user):
     try:
         data = json.loads(decision_json)
 
-        board_member = models.CzlonekKomisji.objects.get(uzytkownik_id=user.id)  
+        board_member = models.CzlonekKomisji.objects.get(decyzja=user.id)  
         pomysl=models.Pomysl.objects.get(pk=data['id'])
         werdykt = models.RodzajDecyzji.objects.get(rodzaj_decyzji=data['werdykt'])
 
@@ -53,19 +53,23 @@ def add_decision(decision_json, user):
 def change_status(status_update, user):
     try:
         data = json.loads(status_update)
-        statusp=status_update
-        pom = models.Pomysl.objects.get(id=data['id'])
-        pom.status_pomyslu=data['status_update']
-        pom.save()
+        idea = models.Pomysl.objects.get(pk=data['id'])
+        new_status = models.StatusPomyslu.objects.get(status=data['status_update'])
+
+        idea.status_pomyslu = new_status
+        idea.save()
+
         status = True
-        
+        message = "Idea blocked"
 
     except Exception as e:
-        print('error occured when changing idea status')
+        print('error occured when blocking idea')
         if hasattr(e, 'message'):
             print(e.message)
+            message = e.message
         else:
             print(e)
+            message = e.__str__()
         status = False
     finally:
-        return json.dumps({'status': status})
+        return json.dumps({'status': status, 'message': message})

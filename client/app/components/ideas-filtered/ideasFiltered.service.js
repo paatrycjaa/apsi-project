@@ -10,6 +10,7 @@ angular.module('appIdeasFilteredService', [])
         console.log(data)
         console.log(JSON.stringify(data))
         console.log(url)
-        return $http.post(url, JSON.stringify(data)).then(callback) }
+        return $http.post(url, JSON.stringify(data)).then(callback);
+       }
     }
   );

@@ -31,21 +31,16 @@ angular.module('appIdeasFilteredController', [])
 
         $scope.statusup = {
           id: '',
-          status_update: '',
+          status_update: ''
         }
 
         $scope.wznow = function(id) {
           $scope.statusup.id=id
-          $scope.statusup.status_update='Oczekujacy'
-          ideasFilteredService.wzowpomysl($scope.statusup, (response) => {            
+          $scope.statusup.status_update="Oczekujacy"
+          console.log($scope.statusup)
+          ideasFilteredService.wznowpomysl($scope.statusup, (response) => {            
             console.log(response);
-            $scope.status2 = response.data.status;
-            $scope.reponse_received = true;
-            if ($scope.status2 === true) {
-              $timeout(() => { 
-                window.location.href = "{% url 'ideasfiltered' status_pomyslu='Odlozony' %}";
-              }, 2000);
-            }
+            $window.location.reload();
           });
         }       
       }
