@@ -11,9 +11,6 @@ from .models import Pomysl
 from . import attachment
 
 def serialize(objects, user, filter_status):
-
-    if filter_status:
-        objects = [x for x in objects if x['status_pomyslu_id'] == 'Oczekujacy']
     
     for elem in objects:        
         isCurrentUser = elem['uzytkownik_id'] == user
@@ -101,6 +98,16 @@ def block_idea(idea_id):
 def get_ideas(user, filter_user):
     
     objs = Pomysl.objects
+    user_obj = models.Uzytkownik.objects.get(user_id=user.id)
+    
+
+    try:
+        normal_user = models.ZwyklyUzytkownik.objects.get(uzytkownik_id=user.id)
+    except models.ZwyklyUzytkownik.DoesNotExist:
+        normal_user = None
+
+    if normal_user:
+        objs = [x for x in objs if x['status_pomyslu_id'] != 'Zablokowany']
     
     if filter_user:
         user_obj = models.Uzytkownik.objects.get(user_id=user.id)

@@ -10,17 +10,38 @@
             <input type="text" class="form-control" placeholder="Filter..." ng-model="searchStr">
         </form>
     </div>
+    <!-- <div style="display: inline-block"></div>
+        <select id="Select1" ng-model="selected">
+            <option value="Pokaż wszystkie">Pokaż wszystkie</option>
+            <option value= "Oczekujący">Oczekujący</option>
+            <option value= "Odłożony">Odłożony</option>
+            <option value="Odrzucony">Odrzucony</option>
+            <option value="Zablokowany">Zablokowany</option>
+            <option value="Zaakceptowany">Zaakceptowany</option>
+        </select>
+    </div> -->
+    <select ng-model="Select1">
+        <option value="wszystkie">Pokaż wszystkie</option>
+        <option value="Oczekujacy">Oczekujący</option>
+        <option value="Odlozony">Odłożony</option>
+        <option value="Odrzucony">Odrzucony</option>
+        <option value="Zablokowany">Zablokowany</option>
+        <option value="Zaakceptowany">Zaakceptowany</option>
+      </select>
+
+    
     <div style="float: right;">
         <a href="{% url 'add_idea' %}">
             <button type="button" class="btn btn-primary">Dodaj nowy pomysł</button>
         </a>
     </div>
 
-    <div ng-repeat="idea in ideas | filter:searchStr">        
+    <div ng-repeat="idea in ideas | filter:searchStr |filter: ideaShown ">  
             <div class="idea-block">
                 {% verbatim %}
                 <idea-table idea="idea" show-attachments-count="true"/>
             </div>
+          
             {% endverbatim %}
             <div class="btn-tollbar" style="float: right;">
                 {% if user.is_superuser %}
@@ -32,8 +53,11 @@
                 {% verbatim %}
                 <button type="button" class="btn btn-primary" ng-click="openIdeaOpinions(idea.id)">Przegladaj</button>
                 {% endverbatim %}
+ 
             </div>
-        </div>
+            <br/>
+            <br/>
+    </div>
         <div style="clear: both;"></div>
     
 </div>
