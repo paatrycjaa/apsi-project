@@ -56,11 +56,11 @@ def add_idea(request, user):
                           ocena_wazona=-1, data_dodania=timezone.localtime(timezone.now()))
         m.save()
 
+        for file_name, file_size, file in zip(data['attachments'], data['attachments_size'], request.FILES.values()):
+            att_key = attachment.add_idea_attachment(m, file_name, file_size)
+            attachment.save_file(file, file_name, att_key)
 
-        att_key = attachment.add_idea_attachment(m, data['attachment'], data['attachment_size'])        
-        attachment.save_file(request.FILES['file'], data['attachment'], att_key)
-
-        message = "Idea added"        
+        message = "Idea added"
         status = True
 
     except Exception as e:
@@ -182,6 +182,14 @@ def edit_idea(request, user):
             attachment.save_file(file, data['attachment'], att_key)
         except:
             pass
+
+        #if there are new attachments, remove old ones
+        if(len(request.FILES) > 0):
+            attachment.remove_idea_attachments(m)
+        
+        for file_name, file_size, file in zip(data['attachments'], data['attachments_size'], request.FILES.values()):
+            att_key = attachment.add_idea_attachment(m, file_name, file_size)
+            attachment.save_file(file, file_name, att_key)
 
         message = "Idea added"
         status = True

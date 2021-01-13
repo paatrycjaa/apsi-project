@@ -6,28 +6,23 @@ angular.module('appPostAdditionController', [])
             thread : '',
             thema : '',
             content : '',
-            attachment : '',
-            attachment_size : ''
         }
 
-        $scope.attachement = ''
+        $scope.attachments = []
 
-        const max_size = 10000000  // 10 MB
+        // used only for editing
+        $scope.attachment_names = []
 
         $scope.uploadFile = function(files){
-          $scope.attachement = files[0] 
-          if($scope.attachement.size > max_size){
-            alert('Wybrany plik jest za duży. Maksymalny rozmiar to 10 MB.');            
-            $scope.attachement = ''
+          $scope.attachments = utils.checkAttachments(files)
+          if($scope.attachments.length == 0){
             document.getElementById('attachment').value = ''
-          }          
+          }
         }
 
         $scope.init = function(id) {
             $scope.$watch("thread_id", function() {
-            
                 $scope.postModel.thread=id
-                console.log(id, $scope.postModel.thread)
             });
         }
 
@@ -36,10 +31,9 @@ angular.module('appPostAdditionController', [])
 
         $scope.submit = function() {
             const forms = document.getElementsByClassName('needs-validation');
-            console.log(forms)
         
             if (utils.isFormValid(forms)) {
-                postAdditionService.submitThread($scope.postModel, $scope.attachement, (response) => {                  
+                postAdditionService.submitThread($scope.postModel, $scope.attachments, (response) => {
                     $scope.status = response.data.status;
                     $scope.reponse_received = true;
 

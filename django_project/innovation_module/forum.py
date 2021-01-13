@@ -1,5 +1,4 @@
 import json
-import datetime
 
 from django.core import serializers
 from django.core.serializers.json import DjangoJSONEncoder
@@ -52,7 +51,7 @@ def add_thread(thread_json, user):
             return
         
         user = models.Uzytkownik.objects.get(user_id=user.id)
-        dt = datetime.datetime.now()
+        dt = timezone.localtime(timezone.now())
         thread = models.Watek(temat = data['thema'], data_dodania = dt, data_ostatniego_posta = dt)
         thread.save()
         post = models.Post(tytul=data['thema'], tresc=data['content'], watek=thread, uzytkownik = user, data_dodania=dt)
@@ -79,13 +78,14 @@ def add_post(request, user):
 
         user = models.Uzytkownik.objects.get(user_id=user.id)
         thread = models.Watek.objects.get(id=data['thread'])
-        dt = datetime.datetime.now()
+        dt = timezone.localtime(timezone.now())
         post = models.Post(tytul=data['thema'], tresc=data['content'], watek=thread, uzytkownik = user, data_dodania=dt)
         post.save()
         models.Watek.objects.filter(id=data['thread']).update(data_ostatniego_posta = dt)
 
-        att_key = attachment.add_post_attachment(post, data['attachment'], data['attachment_size'])
-        attachment.save_file(request.FILES['file'], data['attachment'], att_key)
+        for file_name, file_size, file in zip(data['attachments'], data['attachments_size'], request.FILES.values()):
+            att_key = attachment.add_post_attachment(post, file_name, file_size)
+            attachment.save_file(file, file_name, att_key)
 
         message="Post został dodany"
         status = True

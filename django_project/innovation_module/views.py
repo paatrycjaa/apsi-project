@@ -12,7 +12,7 @@ _ajax_requests = {
     'all_ideas': lambda request, object_id: idea.get_ideas_json(request.user, False),
     'user_ideas': lambda request, object_id: idea.get_ideas_json(request.user, True),
     'submit_idea': lambda request, object_id: idea.add_idea(request, request.user),
-    'edit_idea': lambda request, object_id: idea.ajax_edit_idea(request, int(json.loads(request.POST['data'])['idea_id'])),
+    'edit_idea': lambda request, object_id: ajax_edit_idea(request, int(json.loads(request.POST['data'])['idea_id'])),
     'get_idea': lambda request, object_id: idea.get_idea_json(object_id),
     'all_opinions': lambda request, object_id: opinion.get_opinions_json(object_id, request.user),
     'get_opinion': lambda request, object_id: opinion.get_opinion_json(object_id),
