@@ -25,7 +25,9 @@ _ajax_requests = {
     'all_posts': lambda request, object_id: forum.get_posts_json(object_id),
     'submit_thread': lambda request, object_id: forum.add_thread(request.body.decode('utf-8'), request.user),
     'submit_post': lambda request, object_id: forum.add_post(request, request.user),
-    'block_idea':  lambda request, object_id: ajax_block_idea(request, object_id)
+    'block_idea':  lambda request, object_id: ajax_block_idea(request, object_id),
+    'remove_idea': lambda request, object_id: ajax_remove_idea(request, object_id),
+    'remove_thread': lambda request, object_id: ajax_remove_thread(request, object_id)
 }    
     
 
@@ -133,3 +135,11 @@ def ajax_edit_idea(request, idea_id):
 @user_passes_test(lambda u : u.is_superuser)
 def ajax_block_idea(request, object_id):
     return idea.block_idea(object_id)
+
+@user_passes_test(lambda u : u.is_superuser)
+def ajax_remove_idea(request, object_id):
+    return idea.remove_idea(object_id)
+
+@user_passes_test(lambda u : u.is_superuser)
+def ajax_remove_thread(request, object_id):
+    return forum.remove_thread(object_id)

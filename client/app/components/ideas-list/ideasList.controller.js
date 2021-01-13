@@ -1,7 +1,7 @@
 angular.module('appIdeasListController', [])
-  .controller('ideasListController', ['$scope', '$window', '$interval', 'ideasListService',
-      function($scope, $window, $interval, ideasListService) {
-        
+  .controller('ideasListController', ['$scope', '$window', 'ideasListService',
+      function($scope, $window, ideasListService) {
+
         $scope.ideas = [];
 
         $scope.init = function() {
@@ -30,6 +30,12 @@ angular.module('appIdeasListController', [])
           else {
             return idea.status_pomyslu_id == selected;
           }
+        }
+
+        $scope.removeIdea = function(id) {
+          ideasListService.removeIdea(id, () => {
+            $window.location.reload();
+          });
         }
       }
 ])

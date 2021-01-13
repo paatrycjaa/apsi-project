@@ -37,7 +37,7 @@ def get_posts_json(watek_id):
         p['attachments'] = list(models.ZalacznikPosta.objects.filter(post=obj).values('pk', 'zalacznik__nazwa_pliku', 'zalacznik__rozmar'))
 
     return json.dumps(list(posts_values), cls=DjangoJSONEncoder)
-    
+
 def thread_exist(thema):
     models.Watek.objects.filter(temat=thema).count() > 0
 
@@ -50,7 +50,7 @@ def add_thread(thread_json, user):
             message = "Taki wątek już istnieje"
             status = False
             return
-        
+
         user = models.Uzytkownik.objects.get(user_id=user.id)
         dt = timezone.localtime(timezone.now())
         thread = models.Watek(temat = data['thema'], data_dodania = dt, data_ostatniego_posta = dt)
@@ -60,12 +60,32 @@ def add_thread(thread_json, user):
 
         message = "Wątek i pierwszy post dodany"
         status = True
-    
+
     except Exception as e:
         status = False
         message = utils.handle_exception(e)
     finally:
         return json.dumps({'status': status})
+
+def remove_thread(thread_id):
+    try:
+        thread = models.Watek.objects.get(pk=thread_id)
+
+        #remove attachments for posts in the thread
+        posts = models.Post.objects.filter(watek=thread)
+        for post in posts:
+            attachment.remove_post_attachments(post)
+
+        thread.delete()
+
+        status = True
+        message = "Thread removed"
+
+    except Exception as e:
+        status = False
+        message = utils.handle_exception(e)
+    finally:
+        return json.dumps({'status': status, 'message': message})
 
 def add_post(request, user):
     try:
@@ -89,5 +109,4 @@ def add_post(request, user):
         status = False
         message = utils.handle_exception(e)
     finally:
-        return json.dumps({'status': status})
-
+        return json.dumps({'status': status, 'message': message})
