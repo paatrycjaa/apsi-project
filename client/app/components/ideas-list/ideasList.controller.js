@@ -19,6 +19,23 @@ angular.module('appIdeasListController', [])
             $window.location.reload();
           });
         }
+
+
+        $scope.ideaShown = function(idea) {
+          selected=$scope.Select1
+          console.log(idea,selected);
+          if(selected=="wszystkie"|| selected==undefined)
+          {
+            return true;
+          }
+          else {
+            return idea.status_pomyslu_id == selected;
+          }
+        }
+
+
+
+
       }
 ])
 .directive('ideaTable', function(){
