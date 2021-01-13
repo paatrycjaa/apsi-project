@@ -25,11 +25,8 @@
     text-align: center;
 }
 
-.pasek-glowny {
-    /* ------------------------CZĘŚĆ-GÓRNA-MENU------------------------ */
+.container-fluid ol{
 
-    /* wygląd głównego elementu - ol */
-    ol {
       list-style-type:none;
       padding:0;
       margin:0;
@@ -38,10 +35,12 @@
       line-height:2em;
       text-align:center;
       color: #000;
-    }
+}
+
+
 
     /* wygląd wszystkich elementów - a - znajdujących się w elemencie - ol */
-    ol a {
+.container-fluid ol a {
       display:block;
       text-decoration:none;
       color:#000;
@@ -49,36 +48,36 @@
     }
 
     /* wygląd elementów - li - wszystkich dzieci elementu - ol */
-    ol > li {
+.container-fluid ol > li {
       float:left;
       margin-left:1px;
       height:2em;
     }
 
     /* wygląd elementu - li - pierwszego dziecka elementu - ol */
-    ol > li:first-child {
+.container-fluid ol > li:first-child {
       margin-left:0;
     }
 
     /* wygląd elementów - li - wszystkich dzieci elementu - ol - po najechaniu kursorem myszki na element - li */
-    ol > li:hover {
+.container-fluid ol > li:hover {
       background-color:#adc6f0;
     }
 
     /* wygląd elementu - a - dziecka elementu - li - będącego dzieckiem elementu - ol - po najechaniu kursorem myszki na element - li */
-    ol > li:hover > a {
+.container-fluid ol > li:hover > a {
       color:#09C;
     }
 
     /* wygląd elementu - ul - dziecka elementu - li - będącego dzieckiem elementu - ol - po najechaniu kursorem myszki na element - li */
-    ol > li:hover > ul {
+.container-fluid ol > li:hover > ul {
       display:block;
     }
 
     /* ------------------------CZĘŚĆ-ROZWIJANA-MENU------------------------ */
 
     /* wygląd głównych rozwijanych elementów - ul */
-    ol > li > ul {
+.container-fluid ol > li > ul {
       display:none;
       list-style-type:none;
       padding:0;
@@ -86,23 +85,22 @@
     }
 
     /* wygląd elementu - li - w części rozwijanej */
-    ol > li > ul > li {
+.container-fluid ol > li > ul > li {
       position:relative;
       background-color:#EEE;
     }
 
     /* wygląd elementu - a - w części rozwijanej */
-    ol > li > ul > li > a {
+.container-fluid ol > li > ul > li > a {
       border-top:1px solid #FFF;
     }
 
     /* wygląd elementu - li - w części rozwijanej, po najechaniu kursorem myszki na dany element - li */
-    ol > li > ul > li:hover {
+.container-fluid ol > li > ul > li:hover {
       background-color:#DDD;
     }
 
     /* wygląd elementu - a - w części rozwijanej, po najechaniu kursorem myszki na element - li */
-    ol > li > ul > li:hover > a {
+.container-fluid ol > li > ul > li:hover > a {
       color:#09C;
     }
-}
