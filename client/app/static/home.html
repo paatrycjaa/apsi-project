@@ -1,6 +1,26 @@
 {% extends "base.html" %}
 {% block title %} Innovations Home Page {% endblock %}
+{% load static %}
 
 {% block content %}
-<h1>Witaj na portalu innowacji!</h1>
+<div ng-controller="postAdditionController">
+  <div class="main-title">
+    <b>PORTAL INNOWACJI</b>
+  </div>
+  <!-- <input type="checkbox" ng-model="myCheck"> -->
+  <div class="bulb-info-container" ng-view="myCheck">
+    <div class="bulb-container">
+      <img
+      src="{% static 'assets/svg/light-bulb-2.svg' %}"
+      alt="idea bulb"
+      height="100%"
+      width="100%"
+      />
+      <b class="bulb-text">9999</b>
+    </div>
+    <div class="bulb-description-container">
+      <b class="bulb-description-text">DODANYCH DZIŚ POMYSŁÓW</b>
+    </div>
+  </div>
+</div>
 {% endblock %}

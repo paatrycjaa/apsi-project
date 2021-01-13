@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %} Innovations Home Page {% endblock %}
+{% load static %}
+
+{% block content %}
+<div ng-controller="startPageController">
+  <div class="main-title">
+    <b>PORTAL INNOWACJI</b>
+  </div>
+  <!-- <input type="checkbox" ng-model="myCheck" ng-click="print()"> -->
+  <div class="swap-container">
+    <div ng-animate-swap="id" class="cell swap-animation">
+      <div class="bulb-info-container">
+        <div class="bulb-container">
+          <img
+          src="{% static 'assets/svg/light-bulb-2.svg' %}"
+          alt="idea bulb"
+          height="100%"
+          width="100%"
+          />
+          {% verbatim %}
+          <b class="bulb-text">{{ numbers[id] }}</b>
+        </div>
+        <div class="bulb-description-container">
+          <b class="bulb-description-text">{{ messages[id] }}</b>
+        </div>
+        {% endverbatim %}
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="bulb-info-container animate-show-hide" ng-show="myCheck">
+    <div class="bulb-container">
+      <img
+      src="{% static 'assets/svg/light-bulb-2.svg' %}"
+      alt="idea bulb"
+      height="100%"
+      width="100%"
+      />
+      <b class="bulb-text">9999</b>
+    </div>
+    <div class="bulb-description-container">
+      <b class="bulb-description-text">DODANYCH DZIŚ POMYSŁÓW</b>
+    </div>
+  </div>
+  <div class="bulb-info-container animate-show-hide" ng-show="!myCheck">
+    <div class="bulb-container">
+      <img
+      src="{% static 'assets/svg/light-bulb-2.svg' %}"
+      alt="idea bulb"
+      height="100%"
+      width="100%"
+      />
+      <b class="bulb-text">1111</b>
+    </div>
+    <div class="bulb-description-container">
+      <b class="bulb-description-text">UGABUGA</b>
+    </div>
+  </div> -->
+</div>
+{% endblock %}

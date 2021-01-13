@@ -1,4 +1,3 @@
-
 .idea-block {
     margin-top: 20px;
     margin-bottom: 10px;
@@ -23,4 +22,123 @@
 
 .login-logout {
     text-align: center;
+}
+
+.main-title {
+    width: 100%;
+    margin: auto;
+    font-size: 6vw;
+    text-align: center;
+    color: #054a82;
+}
+
+.bulb-info-container {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.255);
+    transition: 0.3s;
+    border-radius: 7px; /* 5px rounded corners */
+    border-style: solid;
+    border-width: 2px;
+    border-color: #565b6e;
+    margin-top: 3vw;
+
+    transition: all linear 0.5s;
+    /* background-color: lightblue; */
+    /* height: 100px; */
+    /* transform: translateX(0%); */
+}
+
+/* The starting CSS styles for the enter animation
+.bulb-info-container.ng-enter {
+    transition:0.5s linear all;
+    opacity:0;
+}
+
+  /* The finishing CSS styles for the enter animation */
+/* .bulb-info-container.ng-enter.ng-enter-active {
+    opacity:1;
+    transform: translateX(0%);
+} */ */
+
+.animate-show-hide.ng-hide {
+    opacity: 0;
+    transform: translateX(-100%)
+    /* transform: rotateY(90deg); */
+}
+
+.animate-show-hide.ng-hide-add,
+.animate-show-hide.ng-hide-remove {
+    transition: all linear 0.5s;
+}
+
+.check-element {
+border: 1px solid black;
+opacity: 1;
+padding: 10px;
+}
+
+.bulb-info-container:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.357);
+}
+
+.bulb-container {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    color: #054a82;
+    width: 32vw;
+    height: 32vw;
+    padding: 0%;
+}
+
+.bulb-img {
+    width: 100%;
+    height: 100%;
+}
+
+.bulb-text {
+    position: absolute;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5vw;
+}
+
+.bulb-description-container {
+    display: inline;
+}
+
+.bulb-description-text {
+    font-size: 3.75vw;
+    color: #054a82;
+    white-space: pre-wrap;
+}
+
+.swap-container {
+    height: 36vw;
+    width:100%;
+    position:relative;
+    overflow:hidden;
+}
+
+.swap-container .cell {
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom: 0;
+}
+.swap-animation.ng-enter, .swap-animation.ng-leave {
+    transition:1s linear all;
+}
+.swap-animation.ng-enter {
+    top:-150%;
+}
+.swap-animation.ng-enter-active {
+    top:0%;
+}
+.swap-animation.ng-leave {
+    top:0%;
+}
+.swap-animation.ng-leave-active {
+    top:150%;
 }

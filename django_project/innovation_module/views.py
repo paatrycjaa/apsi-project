@@ -30,7 +30,7 @@ _ajax_requests = {
     
 
 def home(request):
-    return render(request, 'app/static/home.html')
+    return render(request, 'app/components/start-page/startPage.html')
 
 @login_required
 def ideas(request):
