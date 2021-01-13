@@ -17,11 +17,9 @@ def get_filtered_ideas(stat):
     return models.Pomysl.objects.all()
 
 def add_decision(decision_json, user):
-
     try:
         data = json.loads(decision_json)
-
-        board_member = models.CzlonekKomisji.objects.get(decyzja=user.id)  
+        board_member = models.CzlonekKomisji.objects.get(uzytkownik_id=user.id)
         pomysl=models.Pomysl.objects.get(pk=data['id'])
         werdykt = models.RodzajDecyzji.objects.get(rodzaj_decyzji=data['werdykt'])
 
