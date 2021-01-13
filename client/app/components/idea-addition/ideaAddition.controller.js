@@ -1,6 +1,6 @@
 angular.module('appIdeaAdditionController', [])
   .controller('ideaAdditionController', ['$scope', '$timeout', 'ideaAdditionService', 'utils',
-  function($scope, $timeout, ideaAdditionService, utils) 
+  function($scope, $timeout, ideaAdditionService, utils)
   {
 
         $scope.ideaModel = {
@@ -8,7 +8,7 @@ angular.module('appIdeaAdditionController', [])
           category: '',
           description : '',
           benefits : '',
-          costs : '',           
+          costs : '',
           num_rating : true,
           text_rating : true
         }
@@ -17,7 +17,7 @@ angular.module('appIdeaAdditionController', [])
 
         // used only for editing
         $scope.attachment_names = []
-        
+
         $scope.keywords = []
 
         $scope.uploadFile = function(files){
@@ -26,21 +26,21 @@ angular.module('appIdeaAdditionController', [])
             document.getElementById('attachment').value = ''
           }
         }
-                
-        $scope.init = function(idea_id) 
+
+        $scope.init = function(idea_id)
         {
           $scope.ideaModel.idea_id = idea_id;
 
           ideaAdditionService.getKeywords(function(response){
             $scope.keywords = response.data
           })
-          
+
           if(idea_id){
             ideaAdditionService.getIdeaById(idea_id, function(response) {
 
               //todo
               // display category
-              
+
               data = response.data
               settings=data.ustawienia_oceniania_id
 
@@ -48,7 +48,7 @@ angular.module('appIdeaAdditionController', [])
               $scope.ideaModel.description = data.opis
               $scope.ideaModel.benefits = data.planowane_korzysci
               $scope.ideaModel.costs = data.planowane_koszty
-              $scope.ideaModel.category = data.slowakluczowe_id
+              $scope.ideaModel.category = data.slowo_kluczowe_id
               $scope.ideaModel.num_rating =  settings.includes('num')
               $scope.ideaModel.text_rating =  settings.includes('text')
 
@@ -73,7 +73,7 @@ angular.module('appIdeaAdditionController', [])
               $scope.status = response.data.status;
               $scope.reponse_received = true;
               if ($scope.status === true) {
-                $timeout(() => { 
+                $timeout(() => {
                   window.location.href = "/ideas";
                 }, 2000);
               }
@@ -82,13 +82,10 @@ angular.module('appIdeaAdditionController', [])
                     // opinion is edited
           if($scope.ideaModel.idea_id){
             ideaAdditionService.editIdea($scope.ideaModel,  $scope.attachments, callback);
-          } else { // new opinion is added            
+          } else { // new opinion is added
             ideaAdditionService.submitIdea($scope.ideaModel, $scope.attachments, callback);
           }
           }
       }
   }
 ]);
-
-
-
