@@ -9,6 +9,7 @@ from django.utils import timezone
 from . import models
 from .models import Pomysl
 from . import attachment
+from . import utils
 
 def serialize(objects, user, filter_status):
     
@@ -84,14 +85,8 @@ def block_idea(idea_id):
         message = "Idea blocked"
 
     except Exception as e:
-        print('error occured when blocking idea')
-        if hasattr(e, 'message'):
-            print(e.message)
-            message = e.message
-        else:
-            print(e)
-            message = e.__str__()
         status = False
+        message = utils.handle_exception(e)
     finally:
         return json.dumps({'status': status, 'message': message})
 
@@ -101,10 +96,10 @@ def get_ideas(user, filter_user):
     user_obj = models.Uzytkownik.objects.get(user_id=user.id)
     
     normal_user = models.ZwyklyUzytkownik.objects.filter(uzytkownik_id=user.id)
-    print(normal_user.exists())
+    
     if normal_user.exists():
-        objs=models.Pomysl.objects.exclude(status_pomyslu='Zablokowany')
-        
+        zablokowany = models.StatusPomyslu.objects.get(pk='Zablokowany')
+        objs=models.Pomysl.objects.exclude(status_pomyslu=zablokowany)
     
     if filter_user:
         user_obj = models.Uzytkownik.objects.get(user_id=user.id)
@@ -179,14 +174,6 @@ def edit_idea(request, user):
 
         m.save()
 
-        try:
-            file = request.FILES['file']
-            #todo remove old file
-            att_key = attachment.add_idea_attachment(m, data['attachment'], data['attachment_size'])        
-            attachment.save_file(file, data['attachment'], att_key)
-        except:
-            pass
-
         #if there are new attachments, remove old ones
         if(len(request.FILES) > 0):
             attachment.remove_idea_attachments(m)
@@ -200,14 +187,8 @@ def edit_idea(request, user):
 
     
     except Exception as e:
-        print('error occured when editing data')
-        if hasattr(e, 'message'):
-            print(e.message)
-            message = e.message
-        else:
-            print(e)
-            message = e.__str__()
         status = False
+        message = utils.handle_exception(e)
     finally:
         return json.dumps({'status': status, 'message': message})
 

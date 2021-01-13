@@ -6,6 +6,7 @@ from django.utils import timezone
 
 from . import models
 from . import attachment
+from . import utils
 
 def serialize(objects):
     return serializers.serialize('json', objects)
@@ -61,14 +62,8 @@ def add_thread(thread_json, user):
         status = True
     
     except Exception as e:
-        print('Wystąpił bład podczas dodawania wątku')
-        if hasattr(e, 'message'):
-            print(e.message)
-            message = e.message
-        else:
-            print(e)
-            message = e.__str__()
         status = False
+        message = utils.handle_exception(e)
     finally:
         return json.dumps({'status': status})
 
@@ -91,15 +86,8 @@ def add_post(request, user):
         status = True
 
     except Exception as e:
-        print('Wystąpił bład podczas dodawania postu')
-        if hasattr(e, 'message'):
-            print(e.message)
-            message = e.message
-        else:
-            print(e)
-            message = e.__str__()
         status = False
-
+        message = utils.handle_exception(e)
     finally:
         return json.dumps({'status': status})
 

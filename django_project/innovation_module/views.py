@@ -122,11 +122,9 @@ def ajax_edit_opinion(request, opinion_id):
     body_unicode = request.body.decode('utf-8')
     return opinion.edit_opinion(body_unicode)
 
-
 @login_required
 def download_file(request, file_id):
     return attachment.download_file(file_id)
-    return HttpResponse(opinion.edit_opinion(body_unicode), content_type='application/json')
 
 @decorators.users_idea
 def ajax_edit_idea(request, idea_id):
