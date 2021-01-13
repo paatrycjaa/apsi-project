@@ -22,7 +22,7 @@
 
   </head>
   <body class="d-flex flex-column min-vh-100">
-    <style>
+    <!-- <style>
       /* ------------------------CZĘŚĆ-GÓRNA-MENU------------------------ */
 
       /* wygląd głównego elementu - ol */
@@ -102,7 +102,7 @@
       ol > li > ul > li:hover > a {
         color:#09C;
       }
-    </style>
+    </style> -->
     <header class="site-header">
       <!-- Navigation bar -->
       <nav class="navbar navbar-expand-lg navbar-dark static-top" style="background-color: #054a82;">
@@ -115,11 +115,11 @@
               <ol>
                 <li><a class="nav-item nav-link" href="{% url 'home' %}">PORTAL INNOWACJI</a></li>
                 <li><a class="nav-item nav-link" href="{% url 'ideas' %}">POMYSŁY</a></li>
-                <li><a class="nav-item nav-link" >DECYZJE</a>
+                <li><a class="nav-item nav-link" >PANEL KOMISJI</a>
                 <ul>
-                  <li><a class="decision_panel" href="{% url 'ideasfiltered' %}">Oczekujące</a></li>
-                  <li><a class="decision_panel" href="{% url 'ideasfiltered' %}">Odłożone</a></li>
-                  <li><a class="decision_panel" href="{% url 'ideasfiltered' %}">Zablokowane</a></li>
+                  <li><a class="decision_panel" href="{% url 'ideasfiltered' status_pomyslu='Oczekujacy' %}">Pomysły Oczekujące</a></li>
+                  <li><a class="decision_panel" href="{% url 'ideasfiltered' status_pomyslu='Odlozony' %}">Pomysły Odłożone</a></li>
+                  <li><a class="decision_panel" href="{% url 'ideasfiltered' status_pomyslu='Zablokowany' %}">Pomysły Zablokowane</a></li>
                 </ul>
                 </li>
                 <li><a class="nav-item nav-link" href="{% url 'threads'%}">FORUM</a></li>
@@ -165,6 +165,8 @@
     <script type="text/javascript" src="{% static 'app/components/ideas-filtered/ideasFiltered.controller.js' %}"></script>
     <script type="text/javascript" src="{% static 'app/components/ideas-filtered/ideasFiltered.service.js' %}"></script>
 
+
+
     <script type="text/javascript" src="{% static 'app/components/decision-addition/decisionAddition.controller.js' %}"></script>
     <script type="text/javascript" src="{% static 'app/components/decision-addition/decisionAddition.service.js' %}"></script>
 
@@ -195,6 +197,7 @@
             crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>    
+            crossorigin="anonymous"></script>
+
   </body>
 </html>

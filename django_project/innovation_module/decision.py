@@ -13,7 +13,7 @@ def get_filtered_ideas_json(stat):
 
 def get_filtered_ideas(stat):
     status = models.StatusPomyslu.objects.get(status=stat)
-    return models.Pomysl.objects.filter(status_pomyslu=status)
+    return models.Pomysl.objects.all()
 
 def add_decision(decision_json, user):
     try:
@@ -41,5 +41,29 @@ def add_decision(decision_json, user):
     except Exception as e:
         status = False
         message = utils.handle_exception(e)
+    finally:
+        return json.dumps({'status': status})
+
+def change_status(status_update, user):
+    try:
+        data = json.loads(status_update)
+        idea = models.Pomysl.objects.get(pk=data['id'])
+        new_status = models.StatusPomyslu.objects.get(status=data['status_update'])
+
+        idea.status_pomyslu = new_status
+        idea.save()
+
+        status = True
+        message = "Status changed"
+
+    except Exception as e:
+        print('error occured when changing idea status')
+        if hasattr(e, 'message'):
+            print(e.message)
+            message = e.message
+        else:
+            print(e)
+            message = e.__str__()
+        status = False
     finally:
         return json.dumps({'status': status, 'message': message})

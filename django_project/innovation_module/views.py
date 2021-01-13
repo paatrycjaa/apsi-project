@@ -9,8 +9,8 @@ from . import idea, opinion, decorators, forum, decision, attachment
 
 _ajax_requests = {
     'get_keywords': lambda request, object_id: idea.get_keywords(),
-    'all_ideas': lambda request, object_id: idea.get_ideas_json(request.user, False),
-    'user_ideas': lambda request, object_id: idea.get_ideas_json(request.user, True),
+    'all_ideas': lambda request, object_id: idea.get_ideas_json(request.user, False, True),
+    'user_ideas': lambda request, object_id: idea.get_ideas_json(request.user, True, False),
     'submit_idea': lambda request, object_id: idea.add_idea(request, request.user),
     'edit_idea': lambda request, object_id: ajax_edit_idea(request, int(json.loads(request.POST['data'])['idea_id'])),
     'get_idea': lambda request, object_id: idea.get_idea_json(object_id),
@@ -19,7 +19,7 @@ _ajax_requests = {
     'submit_opinion': lambda request, object_id: opinion.add_opinion(request.body.decode('utf-8'), request.user),
     'submit_decision': lambda request, object_id: decision.add_decision(request.body.decode('utf-8'), request.user),
     'edit_opinion': lambda request, object_id: ajax_edit_opinion(request, int(json.loads(request.body)['opinion_id'])),
-    'filtered_ideas': lambda request, object_id: decision.get_filtered_ideas_json('Oczekujący'),
+    'filtered_ideas': lambda request, object_id: idea.get_ideas_json(request.user, False, False),
     'get_thread': lambda request, object_id: forum.get_thread_json(object_id),
     'all_threads': lambda request, object_id: forum.get_threads_json(),
     'all_posts': lambda request, object_id: forum.get_posts_json(object_id),
@@ -28,6 +28,7 @@ _ajax_requests = {
     'block_idea':  lambda request, object_id: ajax_block_idea(request, object_id),
     'remove_idea': lambda request, object_id: ajax_remove_idea(request, object_id),
     'remove_thread': lambda request, object_id: ajax_remove_thread(request, object_id)
+    'change_status': lambda request, object_id: decision.change_status(request.body.decode('utf-8'),request.user)
 }    
     
 
@@ -38,8 +39,11 @@ def home(request):
 def ideas(request):
     return render(request, 'app/components/ideas-list/ideasList.html')
 @login_required
-def ideasfiltered(request):
-    return render(request,'app/components/ideas-filtered/ideasFiltered.html')
+def ideasfiltered(request, status_pomyslu):
+    context = {
+        'status': status_pomyslu
+    }
+    return render(request,'app/components/ideas-filtered/ideasFiltered.html',context)
 
 @login_required
 def my_ideas(request):
