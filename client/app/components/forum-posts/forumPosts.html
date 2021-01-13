@@ -22,11 +22,12 @@
                 <td>{{ thread.fields.data_ostatniego_posta }}</td>
             </tr>
         </table>
-        <div style="float: right;">
-            <button type="button" class="btn btn-primary" ng-click="addPost(thread.pk)">Dodaj komentarz</button>
-        </div>
         {% endverbatim %}
     </div>
+    <div style="float: right;">
+        <button type="button" class="btn btn-primary" ng-click="addPost(thread.pk)">Dodaj komentarz</button>
+    </div>
+    <div style="clear: both;"></div>
 
     <div ng-repeat="post in posts">
         <div class="idea-block">

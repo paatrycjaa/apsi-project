@@ -46,3 +46,23 @@ def add_post_attachment(post, file_name, file_size):
     zp.save()
 
     return z.pk
+
+def delete_attachment_file(attachment):
+    att = models.Zalacznik.objects.get(pk=attachment.pk)
+    file_path = os.path.join(settings.MEDIA_ROOT, str(att.pk) + '_' + att.nazwa_pliku)
+    try:
+        os.remove(file_path)
+    except:
+        pass
+
+def remove_idea_attachments(idea):
+    attachments = models.ZalacznikPomyslu.objects.filter(pomysl=idea)
+    for att in attachments:
+        delete_attachment_file(att)
+        att.delete()
+
+def remove_post_attachments(post):
+    attachments = models.ZalacznikPosta.objects.filter(post=post)
+    for att in attachments:
+        delete_attachment_file(att)
+        att.delete()
