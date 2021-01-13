@@ -14,5 +14,11 @@ angular.module('appThreadsListController', [])
         $scope.openThreadPosts = function(id) {
           $window.location.href = `/posts/${id}/`;
         }
+
+        $scope.removeThread = function(id) {
+          threadsListService.removeThread(id, () => {
+            $window.location.reload();
+          });
+        }
       }
 ]);

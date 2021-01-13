@@ -1,7 +1,7 @@
 angular.module('appIdeasListController', [])
-  .controller('ideasListController', ['$scope', '$window', '$interval', 'ideasListService',
-      function($scope, $window, $interval, ideasListService) {
-        
+  .controller('ideasListController', ['$scope', '$window', 'ideasListService',
+      function($scope, $window, ideasListService) {
+
         $scope.ideas = [];
 
         $scope.init = function() {
@@ -16,6 +16,24 @@ angular.module('appIdeasListController', [])
 
         $scope.blockIdea = function(id) {
           ideasListService.blockIdea(id, () => {
+            $window.location.reload();
+          });
+        }
+
+
+        $scope.ideaShown = function(idea) {
+          selected=$scope.Select1
+          if(selected=="wszystkie"|| selected==undefined)
+          {
+            return true;
+          }
+          else {
+            return idea.status_pomyslu_id == selected;
+          }
+        }
+
+        $scope.removeIdea = function(id) {
+          ideasListService.removeIdea(id, () => {
             $window.location.reload();
           });
         }
