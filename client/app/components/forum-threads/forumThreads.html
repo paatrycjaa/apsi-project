@@ -11,7 +11,7 @@
             <input type="text" class="form-control" placeholder="Filter..." ng-model="searchStr">
         </form>
     </div>
-    <div style="float: right;">
+    <div style="float: right;margin:0 50px;">
         <a href="{% url 'add-thread' %}">
             <button type="button" class="btn btn-primary">Dodaj nowy wątek</button>
         </a>
@@ -37,7 +37,7 @@
         </div>
 
         {% endverbatim %}
-        <div class="btn-tollbar" style="float: right;">
+        <div class="btn-tollbar" style="float: right;margin:0 50px;">
             {% if user.is_superuser %}
             {% verbatim %}
             <button type="button" class="btn btn-danger" ng-click="removeThread(thread.pk)">Usuń</button>

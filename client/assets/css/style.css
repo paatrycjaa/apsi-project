@@ -53,6 +53,9 @@ body {
 .log-link{
     background-color: rgb(241, 175, 50); 
 }
+.log-link:hover{
+    background-color:  rgb(211, 137, 0);
+}
 
 h1 {
     margin: 60px 60px 25px;

@@ -10,7 +10,7 @@
             <input type="text" class="form-control" placeholder="Filter..." ng-model="searchStr">
         </form>
     </div>
-    <div style="float: right;">
+    <div style="float: right;margin:0 50px;">
         <a href="{% url 'add_idea' %}">
             <button type="button" class="btn btn-primary">Dodaj nowy pomysł</button>
         </a>
@@ -34,7 +34,7 @@
             {% verbatim %}
             <my-idea-table idea="idea" show-attachments-count="true"/>
         </div>
-        <div class="btn-tollbar" style="float: right;">
+        <div class="btn-tollbar" style="float: right;margin:0 50px;">
             <button type="button" id='block' class="btn btn-info" ng-click="editIdea(idea.id)">Edytuj (to delete)</button>
             <button type="button" class="btn btn-primary" ng-click="openIdeaOpinions(idea.id)">Przegladaj</button>
         </div>
