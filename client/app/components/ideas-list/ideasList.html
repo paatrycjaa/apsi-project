@@ -2,15 +2,15 @@
 {% block title %} Innovation ideas {% endblock %}
 
 {% block content %}
-<h1>Wszystkie pomysły</h1>
+<h1>LISTA POMYSŁÓW</h1>
 
 <div ng-controller="ideasListController" ng-init="init()">
-    <div style="display: inline-block">
+    <div style="display: inline-block; margin:0 50px; padding-right:10px;">
         <form role="form">
             <input type="text" class="form-control" placeholder="Filter..." ng-model="searchStr">
         </form>
     </div>
-
+    <span>Status pomysłu:</span>
     <select ng-model="Select1">
         <option value="wszystkie">Pokaż wszystkie</option>
         <option value="Oczekujacy">Oczekujący</option>
@@ -21,7 +21,7 @@
       </select>
 
 
-    <div style="float: right;">
+    <div style="float: right;margin:0 50px;">
         <a href="{% url 'add_idea' %}">
             <button type="button" class="btn btn-primary">Dodaj nowy pomysł</button>
         </a>
@@ -33,7 +33,7 @@
             <idea-table idea="idea" show-attachments-count="true"/>
         </div>
         {% endverbatim %}
-        <div class="btn-tollbar" style="float: right;">
+        <div class="btn-tollbar" style="float: right; margin:0 50px;">
             {% if user.is_superuser %}
             {% verbatim %}
             <button type="button" class="btn btn-danger" ng-click="removeIdea(idea.id)">Usuń</button>
@@ -42,7 +42,7 @@
             {% endif %}
 
             {% verbatim %}
-            <button type="button" class="btn btn-primary" ng-click="openIdeaOpinions(idea.id)">Przegladaj</button>
+            <button margin:0 50px;type="button" class="btn btn-primary" ng-click="openIdeaOpinions(idea.id)">Przegladaj</button>
             {% endverbatim %}
         </div>
         <div style="clear: both;"></div>
