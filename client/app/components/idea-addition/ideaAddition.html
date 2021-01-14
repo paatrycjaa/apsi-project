@@ -10,8 +10,8 @@
 <div ng-controller="ideaAdditionController" ng-init="init({{idea_id}})">
 
 {% verbatim %}
-
-<form class="needs-validation" name = "ideaForm" novalidate>
+<h2>DODAJ POMYSŁ</h2>
+<form class="needs-validation" style="margin: 0 50px;" name = "ideaForm" novalidate>
     <div class="form-group">
         <label for="topic">Temat</label>        
         <input name="topic" class="form-control" type="text" ng-model="ideaModel.topic" required>

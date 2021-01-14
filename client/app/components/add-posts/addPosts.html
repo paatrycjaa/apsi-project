@@ -2,13 +2,13 @@
 {% block title %} Add post {% endblock %}
 
 {% block content %}
-<h1>Dodaj post</h1>
+<h1>DODAJ POST</h1>
 
 <div ng-controller="postAdditionController" ng-init="init({{thread_id}})">
     {% verbatim %}
     
-    <form class="needs-validation" name="threadForm" novalidate>
-        <div class="form-group">
+    <form class="needs-validation" style="margin: 0 50px;" name="threadForm" novalidate>
+        <div class="form-group" >
             <label for="thema">Temat</label>
             <input name="thema" class="form-control" type="text" ng-model="postModel.thema" required>
             <div class="invalid-feedback">
@@ -18,7 +18,7 @@
     
         <div class="form-group">
             <label for="content">Treść</label>
-            <input name="content" class="form-control" type="text" ng-model="postModel.content"  rows="4" required>
+            <textarea name="content" class="form-control" type="text" ng-model="postModel.content"  rows="4" required></textarea> 
             <div class="invalid-feedback">
                 To pole jest wymagane!
             </div>

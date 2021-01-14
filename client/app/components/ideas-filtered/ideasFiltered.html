@@ -5,7 +5,7 @@
 <h1>Pomysły oczekujące na decyzję</h1>
 
 <div ng-controller="ideasFilteredController" ng-init="init()">  
-    <div style="display: inline-block">
+    <div style="display: inline-block; margin-left:50px;">
         <form role="form">
             <input type="text" class="form-control" placeholder="Filter..." ng-model="searchStr">
         </form>
@@ -15,7 +15,7 @@
     <div ng-repeat="idea in ideas | filter:searchStr">
         <div class="idea-block">
             {% verbatim %}
-            <table class="table">
+            <table class="idea-table">
                 <tr>
                     <th style="width: 25%">Temat:</th>
                     <td>{{ idea.fields.tematyka }}</td>

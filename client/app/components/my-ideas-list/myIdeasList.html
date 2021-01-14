@@ -2,10 +2,10 @@
 {% block title %} Innovation ideas {% endblock %}
 
 {% block content %}
-<h1>Pomysły użytkownika {{user.first_name}}</h1>
-
+<!--<h1>Pomysły użytkownika {{user.first_name}}</h1>-->
+<h1>MOJE POMYSŁY</h1>
 <div ng-controller="myIdeasListController" ng-init="init()">  
-    <div style="display: inline-block">
+    <div style="display: inline-block; margin-left:50px;">
         <form role="form">
             <input type="text" class="form-control" placeholder="Filter..." ng-model="searchStr">
         </form>
