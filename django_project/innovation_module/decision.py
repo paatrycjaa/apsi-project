@@ -4,6 +4,7 @@ import json
 from django.utils import timezone
 
 from . import utils
+from . import attachment
 
 def serialize(objects):
     return serializers.serialize('json', objects)
@@ -65,5 +66,21 @@ def change_status(status_update, user):
             print(e)
             message = e.__str__()
         status = False
+    finally:
+        return json.dumps({'status': status, 'message': message})
+
+def delete_idea(data, user):
+    try:
+        data = json.loads(data)
+        idea = models.Pomysl.objects.get(pk=data['id'])
+        attachment.remove_idea_attachments(idea)
+        idea.delete()
+
+        status = True
+        message = "Idea removed"
+
+    except Exception as e:
+        status = False
+        message = utils.handle_exception(e)
     finally:
         return json.dumps({'status': status, 'message': message})

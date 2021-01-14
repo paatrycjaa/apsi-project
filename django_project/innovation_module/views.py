@@ -28,7 +28,8 @@ _ajax_requests = {
     'block_idea':  lambda request, object_id: ajax_block_idea(request, object_id),
     'remove_idea': lambda request, object_id: ajax_remove_idea(request, object_id),
     'remove_thread': lambda request, object_id: ajax_remove_thread(request, object_id),
-    'change_status': lambda request, object_id: decision.change_status(request.body.decode('utf-8'),request.user)
+    'change_status': lambda request, object_id: decision.change_status(request.body.decode('utf-8'),request.user),
+    'delete_idea': lambda request, object_id: decision.delete_idea(request.body.decode('utf-8'),request.user)
 }    
     
 

@@ -42,6 +42,18 @@ angular.module('appIdeasFilteredController', [])
             console.log(response);
             $window.location.reload();
           });
-        }       
+        }
+
+        $scope.id_to_del={
+          id:''
+        }
+        $scope.removeIdea = function(id) {
+          $scope.id_to_del.id=id
+          console.log($scope.statusup)
+          ideasFilteredService.removeIdea($scope.id_to_del, (response) => {
+            console.log(response);
+            $window.location.reload();
+          });
+        }      
       }
 ]);
