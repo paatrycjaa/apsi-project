@@ -49,3 +49,6 @@ def add_decision(decision_json, user):
         status = False
     finally:
         return json.dumps({'status': status})
+
+def count_all():
+    return models.Decyzja.objects.count()

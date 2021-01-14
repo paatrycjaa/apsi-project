@@ -33,51 +33,12 @@
 }
 
 .bulb-info-container {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.255);
-    transition: 0.3s;
-    border-radius: 7px; /* 5px rounded corners */
-    border-style: solid;
-    border-width: 2px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.508);
     border-color: #565b6e;
-    margin-top: 3vw;
+    margin: 3vw auto 0;
+    width: 97%;
 
-    transition: all linear 0.5s;
-    /* background-color: lightblue; */
-    /* height: 100px; */
-    /* transform: translateX(0%); */
-}
-
-/* The starting CSS styles for the enter animation
-.bulb-info-container.ng-enter {
-    transition:0.5s linear all;
-    opacity:0;
-}
-
-  /* The finishing CSS styles for the enter animation */
-/* .bulb-info-container.ng-enter.ng-enter-active {
-    opacity:1;
-    transform: translateX(0%);
-} */ */
-
-.animate-show-hide.ng-hide {
-    opacity: 0;
-    transform: translateX(-100%)
-    /* transform: rotateY(90deg); */
-}
-
-.animate-show-hide.ng-hide-add,
-.animate-show-hide.ng-hide-remove {
-    transition: all linear 0.5s;
-}
-
-.check-element {
-border: 1px solid black;
-opacity: 1;
-padding: 10px;
-}
-
-.bulb-info-container:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.357);
+    transition: all linear 0.1s;
 }
 
 .bulb-container {
@@ -87,7 +48,7 @@ padding: 10px;
     color: #054a82;
     width: 32vw;
     height: 32vw;
-    padding: 0%;
+    padding: 0;
 }
 
 .bulb-img {

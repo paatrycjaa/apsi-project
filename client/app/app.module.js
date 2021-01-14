@@ -1,5 +1,6 @@
 var app = angular.module('app', [
     'appStartPageController',
+    'appStartPageService',
     'appIdeaAdditionController',
     'appIdeaAdditionService',
     'appIdeasListController',

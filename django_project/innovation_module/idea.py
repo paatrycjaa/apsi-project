@@ -203,8 +203,17 @@ def edit_idea(request, user):
     finally:
         return json.dumps({'status': status, 'message': message})
 
- 
+
 def get_keywords():
     keywords = models.SlowoKluczowe.objects.values_list('slowo_kluczowe', flat=True)
     return json.dumps(list(keywords), cls=DjangoJSONEncoder)
+
+def count_all():
+    return Pomysl.objects.count()
         
+def count_date(date):
+    return Pomysl.objects.filter(
+        data_dodania__year=date.year,
+        data_dodania__month=date.month,
+        data_dodania__day=date.day
+        ).count() 

@@ -125,3 +125,12 @@ def edit_opinion(opinion_json):
     finally:
         return json.dumps({'status': status})
 
+def count_all():
+    return models.Ocena.objects.count()
+        
+def count_date(date):
+    return models.Ocena.objects.filter(
+        data__year=date.year,
+        data__month=date.month,
+        data__day=date.day
+        ).count() 
