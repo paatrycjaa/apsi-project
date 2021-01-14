@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 
 import json
 
-from . import idea, opinion, decorators, forum, decision, attachment
+from . import idea, opinion, decorators, forum, decision, attachment, stats
 
 _ajax_requests = {
     'get_keywords': lambda request, object_id: idea.get_keywords(),
@@ -29,12 +29,13 @@ _ajax_requests = {
     'remove_idea': lambda request, object_id: ajax_remove_idea(request, object_id),
     'remove_thread': lambda request, object_id: ajax_remove_thread(request, object_id),
     'change_status': lambda request, object_id: decision.change_status(request.body.decode('utf-8'),request.user),
-    'delete_idea': lambda request, object_id: decision.delete_idea(request.body.decode('utf-8'),request.user)
+    'delete_idea': lambda request, object_id: decision.delete_idea(request.body.decode('utf-8'),request.user),
+    'stats': lambda request, _: stats.get_stats()
 }    
     
 
 def home(request):
-    return render(request, 'app/static/home.html')
+    return render(request, 'app/components/start-page/startPage.html')
 
 @login_required
 def ideas(request):

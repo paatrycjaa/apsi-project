@@ -10,7 +10,7 @@
     var opinionSettings = "{{ settings }}"
 </script>
 
-
+<h2>DODAJ DECYZJĘ</h2>
 <div ng-controller="decisionAdditionController" ng-init="init({{idea_id}})">  
     <div class="idea-block">
         {% verbatim %}
@@ -19,7 +19,7 @@
     </div>
 
     
-    <form class="form-decision">
+    <form class="form-decision" style="margin: 0 50px;">
         <div class="form-group" ng-show="settings.includes('text')"></div>
             Decyzja:<br>
             <label><input name="werdykt" type="radio" ng-model="decision.werdykt" value="Zaakceptowany" required/>Zaakceptuj</label><br>

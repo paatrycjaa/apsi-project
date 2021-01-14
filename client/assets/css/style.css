@@ -1,11 +1,3 @@
-
-.idea-block {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    padding: 5px;
-    background-color: #e6edf3;
-}
-
 .opinion-block {
     margin-top: 20px;
     margin-bottom: 10px;
@@ -104,3 +96,201 @@
 .container-fluid ol > li > ul > li:hover > a {
       color:#09C;
     }
+/* start page */
+.main-title {
+    width: 100%;
+    margin: auto;
+    font-size: 3vw;
+    text-align: center;
+    color: #054a82;
+}
+
+.bulb-info-container {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.508);
+    border-color: #565b6e;
+    margin: 3vw auto 0;
+    width: 97%;
+
+    transition: all linear 0.1s;
+}
+
+.bulb-container {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    color: white;
+    width: 32vw;
+    height: 32vw;
+    padding: 0;
+}
+
+.bulb-img {
+    width: 100%;
+    height: 100%;
+}
+
+.bulb-text {
+    position: absolute;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5vw;
+}
+
+.bulb-description-container {
+    display: inline;
+}
+
+.bulb-description-text {
+    font-size: 3.75vw;
+    /* color: #054a82; */
+    white-space: pre-wrap;
+    -webkit-text-stroke: 1.5px black; /* width and color */
+
+    font-family: sans; color: rgb(247, 246, 245);
+}
+
+.swap-container {
+    height: 40vw;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.swap-container .cell {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.swap-animation.ng-enter, .swap-animation.ng-leave {
+    transition: 1s linear all;
+}
+.swap-animation.ng-enter {
+    top: -150%;
+}
+.swap-animation.ng-enter-active {
+    top: 0%;
+}
+.swap-animation.ng-leave {
+    top: 0%;
+}
+.swap-animation.ng-leave-active {
+    top: 150%;
+}
+
+/*Navigation section*/
+body { 
+    padding-top: 130px; 
+    background-color: rgb(247, 246, 245);
+}
+
+.navbar
+{   
+    padding-left: 50px;
+    box-shadow: 0 0 10px 0 gray;
+    background-color: #ffffff;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    position: relative;
+    margin: 0 40px;
+    color: black;
+    top: 30px;
+    padding:23px 20px 23px 20px;
+}
+
+
+.nav-link:hover{
+    position: relative;
+    margin: 0 40px;
+    color: black;
+    top: 55px;
+    padding: 23px 20px 23px 20px;
+    background-color: rgb(241, 175, 50); 
+}
+
+.log-link{
+    background-color: rgb(241, 175, 50); 
+}
+.log-link:hover{
+    background-color:  rgb(211, 137, 0);
+}
+
+h1 {
+    margin: 60px 60px 25px;
+}
+h2{
+    margin: 40px 60px 25px;
+}
+
+.logo1, .logo2{
+    position:relative;
+    font-size: larger;
+    top: 50px;
+    padding: 3px;
+}
+
+.logo2{
+    position:relative;
+    right: 20px;
+    top: 70px;
+}
+
+
+/*****/
+
+.thread-table, .post-table, .idea-table{
+    padding:50px;
+    width: 100%;
+}
+
+.thread-name, .post-name{
+    color: rgb(212, 154, 45); 
+    font-weight: bold;
+    text-align: left;
+    padding: 0;
+}
+.thread-name:hover{
+    color: rgb(153, 111, 32); 
+    font-weight: bold;
+}
+.thread-data{
+    font-style:italic;
+}
+
+td{
+    width: 85%;
+}
+
+.thread-name .btn{
+    text-align: left;
+}
+
+.thread-block, .post-block, .idea-block{
+    background-color: white;
+    box-shadow: 3px 3px 10px gray;
+    margin: 25px 50px;
+    padding: 10px;
+}
+.btn-danger , .btn-warning{
+    box-shadow: 2px 2px 10px gray;
+    /*font-weight: bold;
+    color: rgb(56, 51, 51);*/
+}
+
+.btn-primary, .btn-info {
+    background-color:  rgb(241, 175, 50); 
+    color: rgb(56, 51, 51);
+    box-shadow: 2px 2px 10px gray;
+    border: transparent;
+}
+
+.btn-primary:hover, .btn-info:hover{
+    background-color:  rgb(211, 137, 0); 
+    color:  rgb(56, 51, 51);
+    box-shadow: 2px 2px 10px gray;
+    border: transparent;
+}
+

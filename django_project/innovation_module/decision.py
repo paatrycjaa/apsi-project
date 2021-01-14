@@ -84,3 +84,6 @@ def delete_idea(data, user):
         message = utils.handle_exception(e)
     finally:
         return json.dumps({'status': status, 'message': message})
+
+def count_all():
+    return models.Decyzja.objects.count()

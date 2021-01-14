@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}">
@@ -22,90 +23,10 @@
 
   </head>
   <body class="d-flex flex-column min-vh-100">
-    <!-- <style>
-      /* ------------------------CZĘŚĆ-GÓRNA-MENU------------------------ */
 
-      /* wygląd głównego elementu - ol */
-      ol {
-        list-style-type:none;
-        padding:0;
-        margin:0;
-        font-size:18px;
-        height:2em;
-        line-height:2em;
-        text-align:center;
-        color: #000;
-      }
-
-      /* wygląd wszystkich elementów - a - znajdujących się w elemencie - ol */
-      ol a {
-        display:block;
-        text-decoration:none;
-        color:#000;
-        padding:0 5px;
-      }
-
-      /* wygląd elementów - li - wszystkich dzieci elementu - ol */
-      ol > li {
-        float:left;
-        margin-left:1px;
-        height:2em;
-      }
-
-      /* wygląd elementu - li - pierwszego dziecka elementu - ol */
-      ol > li:first-child {
-        margin-left:0;
-      }
-
-      /* wygląd elementów - li - wszystkich dzieci elementu - ol - po najechaniu kursorem myszki na element - li */
-      ol > li:hover {
-        background-color:#adc6f0;
-      }
-
-      /* wygląd elementu - a - dziecka elementu - li - będącego dzieckiem elementu - ol - po najechaniu kursorem myszki na element - li */
-      ol > li:hover > a {
-        color:#09C;
-      }
-
-      /* wygląd elementu - ul - dziecka elementu - li - będącego dzieckiem elementu - ol - po najechaniu kursorem myszki na element - li */
-      ol > li:hover > ul {
-        display:block;
-      }
-
-      /* ------------------------CZĘŚĆ-ROZWIJANA-MENU------------------------ */
-
-      /* wygląd głównych rozwijanych elementów - ul */
-      ol > li > ul {
-        display:none;
-        list-style-type:none;
-        padding:0;
-        margin:0;
-      }
-
-      /* wygląd elementu - li - w części rozwijanej */
-      ol > li > ul > li {
-        position:relative;
-        background-color:#EEE;
-      }
-
-      /* wygląd elementu - a - w części rozwijanej */
-      ol > li > ul > li > a {
-        border-top:1px solid #FFF;
-      }
-
-      /* wygląd elementu - li - w części rozwijanej, po najechaniu kursorem myszki na dany element - li */
-      ol > li > ul > li:hover {
-        background-color:#DDD;
-      }
-
-      /* wygląd elementu - a - w części rozwijanej, po najechaniu kursorem myszki na element - li */
-      ol > li > ul > li:hover > a {
-        color:#09C;
-      }
-    </style> -->
     <header class="site-header">
       <!-- Navigation bar -->
-      <nav class="navbar navbar-expand-lg navbar-dark static-top" style="background-color: #054a82;">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container-fluid">
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
@@ -127,14 +48,21 @@
               </ol>
               {% endif %}
               
+                <img src="{% static 'assets/img/pomysl.jpeg' %}" width="100" height="100" alt=""></a>
+                <span class ="logo1">PORTAL</span>
+                <span class ="logo2">INNOWACJI</span>
             </div>
 
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
               {% if user.is_authenticated %}
-                <a class="nav-item nav-link" href="{% url 'logout'%}">WYLOGUJ</a>
+              <a class="nav-item nav-link" href="{% url 'ideasfiltered' %}">DECYZJE</a>
+              <a class="nav-item nav-link" href="{% url 'threads'%}">FORUM</a>
+              <a class="nav-item nav-link" href="{% url 'ideas' %}">POMYSŁY</a>
+              <a class="nav-item nav-link" href="{% url 'my-ideas'%}">MOJE POMYSŁY</a>
+              <a class="nav-item nav-link" href="{% url 'logout'%}">WYLOGUJ</a>
               {% else %}
-                <a class="nav-item nav-link" href="{% url 'login'%}">ZALOGUJ</a>
+              <a class="nav-item nav-link log-link" href="{% url 'login'%}">ZALOGUJ</a>
               {% endif %}
             </div>
           </div>
@@ -143,12 +71,15 @@
     </header>
 
     <!-- Page contents -->
-    <div class="container-fluid">
+    <div class="container-fluid cont">
       {% block content %} {% endblock %}
     </div>
 
     <!-- Angular Modules -->
     <script type="text/javascript" src="{% static 'app/app.module.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'app/components/start-page/startPage.controller.js' %}"></script>
+    <script type="text/javascript" src="{% static 'app/components/start-page/startPage.service.js' %}"></script>
 
     <script type="text/javascript" src="{% static 'app/components/idea-addition/ideaAddition.controller.js' %}"></script>
     <script type="text/javascript" src="{% static 'app/components/idea-addition/ideaAddition.service.js' %}"></script>
