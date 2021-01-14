@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="login-logout">
+<div class="login-logout" style="margin-top: 40px;">
     <div class="content-section">
         <form method="POST" action="{% url 'login' %}">
             {% csrf_token %}

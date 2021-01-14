@@ -5,10 +5,9 @@ from django.core import serializers
 
 from . import models
 from . import idea
+from . import utils
 
 def serialize(objects):
-    # raw = serializers.serialize('python', objects)
-    # return json.dumps([o['fields'] for o in raw])
     return serializers.serialize('json', objects)
 
 def get_opinions(id):
@@ -33,13 +32,13 @@ def get_opinion(opinion_id):
 def get_opinion_json(opinion_id):
     return serialize(models.Ocena.objects.filter(pk=opinion_id))
 
-def get_add_opinion_json(idea_id):    
+def get_add_opinion_json(idea_id):
     settings = idea.get_settings(idea_id)
     data = {
         'opinion_id': '',
         'idea_id': idea_id,
         'settings': settings
-    }    
+    }
 
     return data
 
@@ -49,7 +48,7 @@ def get_edit_opinion_json(opinion_id):
     data = {
         'opinion_id': opinion_id,
         'idea_id': opinion.pomysl.pk,
-        'settings': settings    }    
+        'settings': settings    }
 
     return data
 
@@ -80,27 +79,24 @@ def add_opinion(opinion_json, user):
             idea.update_average_rating(idea_id, data['rate'])
 
         status = True
-        
+        message = "Opinion added"
+
     except Exception as e:
-        print('error occured when adding opinion')
-        if hasattr(e, 'message'):
-            print(e.message)
-        else:
-            print(e)
         status = False
+        message = utils.handle_exception(e)
     finally:
-        return json.dumps({'status': status})
+        return json.dumps({'status': status, 'message': message})
 
 def edit_opinion(opinion_json):
     try:
         data = json.loads(opinion_json)
-        
+
         idea_id = data['idea_id']
 
         settings = idea.get_settings(idea_id)
 
         m = models.Ocena.objects.get(pk=data['opinion_id'])
-        
+
         old_rate = m.ocena_liczbowa
 
         if 'num' in settings:
@@ -114,16 +110,13 @@ def edit_opinion(opinion_json):
             idea.update_average_rating(idea_id, data['rate'], old_rate)
 
         status = True
-        
+        message = "Opinion changed"
+
     except Exception as e:
-        print('error occured when adding opinion')
-        if hasattr(e, 'message'):
-            print(e.message)
-        else:
-            print(e)
         status = False
+        message = utils.handle_exception(e)
     finally:
-        return json.dumps({'status': status})
+        return json.dumps({'status': status, 'message': message})
 
 def count_all():
     return models.Ocena.objects.count()

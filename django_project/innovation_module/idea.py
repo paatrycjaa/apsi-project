@@ -9,10 +9,11 @@ from django.utils import timezone
 from . import models
 from .models import Pomysl
 from . import attachment
+from . import utils
 
 def serialize(objects, user, filter_status):
-    
-    for elem in objects:        
+
+    for elem in objects:
         isCurrentUser = elem['uzytkownik_id'] == user
         elem['is_current_user'] = isCurrentUser
         elem.pop('uzytkownik_id')
@@ -41,7 +42,7 @@ def add_idea(request, user):
             settings_val = 'text_only'
         else:
             settings_val = 'brak'
-       
+
 
         user = models.Uzytkownik.objects.get(user_id=user.id)
         status = models.StatusPomyslu.objects.get(status='Oczekujacy')
@@ -53,11 +54,11 @@ def add_idea(request, user):
                           ocena_wazona=-1, data_dodania=timezone.localtime(timezone.now()))
         m.save()
 
+        for file_name, file_size, file in zip(data['attachments'], data['attachments_size'], request.FILES.values()):
+            att_key = attachment.add_idea_attachment(m, file_name, file_size)
+            attachment.save_file(file, file_name, att_key)
 
-        att_key = attachment.add_idea_attachment(m, data['attachment'], data['attachment_size'])        
-        attachment.save_file(request.FILES['file'], data['attachment'], att_key)
-
-        message = "Idea added"        
+        message = "Idea added"
         status = True
 
     except Exception as e:
@@ -84,28 +85,37 @@ def block_idea(idea_id):
         message = "Idea blocked"
 
     except Exception as e:
-        print('error occured when blocking idea')
-        if hasattr(e, 'message'):
-            print(e.message)
-            message = e.message
-        else:
-            print(e)
-            message = e.__str__()
         status = False
+        message = utils.handle_exception(e)
+    finally:
+        return json.dumps({'status': status, 'message': message})
+
+def remove_idea(idea_id):
+    try:
+        idea = models.Pomysl.objects.get(pk=idea_id)
+        attachment.remove_idea_attachments(idea)
+        idea.delete()
+
+        status = True
+        message = "Idea removed"
+
+    except Exception as e:
+        status = False
+        message = utils.handle_exception(e)
     finally:
         return json.dumps({'status': status, 'message': message})
 
 def get_ideas(user, filter_user):
-    
+
     objs = Pomysl.objects
     user_obj = models.Uzytkownik.objects.get(user_id=user.id)
-    
+
     normal_user = models.ZwyklyUzytkownik.objects.filter(uzytkownik_id=user.id)
-    print(normal_user.exists())
+
     if normal_user.exists():
-        objs=models.Pomysl.objects.exclude(status_pomyslu='Zablokowany')
-        
-    
+        zablokowany = models.StatusPomyslu.objects.get(pk='Zablokowany')
+        objs=models.Pomysl.objects.exclude(status_pomyslu=zablokowany)
+
     if filter_user:
         user_obj = models.Uzytkownik.objects.get(user_id=user.id)
         objs = objs.filter(uzytkownik=user_obj)
@@ -120,7 +130,7 @@ def get_idea_json(idea_id):
     ideas = Pomysl.objects.filter(pk=idea_id)
     if len(ideas) == 0:
         raise ValueError('idea_id: {} is not valid.'.format(idea_id))
-    
+
     idea_dict = ideas.values()[0]
 
     idea_dict['attachments'] = list(models.ZalacznikPomyslu.objects.filter(pomysl=ideas[0]).values('pk', 'zalacznik__nazwa_pliku', 'zalacznik__rozmar'))
@@ -155,14 +165,14 @@ def edit_idea(request, user):
             message = "Idea already exists"
             status = False
             return
-        
+
         m = models.Pomysl.objects.get(pk=data['idea_id'])
 
         m.tematyka=data['topic']
         m.opis=data['description']
         m.planowane_korzysci=data['benefits']
         m.planowane_koszty=data['costs']
-               
+
         if data['num_rating'] and data['text_rating']:
             settings_val = 'num_text'
         elif data['num_rating']:
@@ -171,7 +181,7 @@ def edit_idea(request, user):
             settings_val = 'text_only'
         else:
             settings_val = 'brak'
-        
+
         m.status_pomyslu = models.StatusPomyslu.objects.get(status='Oczekujacy')
         m.ustawienia_oceniania = models.UstawieniaOceniania.objects.get(ustawienia=settings_val)
         m.data_ostatniej_edycji = timezone.localtime(timezone.now())
@@ -179,27 +189,21 @@ def edit_idea(request, user):
 
         m.save()
 
-        try:
-            file = request.FILES['file']
-            #todo remove old file
-            att_key = attachment.add_idea_attachment(m, data['attachment'], data['attachment_size'])        
-            attachment.save_file(file, data['attachment'], att_key)
-        except:
-            pass
+        #if there are new attachments, remove old ones
+        if(len(request.FILES) > 0):
+            attachment.remove_idea_attachments(m)
+
+        for file_name, file_size, file in zip(data['attachments'], data['attachments_size'], request.FILES.values()):
+            att_key = attachment.add_idea_attachment(m, file_name, file_size)
+            attachment.save_file(file, file_name, att_key)
 
         message = "Idea added"
         status = True
 
-    
+
     except Exception as e:
-        print('error occured when editing data')
-        if hasattr(e, 'message'):
-            print(e.message)
-            message = e.message
-        else:
-            print(e)
-            message = e.__str__()
         status = False
+        message = utils.handle_exception(e)
     finally:
         return json.dumps({'status': status, 'message': message})
 

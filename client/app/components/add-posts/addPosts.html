@@ -2,13 +2,13 @@
 {% block title %} Add post {% endblock %}
 
 {% block content %}
-<h1>Dodaj post</h1>
+<h1>DODAJ POST</h1>
 
 <div ng-controller="postAdditionController" ng-init="init({{thread_id}})">
     {% verbatim %}
     
-    <form class="needs-validation" name="threadForm" novalidate>
-        <div class="form-group">
+    <form class="needs-validation" style="margin: 0 50px;" name="threadForm" novalidate>
+        <div class="form-group" >
             <label for="thema">Temat</label>
             <input name="thema" class="form-control" type="text" ng-model="postModel.thema" required>
             <div class="invalid-feedback">
@@ -18,7 +18,7 @@
     
         <div class="form-group">
             <label for="content">Treść</label>
-            <input name="content" class="form-control" type="text" ng-model="postModel.content"  rows="4" required>
+            <textarea name="content" class="form-control" type="text" ng-model="postModel.content"  rows="4" required></textarea> 
             <div class="invalid-feedback">
                 To pole jest wymagane!
             </div>
@@ -26,7 +26,11 @@
     
         <div class="form-group">
             <label for="attachement">Załącznik (maks. 10 MB)</label>
-            <input type="file" class="form-control-file" id="attachment" onchange="angular.element(this).scope().uploadFile( this.files )">
+            <input type="file" class="form-control-file" id="attachment" onchange="angular.element(this).scope().uploadFile( this.files )" multiple />
+            <span ng-if="attachment_names.length > 0">Obecne załączniki:</span>
+            <ul ng-repeat="att in attachment_names">
+                <li>{{ att }}</li>
+            </ul>
         </div>
     
         <div class="form-group" style="display: inline-block">

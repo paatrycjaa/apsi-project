@@ -6,43 +6,41 @@
 <h1>Forum inspiracji</h1>
 
 <div ng-controller="postsListController" ng-init="init({{thread_id}})">
-    <div class = idea-block>
+    <div class = thread-block>
         {% verbatim %}
-        <table class="table">
+        <table class="thread-table">
             <tr>
-                <th style="width: 25%">Temat:</th>
-                <td>{{ thread.fields.temat }}</td>
+                <th>Wątek:</th>
+                <td class="post-name">{{ thread.fields.temat }}</td>
             </tr>
             <tr>
                 <th>Data dodania:</th>
-                <td>{{ thread.fields.data_dodania }}</td>
+                <td class="thread-data">{{ thread.fields.data_dodania }}</td>
             </tr>
             <tr>
                 <th>Data ostatniego posta:</th>
-                <td>{{ thread.fields.data_ostatniego_posta }}</td>
+                <td class="thread-data">{{ thread.fields.data_ostatniego_posta }}</td>
             </tr>
         </table>
-        <div style="float: right;">
-            <button type="button" class="btn btn-primary" ng-click="addPost(thread.pk)">Dodaj komentarz</button>
-        </div>
         {% endverbatim %}
     </div>
+    <div style="float: right;margin:0 50px;">
+        <button type="button" class="btn btn-primary" ng-click="addPost(thread.pk)">Dodaj komentarz</button>
+    </div>
+
+    <div style="clear: both;"></div>
 
     <div ng-repeat="post in posts">
-        <div class="idea-block">
+        <div class="post-block">
             {% verbatim %}
-            <table class="table">
-                <tr>
-                    <th style="width: 25%">Tytuł:</th>
+            <table class="post-table">
+                <!-- <tr>
+                    <th >Tytuł:</th>
                     <td>{{ post.tytul }}</td>
-                </tr>
+                </tr> -->
                 <tr>
-                    <th style="width: 25%">Treść:</th>
+                    <th >Treść:</th>
                     <td>{{ post.tresc }}</td>
-                </tr>
-                <tr>
-                    <th>Data dodania:</th>
-                    <td>{{ post.data_dodania }}</td>
                 </tr>
                 <tr ng-if="post.attachments">
                     <th>Załączniki:</th>
@@ -54,6 +52,10 @@
                             </li>
                         </ui>
                     </td>
+                </tr>
+                <tr>
+                    <th>Data dodania:</th>
+                    <td class='thread-data'>{{ post.data_dodania }}</td>
                 </tr>
             </table>
         </div>

@@ -2,12 +2,12 @@
 {% block title %} Add threads {% endblock %}
 
 {% block content %}
-<h1>Dodaj wątek</h1>
+<h1>DODAJ WĄTEK</h1>
 
 <div ng-controller='threadAdditionController' ng-init="init()">
 {% verbatim %}
 
-<form class="needs-validation" name="threadForm" novalidate>
+<form class="needs-validation" style="margin: 0 50px;" name="threadForm" novalidate>
     <div class="form-group">
         <label for="thema">Temat</label>
         <input name="thema" class="form-control" type="text" ng-model="threadModel.thema" required>
@@ -18,7 +18,7 @@
 
     <div class="form-group">
         <label for="content">Treść</label>
-        <input name="content" class="form-control" type="text" ng-model="threadModel.content" rows="4" required>
+        <textarea name="content" class="form-control" type="text" ng-model="threadModel.content" rows="4" required></textarea> 
         <div class="invalid-feedback">
             To pole jest wymagane!
         </div>

@@ -3,11 +3,10 @@ from django.core import serializers
 import json
 from django.utils import timezone
 
-def serialize(objects):
-    # raw = serializers.serialize('python', objects)
-    # return json.dumps([o['fields'] for o in raw])
-    return serializers.serialize('json', objects)
+from . import utils
 
+def serialize(objects):
+    return serializers.serialize('json', objects)
 
 def get_filtered_ideas_json(stat):
     return serialize(get_filtered_ideas(stat))
@@ -17,11 +16,10 @@ def get_filtered_ideas(stat):
     return models.Pomysl.objects.filter(status_pomyslu=status)
 
 def add_decision(decision_json, user):
-
     try:
         data = json.loads(decision_json)
 
-        board_member = models.CzlonekKomisji.objects.get(uzytkownik_id=user.id)  
+        board_member = models.CzlonekKomisji.objects.get(uzytkownik_id=user.id)
         pomysl=models.Pomysl.objects.get(pk=data['id'])
         werdykt = models.RodzajDecyzji.objects.get(rodzaj_decyzji=data['werdykt'])
 
@@ -31,24 +29,20 @@ def add_decision(decision_json, user):
 
         if(data['werdykt']!="Prosba o uzupelnienie"):
             statusp = models.StatusPomyslu.objects.get(status=data['werdykt'])
-        else: 
+        else:
             statusp = models.StatusPomyslu.objects.get(status="Edycja")
 
         pom = models.Pomysl.objects.get(id=data['id'])
         pom.status_pomyslu=statusp
         pom.save()
         status = True
-        
+        message = "Decision added"
 
     except Exception as e:
-        print('error occured when adding decision')
-        if hasattr(e, 'message'):
-            print(e.message)
-        else:
-            print(e)
         status = False
+        message = utils.handle_exception(e)
     finally:
-        return json.dumps({'status': status})
+        return json.dumps({'status': status, 'message': message})
 
 def count_all():
     return models.Decyzja.objects.count()
