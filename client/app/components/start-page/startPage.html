@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %} Innovations Home Page {% endblock %}
+{% load static %}
+
+{% block content %}
+<div ng-controller="startPageController" ng-init="init()">
+  <!-- <div class="main-title">
+    <b>PORTAL INNOWACJI</b>
+  </div> -->
+  <div class="swap-container">
+    <div ng-animate-swap="swapId" class="cell swap-animation">
+      <div class="bulb-info-container">
+        <div class="bulb-container">
+          <img
+          src="{% static 'assets/svg/light-bulb-2.svg' %}"
+          alt="idea bulb"
+          height="100%"
+          width="100%"
+          />
+          {% verbatim %}
+          <b class="bulb-text">{{ statsInfos[swapId].count }}</b>
+        </div>
+        <div class="bulb-description-container">
+          <b class="bulb-description-text">{{ statsInfos[swapId].message }}</b>
+        </div>
+        {% endverbatim %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

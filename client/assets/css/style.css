@@ -1,5 +1,3 @@
-
-
 .opinion-block {
     margin-top: 20px;
     margin-bottom: 10px;
@@ -17,6 +15,90 @@
 
 .login-logout {
     text-align: center;
+}
+
+/* start page */
+.main-title {
+    width: 100%;
+    margin: auto;
+    font-size: 3vw;
+    text-align: center;
+    color: #054a82;
+}
+
+.bulb-info-container {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.508);
+    border-color: #565b6e;
+    margin: 3vw auto 0;
+    width: 97%;
+
+    transition: all linear 0.1s;
+}
+
+.bulb-container {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    color: white;
+    width: 32vw;
+    height: 32vw;
+    padding: 0;
+}
+
+.bulb-img {
+    width: 100%;
+    height: 100%;
+}
+
+.bulb-text {
+    position: absolute;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5vw;
+}
+
+.bulb-description-container {
+    display: inline;
+}
+
+.bulb-description-text {
+    font-size: 3.75vw;
+    /* color: #054a82; */
+    white-space: pre-wrap;
+    -webkit-text-stroke: 1.5px black; /* width and color */
+
+    font-family: sans; color: rgb(247, 246, 245);
+}
+
+.swap-container {
+    height: 40vw;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.swap-container .cell {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.swap-animation.ng-enter, .swap-animation.ng-leave {
+    transition: 1s linear all;
+}
+.swap-animation.ng-enter {
+    top: -150%;
+}
+.swap-animation.ng-enter-active {
+    top: 0%;
+}
+.swap-animation.ng-leave {
+    top: 0%;
+}
+.swap-animation.ng-leave-active {
+    top: 150%;
 }
 
 /*Navigation section*/

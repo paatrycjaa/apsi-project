@@ -43,3 +43,6 @@ def add_decision(decision_json, user):
         message = utils.handle_exception(e)
     finally:
         return json.dumps({'status': status, 'message': message})
+
+def count_all():
+    return models.Decyzja.objects.count()

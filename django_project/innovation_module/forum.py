@@ -110,3 +110,9 @@ def add_post(request, user):
         message = utils.handle_exception(e)
     finally:
         return json.dumps({'status': status, 'message': message})
+
+def count_threads_all():
+    return models.Watek.objects.count()
+
+def count_posts_all():
+    return models.Post.objects.count()
