@@ -3,10 +3,10 @@
 
 {% block content %}
 
-<h1>Forum inspiracji</h1>
+<h1>FORUM INSPIRACJI</h1>
 
 <div ng-controller="threadsListController" ng-init="init()">
-    <div style="display: inline-block">
+    <div class='fil' style="display: inline-block; margin-left:50px;">
         <form role="form">
             <input type="text" class="form-control" placeholder="Filter..." ng-model="searchStr">
         </form>
@@ -18,27 +18,27 @@
     </div>
 
     <div ng-repeat="thread in threads | filter:searchStr">
-        <div class="idea-block">
+        <div class="thread-block">
             {% verbatim %}
-            <table class="table">
+            <table class="thread-table">
                 <tr>
-                    <th style="width: 25%">Temat:</th>
-                    <td>{{ thread.fields.temat }}</td>
+                    <th>Wątek:</th>
+                    <td class = 'thread-name btn'><a ng-click="openThreadPosts(thread.pk)" >{{ thread.fields.temat }}</a></td>
                 </tr>
                 <tr>
                     <th>Data dodania:</th>
-                    <td>{{ thread.fields.data_dodania }}</td>
+                    <td class ='thread-data'>{{ thread.fields.data_dodania }}</td>
                 </tr>
                 <tr>
                     <th>Data ostatniego posta:</th>
-                    <td>{{ thread.fields.data_ostatniego_posta }}</td>
+                    <td class ='thread-data'>{{ thread.fields.data_ostatniego_posta }}</td>
                 </tr>
             </table>
         </div>
-        <div style="float: right;">
+        <!--<div style="float: right;">
             <button type="button" class="btn btn-primary"  ng-click="openThreadPosts(thread.pk)" >Przegladaj</button>
         </div>
-        <div style="clear: both;"></div>
+        <div style="clear: both;"></div> -->
         {% endverbatim %}
     </div>
 </div>
