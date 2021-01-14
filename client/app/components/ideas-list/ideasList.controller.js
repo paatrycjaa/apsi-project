@@ -1,7 +1,7 @@
 angular.module('appIdeasListController', [])
-  .controller('ideasListController', ['$scope', '$window', '$interval', 'ideasListService',
-      function($scope, $window, $interval, ideasListService) {
-        
+  .controller('ideasListController', ['$scope', '$window', 'ideasListService',
+      function($scope, $window, ideasListService) {
+
         $scope.ideas = [];
 
         $scope.init = function() {
@@ -23,7 +23,6 @@ angular.module('appIdeasListController', [])
 
         $scope.ideaShown = function(idea) {
           selected=$scope.Select1
-          console.log(idea,selected);
           if(selected=="wszystkie"|| selected==undefined)
           {
             return true;
@@ -33,9 +32,11 @@ angular.module('appIdeasListController', [])
           }
         }
 
-
-
-
+        $scope.removeIdea = function(id) {
+          ideasListService.removeIdea(id, () => {
+            $window.location.reload();
+          });
+        }
       }
 ])
 .directive('ideaTable', function(){

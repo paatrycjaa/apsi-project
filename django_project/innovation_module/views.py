@@ -12,7 +12,7 @@ _ajax_requests = {
     'all_ideas': lambda request, object_id: idea.get_ideas_json(request.user, False),
     'user_ideas': lambda request, object_id: idea.get_ideas_json(request.user, True),
     'submit_idea': lambda request, object_id: idea.add_idea(request, request.user),
-    'edit_idea': lambda request, object_id: idea.ajax_edit_idea(request, int(json.loads(request.POST['data'])['idea_id'])),
+    'edit_idea': lambda request, object_id: ajax_edit_idea(request, int(json.loads(request.POST['data'])['idea_id'])),
     'get_idea': lambda request, object_id: idea.get_idea_json(object_id),
     'all_opinions': lambda request, object_id: opinion.get_opinions_json(object_id, request.user),
     'get_opinion': lambda request, object_id: opinion.get_opinion_json(object_id),
@@ -25,7 +25,9 @@ _ajax_requests = {
     'all_posts': lambda request, object_id: forum.get_posts_json(object_id),
     'submit_thread': lambda request, object_id: forum.add_thread(request.body.decode('utf-8'), request.user),
     'submit_post': lambda request, object_id: forum.add_post(request, request.user),
-    'block_idea':  lambda request, object_id: ajax_block_idea(request, object_id)
+    'block_idea':  lambda request, object_id: ajax_block_idea(request, object_id),
+    'remove_idea': lambda request, object_id: ajax_remove_idea(request, object_id),
+    'remove_thread': lambda request, object_id: ajax_remove_thread(request, object_id)
 }    
     
 
@@ -122,11 +124,9 @@ def ajax_edit_opinion(request, opinion_id):
     body_unicode = request.body.decode('utf-8')
     return opinion.edit_opinion(body_unicode)
 
-
 @login_required
 def download_file(request, file_id):
     return attachment.download_file(file_id)
-    return HttpResponse(opinion.edit_opinion(body_unicode), content_type='application/json')
 
 @decorators.users_idea
 def ajax_edit_idea(request, idea_id):
@@ -135,3 +135,11 @@ def ajax_edit_idea(request, idea_id):
 @user_passes_test(lambda u : u.is_superuser)
 def ajax_block_idea(request, object_id):
     return idea.block_idea(object_id)
+
+@user_passes_test(lambda u : u.is_superuser)
+def ajax_remove_idea(request, object_id):
+    return idea.remove_idea(object_id)
+
+@user_passes_test(lambda u : u.is_superuser)
+def ajax_remove_thread(request, object_id):
+    return forum.remove_thread(object_id)

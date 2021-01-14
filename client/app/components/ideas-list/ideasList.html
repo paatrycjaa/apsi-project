@@ -4,7 +4,7 @@
 {% block content %}
 <h1>Wszystkie pomysły</h1>
 
-<div ng-controller="ideasListController" ng-init="init()">  
+<div ng-controller="ideasListController" ng-init="init()">
     <div style="display: inline-block">
         <form role="form">
             <input type="text" class="form-control" placeholder="Filter..." ng-model="searchStr">
@@ -20,36 +20,32 @@
         <option value="Zaakceptowany">Zaakceptowany</option>
       </select>
 
-    
+
     <div style="float: right;">
         <a href="{% url 'add_idea' %}">
             <button type="button" class="btn btn-primary">Dodaj nowy pomysł</button>
         </a>
     </div>
 
-    <div ng-repeat="idea in ideas | filter:searchStr |filter: ideaShown ">  
-            <div class="idea-block">
-                {% verbatim %}
-                <idea-table idea="idea" show-attachments-count="true"/>
-            </div>
-          
+    <div ng-repeat="idea in ideas | filter:searchStr |filter: ideaShown ">
+        <div class="idea-block">
+            {% verbatim %}
+            <idea-table idea="idea" show-attachments-count="true"/>
+        </div>
+        {% endverbatim %}
+        <div class="btn-tollbar" style="float: right;">
+            {% if user.is_superuser %}
+            {% verbatim %}
+            <button type="button" class="btn btn-danger" ng-click="removeIdea(idea.id)">Usuń</button>
+            <button type="button" class="btn btn-warning" ng-click="blockIdea(idea.id)">Zablokuj</button>
             {% endverbatim %}
-            <div class="btn-tollbar" style="float: right;">
-                {% if user.is_superuser %}
-                {% verbatim %}
-                <button type="button" class="btn btn-danger" ng-click="blockIdea(idea.id)">Zablokuj</button>
-                {% endverbatim %}
-                {% endif %}
-    
-                {% verbatim %}
-                <button type="button" class="btn btn-primary" ng-click="openIdeaOpinions(idea.id)">Przegladaj</button>
-                {% endverbatim %}
- 
-            </div>
-            <br/>
-            <br/>
-    </div>
+            {% endif %}
+
+            {% verbatim %}
+            <button type="button" class="btn btn-primary" ng-click="openIdeaOpinions(idea.id)">Przegladaj</button>
+            {% endverbatim %}
+        </div>
         <div style="clear: both;"></div>
-    
+    </div>
 </div>
 {% endblock %}

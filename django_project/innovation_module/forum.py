@@ -1,5 +1,4 @@
 import json
-import datetime
 
 from django.core import serializers
 from django.core.serializers.json import DjangoJSONEncoder
@@ -7,6 +6,7 @@ from django.utils import timezone
 
 from . import models
 from . import attachment
+from . import utils
 
 def serialize(objects):
     return serializers.serialize('json', objects)
@@ -37,7 +37,7 @@ def get_posts_json(watek_id):
         p['attachments'] = list(models.ZalacznikPosta.objects.filter(post=obj).values('pk', 'zalacznik__nazwa_pliku', 'zalacznik__rozmar'))
 
     return json.dumps(list(posts_values), cls=DjangoJSONEncoder)
-    
+
 def thread_exist(thema):
     models.Watek.objects.filter(temat=thema).count() > 0
 
@@ -50,9 +50,9 @@ def add_thread(thread_json, user):
             message = "Taki wątek już istnieje"
             status = False
             return
-        
+
         user = models.Uzytkownik.objects.get(user_id=user.id)
-        dt = datetime.datetime.now()
+        dt = timezone.localtime(timezone.now())
         thread = models.Watek(temat = data['thema'], data_dodania = dt, data_ostatniego_posta = dt)
         thread.save()
         post = models.Post(tytul=data['thema'], tresc=data['content'], watek=thread, uzytkownik = user, data_dodania=dt)
@@ -60,18 +60,32 @@ def add_thread(thread_json, user):
 
         message = "Wątek i pierwszy post dodany"
         status = True
-    
+
     except Exception as e:
-        print('Wystąpił bład podczas dodawania wątku')
-        if hasattr(e, 'message'):
-            print(e.message)
-            message = e.message
-        else:
-            print(e)
-            message = e.__str__()
         status = False
+        message = utils.handle_exception(e)
     finally:
         return json.dumps({'status': status})
+
+def remove_thread(thread_id):
+    try:
+        thread = models.Watek.objects.get(pk=thread_id)
+
+        #remove attachments for posts in the thread
+        posts = models.Post.objects.filter(watek=thread)
+        for post in posts:
+            attachment.remove_post_attachments(post)
+
+        thread.delete()
+
+        status = True
+        message = "Thread removed"
+
+    except Exception as e:
+        status = False
+        message = utils.handle_exception(e)
+    finally:
+        return json.dumps({'status': status, 'message': message})
 
 def add_post(request, user):
     try:
@@ -79,27 +93,20 @@ def add_post(request, user):
 
         user = models.Uzytkownik.objects.get(user_id=user.id)
         thread = models.Watek.objects.get(id=data['thread'])
-        dt = datetime.datetime.now()
+        dt = timezone.localtime(timezone.now())
         post = models.Post(tytul=data['thema'], tresc=data['content'], watek=thread, uzytkownik = user, data_dodania=dt)
         post.save()
         models.Watek.objects.filter(id=data['thread']).update(data_ostatniego_posta = dt)
 
-        att_key = attachment.add_post_attachment(post, data['attachment'], data['attachment_size'])
-        attachment.save_file(request.FILES['file'], data['attachment'], att_key)
+        for file_name, file_size, file in zip(data['attachments'], data['attachments_size'], request.FILES.values()):
+            att_key = attachment.add_post_attachment(post, file_name, file_size)
+            attachment.save_file(file, file_name, att_key)
 
         message="Post został dodany"
         status = True
 
     except Exception as e:
-        print('Wystąpił bład podczas dodawania postu')
-        if hasattr(e, 'message'):
-            print(e.message)
-            message = e.message
-        else:
-            print(e)
-            message = e.__str__()
         status = False
-
+        message = utils.handle_exception(e)
     finally:
-        return json.dumps({'status': status})
-
+        return json.dumps({'status': status, 'message': message})

@@ -12,5 +12,9 @@ angular.module('appIdeasListService', [])
       this.blockIdea = function(ideaId, callback) {
         return $http.post(`ajax/block_idea/${ideaId}/`).then(callback);
       }
+
+      this.removeIdea = function(ideaId, callback) {
+        return $http.post(`ajax/remove_idea/${ideaId}/`).then(callback);
+      }
     }
   );
