@@ -23,7 +23,6 @@
 
   </head>
   <body class="d-flex flex-column min-vh-100">
-
     <header class="site-header">
       <!-- Navigation bar -->
       <nav class="navbar navbar-expand-lg navbar-light fixed-top">
@@ -31,23 +30,6 @@
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
               <a class="navbar-brand" href="{% url 'home' %}">
-                <img src="{% static 'assets/img/logo.png' %}" width="25" height="25" alt=""></a>
-              {% if user.is_authenticated %}
-              <ol>
-                <li><a class="nav-item nav-link" href="{% url 'home' %}">PORTAL INNOWACJI</a></li>
-                <li><a class="nav-item nav-link" href="{% url 'ideas' %}">POMYSŁY</a></li>
-                <li><a class="nav-item nav-link" >PANEL KOMISJI</a>
-                <ul>
-                  <li><a class="decision_panel" href="{% url 'ideasfiltered' status_pomyslu='Oczekujacy' %}">Pomysły Oczekujące</a></li>
-                  <li><a class="decision_panel" href="{% url 'ideasfiltered' status_pomyslu='Odlozony' %}">Pomysły Odłożone</a></li>
-                  <li><a class="decision_panel" href="{% url 'ideasfiltered' status_pomyslu='Zablokowany' %}">Pomysły Zablokowane</a></li>
-                </ul>
-                </li>
-                <li><a class="nav-item nav-link" href="{% url 'threads'%}">FORUM</a></li>
-                <li><a class="nav-item nav-link" href="{% url 'my-ideas'%}">MOJE POMYSŁY</a></li>
-              </ol>
-              {% endif %}
-              
                 <img src="{% static 'assets/img/pomysl.jpeg' %}" width="100" height="100" alt=""></a>
                 <span class ="logo1">PORTAL</span>
                 <span class ="logo2">INNOWACJI</span>
@@ -56,7 +38,15 @@
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
               {% if user.is_authenticated %}
-              <a class="nav-item nav-link" href="{% url 'ideasfiltered' %}">DECYZJE</a>
+              <ol>
+              <li><a class="nav-item nav-link" >PANEL KOMISJI</a>
+                <ul>
+                  <li><a class="decision_panel" href="{% url 'ideasfiltered' status_pomyslu='Oczekujacy' %}">Pomysły Oczekujące</a></li>
+                  <li><a class="decision_panel" href="{% url 'ideasfiltered' status_pomyslu='Odlozony' %}">Pomysły Odłożone</a></li>
+                  <li><a class="decision_panel" href="{% url 'ideasfiltered' status_pomyslu='Zablokowany' %}">Pomysły Zablokowane</a></li>
+                </ul>
+                </li>
+              </ol>
               <a class="nav-item nav-link" href="{% url 'threads'%}">FORUM</a>
               <a class="nav-item nav-link" href="{% url 'ideas' %}">POMYSŁY</a>
               <a class="nav-item nav-link" href="{% url 'my-ideas'%}">MOJE POMYSŁY</a>
@@ -96,8 +86,6 @@
     <script type="text/javascript" src="{% static 'app/components/ideas-filtered/ideasFiltered.controller.js' %}"></script>
     <script type="text/javascript" src="{% static 'app/components/ideas-filtered/ideasFiltered.service.js' %}"></script>
 
-
-
     <script type="text/javascript" src="{% static 'app/components/decision-addition/decisionAddition.controller.js' %}"></script>
     <script type="text/javascript" src="{% static 'app/components/decision-addition/decisionAddition.service.js' %}"></script>
 
@@ -128,7 +116,6 @@
             crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
-
+            crossorigin="anonymous"></script>    
   </body>
 </html>
