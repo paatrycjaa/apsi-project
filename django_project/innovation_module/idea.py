@@ -125,13 +125,15 @@ def get_ideas(user, filter_user):
 def get_ideas_json(user, filter_user, filter_status):
     return serialize(get_ideas(user, filter_user), user, filter_status)
 
-def get_idea_json(idea_id):
+def get_idea_json(idea_id, user):
     ideas = Pomysl.objects.filter(pk=idea_id)
     if len(ideas) == 0:
         raise ValueError('idea_id: {} is not valid.'.format(idea_id))
 
     idea_dict = ideas.values()[0]
 
+    user_obj = models.Uzytkownik.objects.get(user_id=user.id)
+    idea_dict['rated'] = models.Ocena.objects.filter(uzytkownik=user_obj, pomysl=ideas[0]).count() > 0
     idea_dict['attachments'] = list(models.ZalacznikPomyslu.objects.filter(pomysl=ideas[0]).values('pk', 'zalacznik__nazwa_pliku', 'zalacznik__rozmar'))
 
     return json.dumps(idea_dict, cls=DjangoJSONEncoder)
@@ -213,10 +215,10 @@ def get_keywords():
 
 def count_all():
     return Pomysl.objects.count()
-        
+
 def count_date(date):
     return Pomysl.objects.filter(
         data_dodania__year=date.year,
         data_dodania__month=date.month,
         data_dodania__day=date.day
-        ).count() 
+        ).count()

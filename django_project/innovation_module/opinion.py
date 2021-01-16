@@ -2,35 +2,33 @@ import json
 import datetime
 
 from django.core import serializers
+from django.core.serializers.json import DjangoJSONEncoder
+from django.db.models import Case, When, BooleanField
 
 from . import models
 from . import idea
 from . import utils
 
-def serialize(objects):
-    return serializers.serialize('json', objects)
 
-def get_opinions(id):
-    pomysl = models.Pomysl.objects.filter(pk=id)
-    return models.Ocena.objects.filter(
-        pomysl=pomysl[0]
-    )
+def serialize(objects):
+    return json.dumps(list(objects), cls=DjangoJSONEncoder)
+
+def get_opinions(id, user_obj):
+    pomysl = models.Pomysl.objects.get(pk=id)
+    status = models.StatusPomyslu.objects.get(pk="Oczekujacy")
+    return models.Ocena.objects.filter(pomysl=pomysl).annotate(is_editable=Case(
+        When(pomysl__status_pomyslu=status, uzytkownik=user_obj, then=True), default=False, output_field=BooleanField()
+    )).values()
 
 def get_opinions_json(pomysl, user):
     user_obj = models.Uzytkownik.objects.get(user=user)
-    opinions = json.loads(serialize(get_opinions(pomysl)))
-    for op in opinions:
-        is_editable = False
-        if (op['fields']['uzytkownik'] == user_obj.pk):
-            is_editable= True
-        op['isEditable'] = is_editable
-    return json.dumps(opinions)
+    return serialize(get_opinions(pomysl, user_obj))
 
 def get_opinion(opinion_id):
     return models.Ocena.objects.get(pk=opinion_id)
 
 def get_opinion_json(opinion_id):
-    return serialize(models.Ocena.objects.filter(pk=opinion_id))
+    return serialize(models.Ocena.objects.filter(pk=opinion_id).values())
 
 def get_add_opinion_json(idea_id):
     settings = idea.get_settings(idea_id)
@@ -59,6 +57,7 @@ def add_opinion(opinion_json, user):
 
         if not idea.can_opinion_be_added(idea_id):
             status = False
+            message = "Opinion cannot be added"
             return
 
         settings = idea.get_settings(idea_id)
@@ -120,10 +119,10 @@ def edit_opinion(opinion_json):
 
 def count_all():
     return models.Ocena.objects.count()
-        
+
 def count_date(date):
     return models.Ocena.objects.filter(
         data__year=date.year,
         data__month=date.month,
         data__day=date.day
-        ).count() 
+        ).count()

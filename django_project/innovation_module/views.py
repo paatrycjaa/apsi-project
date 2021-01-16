@@ -13,7 +13,7 @@ _ajax_requests = {
     'user_ideas': lambda request, object_id: idea.get_ideas_json(request.user, True, False),
     'submit_idea': lambda request, object_id: idea.add_idea(request, request.user),
     'edit_idea': lambda request, object_id: ajax_edit_idea(request, int(json.loads(request.POST['data'])['idea_id'])),
-    'get_idea': lambda request, object_id: idea.get_idea_json(object_id),
+    'get_idea': lambda request, object_id: idea.get_idea_json(object_id, request.user),
     'all_opinions': lambda request, object_id: opinion.get_opinions_json(object_id, request.user),
     'get_opinion': lambda request, object_id: opinion.get_opinion_json(object_id),
     'submit_opinion': lambda request, object_id: opinion.add_opinion(request.body.decode('utf-8'), request.user),
@@ -31,8 +31,8 @@ _ajax_requests = {
     'change_status': lambda request, object_id: decision.change_status(request.body.decode('utf-8'),request.user),
     'delete_idea': lambda request, object_id: decision.delete_idea(request.body.decode('utf-8'),request.user),
     'stats': lambda request, _: stats.get_stats()
-}    
-    
+}
+
 
 def home(request):
     return render(request, 'app/components/start-page/startPage.html')
@@ -85,7 +85,7 @@ def add_thread(request):
     return render(request, 'app/components/add-threads/addThreads.html')
 
 @login_required
-def add_opinion(request, idea_id):    
+def add_opinion(request, idea_id):
     context = opinion.get_add_opinion_json(idea_id)
     return render(request, 'app/components/opinion-addition/opinionAddition.html', context)
 @login_required
@@ -97,14 +97,14 @@ def add_decision(request, idea_id):
 
 @login_required
 @decorators.users_opinion
-def edit_opinion(request, opinion_id):    
+def edit_opinion(request, opinion_id):
     context = opinion.get_edit_opinion_json(opinion_id)
     return render(request, 'app/components/opinion-addition/opinionAddition.html', context)
 
 
 @login_required
 @decorators.users_idea
-def edit_idea(request, idea_id):    
+def edit_idea(request, idea_id):
     context = {'idea_id': idea_id}
     return render(request, 'app/components/idea-addition/ideaAddition.html', context)
 
