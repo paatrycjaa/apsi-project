@@ -30,9 +30,10 @@ _ajax_requests = {
     'remove_thread': lambda request, object_id: ajax_remove_thread(request, object_id),
     'change_status': lambda request, object_id: decision.change_status(request.body.decode('utf-8'),request.user),
     'delete_idea': lambda request, object_id: decision.delete_idea(request.body.decode('utf-8'),request.user),
-    'stats': lambda request, _: stats.get_stats()
-}    
-    
+    'stats': lambda request, _: stats.get_stats(),
+    'me': lambda request, _: stats.get_stats(), # FIXME
+}
+
 
 def home(request):
     return render(request, 'app/components/start-page/startPage.html')
@@ -85,7 +86,7 @@ def add_thread(request):
     return render(request, 'app/components/add-threads/addThreads.html')
 
 @login_required
-def add_opinion(request, idea_id):    
+def add_opinion(request, idea_id):
     context = opinion.get_add_opinion_json(idea_id)
     return render(request, 'app/components/opinion-addition/opinionAddition.html', context)
 @login_required
@@ -97,14 +98,14 @@ def add_decision(request, idea_id):
 
 @login_required
 @decorators.users_opinion
-def edit_opinion(request, opinion_id):    
+def edit_opinion(request, opinion_id):
     context = opinion.get_edit_opinion_json(opinion_id)
     return render(request, 'app/components/opinion-addition/opinionAddition.html', context)
 
 
 @login_required
 @decorators.users_idea
-def edit_idea(request, idea_id):    
+def edit_idea(request, idea_id):
     context = {'idea_id': idea_id}
     return render(request, 'app/components/idea-addition/ideaAddition.html', context)
 
