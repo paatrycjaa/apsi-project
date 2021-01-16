@@ -2,10 +2,14 @@
 {% block title %} Innovation ideas {% endblock %}
 
 {% block content %}
-<h1>Pomysły oczekujące na decyzję</h1>
 
-<div ng-controller="ideasFilteredController" ng-init="init()">  
-    <div style="display: inline-block; margin-left:50px;">
+
+<div ng-controller="ideasFilteredController" ng-init="init('{{status}}')"> 
+    <h1 ng-if="status=='Oczekujacy'">Pomysły oczekujące na decyzję</h1>
+    <h1 ng-if="status=='Odlozony'">Odłożone pomysły</h1>
+    <h1 ng-if="status=='Zablokowany'">Zablokowane pomysły</h1>
+
+    <div style="display: inline-block">
         <form role="form">
             <input type="text" class="form-control" placeholder="Filter..." ng-model="searchStr">
         </form>
@@ -14,35 +18,18 @@
 
     <div ng-repeat="idea in ideas | filter:searchStr">
         <div class="idea-block">
-            {% verbatim %}
-            <table class="idea-table">
-                <tr>
-                    <th style="width: 25%">Temat:</th>
-                    <td>{{ idea.fields.tematyka }}</td>
-                </tr>
-                <tr>
-                    <th>Opis:</th>
-                    <td>{{ idea.fields.opis }}</td>
-                </tr>
-                <tr>
-                    <th>Planowane korzyści:</th>
-                    <td>{{ idea.fields.planowane_korzysci }}</td>
-                </tr>
-                <tr>
-                    <th>Planowane koszty:</th>
-                    <td>{{ idea.fields.planowane_koszty }}</td>
-                </tr>
-                <tr>
-                    <th>Ocena ważona:</th>
-                    <td>{{ idea.fields.ocena_wazona }}</td>
-                </tr>
-            </table>
-        </div>
-        <div style="float: right;margin:0 50px;">
-            <button type="button" class="btn btn-primary" ng-click="openIdeaDecision(idea.pk)">Wydaj decyzję</button>
+            <!-- {% verbatim %} -->
+            <my-idea-table idea="idea" show-attachments-count="true"/>
         </div>
         <div style="clear: both;"></div>
-        {% endverbatim %}
+        <!-- {% endverbatim %} -->
+        <div style="float: right;" >
+                <button type="button" class="btn btn-primary" ng-if="status=='Oczekujacy'" ng-click="openIdeaDecision(idea.id)">Wydaj decyzję</button>
+                <button type="button" class="btn btn-primary" ng-if="status=='Odlozony'" ng-click="zmienstatus(idea.id, 'Oczekujacy')">Wznów</button>
+                <button type="button" class="btn btn-danger" ng-if="status=='Zablokowany'" ng-click="removeIdea(idea.id)">Odrzuć</button>
+                <button type="button" class="btn btn-primary" ng-if="status=='Zablokowany'" ng-click="zmienstatus(idea.id, 'Edycja')">Poproś o zmianę</button>
+        </div>
+        <div style="clear: both;"></div>
     </div>
 </div>
 {% endblock %}

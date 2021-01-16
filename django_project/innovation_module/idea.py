@@ -122,8 +122,7 @@ def get_ideas(user, filter_user):
 
     return objs.annotate(attachment_count=Count('zalacznikpomyslu')).values()
 
-def get_ideas_json(user, filter_user):
-    filter_status = not filter_user
+def get_ideas_json(user, filter_user, filter_status):
     return serialize(get_ideas(user, filter_user), user, filter_status)
 
 def get_idea_json(idea_id):

@@ -38,7 +38,15 @@
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
               {% if user.is_authenticated %}
-              <a class="nav-item nav-link" href="{% url 'ideasfiltered' %}">DECYZJE</a>
+              <ol>
+              <li><a class="nav-item nav-link" >PANEL KOMISJI</a>
+                <ul>
+                  <li><a class="decision_panel" href="{% url 'ideasfiltered' status_pomyslu='Oczekujacy' %}">Pomysły Oczekujące</a></li>
+                  <li><a class="decision_panel" href="{% url 'ideasfiltered' status_pomyslu='Odlozony' %}">Pomysły Odłożone</a></li>
+                  <li><a class="decision_panel" href="{% url 'ideasfiltered' status_pomyslu='Zablokowany' %}">Pomysły Zablokowane</a></li>
+                </ul>
+                </li>
+              </ol>
               <a class="nav-item nav-link" href="{% url 'threads'%}">FORUM</a>
               <a class="nav-item nav-link" href="{% url 'ideas' %}">POMYSŁY</a>
               <a class="nav-item nav-link" href="{% url 'my-ideas'%}">MOJE POMYSŁY</a>
