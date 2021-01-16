@@ -15,6 +15,15 @@ angular.module('appOpinionsListController', [])
           window.location.href = `/edit-opinion/${opinion_id}/`;
         }
 
+        $scope.removeOpinion = function(opinion_id){
+          opinionsListService.removeOpinion(opinion_id, (reponse) => {
+            if(reponse.status === false){
+              return;
+            }
+            $scope.init($scope.idea_id);
+          })
+        }
+
         $scope.canAddOpinion = function() {
           if($scope.idea === null){
              return false;
@@ -37,7 +46,7 @@ angular.module('appOpinionsListController', [])
 
           opinionsListService.getIdeaOpinions($scope.idea_id, function(response) {
             $scope.opinions = response.data;
-          })
+          });
 
         }
       }

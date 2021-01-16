@@ -126,3 +126,17 @@ def count_date(date):
         data__month=date.month,
         data__day=date.day
         ).count()
+
+def remove_opinion(opinion_id):
+    try:
+        opinion = models.Ocena.objects.get(pk=opinion_id)
+        opinion.delete()
+
+        status = True
+        message = "Opinion removed"
+
+    except Exception as e:
+        status = False
+        message = utils.handle_exception(e)
+    finally:
+        return json.dumps({'status': status, 'message': message})

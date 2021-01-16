@@ -30,7 +30,8 @@ _ajax_requests = {
     'remove_thread': lambda request, object_id: ajax_remove_thread(request, object_id),
     'change_status': lambda request, object_id: decision.change_status(request.body.decode('utf-8'),request.user),
     'delete_idea': lambda request, object_id: decision.delete_idea(request.body.decode('utf-8'),request.user),
-    'stats': lambda request, _: stats.get_stats()
+    'stats': lambda request, _: stats.get_stats(),
+    'remove_opinion': lambda request, object_id: ajax_remove_opinion(request, object_id),
 }
 
 
@@ -149,3 +150,7 @@ def ajax_remove_idea(request, object_id):
 @user_passes_test(lambda u : u.is_superuser)
 def ajax_remove_thread(request, object_id):
     return forum.remove_thread(object_id)
+
+@user_passes_test(lambda u : u.is_superuser)
+def ajax_remove_opinion(request, object_id):
+    return opinion.remove_opinion(object_id)
