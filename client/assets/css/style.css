@@ -18,7 +18,7 @@
   
 /* start page */
 .main-title {
-    width: 100%;
+    width: 85%;
     margin: auto;
     font-size: 3vw;
     text-align: center;
@@ -29,7 +29,7 @@
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.508);
     border-color: #565b6e;
     margin: 3vw auto 0;
-    width: 97%;
+    width: 90%;
 
     transition: all linear 0.1s;
 }
