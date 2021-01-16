@@ -9,7 +9,7 @@
         {% endverbatim %}
     </div>
 
-    <div style="float: right;">
+    <div style="float: right;margin:0 50px;">
         <button type="button" class="btn btn-primary" ng-click="addOpinion({{idea_id}})">Dodaj opinię</button>
     </div>
     <div style="clear: both;"></div>
@@ -29,7 +29,7 @@
                 <td>{{ opinion.fields.opis }}</td>
             </tr>
         </table>
-        <div style="float: right;" ng-show="{{ opinion.isEditable }}">
+        <div style="float: right; margin:0 50px;" ng-show="{{ opinion.isEditable }}">
             <button type="button" class="btn btn-primary" ng-click="editOpinion(opinion.pk)">Edytuj</button>
         </div>
         {% endverbatim %}
