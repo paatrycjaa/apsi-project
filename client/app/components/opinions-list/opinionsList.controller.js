@@ -19,7 +19,10 @@ angular.module('appOpinionsListController', [])
           if($scope.idea === null){
              return false;
           }
-          return $scope.idea.status_pomyslu_id === "Oczekujacy" && $scope.idea.ustawienia_oceniania_id !== "brak" && $scope.idea.rated === false;
+          return $scope.idea.status_pomyslu_id === "Oczekujacy" &&
+                 $scope.idea.ustawienia_oceniania_id !== "brak" &&
+                 $scope.idea.rated === false &&
+                 $scope.idea.my_idea === false;
         }
 
         $scope.init = function(id) {

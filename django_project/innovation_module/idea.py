@@ -2,7 +2,7 @@ import json
 import datetime
 
 from django.core import serializers
-from django.db.models import Count
+from django.db.models import Count, Case, When, BooleanField
 from django.core.serializers.json import DjangoJSONEncoder
 from django.utils import timezone
 
@@ -126,13 +126,15 @@ def get_ideas_json(user, filter_user, filter_status):
     return serialize(get_ideas(user, filter_user), user, filter_status)
 
 def get_idea_json(idea_id, user):
-    ideas = Pomysl.objects.filter(pk=idea_id)
+    user_obj = models.Uzytkownik.objects.get(user_id=user.id)
+    ideas = Pomysl.objects.filter(pk=idea_id).annotate(
+        my_idea = Case(When(uzytkownik=user_obj, then=True), default=False, output_field=BooleanField())
+    )
     if len(ideas) == 0:
         raise ValueError('idea_id: {} is not valid.'.format(idea_id))
 
     idea_dict = ideas.values()[0]
-
-    user_obj = models.Uzytkownik.objects.get(user_id=user.id)
+    idea_dict.pop('uzytkownik_id')
     idea_dict['rated'] = models.Ocena.objects.filter(uzytkownik=user_obj, pomysl=ideas[0]).count() > 0
     idea_dict['attachments'] = list(models.ZalacznikPomyslu.objects.filter(pomysl=ideas[0]).values('pk', 'zalacznik__nazwa_pliku', 'zalacznik__rozmar'))
 
