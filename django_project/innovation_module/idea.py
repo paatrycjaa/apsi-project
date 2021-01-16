@@ -2,7 +2,7 @@ import json
 import datetime
 
 from django.core import serializers
-from django.db.models import Count, Case, When, BooleanField
+from django.db.models import Count, Case, When, BooleanField, Avg
 from django.core.serializers.json import DjangoJSONEncoder
 from django.utils import timezone
 
@@ -143,20 +143,18 @@ def get_idea_json(idea_id, user):
 def get_settings(idea_id):
     return Pomysl.objects.get(pk=idea_id).ustawienia_oceniania.ustawienia
 
-def can_opinion_be_added(idea_id):
+def can_opinion_be_added(idea_id, user_obj):
     status = models.StatusPomyslu.objects.get(status='Oczekujacy')
-    return Pomysl.objects.get(pk=idea_id).status_pomyslu == status
+    idea = Pomysl.objects.get(pk=idea_id)
+    user_opinions_num = models.Ocena.objects.filter(pomysl=idea, uzytkownik=user_obj).count()
+    return idea.status_pomyslu == status and idea.uzytkownik != user_obj and user_opinions_num == 0
 
-def update_average_rating(idea_id, new_rating, old_rating = None):
+def update_average_rating(idea_id):
     """Should be called after new rating is saved to the database.
     """
     idea = Pomysl.objects.get(pk=idea_id)
-    ratings_num = models.Ocena.objects.filter(pomysl=idea).count()
-    if old_rating is None:
-        new_avg = (idea.ocena_wazona * (ratings_num - 1) + int(new_rating)) / ratings_num
-    else:
-        new_avg = (idea.ocena_wazona * ratings_num + int(new_rating) - int(old_rating)) / ratings_num
-    idea.ocena_wazona = new_avg
+    avg = models.Ocena.objects.filter(pomysl=idea).aggregate(Avg('ocena_liczbowa'))
+    idea.ocena_wazona = avg['ocena_liczbowa__avg']
     idea.save()
 
 

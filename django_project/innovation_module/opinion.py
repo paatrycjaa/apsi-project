@@ -55,14 +55,15 @@ def add_opinion(opinion_json, user):
         data = json.loads(opinion_json)
         idea_id = data['idea_id']
 
-        if not idea.can_opinion_be_added(idea_id):
+        user = models.Uzytkownik.objects.get(user_id=user.id)
+
+        if not idea.can_opinion_be_added(idea_id, user):
             status = False
             message = "Opinion cannot be added"
             return
 
         settings = idea.get_settings(idea_id)
 
-        user = models.Uzytkownik.objects.get(user_id=user.id)
         pomysl=models.Pomysl.objects.get(pk=idea_id)
 
         m = models.Ocena(data=datetime.datetime.now(), pomysl=pomysl, uzytkownik=user)
@@ -75,7 +76,7 @@ def add_opinion(opinion_json, user):
         m.save()
 
         if 'num' in settings:
-            idea.update_average_rating(idea_id, data['rate'])
+            idea.update_average_rating(idea_id)
 
         status = True
         message = "Opinion added"
@@ -96,8 +97,6 @@ def edit_opinion(opinion_json):
 
         m = models.Ocena.objects.get(pk=data['opinion_id'])
 
-        old_rate = m.ocena_liczbowa
-
         if 'num' in settings:
             m.ocena_liczbowa = data['rate']
         if 'text' in settings:
@@ -106,7 +105,7 @@ def edit_opinion(opinion_json):
         m.save()
 
         if 'num' in settings:
-            idea.update_average_rating(idea_id, data['rate'], old_rate)
+            idea.update_average_rating(idea_id)
 
         status = True
         message = "Opinion changed"
@@ -130,7 +129,10 @@ def count_date(date):
 def remove_opinion(opinion_id):
     try:
         opinion = models.Ocena.objects.get(pk=opinion_id)
+        idea_id = opinion.pomysl.pk
         opinion.delete()
+
+        idea.update_average_rating(idea_id)
 
         status = True
         message = "Opinion removed"
