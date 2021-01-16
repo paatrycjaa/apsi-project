@@ -12,7 +12,7 @@ def serialize(objects):
     return serializers.serialize('json', objects)
 
 def get_threads():
-    return models.Watek.objects.all().order_by('data_dodania')
+    return models.Watek.objects.all().order_by('-data_ostatniego_posta')
 
 def get_threads_json():
     return serialize(get_threads())

@@ -9,8 +9,8 @@ from . import idea, opinion, decorators, forum, decision, attachment, stats
 
 _ajax_requests = {
     'get_keywords': lambda request, object_id: idea.get_keywords(),
-    'all_ideas': lambda request, object_id: idea.get_ideas_json(request.user, False, True),
-    'user_ideas': lambda request, object_id: idea.get_ideas_json(request.user, True, False),
+    'all_ideas': lambda request, object_id: idea.get_ideas_json(request.user, False, True, False),
+    'user_ideas': lambda request, object_id: idea.get_ideas_json(request.user, True, False, True),
     'submit_idea': lambda request, object_id: idea.add_idea(request, request.user),
     'edit_idea': lambda request, object_id: ajax_edit_idea(request, int(json.loads(request.POST['data'])['idea_id'])),
     'get_idea': lambda request, object_id: idea.get_idea_json(object_id),
@@ -19,7 +19,7 @@ _ajax_requests = {
     'submit_opinion': lambda request, object_id: opinion.add_opinion(request.body.decode('utf-8'), request.user),
     'submit_decision': lambda request, object_id: decision.add_decision(request.body.decode('utf-8'), request.user),
     'edit_opinion': lambda request, object_id: ajax_edit_opinion(request, int(json.loads(request.body)['opinion_id'])),
-    'filtered_ideas': lambda request, object_id: idea.get_ideas_json(request.user, False, False),
+    'filtered_ideas': lambda request, object_id: idea.get_ideas_json(request.user, False, False, True),
     'get_thread': lambda request, object_id: forum.get_thread_json(object_id),
     'all_threads': lambda request, object_id: forum.get_threads_json(),
     'all_posts': lambda request, object_id: forum.get_posts_json(object_id),
@@ -31,8 +31,8 @@ _ajax_requests = {
     'change_status': lambda request, object_id: decision.change_status(request.body.decode('utf-8'),request.user),
     'delete_idea': lambda request, object_id: decision.delete_idea(request.body.decode('utf-8'),request.user),
     'stats': lambda request, _: stats.get_stats()
-}    
-    
+}
+
 
 def home(request):
     return render(request, 'app/components/start-page/startPage.html')
@@ -40,6 +40,7 @@ def home(request):
 @login_required
 def ideas(request):
     return render(request, 'app/components/ideas-list/ideasList.html')
+
 @login_required
 def ideasfiltered(request, status_pomyslu):
     context = {
@@ -85,9 +86,10 @@ def add_thread(request):
     return render(request, 'app/components/add-threads/addThreads.html')
 
 @login_required
-def add_opinion(request, idea_id):    
+def add_opinion(request, idea_id):
     context = opinion.get_add_opinion_json(idea_id)
     return render(request, 'app/components/opinion-addition/opinionAddition.html', context)
+
 @login_required
 def add_decision(request, idea_id):
     context = {
@@ -97,14 +99,14 @@ def add_decision(request, idea_id):
 
 @login_required
 @decorators.users_opinion
-def edit_opinion(request, opinion_id):    
+def edit_opinion(request, opinion_id):
     context = opinion.get_edit_opinion_json(opinion_id)
     return render(request, 'app/components/opinion-addition/opinionAddition.html', context)
 
 
 @login_required
 @decorators.users_idea
-def edit_idea(request, idea_id):    
+def edit_idea(request, idea_id):
     context = {'idea_id': idea_id}
     return render(request, 'app/components/idea-addition/ideaAddition.html', context)
 

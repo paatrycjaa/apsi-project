@@ -14,7 +14,7 @@ def get_opinions(id):
     pomysl = models.Pomysl.objects.filter(pk=id)
     return models.Ocena.objects.filter(
         pomysl=pomysl[0]
-    )
+    ).order_by('data')
 
 def get_opinions_json(pomysl, user):
     user_obj = models.Uzytkownik.objects.get(user=user)
