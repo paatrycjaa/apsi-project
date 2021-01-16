@@ -1,12 +1,10 @@
-.opinion-block {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    padding: 5px;
-    background-color: #f3ece6;
-}
 
 #idea-table-topic {
     font-size: 30px;
+    color: rgb(212, 154, 45); 
+    font-weight: bold;
+    text-align: left;
+    padding: 0;
 }
 
 #idea-table-row {
@@ -17,52 +15,6 @@
     text-align: center;
 }
 
-.container-fluid ol{
-      list-style-type:none;
-}
-
-
-    /* wygląd elementu - a - dziecka elementu - li - będącego dzieckiem elementu - ol - po najechaniu kursorem myszki na element - li */
-.container-fluid ol > li:hover > a {
-      color:#09C;
-    }
-
-    /* wygląd elementu - ul - dziecka elementu - li - będącego dzieckiem elementu - ol - po najechaniu kursorem myszki na element - li */
-.container-fluid ol > li:hover > ul {
-      display:block;
-      margin-top: 30px;
-    } 
-
-    /* ------------------------CZĘŚĆ-ROZWIJANA-MENU------------------------ */
-
-    /* wygląd głównych rozwijanych elementów - ul */
-.container-fluid ol > li > ul {
-      display:none; 
-      list-style-type:none;
-
-    }
-
-
-    /* wygląd elementu - li - w części rozwijanej */
-.container-fluid ol > li > ul > li {
-      position:relative;
-      /* background-color:#EEE; */
-    }
-
-    /* wygląd elementu - a - w części rozwijanej */
-.container-fluid ol > li > ul > li > a {
-      border-top:1px solid #FFF;
-    }
-
-    /* wygląd elementu - li - w części rozwijanej, po najechaniu kursorem myszki na dany element - li */
-.container-fluid ol > li > ul > li:hover {
-      background-color:rgb(241, 175, 50); ;
-    }
-
-    /* wygląd elementu - a - w części rozwijanej, po najechaniu kursorem myszki na element - li */
-.container-fluid ol > li > ul > li:hover > a {
-      color:#09C;
-    }
   
 /* start page */
 .main-title {
@@ -159,6 +111,7 @@ body {
     padding-left: 50px;
     box-shadow: 0 0 10px 0 gray;
     background-color: #ffffff;
+    height: 14.5%;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -206,10 +159,67 @@ h2{
     top: 70px;
 }
 
+.logon{
+    position: relative;
+    font-size: smaller;
+    float:left;
+    bottom: 20px;
+    left: 1000px;
+}
+
+
+.container-fluid ol li{
+    list-style-type:none;
+}
+
+
+  /* wygląd elementu - a - dziecka elementu - li - będącego dzieckiem elementu - ol - po najechaniu kursorem myszki na element - li */
+.container-fluid ol > li:hover > a {
+    color:#09C;
+  }
+
+  /* wygląd elementu - ul - dziecka elementu - li - będącego dzieckiem elementu - ol - po najechaniu kursorem myszki na element - li */
+.container-fluid ol > li:hover > ul {
+    display:block;
+    margin-top: 30px;
+  } 
+
+  /* ------------------------CZĘŚĆ-ROZWIJANA-MENU------------------------ */
+
+/* wygląd głównych rozwijanych elementów - ul */
+.container_panel {
+    position:absolute;
+    display:none; 
+    list-style-type:none;
+}
+
+.container_panel li {
+    position:relative;
+    width:100%;
+    padding:10px 0px;
+    background-color:rgb(241, 175, 50);
+    text-align: center;
+    box-shadow: 2px 2px 10px gray;
+}
+  /* wygląd elementu - li - w części rozwijanej */
+.decision_panel {
+    position:relative;
+    text-align: center;
+    color:rgb(32, 26, 26);
+}
+.decision_panel:hover{
+    text-decoration: none;
+    color:rgb(32, 26, 26);
+}
+
+.container_panel li:hover {
+    background-color: rgb(211, 137, 0);
+}
+
 
 /*****/
 
-.thread-table, .post-table, .idea-table{
+.thread-table, .post-table, .idea-table, .opinion-table{
     padding:50px;
     width: 100%;
 }
@@ -236,7 +246,7 @@ td{
     text-align: left;
 }
 
-.thread-block, .post-block, .idea-block{
+.thread-block, .post-block, .idea-block, .opinion-block{
     background-color: white;
     box-shadow: 3px 3px 10px gray;
     margin: 25px 50px;
