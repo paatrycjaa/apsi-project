@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="AC5AF19B-64A7-7520-966D-B6EE9AF86B81" containerWithKeyObject="88835B09-0C7C-2970-18DB-12266E7E98A8" localFKIndex="DE1AA7A9-1B10-2377-256B-CC775781F1DE" name="Pomysl_Slowo_kluczowe_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2021-01-17 12:33:34 UTC</createdTime>
+<generatorID>BC4E01BE-37D6-C2B6-B502-89D029B4EB98</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<referredTableLongName>Slowo_kluczowe</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>F059E949-1200-7606-7459-B267B67AE837</referredTableID>
+<keyObject>3D072DB1-367E-5D1C-E6A6-0D596537DE05</keyObject>
+<referredKeyID>3D072DB1-367E-5D1C-E6A6-0D596537DE05</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>slowo_kluczowe</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

@@ -23,7 +23,7 @@
 <colAssociation fkAssociation="0A29CA55-F584-DF62-EC01-7F8FAEF9E127" referredColumn="94961FFA-41B7-6A73-D4CB-7ACAB4307B8E"/>
 </associations>
 </Column>
-<Column name="Pomysl_pomysl_id" id="656168DA-9AA3-7230-C402-8C75C87832C4">
+<Column name="pomysl_id" id="656168DA-9AA3-7230-C402-8C75C87832C4">
 <createdBy>napiad</createdBy>
 <createdTime>2020-12-14 17:42:34 UTC</createdTime>
 <generatorID>EDD844ED-F191-0D1C-D917-459D3ED1856A</generatorID>

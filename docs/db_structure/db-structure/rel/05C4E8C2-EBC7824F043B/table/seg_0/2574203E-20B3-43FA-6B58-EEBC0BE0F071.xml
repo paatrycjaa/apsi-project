@@ -4,11 +4,12 @@
 <createdTime>2020-12-27 20:53:09 UTC</createdTime>
 <generatorID>96801640-C289-BB55-1585-A527EC4E91CE</generatorID>
 <ownerDesignName>db-structure</ownerDesignName>
+<ordsAlias>zalacznik_pomyslu</ordsAlias>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="zalacznik_id" id="61E2820C-B5CC-B053-5F62-E0D7A851420D">
+<Column name="id" id="61E2820C-B5CC-B053-5F62-E0D7A851420D">
 <createdBy>napiad</createdBy>
 <createdTime>2020-12-27 20:53:09 UTC</createdTime>
 <generatorID>8FC2FBC8-FD0A-A1F8-2414-BC9B18FAF020</generatorID>

@@ -120,7 +120,7 @@ def get_ideas(user, filter_user):
         user_obj = models.Uzytkownik.objects.get(user_id=user.id)
         objs = objs.filter(uzytkownik=user_obj)
 
-    return objs.annotate(attachment_count=Count('zalacznikpomyslu')).values()
+    return objs.values()
 
 def get_ideas_json(user, filter_user, filter_status):
     return serialize(get_ideas(user, filter_user), user, filter_status)
@@ -188,8 +188,8 @@ def edit_idea(request, user):
 
         m.save()
 
-        #if there are new attachments, remove old ones
-        if(len(request.FILES) > 0):
+        # if there are new attachments, remove old ones
+        if len(request.FILES) > 0:
             attachment.remove_idea_attachments(m)
 
         for file_name, file_size, file in zip(data['attachments'], data['attachments_size'], request.FILES.values()):
@@ -213,10 +213,10 @@ def get_keywords():
 
 def count_all():
     return Pomysl.objects.count()
-        
+
 def count_date(date):
     return Pomysl.objects.filter(
         data_dodania__year=date.year,
         data_dodania__month=date.month,
         data_dodania__day=date.day
-        ).count() 
+        ).count()

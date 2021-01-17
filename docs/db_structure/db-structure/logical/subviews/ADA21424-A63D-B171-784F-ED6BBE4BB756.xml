@@ -48,7 +48,7 @@
 </OView>
 <OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="99E9CD39-9908-E414-616F-5A248BEC5B82" otype="Entity" vid="391B1899-1F78-4612-4704-A781DA09E2C8">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
-<bounds x="23" y="104" width="135" height="66"/>
+<bounds x="21" y="111" width="135" height="66"/>
 </OView>
 <OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="9E6DE388-4F10-78BC-BAA6-339A328E1B1E" otype="Entity" vid="8D0F43BD-D038-F43B-E813-58B65D576B7B">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
@@ -107,6 +107,15 @@
 <point x="809" y="369"/>
 </points>
 </Connector>
+<Connector class="oracle.dbtools.crest.swingui.logical.TVRelation" oid="29C50C91-6B89-5278-49DE-D46C5EAA0DC5" otype="Relation" vid_source="391B1899-1F78-4612-4704-A781DA09E2C8" vid_target="AD42C459-3415-E148-F450-325CDF4C981F">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<backgroundColor>-16777216</backgroundColor>
+<lineWidth>1</lineWidth>
+<points>
+<point x="156" y="144"/>
+<point x="228" y="144"/>
+</points>
+</Connector>
 <Connector class="oracle.dbtools.crest.swingui.logical.TVRelation" oid="40961EF9-4DBF-EA88-05F7-FE7CFB1854FE" otype="Relation" vid_source="E5B13BC0-50AB-2497-7527-E18168A33045" vid_target="FA1B6D2B-CEDC-C68D-E7BB-720BED13710A">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
 <backgroundColor>-16777216</backgroundColor>
@@ -114,15 +123,6 @@
 <points>
 <point x="805" y="519"/>
 <point x="805" y="446"/>
-</points>
-</Connector>
-<Connector class="oracle.dbtools.crest.swingui.logical.TVRelation" oid="40F307F8-4CC4-4BBE-0262-E567A27AE016" otype="Relation" vid_source="AD42C459-3415-E148-F450-325CDF4C981F" vid_target="391B1899-1F78-4612-4704-A781DA09E2C8">
-<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
-<backgroundColor>-16777216</backgroundColor>
-<lineWidth>1</lineWidth>
-<points>
-<point x="228" y="138"/>
-<point x="158" y="138"/>
 </points>
 </Connector>
 <Connector class="oracle.dbtools.crest.swingui.logical.TVInheritanceRelation" oid="4B2D3898-3DE0-68C4-9D21-A479A49EB35A" otype="Hierarchy relation" vid_source="6DECD127-6778-244A-91AF-65D23FC02754" vid_target="C88F8CBE-D1C0-6F9A-5556-605B9CABDC0A">

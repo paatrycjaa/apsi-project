@@ -1,5 +1,5 @@
-import os 
-import shutil 
+import os
+import shutil
 
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseNotFound
@@ -12,15 +12,15 @@ from . import models
 def download_file(file_id):
     try:
         file_name = models.Zalacznik.objects.get(pk=file_id).nazwa_pliku
-        file_path = os.path.join(settings.MEDIA_ROOT, str(file_id) + '_' + file_name)        
-        with tempfile.TemporaryDirectory(dir=settings.MEDIA_ROOT) as temp:                    
-            tmp_path = os.path.join(temp, file_name)            
-            shutil.copy(file_path, tmp_path)            
+        file_path = os.path.join(settings.MEDIA_ROOT, str(file_id) + '_' + file_name)
+        with tempfile.TemporaryDirectory(dir=settings.MEDIA_ROOT) as temp:
+            tmp_path = os.path.join(temp, file_name)
+            shutil.copy(file_path, tmp_path)
             if os.path.exists(tmp_path):
                 return FileResponse(open(tmp_path, 'rb'), as_attachment=False)
     except:
         pass
-    
+
     return HttpResponseNotFound("File not found.")
 
 def save_file(file, file_name, attachment_pk):
@@ -32,16 +32,19 @@ def save_file(file, file_name, attachment_pk):
 def add_idea_attachment(idea, file_name, flie_size):
     z = models.Zalacznik(nazwa_pliku=file_name, data_dodania=timezone.localtime(timezone.now()), rozmar=flie_size)
     z.save()
-    
+
     zp = models.ZalacznikPomyslu(pomysl=idea, zalacznik=z)
     zp.save()
+
+    idea.liczba_zalacznikow = idea.liczba_zalacznikow + 1
+    idea.save()
 
     return z.pk
 
 def add_post_attachment(post, file_name, file_size):
     z = models.Zalacznik(nazwa_pliku=file_name, data_dodania=timezone.localtime(timezone.now()), rozmar=file_size)
     z.save()
-    
+
     zp = models.ZalacznikPosta(post=post, zalacznik=z)
     zp.save()
 
@@ -60,6 +63,9 @@ def remove_idea_attachments(idea):
     for att in attachments:
         delete_attachment_file(att)
         att.delete()
+
+    idea.liczba_zalacznikow = 0
+    idea.save()
 
 def remove_post_attachments(post):
     attachments = models.ZalacznikPosta.objects.filter(post=post)

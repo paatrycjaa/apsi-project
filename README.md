@@ -14,6 +14,10 @@ To set up and run django development server together with MySQL database use:
 ```
 (sudo) docker-compose up
 ```
+To clear after running project (together with removing db volumes) use:
+```
+docker-compose down -v
+```
 
 ## Database modifications
 If database modifications are made one needs to ensure that a new volume is used.
@@ -33,6 +37,7 @@ Unused volumes can be removed using:
 ```
 docker volume prune
 ```
+
 ### Connecting to running database in container
 ```
 docker exec -it apsi-project_db_1 mysql -u root -proot ideas_db
