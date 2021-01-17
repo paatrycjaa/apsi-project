@@ -8,15 +8,13 @@ angular.module('appMyIdeasListController', [])
         $scope.init = function() {
           myIdeasListService.getUserIdeas(function(response) {
             for (idea of response.data) {
-              if (idea.status == 'Edycja') {
+              if (idea.status_pomyslu_id == 'Edycja') {
                 $scope.ideas_to_edit.push(idea);
               } else {
                 $scope.ideas_rest.push(idea);
               }
             }
           });
-
-          
         }
 
         $scope.openIdeaOpinions = function(id) {

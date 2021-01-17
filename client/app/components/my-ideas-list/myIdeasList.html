@@ -2,7 +2,6 @@
 {% block title %} Innovation ideas {% endblock %}
 
 {% block content %}
-<!--<h1>Pomysły użytkownika {{user.first_name}}</h1>-->
 <h1>MOJE POMYSŁY</h1>
 <div ng-controller="myIdeasListController" ng-init="init()">  
     <div style="display: inline-block; margin-left:50px;">
@@ -21,7 +20,7 @@
             {% verbatim %}
             <my-idea-table idea="idea" show-attachments-count="true"/>
         </div>
-        <div class="btn-tollbar" style="float: right;">
+        <div class="btn-tollbar" style="float: right; margin:0 50px;">
             <button type="button" id='block' class="btn btn-info" ng-click="editIdea(idea.id)">Edytuj</button>
             <button type="button" class="btn btn-primary" ng-click="openIdeaOpinions(idea.id)">Przegladaj</button>
         </div>
@@ -35,7 +34,6 @@
             <my-idea-table idea="idea" show-attachments-count="true"/>
         </div>
         <div class="btn-tollbar" style="float: right;margin:0 50px;">
-            <button type="button" id='block' class="btn btn-info" ng-click="editIdea(idea.id)">Edytuj (to delete)</button>
             <button type="button" class="btn btn-primary" ng-click="openIdeaOpinions(idea.id)">Przegladaj</button>
         </div>
         <div style="clear: both;"></div>
