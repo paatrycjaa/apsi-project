@@ -8,5 +8,9 @@ angular.module('appOpinionsListService', [])
       this.getIdeaOpinions = function(id, callback) {
         return $http.get(`/ajax/all_opinions/${id}/`).then(callback);
       }
+
+      this.removeOpinion = function(id, callback) {
+        return $http.get(`/ajax/remove_opinion/${id}/`).then(callback);
+      }
     }
   );

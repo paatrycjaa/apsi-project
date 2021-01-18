@@ -2,39 +2,51 @@
 {% block title %} Podgląd pomysłu {% endblock %}
 {% block content %}
 <h1>Opinie na temat pomysłu</h1>
-<div ng-controller="opinionsListController" ng-init="init({{idea_id}})">  
+<div ng-controller="opinionsListController" ng-init="init({{idea_id}})">
     <div class="idea-block">
-        {% verbatim %} 
+        {% verbatim %}
         <opinions-idea-table idea="idea"/>
         {% endverbatim %}
     </div>
 
-    <div style="float: right;">
+    <div style="float: right;margin:0 50px;" ng-if="canAddOpinion()">
         <button type="button" class="btn btn-primary" ng-click="addOpinion({{idea_id}})">Dodaj opinię</button>
     </div>
     <div style="clear: both;"></div>
-    <div class="opinion-block" ng-repeat="opinion in opinions | filter:searchStr">
+    <div ng-repeat="opinion in opinions | filter:searchStr">
+        <div class="opinion-block">
         {% verbatim %}
         <table class="opinion-table">
             <tr>
                 <th style="width: 25%">Data:</th>
-                <td>{{ opinion.fields.data }}</td>
+                <td>{{ opinion.data }}</td>
             </tr>
-            <tr ng-if="opinion.fields.ocena_liczbowa">
+            <tr ng-if="opinion.ocena_liczbowa">
                 <th>Ocena:</th>
-                <td>{{ opinion.fields.ocena_liczbowa }}</td>
+                <td>{{ opinion.ocena_liczbowa }}</td>
             </tr>
-            <tr ng-if="opinion.fields.opis">
+            <tr ng-if="opinion.opis">
                 <th>Opis:</th>
-                <td>{{ opinion.fields.opis }}</td>
+                <td>{{ opinion.opis }}</td>
             </tr>
         </table>
-        <div style="float: right;" ng-show="{{ opinion.isEditable }}">
-            <button type="button" class="btn btn-primary" ng-click="editOpinion(opinion.pk)">Edytuj</button>
-        </div>
         {% endverbatim %}
+        </div>
+        <div class="btn-tollbar" style="float: right; margin:0 50px;">
+            {% if user.is_superuser %}
+            {% verbatim %}
+            <button type="button" class="btn btn-danger" ng-click="removeOpinion(opinion.id)">Usuń</button>
+            {% endverbatim %}
+            {% endif %}
+
+            {% verbatim %}
+            <button type="button" ng-show="{{ opinion.is_editable }}" class="btn btn-primary" ng-click="editOpinion(opinion.id)">Edytuj</button>
+            {% endverbatim %}
+
+        </div>
+        <div style="clear: both;"></div>
     </div>
-  </div>
-  
+</div>
+
 </div>
 {% endblock %}

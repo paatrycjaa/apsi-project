@@ -9,7 +9,7 @@
     <h1 ng-if="status=='Odlozony'">Odłożone pomysły</h1>
     <h1 ng-if="status=='Zablokowany'">Zablokowane pomysły</h1>
 
-    <div style="display: inline-block">
+    <div style="display: inline-block; margin:0 50px;">
         <form role="form">
             <input type="text" class="form-control" placeholder="Filter..." ng-model="searchStr">
         </form>
@@ -23,7 +23,7 @@
         </div>
         <div style="clear: both;"></div>
         <!-- {% endverbatim %} -->
-        <div style="float: right;" >
+        <div style="float: right;margin:0 50px;" >
                 <button type="button" class="btn btn-primary" ng-if="status=='Oczekujacy'" ng-click="openIdeaDecision(idea.id)">Wydaj decyzję</button>
                 <button type="button" class="btn btn-primary" ng-if="status=='Odlozony'" ng-click="zmienstatus(idea.id, 'Oczekujacy')">Wznów</button>
                 <button type="button" class="btn btn-danger" ng-if="status=='Zablokowany'" ng-click="removeIdea(idea.id)">Odrzuć</button>

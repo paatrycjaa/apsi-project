@@ -9,7 +9,7 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="watek_id" id="69850553-7F9C-F777-C710-43D90D0FCC87">
+<Column name="id" id="69850553-7F9C-F777-C710-43D90D0FCC87">
 <createdBy>napiad</createdBy>
 <createdTime>2020-12-14 17:42:34 UTC</createdTime>
 <generatorID>3835B7E3-5E15-0D85-E35A-C8185DB1E17A</generatorID>
@@ -66,6 +66,15 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="69850553-7F9C-F777-C710-43D90D0FCC87"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="058BC5C3-CBDC-384C-9FAA-4CC582FB446D" name="watki__IDXv1">
+<createdBy>napiad</createdBy>
+<createdTime>2021-01-17 12:22:42 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C65099D2-3465-B4E4-B75D-58B582B9F458"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

@@ -9,24 +9,12 @@
 <accessDriverType>oracle_loader</accessDriverType>
 <rejectLimit></rejectLimit>
 <columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
-<ColumnProxy name="slowo_kluczowe_id" id="80928B55-56D1-3D5F-3D07-E03A8C6E5156">
-<createdBy>napiad</createdBy>
-<createdTime>2020-12-14 17:49:53 UTC</createdTime>
-<ownerDesignName>db-structure</ownerDesignName>
-</ColumnProxy>
-<ColumnProxy name="Pomysl_pomysl_id" id="A091371A-F143-7721-1BBD-0C91C9118904">
+<ColumnProxy name="slowo_kluczowe" id="80928B55-56D1-3D5F-3D07-E03A8C6E5156">
 <createdBy>napiad</createdBy>
 <createdTime>2020-12-14 17:49:53 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 </ColumnProxy>
 </columnProxies>
-<foreignKeys>
-<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="Slowo_kluczowe_Pomysl_FK" id="927B3F28-6CF7-B933-4CFC-382D0623FA14">
-<createdBy>napiad</createdBy>
-<createdTime>2020-12-14 17:49:53 UTC</createdTime>
-<ownerDesignName>db-structure</ownerDesignName>
-</ForeignKey>
-</foreignKeys>
 <primaryKeys>
 <PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="Slowo_kluczowe_PK" id="53456B33-69B0-5C5D-B546-5ED320853CEC">
 <createdBy>napiad</createdBy>

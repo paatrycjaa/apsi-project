@@ -8,7 +8,7 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="slowo_kluczowe_id" id="1F61021C-D697-0A2C-C53F-BEA9D167253D">
+<Column name="slowo_kluczowe" id="1F61021C-D697-0A2C-C53F-BEA9D167253D">
 <createdBy>napiad</createdBy>
 <createdTime>2020-12-27 20:53:09 UTC</createdTime>
 <generatorID>7A5F8986-933D-44AE-AE77-8D46685DCC40</generatorID>
@@ -18,21 +18,6 @@
 <logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="Pomysl_pomysl_id" id="7EF25141-5500-6A3D-F065-8DFB6B533C09">
-<createdBy>napiad</createdBy>
-<createdTime>2020-12-27 20:53:09 UTC</createdTime>
-<generatorID>1D8D66A5-5609-84FF-598B-4CFD380F1E7A</generatorID>
-<ownerDesignName>db-structure</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="3E7441B4-427E-74B2-F8DA-2F8538CB54F1" referredColumn="F44496F4-146E-0F79-4AD4-C71EE266BFC1"/>
-</associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
@@ -46,17 +31,6 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="1F61021C-D697-0A2C-C53F-BEA9D167253D"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="6F5E6D8B-8F8C-3293-6557-D76455DE0BE6" name="Slowo_kluczowe_Pomysl_FK">
-<createdBy>napiad</createdBy>
-<createdTime>2020-12-27 20:53:09 UTC</createdTime>
-<generatorID>40F307F8-4CC4-4BBE-0262-E567A27AE016</generatorID>
-<ownerDesignName>db-structure</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="7EF25141-5500-6A3D-F065-8DFB6B533C09"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

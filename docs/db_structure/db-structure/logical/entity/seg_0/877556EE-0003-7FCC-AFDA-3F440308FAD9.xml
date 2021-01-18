@@ -4,6 +4,7 @@
 <createdTime>2020-11-18 18:56:34 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
 <item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
 <item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
@@ -16,11 +17,12 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="watek_id" id="3835B7E3-5E15-0D85-E35A-C8185DB1E17A">
+<Attribute name="id" id="3835B7E3-5E15-0D85-E35A-C8185DB1E17A">
 <createdBy>lkost</createdBy>
 <createdTime>2020-11-24 20:44:50 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
 <item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
 <item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
@@ -34,6 +36,7 @@
 <createdTime>2020-11-22 19:32:02 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
 <item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
 <item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
@@ -48,6 +51,7 @@
 <createdTime>2020-11-24 20:52:13 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
 <item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
 <item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
@@ -63,6 +67,7 @@
 <createdTime>2020-11-24 20:44:59 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
 <item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
 <item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>

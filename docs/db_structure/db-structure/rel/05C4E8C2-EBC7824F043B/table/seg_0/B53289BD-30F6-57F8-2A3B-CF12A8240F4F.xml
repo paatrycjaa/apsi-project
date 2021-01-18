@@ -8,7 +8,7 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="decyzja_id" id="449A4893-F9D1-ABBA-3814-E407DB7F01CB">
+<Column name="id" id="449A4893-F9D1-ABBA-3814-E407DB7F01CB">
 <createdBy>napiad</createdBy>
 <createdTime>2020-12-27 20:53:09 UTC</createdTime>
 <generatorID>CF9452B1-232B-8451-6005-BA78D123B100</generatorID>
@@ -101,17 +101,6 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="449A4893-F9D1-ABBA-3814-E407DB7F01CB"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="8D44D961-B548-6A9F-1D6A-C93FCAB4C097" name="Decyzja__IDX">
-<createdBy>napiad</createdBy>
-<createdTime>2020-12-27 20:53:09 UTC</createdTime>
-<ownerDesignName>db-structure</ownerDesignName>
-<indexState>Unique Plain Index</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<relationGeneratorID>2911C268-DF08-5682-6CC7-DE5D07BEF32C</relationGeneratorID>
-<indexColumnUsage>
-<colUsage columnID="3B35B567-53F4-8EE0-8DF8-600F586626A5"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="AB885496-0A2B-D24A-55F7-2A82E8563B82" name="Decyzja_Rodzaj_decyzji_FK">
