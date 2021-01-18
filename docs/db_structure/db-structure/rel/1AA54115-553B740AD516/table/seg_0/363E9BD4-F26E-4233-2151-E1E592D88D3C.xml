@@ -56,7 +56,7 @@
 <ownDataTypeParameters>1000,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Pomysl_pomysl_id" id="53637FC5-BD6C-4F9B-DE49-702D8793764C">
+<Column name="pomysl_id" id="53637FC5-BD6C-4F9B-DE49-702D8793764C">
 <createdBy>napiad</createdBy>
 <createdTime>2020-12-14 17:42:33 UTC</createdTime>
 <generatorID>8ABDF5CA-9A27-EB91-2FC8-512C3CC3E1D1</generatorID>
@@ -71,7 +71,7 @@
 <colAssociation fkAssociation="7F8212EC-EC66-949E-D4A6-F16DF649E4B2" referredColumn="D51BE36E-0E72-E075-3A3E-109AE5C557BF"/>
 </associations>
 </Column>
-<Column name="Uzytkownik_uzytkownik_id" id="B8A671C7-A266-93E0-44E2-FADDE2115F7A">
+<Column name="uzytkownik_id" id="B8A671C7-A266-93E0-44E2-FADDE2115F7A">
 <createdBy>napiad</createdBy>
 <createdTime>2020-12-14 17:42:33 UTC</createdTime>
 <generatorID>B7C7DCD2-1BB8-FB90-B5F6-54D2D2745072</generatorID>

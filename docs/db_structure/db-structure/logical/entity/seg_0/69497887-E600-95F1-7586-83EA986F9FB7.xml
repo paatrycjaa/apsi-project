@@ -4,7 +4,9 @@
 <createdTime>2020-11-18 19:07:48 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
-<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
+<item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
+<item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -16,13 +18,15 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="post_id" id="60A0EBF2-6F63-59C7-F202-6FC67F21DD5E">
+<Attribute name="id" id="60A0EBF2-6F63-59C7-F202-6FC67F21DD5E">
 <createdBy>lkost</createdBy>
 <createdTime>2020-11-24 20:44:47 UTC</createdTime>
 <generatorID>04A294CF-8675-B391-85ED-C8F187C57010</generatorID>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
-<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
+<item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
+<item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
 <referedAttribute>BF22E88D-BE15-C92D-8A5C-46CFBD742199</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>

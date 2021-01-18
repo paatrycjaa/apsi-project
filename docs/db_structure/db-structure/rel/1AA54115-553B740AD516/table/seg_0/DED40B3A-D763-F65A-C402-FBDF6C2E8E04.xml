@@ -44,7 +44,7 @@
 <ownDataTypeParameters>1000,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Watek_watek_id" id="5E406DD6-9D29-D3A9-5FF0-7272112CBC6C">
+<Column name="watek_id" id="5E406DD6-9D29-D3A9-5FF0-7272112CBC6C">
 <createdBy>napiad</createdBy>
 <createdTime>2020-12-14 17:42:34 UTC</createdTime>
 <generatorID>623AC541-F385-163E-5C10-F414F1602CD1</generatorID>
@@ -59,7 +59,7 @@
 <colAssociation fkAssociation="161CC04E-7299-174A-47A6-75AC19E63A32" referredColumn="69850553-7F9C-F777-C710-43D90D0FCC87"/>
 </associations>
 </Column>
-<Column name="Uzytkownik_uzytkownik_id" id="54A9B385-8656-D9FC-DFA5-A32EA4B993FD">
+<Column name="uzytkownik_id" id="54A9B385-8656-D9FC-DFA5-A32EA4B993FD">
 <createdBy>napiad</createdBy>
 <createdTime>2020-12-14 17:42:34 UTC</createdTime>
 <generatorID>80FC456B-FA8F-9B41-E46E-9B94BC4C5548</generatorID>
@@ -97,6 +97,15 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="5B852E12-C9A2-617A-AB41-CF03A130A03F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="96DAC599-E3D9-8482-0C61-9A5837AAEAA8" name="posty__IDXv1">
+<createdBy>napiad</createdBy>
+<createdTime>2021-01-17 12:23:39 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C1AE2048-63C7-D542-1A02-EC2DA1A1E82B"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="9A312DB7-F309-9C2A-ECB4-E9BA6CDB7927" name="Post_Watek_FK">

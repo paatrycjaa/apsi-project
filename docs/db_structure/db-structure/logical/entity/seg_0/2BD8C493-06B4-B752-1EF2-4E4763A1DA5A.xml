@@ -4,6 +4,7 @@
 <createdTime>2020-11-16 14:34:48 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
 <item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
 <item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
@@ -16,11 +17,12 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="pomysl_id" id="991C7A00-AA80-C4AF-ACBF-7A4F6E7EF2BD">
+<Attribute name="id" id="991C7A00-AA80-C4AF-ACBF-7A4F6E7EF2BD">
 <createdBy>lkost</createdBy>
 <createdTime>2020-11-24 20:43:46 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
 <item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
 <item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
@@ -34,6 +36,7 @@
 <createdTime>2020-11-18 19:13:04 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
 <item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
 <item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
@@ -48,6 +51,7 @@
 <createdTime>2020-11-18 19:13:23 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
 <item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
 <item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
@@ -62,6 +66,7 @@
 <createdTime>2020-12-07 20:18:27 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
 <item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
 <item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
@@ -75,6 +80,7 @@
 <createdTime>2020-12-07 20:26:12 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
 <item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
 <item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
@@ -89,6 +95,7 @@
 <createdTime>2020-11-18 19:13:49 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
 <item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
 <item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
@@ -104,6 +111,7 @@
 <createdTime>2020-11-18 19:14:14 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
 <item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
 <item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
@@ -114,12 +122,13 @@
 <dataTypePrecision>2</dataTypePrecision>
 <ownDataTypeParameters>,2,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="ustawienia_id" id="50624498-F3DF-C8F6-945A-D5B3F890ED55">
+<Attribute name="ustawienia" id="50624498-F3DF-C8F6-945A-D5B3F890ED55">
 <createdBy>lkost</createdBy>
 <createdTime>2020-11-22 20:32:58 UTC</createdTime>
 <generatorID>69A1DCCE-B045-1021-DA09-88AA221F9683</generatorID>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
 <item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
 <item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
@@ -135,6 +144,7 @@
 <generatorID>672700AE-D86F-C3EB-9867-81CF85906FD9</generatorID>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
 <item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
 <item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
@@ -144,12 +154,13 @@
 <logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="uzytkownik_id" id="1E45ABF4-8957-1029-31BF-1FFB8D12367F">
+<Attribute name="id1" id="1E45ABF4-8957-1029-31BF-1FFB8D12367F">
 <createdBy>lkost</createdBy>
 <createdTime>2020-11-24 20:47:33 UTC</createdTime>
 <generatorID>7DEF49CE-8F4C-EAC2-92B8-581276B5CA8A</generatorID>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
 <item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
 <item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
@@ -159,6 +170,22 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="slowo_kluczowe" id="F722B6E5-E3E7-1804-E749-A420BFC4E7C4">
+<createdBy>napiad</createdBy>
+<createdTime>2021-01-17 12:27:00 UTC</createdTime>
+<generatorID>29C50C91-6B89-5278-49DE-D46C5EAA0DC5</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<engineerTo>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
+<item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
+<item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
+</engineerTo>
+<referedAttribute>7A5F8986-933D-44AE-AE77-8D46685DCC40</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="072BA7E2-71D6-92F0-5A13-9D8AF96EF939" name="Pomysl PK">
@@ -166,6 +193,7 @@
 <createdTime>2020-11-24 20:43:58 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
 <item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
 <item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>

@@ -23,7 +23,7 @@
 <colAssociation fkAssociation="D3C1C2A6-F85F-1EF2-15E2-6581DA15DDEB" referredColumn="94961FFA-41B7-6A73-D4CB-7ACAB4307B8E"/>
 </associations>
 </Column>
-<Column name="Post_post_id" id="91A9C331-8350-48C4-30E5-95795D3876D8">
+<Column name="post_id" id="91A9C331-8350-48C4-30E5-95795D3876D8">
 <createdBy>napiad</createdBy>
 <createdTime>2020-12-14 17:42:34 UTC</createdTime>
 <generatorID>60A0EBF2-6F63-59C7-F202-6FC67F21DD5E</generatorID>

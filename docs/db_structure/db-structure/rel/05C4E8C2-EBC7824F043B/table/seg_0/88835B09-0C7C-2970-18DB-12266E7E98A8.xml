@@ -8,7 +8,7 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="pomysl_id" id="F44496F4-146E-0F79-4AD4-C71EE266BFC1">
+<Column name="id" id="F44496F4-146E-0F79-4AD4-C71EE266BFC1">
 <createdBy>napiad</createdBy>
 <createdTime>2020-12-27 20:53:09 UTC</createdTime>
 <generatorID>991C7A00-AA80-C4AF-ACBF-7A4F6E7EF2BD</generatorID>
@@ -137,6 +137,20 @@
 <colAssociation fkAssociation="B2FFA360-2225-BDB3-6809-105B1DDC8B2C" referredColumn="94BF019B-D8D6-23F5-2720-1B72BDADAE2F"/>
 </associations>
 </Column>
+<Column name="Slowo_kluczowe_slowo_kluczowe_id" id="6634944B-89AA-D71B-51B6-55399C732D2F">
+<createdBy>napiad</createdBy>
+<createdTime>2021-01-17 12:33:34 UTC</createdTime>
+<ownerDesignName>db-structure</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AC5AF19B-64A7-7520-966D-B6EE9AF86B81" referredColumn="1F61021C-D697-0A2C-C53F-BEA9D167253D"/>
+</associations>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="6BA480B4-E7AB-97A4-3552-F01457D6C55F" name="Pomysl_PK">
@@ -182,6 +196,17 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="F3217175-5BE1-5523-A211-C00FFD8986E7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="DE1AA7A9-1B10-2377-256B-CC775781F1DE" name="Pomysl_Slowo_kluczowe_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2021-01-17 12:33:34 UTC</createdTime>
+<generatorID>BC4E01BE-37D6-C2B6-B502-89D029B4EB98</generatorID>
+<ownerDesignName>db-structure</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6634944B-89AA-D71B-51B6-55399C732D2F"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

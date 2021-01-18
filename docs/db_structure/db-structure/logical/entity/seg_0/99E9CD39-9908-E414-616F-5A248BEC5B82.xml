@@ -4,7 +4,9 @@
 <createdTime>2020-11-16 14:37:10 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
-<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
+<item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
+<item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -15,30 +17,18 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="slowo_kluczowe_id" id="7A5F8986-933D-44AE-AE77-8D46685DCC40">
+<Attribute name="slowo_kluczowe" id="7A5F8986-933D-44AE-AE77-8D46685DCC40">
 <createdBy>lkost</createdBy>
 <createdTime>2020-11-22 18:53:46 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
-<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
+<item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
+<item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="pomysl_id" id="1D8D66A5-5609-84FF-598B-4CFD380F1E7A">
-<createdBy>lkost</createdBy>
-<createdTime>2020-11-24 20:43:59 UTC</createdTime>
-<generatorID>40F307F8-4CC4-4BBE-0262-E567A27AE016</generatorID>
-<ownerDesignName>db-structure</ownerDesignName>
-<engineerTo>
-<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
-</engineerTo>
-<referedAttribute>991C7A00-AA80-C4AF-ACBF-7A4F6E7EF2BD</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
@@ -48,7 +38,9 @@
 <createdTime>2020-11-22 18:53:59 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
-<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
+<item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
+<item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

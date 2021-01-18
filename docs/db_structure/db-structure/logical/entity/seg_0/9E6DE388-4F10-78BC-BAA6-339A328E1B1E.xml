@@ -4,7 +4,9 @@
 <createdTime>2020-11-18 18:56:28 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
-<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
+<item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
+<item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -15,12 +17,14 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="post_id" id="BF22E88D-BE15-C92D-8A5C-46CFBD742199">
+<Attribute name="id" id="BF22E88D-BE15-C92D-8A5C-46CFBD742199">
 <createdBy>lkost</createdBy>
 <createdTime>2020-11-24 20:44:30 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
-<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
+<item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
+<item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -32,7 +36,9 @@
 <createdTime>2020-11-22 19:32:31 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
-<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
+<item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
+<item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -45,7 +51,9 @@
 <createdTime>2020-11-22 19:32:53 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
-<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
+<item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
+<item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -58,7 +66,9 @@
 <generatorID>BE9BA70B-438B-0331-B870-918C41F564E8</generatorID>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
-<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
+<item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
+<item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
 <referedAttribute>3835B7E3-5E15-0D85-E35A-C8185DB1E17A</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
@@ -66,13 +76,15 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="uzytkownik_id" id="80FC456B-FA8F-9B41-E46E-9B94BC4C5548">
+<Attribute name="zalacznik_id" id="80FC456B-FA8F-9B41-E46E-9B94BC4C5548">
 <createdBy>lkost</createdBy>
 <createdTime>2020-11-24 20:47:33 UTC</createdTime>
 <generatorID>813B390D-0066-D592-AF14-43ABEFE451E3</generatorID>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
-<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
+<item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
+<item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
 <referedAttribute>75F4E93C-03A5-C643-C5A1-7F28EFAEF1A3</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
@@ -85,7 +97,9 @@
 <createdTime>2020-11-24 20:51:55 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
-<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
+<item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
+<item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -99,7 +113,9 @@
 <createdTime>2020-11-24 20:44:43 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
-<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
+<item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
+<item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
