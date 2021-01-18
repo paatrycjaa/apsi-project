@@ -105,16 +105,20 @@ def remove_idea(idea_id):
     finally:
         return json.dumps({'status': status, 'message': message})
 
-def get_ideas(user, filter_user):
+def get_ideas(user, filter_user, sort_asc):
 
-    objs = Pomysl.objects
+    if sort_asc:
+        objs = Pomysl.objects.order_by('data_dodania')
+    else:
+        objs = Pomysl.objects.order_by('-data_dodania')
+
     user_obj = models.Uzytkownik.objects.get(user_id=user.id)
 
     normal_user = models.ZwyklyUzytkownik.objects.filter(uzytkownik_id=user.id)
 
     if normal_user.exists():
         zablokowany = models.StatusPomyslu.objects.get(pk='Zablokowany')
-        objs=models.Pomysl.objects.exclude(status_pomyslu=zablokowany)
+        objs = objs.exclude(status_pomyslu=zablokowany)
 
     if filter_user:
         user_obj = models.Uzytkownik.objects.get(user_id=user.id)
@@ -122,8 +126,8 @@ def get_ideas(user, filter_user):
 
     return objs.annotate(attachment_count=Count('zalacznikpomyslu')).values()
 
-def get_ideas_json(user, filter_user, filter_status):
-    return serialize(get_ideas(user, filter_user), user, filter_status)
+def get_ideas_json(user, filter_user, filter_status, sort_asc):
+    return serialize(get_ideas(user, filter_user, sort_asc), user, filter_status)
 
 def get_idea_json(idea_id):
     ideas = Pomysl.objects.filter(pk=idea_id)
