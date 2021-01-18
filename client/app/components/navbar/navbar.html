@@ -1,6 +1,7 @@
 {% load static %}
 
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" ng-controller="navbarController" ng-init="init()">
+<!-- Navigation bar -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="navbarToggle">
       <div class="navbar-nav mr-auto">
@@ -9,18 +10,22 @@
           <span class ="logo1">PORTAL</span>
           <span class ="logo2">INNOWACJI</span>
       </div>
-
       <!-- Navbar Right Side -->
       <div class="navbar-nav">
         {% if user.is_authenticated %}
+        {% if user.is_superuser %}
+        <span class = 'logon'>Zalogowany jako: {{user.first_name}} {{user.last_name}} (Administartor)</span>
+        {% else %}
+        <span class = 'logon'>Zalogowany jako: {{user.first_name}} {{user.last_name}} (Użytkownik)</span>
+        {% endif %}
         <ol>
         <li><a class="nav-item nav-link" >PANEL KOMISJI</a>
-          <ul>
-            <li><a class="decision_panel" href="{% url 'ideasfiltered' status_pomyslu='Oczekujacy' %}">Pomysły Oczekujące</a></li>
-            <li><a class="decision_panel" href="{% url 'ideasfiltered' status_pomyslu='Odlozony' %}">Pomysły Odłożone</a></li>
-            <li><a class="decision_panel" href="{% url 'ideasfiltered' status_pomyslu='Zablokowany' %}">Pomysły Zablokowane</a></li>
+          <ul class="container_panel">
+            <li><a class = "decision_panel"  href="{% url 'ideasfiltered' status_pomyslu='Oczekujacy' %}">Pomysły Oczekujące</a></li>
+            <li><a class = "decision_panel"  href="{% url 'ideasfiltered' status_pomyslu='Odlozony' %}">Pomysły Odłożone</a></li>
+            <li><a class = "decision_panel" href="{% url 'ideasfiltered' status_pomyslu='Zablokowany' %}">Pomysły Zablokowane</a></li>
           </ul>
-          </li>
+        </li>
         </ol>
         <a class="nav-item nav-link" href="{% url 'threads'%}">FORUM</a>
         <a class="nav-item nav-link" href="{% url 'ideas' %}">POMYSŁY</a>
