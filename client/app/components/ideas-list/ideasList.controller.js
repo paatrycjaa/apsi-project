@@ -1,12 +1,15 @@
 angular.module('appIdeasListController', [])
-  .controller('ideasListController', ['$scope', '$window', 'ideasListService',
-      function($scope, $window, ideasListService) {
+  .controller('ideasListController', ['$scope', '$window', 'ideasListService', 'utils',
+      function($scope, $window, ideasListService, utils) {
 
         $scope.ideas = [];
 
         $scope.init = function() {
           ideasListService.getIdeas(function(response) {
             $scope.ideas = response.data
+            for (idea of $scope.ideas) {
+              idea['dni_od_dodania'] = utils.calculateDaysSinceSubmit(idea.data_dodania);
+            }
           });
         }
 

@@ -1,23 +1,21 @@
 angular.module('appIdeasFilteredController', [])
-  .controller('ideasFilteredController', ['$scope', '$window', '$interval', 'ideasFilteredService',
-      function($scope, $window, $interval, ideasFilteredService) {
+  .controller('ideasFilteredController', ['$scope', '$window', '$interval', 'ideasFilteredService', 'utils',
+      function($scope, $window, $interval, ideasFilteredService, utils) {
         
         $scope.ideas_rest = [];
         $scope.ideas = [];
 
         $scope.init = function(status) {
           $scope.status=status
-          console.log($scope.status)
           ideasFilteredService.getIdeas(function(response) {
             for (idea of response.data) {
               if (idea.status_pomyslu_id == status) {
+                idea['dni_od_dodania'] = utils.calculateDaysSinceSubmit(idea.data_dodania);
                 $scope.ideas.push(idea);
               } else {
                 $scope.ideas_rest.push(idea);
               }
             }
-            console.log($scope.ideas)
-            console.log(response.data)
           });
         }
 

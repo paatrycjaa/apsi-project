@@ -65,6 +65,12 @@ angular.module('appUtils', [])
         return files;
 
       }
+
+      this.calculateDaysSinceSubmit = (date_addition) => {
+        date_created = new Date(date_addition);
+        date_now = new Date();
+        return Math.floor((date_now - date_created)/(1000*60*60*24));
+      }
     }
 );
   
