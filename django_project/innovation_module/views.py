@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 
 import json
 
-from . import idea, opinion, decorators, forum, decision, attachment, stats
+from . import idea, opinion, decorators, forum, decision, attachment, user, stats
 
 _ajax_requests = {
     'get_keywords': lambda request, object_id: idea.get_keywords(),
@@ -31,7 +31,7 @@ _ajax_requests = {
     'change_status': lambda request, object_id: decision.change_status(request.body.decode('utf-8'),request.user),
     'delete_idea': lambda request, object_id: decision.delete_idea(request.body.decode('utf-8'),request.user),
     'stats': lambda request, _: stats.get_stats(),
-    'me': lambda request, _: stats.get_stats(), # FIXME
+    'me': lambda request, _: user.get_user_data(request.user),
     'remove_opinion': lambda request, object_id: ajax_remove_opinion(request, object_id),
 }
 
