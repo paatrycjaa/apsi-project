@@ -105,25 +105,29 @@ def remove_idea(idea_id):
     finally:
         return json.dumps({'status': status, 'message': message})
 
-def get_ideas(user, filter_user):
+def get_ideas(user, filter_user, sort_asc):
 
-    objs = Pomysl.objects
+    if sort_asc:
+        objs = Pomysl.objects.order_by('data_dodania')
+    else:
+        objs = Pomysl.objects.order_by('-data_dodania')
+
     user_obj = models.Uzytkownik.objects.get(user_id=user.id)
 
     normal_user = models.ZwyklyUzytkownik.objects.filter(uzytkownik_id=user.id)
 
     if normal_user.exists():
         zablokowany = models.StatusPomyslu.objects.get(pk='Zablokowany')
-        objs=models.Pomysl.objects.exclude(status_pomyslu=zablokowany)
+        objs = objs.exclude(status_pomyslu=zablokowany)
 
     if filter_user:
         user_obj = models.Uzytkownik.objects.get(user_id=user.id)
         objs = objs.filter(uzytkownik=user_obj)
 
-    return objs.annotate(attachment_count=Count('zalacznikpomyslu')).values()
+    return objs.values()
 
-def get_ideas_json(user, filter_user, filter_status):
-    return serialize(get_ideas(user, filter_user), user, filter_status)
+def get_ideas_json(user, filter_user, filter_status, sort_asc):
+    return serialize(get_ideas(user, filter_user, sort_asc), user, filter_status)
 
 def get_idea_json(idea_id, user):
     user_obj = models.Uzytkownik.objects.get(user_id=user.id)
@@ -190,8 +194,8 @@ def edit_idea(request, user):
 
         m.save()
 
-        #if there are new attachments, remove old ones
-        if(len(request.FILES) > 0):
+        # if there are new attachments, remove old ones
+        if len(request.FILES) > 0:
             attachment.remove_idea_attachments(m)
 
         for file_name, file_size, file in zip(data['attachments'], data['attachments_size'], request.FILES.values()):

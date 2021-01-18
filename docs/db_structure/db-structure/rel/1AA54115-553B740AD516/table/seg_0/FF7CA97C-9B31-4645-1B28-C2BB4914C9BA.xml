@@ -9,7 +9,7 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="decyzja_id" id="EAB8AE9C-E76B-6BF8-13C2-5BFFAF2820DA">
+<Column name="id" id="EAB8AE9C-E76B-6BF8-13C2-5BFFAF2820DA">
 <createdBy>napiad</createdBy>
 <createdTime>2020-12-14 17:42:33 UTC</createdTime>
 <generatorID>CF9452B1-232B-8451-6005-BA78D123B100</generatorID>
@@ -44,7 +44,7 @@
 <ownDataTypeParameters>1000,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Pomysl_pomysl_id" id="476D3FD8-E947-B179-0F13-4F1729912DC3">
+<Column name="pomysl_id" id="476D3FD8-E947-B179-0F13-4F1729912DC3">
 <createdBy>napiad</createdBy>
 <createdTime>2020-12-14 17:42:33 UTC</createdTime>
 <generatorID>D18BF20B-AA3D-EA83-CEBA-5B2D09219014</generatorID>
@@ -59,7 +59,7 @@
 <colAssociation fkAssociation="C1CE9950-4B41-EA8E-2947-3AE7D6777065" referredColumn="D51BE36E-0E72-E075-3A3E-109AE5C557BF"/>
 </associations>
 </Column>
-<Column name="Rodzaj_decyzji_rodzaj_decyzji_id" id="E0C3E30E-813F-609A-C4BD-AC4E955A69B7">
+<Column name="rodzaj_decyzji_id" id="E0C3E30E-813F-609A-C4BD-AC4E955A69B7">
 <createdBy>napiad</createdBy>
 <createdTime>2020-12-14 17:42:33 UTC</createdTime>
 <generatorID>CC869802-F0FC-24CC-352F-CEA81CF43AD8</generatorID>
@@ -68,14 +68,14 @@
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>100</dataTypeSize>
-<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
 <colAssociation fkAssociation="C0232CB3-1B01-2506-C888-5A07E742FA9C" referredColumn="D3660865-6181-114A-ED3B-E2867D40E843"/>
 </associations>
 </Column>
-<Column name="Czlonek_komisji_uzytkownik_id" id="99486028-DA9D-FE4E-936F-4D4A87985D47">
+<Column name="uzytkownik_id" id="99486028-DA9D-FE4E-936F-4D4A87985D47">
 <createdBy>napiad</createdBy>
 <createdTime>2020-12-14 17:42:33 UTC</createdTime>
 <generatorID>379AB6DB-47BF-07A3-E422-610279528430</generatorID>

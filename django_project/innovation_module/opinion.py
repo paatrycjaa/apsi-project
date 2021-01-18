@@ -18,7 +18,7 @@ def get_opinions(id, user_obj):
     status = models.StatusPomyslu.objects.get(pk="Oczekujacy")
     return models.Ocena.objects.filter(pomysl=pomysl).annotate(is_editable=Case(
         When(pomysl__status_pomyslu=status, uzytkownik=user_obj, then=True), default=False, output_field=BooleanField()
-    )).values()
+    )).order_by('data').values()
 
 def get_opinions_json(pomysl, user):
     user_obj = models.Uzytkownik.objects.get(user=user)

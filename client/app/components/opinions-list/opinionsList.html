@@ -9,11 +9,12 @@
         {% endverbatim %}
     </div>
 
-    <div style="float: right;" ng-if="canAddOpinion()">
+    <div style="float: right;margin:0 50px;" ng-if="canAddOpinion()">
         <button type="button" class="btn btn-primary" ng-click="addOpinion({{idea_id}})">Dodaj opinię</button>
     </div>
     <div style="clear: both;"></div>
-    <div class="opinion-block" ng-repeat="opinion in opinions | filter:searchStr">
+    <div ng-repeat="opinion in opinions | filter:searchStr">
+        <div class="opinion-block">
         {% verbatim %}
         <table class="opinion-table">
             <tr>
@@ -30,6 +31,7 @@
             </tr>
         </table>
         {% endverbatim %}
+        </div>
         <div class="btn-tollbar" style="float: right; margin:0 50px;">
             {% if user.is_superuser %}
             {% verbatim %}
@@ -40,7 +42,9 @@
             {% verbatim %}
             <button type="button" ng-show="{{ opinion.is_editable }}" class="btn btn-primary" ng-click="editOpinion(opinion.id)">Edytuj</button>
             {% endverbatim %}
+
         </div>
+        <div style="clear: both;"></div>
     </div>
 </div>
 

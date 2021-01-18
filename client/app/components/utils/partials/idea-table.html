@@ -1,7 +1,7 @@
 <table class="idea-table">
     <tr>
         <th style="width: 25%">Temat:</th>
-        <td>{{ idea.tematyka }}</td>
+        <td class="idea_thema">{{ idea.tematyka }}</td>
     </tr>
     <tr>
         <th>Kategoria:</th>
@@ -25,6 +25,6 @@
     </tr>
     <tr ng-if="showAttachmentsCount">
         <th>Załączniki:</th>
-        <td>{{ idea.attachment_count }}</td>
+        <td>{{ idea.liczba_zalacznikow }}</td>
     </tr>
 </table>
