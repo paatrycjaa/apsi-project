@@ -112,7 +112,7 @@ def edit_idea(request, idea_id):
     context = {'idea_id': idea_id}
     return render(request, 'app/components/idea-addition/ideaAddition.html', context)
 
-@login_required
+@decorators.login_required_permission_denied
 def ajax(request, ajax_request, object_id=None):
     try:
         data = _ajax_requests[ajax_request](request, object_id)
@@ -157,3 +157,6 @@ def ajax_remove_thread(request, object_id):
 @user_passes_test(lambda u : u.is_superuser)
 def ajax_remove_opinion(request, object_id):
     return opinion.remove_opinion(object_id)
+
+def ajax_get_stats(request):
+    return HttpResponse(_ajax_requests['stats'](request, None), content_type='application/json')

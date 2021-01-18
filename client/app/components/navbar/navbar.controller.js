@@ -10,7 +10,14 @@ angular.module('appNavbarController', [])
 
       $scope.init = function() {
         navbarService.getUserData().then((resp) => {
+          console.log(resp)
           $scope.userData = resp.data;
+        }, () => {
+          $scope.userData = {
+            firstName: '',
+            lastName: '',
+            role: '',
+          }
         });
       };
     }
