@@ -8,7 +8,7 @@ angular.module('appOpinionAdditionController', [])
         description : '',
         rate : 0
       }
-      
+
       $scope.settings = '';
 
       $scope.init = function(idea_id) {
@@ -21,14 +21,12 @@ angular.module('appOpinionAdditionController', [])
 
         if(opinionId){
           opinionAdditionService.getOpinionById(opinionId, function(response) {
-            console.log(response.data)
             data = response.data[0]
-            $scope.opinion.description = data.fields.opis
-            $scope.opinion.rate = data.fields.ocena_liczbowa            
+            $scope.opinion.description = data.opis
+            $scope.opinion.rate = data.ocena_liczbowa
 
           })
         }
-
       }
 
       $scope.reponse_received = false;
@@ -38,12 +36,12 @@ angular.module('appOpinionAdditionController', [])
         const forms = document.getElementsByClassName('needs-validation');
         if (utils.isFormValid(forms)) {
 
-          callback = (response) => {            
+          callback = (response) => {
             console.log(response);
             $scope.status = response.data.status;
             $scope.reponse_received = true;
             if ($scope.status === true) {
-              $timeout(() => { 
+              $timeout(() => {
                 window.location.href = "/opinions/" + $scope.opinion.idea_id;
               }, 2000);
             }
@@ -52,10 +50,10 @@ angular.module('appOpinionAdditionController', [])
           // opinion is edited
           if($scope.opinion.opinion_id){
             opinionAdditionService.editOpinion($scope.opinion, callback);
-          } else { // new opinion is added            
+          } else { // new opinion is added
             opinionAdditionService.submitOpinion($scope.opinion, callback);
           }
         }
-      }       
+      }
     }
 ]);

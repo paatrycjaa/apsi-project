@@ -13,7 +13,7 @@ _ajax_requests = {
     'user_ideas': lambda request, object_id: idea.get_ideas_json(request.user, True, False, True),
     'submit_idea': lambda request, object_id: idea.add_idea(request, request.user),
     'edit_idea': lambda request, object_id: ajax_edit_idea(request, int(json.loads(request.POST['data'])['idea_id'])),
-    'get_idea': lambda request, object_id: idea.get_idea_json(object_id),
+    'get_idea': lambda request, object_id: idea.get_idea_json(object_id, request.user),
     'all_opinions': lambda request, object_id: opinion.get_opinions_json(object_id, request.user),
     'get_opinion': lambda request, object_id: opinion.get_opinion_json(object_id),
     'submit_opinion': lambda request, object_id: opinion.add_opinion(request.body.decode('utf-8'), request.user),
@@ -30,7 +30,8 @@ _ajax_requests = {
     'remove_thread': lambda request, object_id: ajax_remove_thread(request, object_id),
     'change_status': lambda request, object_id: decision.change_status(request.body.decode('utf-8'),request.user),
     'delete_idea': lambda request, object_id: decision.delete_idea(request.body.decode('utf-8'),request.user),
-    'stats': lambda request, _: stats.get_stats()
+    'stats': lambda request, _: stats.get_stats(),
+    'remove_opinion': lambda request, object_id: ajax_remove_opinion(request, object_id),
 }
 
 
@@ -151,3 +152,7 @@ def ajax_remove_idea(request, object_id):
 @user_passes_test(lambda u : u.is_superuser)
 def ajax_remove_thread(request, object_id):
     return forum.remove_thread(object_id)
+
+@user_passes_test(lambda u : u.is_superuser)
+def ajax_remove_opinion(request, object_id):
+    return opinion.remove_opinion(object_id)
