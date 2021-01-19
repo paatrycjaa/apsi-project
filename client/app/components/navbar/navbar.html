@@ -1,0 +1,38 @@
+{% load static %}
+
+<!-- Navigation bar -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" ng-controller="navbarController" ng-init="init()">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarToggle">
+      <div class="navbar-nav mr-auto">
+        <a class="navbar-brand" href="{% url 'home' %}">
+          <img src="{% static 'assets/img/pomysl.jpeg' %}" width="100" height="100" alt=""></a>
+          <span class ="logo1">PORTAL</span>
+          <span class ="logo2">INNOWACJI</span>
+      </div>
+      <!-- Navbar Right Side -->
+      <div class="navbar-nav">
+        {% if user.is_authenticated %}
+        {% verbatim %}
+        <span class = 'logon'>Zalogowany jako: {{userData.firstName}} {{userData.lastName}} ({{userData.role}})</span>
+        {% endverbatim %}
+        <ol>
+        <li><a class="nav-item nav-link" >PANEL KOMISJI</a>
+          <ul class="container_panel">
+            <li><a class = "decision_panel"  href="{% url 'ideasfiltered' status_pomyslu='Oczekujacy' %}">Pomysły Oczekujące</a></li>
+            <li><a class = "decision_panel"  href="{% url 'ideasfiltered' status_pomyslu='Odlozony' %}">Pomysły Odłożone</a></li>
+            <li><a class = "decision_panel" href="{% url 'ideasfiltered' status_pomyslu='Zablokowany' %}">Pomysły Zablokowane</a></li>
+          </ul>
+        </li>
+        </ol>
+        <a class="nav-item nav-link" href="{% url 'threads'%}">FORUM</a>
+        <a class="nav-item nav-link" href="{% url 'ideas' %}">POMYSŁY</a>
+        <a class="nav-item nav-link" href="{% url 'my-ideas'%}">MOJE POMYSŁY</a>
+        <a class="nav-item nav-link" href="{% url 'logout'%}">WYLOGUJ</a>
+        {% else %}
+        <a class="nav-item nav-link log-link" href="{% url 'login'%}">ZALOGUJ</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</nav>

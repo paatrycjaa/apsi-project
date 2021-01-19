@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 
 import json
 
-from . import idea, opinion, decorators, forum, decision, attachment, stats
+from . import idea, opinion, decorators, forum, decision, attachment, user, stats
 
 _ajax_requests = {
     'get_keywords': lambda request, object_id: idea.get_keywords(),
@@ -31,6 +31,7 @@ _ajax_requests = {
     'change_status': lambda request, object_id: decision.change_status(request.body.decode('utf-8'),request.user),
     'delete_idea': lambda request, object_id: decision.delete_idea(request.body.decode('utf-8'),request.user),
     'stats': lambda request, _: stats.get_stats(),
+    'me': lambda request, _: user.get_user_data(request.user),
     'remove_opinion': lambda request, object_id: ajax_remove_opinion(request, object_id),
 }
 
@@ -111,7 +112,7 @@ def edit_idea(request, idea_id):
     context = {'idea_id': idea_id}
     return render(request, 'app/components/idea-addition/ideaAddition.html', context)
 
-@login_required
+@decorators.login_required_permission_denied
 def ajax(request, ajax_request, object_id=None):
     try:
         data = _ajax_requests[ajax_request](request, object_id)
@@ -156,3 +157,6 @@ def ajax_remove_thread(request, object_id):
 @user_passes_test(lambda u : u.is_superuser)
 def ajax_remove_opinion(request, object_id):
     return opinion.remove_opinion(object_id)
+
+def ajax_get_stats(request):
+    return HttpResponse(_ajax_requests['stats'](request, None), content_type='application/json')

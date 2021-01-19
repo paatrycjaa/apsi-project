@@ -22,7 +22,12 @@ urlpatterns = [
     path('threads', views.threads, name = 'threads'),
     path('add-thread', views.add_thread, name='add-thread'),
     path('add-post/<int:thread_id>/', views.add_post),
+    path('file/<int:file_id>/', views.download_file),
+
+    # public ajax requests
+    path('ajax/stats/', views.ajax_get_stats),
+
+    # login restricted requests
     path('ajax/<ajax_request>/', csrf_exempt(views.ajax)),
     path('ajax/<ajax_request>/<int:object_id>/', csrf_exempt(views.ajax)),
-    path('file/<int:file_id>/', views.download_file)
 ]
