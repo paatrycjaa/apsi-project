@@ -4,7 +4,9 @@
 <createdTime>2020-11-18 18:46:33 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
-<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
+<item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
+<item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -15,12 +17,14 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="rodzaj_decyzji_id" id="959D0A2D-58D1-05E6-1984-DCBB7181B6B7">
+<Attribute name="rodzaj_decyzji" id="959D0A2D-58D1-05E6-1984-DCBB7181B6B7">
 <createdBy>napiad</createdBy>
 <createdTime>2020-11-18 18:46:49 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
-<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
+<item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
+<item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -35,7 +39,9 @@
 <createdTime>2020-11-24 20:44:21 UTC</createdTime>
 <ownerDesignName>db-structure</ownerDesignName>
 <engineerTo>
-<item key="2E98B956-9151-B61E-5151-5A0258D1D181" value="true"/>
+<item key="05C4E8C2-EE36-C27B-7F7B-EBC7824F043B" value="true"/>
+<item key="1AA54115-F74E-90D6-6928-553B740AD516" value="true"/>
+<item key="DFF221BB-EFC1-A635-B77B-BA48B3B8CB00" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

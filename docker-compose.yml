@@ -6,7 +6,7 @@ services:
     depends_on:
       - db
     command:
-      bash -c "./wait-for-it-win.sh db:3306 --
+      bash -c "./wait-for-it.sh db:3306 --
       python django_project/manage.py migrate &&
       python django_project/manage.py runserver 0.0.0.0:8000"
     volumes:
