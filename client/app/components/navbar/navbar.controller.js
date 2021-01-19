@@ -9,7 +9,7 @@ angular.module('appNavbarController', [])
       }
 
       $scope.init = function() {
-        navbarService.getUserData().then((resp) => {
+        navbarService.getUserData((resp) => {
           $scope.userData = resp.data;
         }, () => {
           $scope.userData = {
