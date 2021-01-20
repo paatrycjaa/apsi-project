@@ -411,15 +411,15 @@ def create_post(apps):
     user = users[8]
     thread = threads[2]
     date = thread.data_ostatniego_posta-timedelta(minutes=400)
-    m = Post(tytul=posts[6][0], tresc=posts[3][1], watek = thread, uzytkownik= user,data_dodania=date)
+    m = Post(tytul=posts[6][0], tresc=posts[6][1], watek = thread, uzytkownik= user,data_dodania=date)
     m.save()
     user = users[1]
     date = date+timedelta( seconds=2000 )
-    m = Post(tytul=posts[7][0], tresc=posts[4][1], watek = thread, uzytkownik= user,data_dodania=date)
+    m = Post(tytul=posts[7][0], tresc=posts[7][1], watek = thread, uzytkownik= user,data_dodania=date)
     m.save()
     user = users[6]
     date = thread.data_ostatniego_posta
-    m = Post(tytul=posts[8][0], tresc=posts[5][1], watek = thread, uzytkownik= user,data_dodania=date)
+    m = Post(tytul=posts[8][0], tresc=posts[8][1], watek = thread, uzytkownik= user,data_dodania=date)
     m.save()
 
 
