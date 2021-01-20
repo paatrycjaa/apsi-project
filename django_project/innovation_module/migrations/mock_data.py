@@ -123,16 +123,16 @@ def create_pomysl(apps):
     SlowoKluczowe = apps.get_model(app, 'SlowoKluczowe')
 
     ideas = [
-        ('Nowe komputery', 'Zakup 4 komputerów o dużej mocy obliczeniowej, które dostepnę będą dla studentów', 'Możliwość wykorzystania lepszego i szybszego sprzętu podczas testowania czasochłonnych algorytmów w pracach dyplomowych i nie tylko.', 'Koszt komputerów to ok 60 000 złotych', '5'),
+        ('Nowe komputery', 'Zakup 4 komputerów o dużej mocy obliczeniowej, które dostepnę będą dla studentów', 'Możliwość wykorzystania lepszego i szybszego sprzętu podczas testowania czasochłonnych algorytmów w pracach dyplomowych i nie tylko.', 'Koszt komputerów to ok 60 000 złotych', '8.5'),
         ('Nowe drukarki', 'Zakup 5 drukarek i rozmieszczenie ich w kilku punktach budynku wydziału', 'Drukarki będa dostępne dla studentów na miejscu.', 'Koszty drukarek ok. 1500 złotych', '8'),
-        ('Nowe wejście', 'Otworzenie dotąd nidostępnych drzwi wejściowych', 'Mniejsze tłoki przy wejściu głownym', 'brak', '7'),
-        ('Nowe szatnie', 'Stworzenie niestrzeżonej szatni przy drógim wejściu', 'Szybsza obsługa. Mniejsze zagęszczenie osób przy szatni głównej wpływające na zmniejszenie ryzyka zakażenia koronawirusem ', 'Koszty 1000 złotych na adaptację pomieszczenia', '6'),
+        ('Nowe wejście', 'Otworzenie dotąd nidostępnych drzwi wejściowych', 'Mniejsze tłoki przy wejściu głownym', 'brak', '4'),
+        ('Nowe szatnie', 'Stworzenie niestrzeżonej szatni przy drógim wejściu', 'Szybsza obsługa. Mniejsze zagęszczenie osób przy szatni głównej wpływające na zmniejszenie ryzyka zakażenia koronawirusem ', 'Koszty 1000 złotych na adaptację pomieszczenia', '6.5'),
         ('Nowe stojaki na rowery', 'Umieszczenie przed bydynkiem wydziału 50 monitorowanych stojaków rowerowych', 'Studenci będą chętniej podróżowali rowerami na uczelnie co wpłynie korzystnie na ich zdrowie fizyczne', 'Koszt to ok. 4000 złotych ', '6'),
-        ('Darmowe automaty do kawy', 'Zakup i utrzymanie dwóch automatów do kawy i umieszczenie ich przy dwóch wejściach ', 'Większość studentów jest zaspanych na porannych zjeciach. Wprowadzenie tego pomysłu może poprawić ich uwagę oraz pozytywnie wpłynąć na wyniki. Dodatkowo taki gest ociepli stosunek uczelni do swoich studentów ', 'Początkowy koszt 2000zl oraz koszt stały roczny ok. 1000zl', '10'),
+        ('Darmowe automaty do kawy', 'Zakup i utrzymanie dwóch automatów do kawy i umieszczenie ich przy dwóch wejściach ', 'Większość studentów jest zaspanych na porannych zjeciach. Wprowadzenie tego pomysłu może poprawić ich uwagę oraz pozytywnie wpłynąć na wyniki. Dodatkowo taki gest ociepli stosunek uczelni do swoich studentów ', 'Początkowy koszt 2000zl oraz koszt stały roczny ok. 1000zl', '4.5'),
         ('Rozbudowa przestrzeni studenckiej', 'Zakup nowych kanap, foteli stolików oraz ich rozmieszczenie w wolnych miejscach na korytarzu', 'Miejsca te zachęcą studentów do lepszego wykorzystania wolnych chwil pomiędzy zajęciami.', 'Koszt ok. 50 000 złotych ', '8'),
-        ('Poprawa materiałów dydaktycznych', 'Zebranie oraz odświeżenie myśli dydaktycznej przekazywanej podczas wykładu w plik pdf udostępniany studentom jeśli wcześniej takie źródła nie istniały', 'Jeśli student nie będzie miał potrzeby notowania obfitych treści przekazywanych podczas wykładu będzie mógł bardziej skupić się na słuchaniu oraz aktywnym udziale w zajęciach  ', 'Koszty nie znane', '3'),
-        ('Imprezy i Integracja', 'Organizowanie imprez integracyjnych i wydziałowych razem wydziałami z przeważającym udziałem studentek', 'Pozowli to na rozwój kompetencji miękkich wśród przeważającej liczby studentów wydziału oraz poprawi horyzonty o wiedzę nie czysto techniczną', 'Nie dotyczy', '6'),
-        ('Turniej planszówek', 'Zorganizowanie przez wydział turnieju planszówek o puchar dziekana.', 'Rozwój zainteresowań studentów. Aktywacja życia studenckiego', 'Koszt ok 1000 złotych', '9')
+        ('Poprawa materiałów dydaktycznych', 'Zebranie oraz odświeżenie myśli dydaktycznej przekazywanej podczas wykładu w plik pdf udostępniany studentom jeśli wcześniej takie źródła nie istniały', 'Jeśli student nie będzie miał potrzeby notowania obfitych treści przekazywanych podczas wykładu będzie mógł bardziej skupić się na słuchaniu oraz aktywnym udziale w zajęciach  ', 'Koszty nie znane', '0'),
+        ('Imprezy i Integracja', 'Organizowanie imprez integracyjnych i wydziałowych razem wydziałami z przeważającym udziałem studentek', 'Pozowli to na rozwój kompetencji miękkich wśród przeważającej liczby studentów wydziału oraz poprawi horyzonty o wiedzę nie czysto techniczną', 'Nie dotyczy', '9 '),
+        ('Turniej planszówek', 'Zorganizowanie przez wydział turnieju planszówek o puchar dziekana.', 'Rozwój zainteresowań studentów. Aktywacja życia studenckiego', 'Koszt ok 1000 złotych', '5')
     ]
 
     users = Uzytkownik.objects.all()
@@ -141,62 +141,67 @@ def create_pomysl(apps):
 
     slowo_kluczowe = SlowoKluczowe.objects.get(slowo_kluczowe='Komputery i peryferia')
 
+    num=1
     for i in ideas[0:2]:
-        user = random.choice(users)
+        user = users[3+num]
         # status = random.choice(statuses)
         status = StatusPomyslu.objects.get(status='Oczekujacy')        
-        setting = random.choice(settings[1:])
+        setting = UstawieniaOceniania.objects.get(ustawienia='num_text')
 
-        date = timezone.localtime(timezone.now()) - timedelta(days=random.randint(1, 100))
+        date = timezone.localtime(timezone.now()) - timedelta(days=random.randint(10, 30))
 
         m = Pomysl(tematyka=i[0], opis=i[1], planowane_korzysci=i[2], planowane_koszty=i[3],
-                   ocena_wazona=i[4], status_pomyslu=status, ustawienia_oceniania=setting, uzytkownik=user, slowo_kluczowe=slowo_kluczowe, data_dodania=date)
+                   ocena_wazona=i[4], status_pomyslu=status, ustawienia_oceniania=setting, uzytkownik=user, slowo_kluczowe=slowo_kluczowe, data_dodania=date, liczba_zalacznikow=0)
         m.save()
+        num+=1
 
     slowo_kluczowe = SlowoKluczowe.objects.get(slowo_kluczowe='Inne')
 
 
     slowo_kluczowe = SlowoKluczowe.objects.get(slowo_kluczowe='Infrastruktura')
-
+    num=1
     for i in ideas[2:7]:
-        user = random.choice(users)
+        user = users[num]
         # status = random.choice(statuses)
         status = StatusPomyslu.objects.get(status='Oczekujacy')        
-        setting = random.choice(settings[1:])
+        setting = UstawieniaOceniania.objects.get(ustawienia='num_text')
 
-        date = timezone.localtime(timezone.now()) - timedelta(days=random.randint(1, 100))
+        date = timezone.localtime(timezone.now()) - timedelta(days=random.randint(10, 30))
 
         m = Pomysl(tematyka=i[0], opis=i[1], planowane_korzysci=i[2], planowane_koszty=i[3],
-                   ocena_wazona=i[4], status_pomyslu=status, ustawienia_oceniania=setting, uzytkownik=user, slowo_kluczowe=slowo_kluczowe, data_dodania=date)
+                   ocena_wazona=i[4], status_pomyslu=status, ustawienia_oceniania=setting, uzytkownik=user, slowo_kluczowe=slowo_kluczowe, data_dodania=date, liczba_zalacznikow=0)
         m.save()
+        num+=1
 
     slowo_kluczowe = SlowoKluczowe.objects.get(slowo_kluczowe='Dydaktyka')
 
     for i in ideas[7:8]:
-        user = random.choice(users)
+        user = users[num]
         # status = random.choice(statuses)
         status = StatusPomyslu.objects.get(status='Oczekujacy')        
-        setting = random.choice(settings[1:])
+        setting = UstawieniaOceniania.objects.get(ustawienia='text_only')
 
-        date = timezone.localtime(timezone.now()) - timedelta(days=random.randint(1, 100))
+        date = timezone.localtime(timezone.now()) - timedelta(days=random.randint(10, 30))
 
         m = Pomysl(tematyka=i[0], opis=i[1], planowane_korzysci=i[2], planowane_koszty=i[3],
-                   ocena_wazona=i[4], status_pomyslu=status, ustawienia_oceniania=setting, uzytkownik=user, slowo_kluczowe=slowo_kluczowe, data_dodania=date)
+                   ocena_wazona=i[4], status_pomyslu=status, ustawienia_oceniania=setting, uzytkownik=user, slowo_kluczowe=slowo_kluczowe, data_dodania=date, liczba_zalacznikow=0)
         m.save()
+        num+=1
 
     slowo_kluczowe = SlowoKluczowe.objects.get(slowo_kluczowe='Rozrywka')
 
     for i in ideas[8:10]:
-        user = random.choice(users)
+        user = users[num]
         # status = random.choice(statuses)
         status = StatusPomyslu.objects.get(status='Oczekujacy')        
-        setting = random.choice(settings[1:])
+        setting = UstawieniaOceniania.objects.get(ustawienia='num_text')
 
-        date = timezone.localtime(timezone.now()) - timedelta(days=random.randint(5, 100))
+        date = timezone.localtime(timezone.now()) - timedelta(days=random.randint(10, 30))
 
         m = Pomysl(tematyka=i[0], opis=i[1], planowane_korzysci=i[2], planowane_koszty=i[3],
-                   ocena_wazona=i[4], status_pomyslu=status, ustawienia_oceniania=setting, uzytkownik=user, slowo_kluczowe=slowo_kluczowe, data_dodania=date)
+                   ocena_wazona=i[4], status_pomyslu=status, ustawienia_oceniania=setting, uzytkownik=user, slowo_kluczowe=slowo_kluczowe, data_dodania=date, liczba_zalacznikow=0)
         m.save()
+        num+=1
 
 def create_ocena(apps):
     Ocena = apps.get_model(app, 'Ocena')
@@ -212,16 +217,16 @@ def create_ocena(apps):
         ('2021-01-17 12:11:03', 2, 'Słaby pomysl'),
         ('2021-01-17 21:09:30', 8, 'Bardzo dobry pomysl'),
         ('2021-01-17 09:05:50', 7, 'Dobry pomysl'),
-        ('2021-01-17 22:01:20', 1, 'Do kosza'),
+        ('2021-01-17 22:01:20', 8, 'Super'),
         ('2021-01-17 23:55:09', 5, 'Przeciętny pomysl'),
     ]
 
     users = Uzytkownik.objects.all()
     ideas = Pomysl.objects.all()
-
+    num=0
     for opinion in opinions:
-        idea = random.choice(ideas)
-        user = random.choice([u for u in users if u is not idea.uzytkownik])
+        idea = ideas[num]
+        user = users[num]
 
         settings = idea.ustawienia_oceniania.ustawienia
 
@@ -234,10 +239,14 @@ def create_ocena(apps):
             m.opis = opinion[2]
 
         m.save()
-    # Dodaanie ocen indywiduallnie
+        num+=1
+    
+
+    # Dodaanie ocen indywidualnie
     #Dodanie opinni pomysł 1
     idea=ideas[0]
-    user = random.choice([u for u in users if u is not idea.uzytkownik])
+    settings = idea.ustawienia_oceniania.ustawienia
+    user = users[9]
     m = Ocena(data='2021-01-18 23:55:09', pomysl=idea, uzytkownik=user)
     if 'num' in settings:
         m.ocena_liczbowa = 8
@@ -248,7 +257,8 @@ def create_ocena(apps):
     
     #Dodanie opinni pomysł 2
     idea = Pomysl.objects.get(pk=2)
-    user = random.choice([u for u in users if u is not idea.uzytkownik])
+    settings = idea.ustawienia_oceniania.ustawienia
+    user = users[8]
     m = Ocena(data='2021-01-18 22:55:09', pomysl=idea, uzytkownik=user)
     if 'num' in settings:
         m.ocena_liczbowa = 7
@@ -259,7 +269,8 @@ def create_ocena(apps):
     
     #Dodanie opinni pomysł 3
     idea = Pomysl.objects.get(pk=3)
-    user = random.choice([u for u in users if u is not idea.uzytkownik])
+    settings = idea.ustawienia_oceniania.ustawienia
+    user = users[0]
     m = Ocena(data='2021-01-18 19:05:09', pomysl=idea, uzytkownik=user)
     if 'num' in settings:
         m.ocena_liczbowa = 2
@@ -270,7 +281,8 @@ def create_ocena(apps):
 
     #Dodanie opinni pomysł 4
     idea = Pomysl.objects.get(pk=4)
-    user = random.choice([u for u in users if u is not idea.uzytkownik])
+    settings = idea.ustawienia_oceniania.ustawienia
+    user = users[9]
     m = Ocena(data='2021-01-18 18:05:09', pomysl=idea, uzytkownik=user)
     if 'num' in settings:
         m.ocena_liczbowa = 7
@@ -281,7 +293,8 @@ def create_ocena(apps):
 
     #Dodanie opinni pomysł 5
     idea = Pomysl.objects.get(pk=5)
-    user = random.choice([u for u in users if u is not idea.uzytkownik])
+    settings = idea.ustawienia_oceniania.ustawienia
+    user = users[8]
     m = Ocena(data='2021-01-17 10:05:09', pomysl=idea, uzytkownik=user)
     if 'num' in settings:
         m.ocena_liczbowa = 10
@@ -292,7 +305,8 @@ def create_ocena(apps):
 
     #Dodanie opinni pomysł 6
     idea = Pomysl.objects.get(pk=6)
-    user = random.choice([u for u in users if u is not idea.uzytkownik])
+    settings = idea.ustawienia_oceniania.ustawienia
+    user = users[2]
     m = Ocena(data='2021-01-17 14:55:19', pomysl=idea, uzytkownik=user)
     if 'num' in settings:
         m.ocena_liczbowa = 7
@@ -303,7 +317,8 @@ def create_ocena(apps):
 
     #Dodanie opinni pomysł 9
     idea = ideas[8]
-    user = random.choice([u for u in users if u is not idea.uzytkownik])
+    settings = idea.ustawienia_oceniania.ustawienia
+    user = users[4]
     m = Ocena(data='2021-01-17 17:20:40', pomysl=idea, uzytkownik=user)
     if 'num' in settings:
         m.ocena_liczbowa = 9
@@ -314,7 +329,8 @@ def create_ocena(apps):
 
     #Dodanie opinni pomysł 9
     idea = ideas[8]
-    user = random.choice([u for u in users if u is not idea.uzytkownik])
+    settings = idea.ustawienia_oceniania.ustawienia
+    user = users[5]
     m = Ocena(data='2021-01-18 23:20:40', pomysl=idea, uzytkownik=user)
     if 'num' in settings:
         m.ocena_liczbowa = 10
@@ -395,15 +411,15 @@ def create_post(apps):
     user = users[8]
     thread = threads[2]
     date = thread.data_ostatniego_posta-timedelta(minutes=400)
-    m = Post(tytul=posts[3][0], tresc=posts[3][1], watek = thread, uzytkownik= user,data_dodania=date)
+    m = Post(tytul=posts[6][0], tresc=posts[3][1], watek = thread, uzytkownik= user,data_dodania=date)
     m.save()
     user = users[1]
     date = date+timedelta( seconds=2000 )
-    m = Post(tytul=posts[4][0], tresc=posts[4][1], watek = thread, uzytkownik= user,data_dodania=date)
+    m = Post(tytul=posts[7][0], tresc=posts[4][1], watek = thread, uzytkownik= user,data_dodania=date)
     m.save()
     user = users[6]
     date = thread.data_ostatniego_posta
-    m = Post(tytul=posts[5][0], tresc=posts[5][1], watek = thread, uzytkownik= user,data_dodania=date)
+    m = Post(tytul=posts[8][0], tresc=posts[5][1], watek = thread, uzytkownik= user,data_dodania=date)
     m.save()
 
 
@@ -415,26 +431,52 @@ def create_zalacznik(apps):
     ZalacznikPosta = apps.get_model(app, 'ZalacznikPosta')
 
     zalaczniki = [
-        ('file1.txt', 1),
-        ('img1.jpg', 2),
-        ('file2.txt', 3),
-        ('img2.jpg', 2)
+        ('open1.jpg', 1),
+        ('open2.jpg', 1),
+        ('stojak1.jpg', 1),
+        ('girls1.jpg', 1),
+        ('dysk1.pdf', 2)
     ]
 
     for z in zalaczniki:
-        date = timezone.localtime(timezone.now()) - timedelta(days=random.randint(1, 100))
+        date = timezone.localtime(timezone.now()) - timedelta(days=random.randint(10, 30))
         m = Zalacznik(nazwa_pliku=z[0], rozmar=z[1], data_dodania=date)
         m.save()
 
     attachments = Zalacznik.objects.all()
+    ideas=Pomysl.objects.all()
+    #open1.jpg
+    idea=ideas[6]
+    m = ZalacznikPomyslu(zalacznik = attachments[0], pomysl=idea)
+    idea.liczba_zalacznikow +=1
+    idea.save()
+    m.save()
 
-    for i in range(2):
-        m = ZalacznikPomyslu(zalacznik = attachments[i], pomysl=Pomysl.objects.get(pk=i+1))
-        m.save()
+    #open2.jpg
+    idea=ideas[6]
+    m = ZalacznikPomyslu(zalacznik = attachments[1], pomysl=idea)
+    idea.liczba_zalacznikow +=1
+    idea.save()
+    m.save()
+
+    #stojak1.jpg
+    idea=ideas[4]
+    m = ZalacznikPomyslu(zalacznik = attachments[2], pomysl=idea)
+    idea.liczba_zalacznikow +=1
+    idea.save()
+    m.save()
+
+    #girls1.jpg
+    idea=ideas[8]
+    m = ZalacznikPomyslu(zalacznik = attachments[3], pomysl=idea)
+    idea.liczba_zalacznikow +=1
+    idea.save()
+    m.save()
     
-    for i in range(2, 4):
-        m = ZalacznikPosta(zalacznik = attachments[i], post=Post.objects.get(pk=i-1))
-        m.save()
+    #Załączniki postów
+    #dysk1.pdf
+    m = ZalacznikPosta(zalacznik = attachments[4], post=Post.objects.get(pk=5))
+    m.save()
 
 
 class Migration(migrations.Migration):
