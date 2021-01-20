@@ -17,12 +17,13 @@
 
 
     <div ng-repeat="idea in ideas | filter:searchStr">
-        <div class="idea-block">
-            <!-- {% verbatim %} -->
+        <div class="idea-block-old" ng-if="idea.dni_od_dodania>20 && status=='Oczekujacy'">
+            <my-idea-table idea="idea" show-attachments-count="true"/>
+        </div>
+        <div class="idea-block" ng-if="idea.dni_od_dodania<=20 || status!='Oczekujacy'">
             <my-idea-table idea="idea" show-attachments-count="true"/>
         </div>
         <div style="clear: both;"></div>
-        <!-- {% endverbatim %} -->
         <div style="float: right;margin:0 50px;" >
                 <button type="button" class="btn btn-primary" ng-if="status=='Oczekujacy'" ng-click="openIdeaDecision(idea.id)">Wydaj decyzję</button>
                 <button type="button" class="btn btn-primary" ng-if="status=='Odlozony'" ng-click="zmienstatus(idea.id, 'Oczekujacy')">Wznów</button>
