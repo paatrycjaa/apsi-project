@@ -5,7 +5,9 @@
     </tr>
     <tr>
         <th>Dodano:</th>
-        <td>{{ idea.dni_od_dodania }} dzień/dni temu</td>
+        <td ng-if="idea.dni_od_dodania==0">Dzisiaj</td>
+        <td ng-if="idea.dni_od_dodania==1">{{ idea.dni_od_dodania }} dzień temu</td>
+        <td ng-if="idea.dni_od_dodania>1">{{ idea.dni_od_dodania }} dni temu</td>
     </tr>
     <tr>
         <th>Status:</th>
