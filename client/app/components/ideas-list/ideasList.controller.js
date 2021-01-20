@@ -28,7 +28,9 @@ angular.module('appIdeasListController', [])
           selected=$scope.Select1
           if(selected=="wszystkie"|| selected==undefined)
           {
-            return true;
+            return (idea.status_pomyslu_id == "Oczekujacy" ||
+            idea.status_pomyslu_id == 'Odlozony' || idea.status_pomyslu_id == 'Odrzucony' ||
+            idea.status_pomyslu_id == 'Zaakceptowany' )
           }
           else {
             return idea.status_pomyslu_id == selected;
