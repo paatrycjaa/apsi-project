@@ -1,6 +1,6 @@
 angular.module('appMyIdeasListController', [])
-  .controller('myIdeasListController', ['$scope', '$window', '$document','myIdeasListService',
-      function($scope, $window, $document, myIdeasListService) {
+  .controller('myIdeasListController', ['$scope', '$window', '$document','myIdeasListService', 'utils',
+      function($scope, $window, $document, myIdeasListService, utils) {
         
         $scope.ideas_rest = [];
         $scope.ideas_to_edit = [];
@@ -8,15 +8,14 @@ angular.module('appMyIdeasListController', [])
         $scope.init = function() {
           myIdeasListService.getUserIdeas(function(response) {
             for (idea of response.data) {
-              if (idea.status == 'Edycja') {
+              idea['dni_od_dodania'] = utils.calculateDaysSinceSubmit(idea.data_dodania);
+              if (idea.status_pomyslu_id == 'Edycja') {
                 $scope.ideas_to_edit.push(idea);
               } else {
                 $scope.ideas_rest.push(idea);
               }
             }
           });
-
-          
         }
 
         $scope.openIdeaOpinions = function(id) {

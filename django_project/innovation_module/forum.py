@@ -11,6 +11,10 @@ from . import utils
 def serialize(objects):
     return serializers.serialize('json', objects)
 
+# **************************************************
+# threads
+# **************************************************
+
 def get_threads():
     return models.Watek.objects.all().order_by('-data_ostatniego_posta')
 
@@ -24,19 +28,6 @@ def get_thread(id):
 
 def get_thread_json(id):
     return serialize(get_thread(id))
-
-def get_posts(id):
-    watek=models.Watek.objects.filter(pk=id)
-    return models.Post.objects.filter(watek = watek[0]).order_by('data_dodania')
-
-def get_posts_json(watek_id):
-    posts = get_posts(watek_id)
-    posts_values = posts.values()
-
-    for p, obj in zip(posts_values, posts):
-        p['attachments'] = list(models.ZalacznikPosta.objects.filter(post=obj).values('pk', 'zalacznik__nazwa_pliku', 'zalacznik__rozmar'))
-
-    return json.dumps(list(posts_values), cls=DjangoJSONEncoder)
 
 def thread_exist(thema):
     models.Watek.objects.filter(temat=thema).count() > 0
@@ -87,6 +78,26 @@ def remove_thread(thread_id):
     finally:
         return json.dumps({'status': status, 'message': message})
 
+def count_threads_all():
+    return models.Watek.objects.count()
+
+# **************************************************
+# posts
+# **************************************************
+
+def get_posts(id):
+    watek=models.Watek.objects.filter(pk=id)
+    return models.Post.objects.filter(watek = watek[0]).order_by('data_dodania')
+
+def get_posts_json(watek_id):
+    posts = get_posts(watek_id)
+    posts_values = posts.values()
+
+    for p, obj in zip(posts_values, posts):
+        p['attachments'] = list(models.ZalacznikPosta.objects.filter(post=obj).values('pk', 'zalacznik__nazwa_pliku', 'zalacznik__rozmar'))
+
+    return json.dumps(list(posts_values), cls=DjangoJSONEncoder)
+
 def add_post(request, user):
     try:
         data = json.loads(request.POST['data'])
@@ -110,9 +121,6 @@ def add_post(request, user):
         message = utils.handle_exception(e)
     finally:
         return json.dumps({'status': status, 'message': message})
-
-def count_threads_all():
-    return models.Watek.objects.count()
 
 def count_posts_all():
     return models.Post.objects.count()
