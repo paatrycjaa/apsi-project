@@ -359,7 +359,7 @@ def create_post(apps):
         ('Tytul 1', 'Fajnie by było mieć wiecej openspacu. Jakieś kanapy itp.'),
         ('Tytul 2', 'O do tego przydałyby się dodatkowe stoliki gdzie można posiedzieć z komputerem a nie trzymać go na kolanach'),
         ('Tytul 3', 'Świetny pomysł. Szczególnie na parterze.'),
-        ('Tytul 4', 'Poleca ktoś jakiś dysk SSD do komputera na M2 w fajnej cenia?'),
+        ('Tytul 4', 'Poleca ktoś jakiś dysk SSD do komputera na M2 w fajnej cenie?'),
         ('Tytul 5', 'Obczaj sobie Cruciala MX500. Na x-kom są nieraz fajne promki.'),
         ('Tytul 6', 'Fajna, budżetowa opcja jeśli nie masz ogromnych wymagań co do szybkości.'),
         ('Tytul 7', 'To takie coś istnieje? No dobra nie jest tak źle. W sumie ja nie widze różnicy przed i po.'),
