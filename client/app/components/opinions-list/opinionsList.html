@@ -19,7 +19,7 @@
         <table class="opinion-table">
             <tr>
                 <th style="width: 25%">Data:</th>
-                <td>{{ opinion.data }}</td>
+                <td>{{ opinion.data|date:"dd/mm/yyyy HH:mm:ss"  }}</td>
             </tr>
             <tr ng-if="opinion.ocena_liczbowa">
                 <th>Ocena:</th>

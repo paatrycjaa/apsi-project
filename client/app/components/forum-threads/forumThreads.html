@@ -27,11 +27,11 @@
                 </tr>
                 <tr>
                     <th>Data dodania:</th>
-                    <td class ='thread-data'>{{ thread.fields.data_dodania }}</td>
+                    <td class ='thread-data'>{{ thread.fields.data_dodania|date:"dd/mm/yyyy HH:mm:ss"  }}</td>
                 </tr>
                 <tr>
                     <th>Data ostatniego posta:</th>
-                    <td class ='thread-data'>{{ thread.fields.data_ostatniego_posta }}</td>
+                    <td class ='thread-data'>{{ thread.fields.data_ostatniego_posta|date:"dd/mm/yyyy HH:mm:ss"  }}</td>
                 </tr>
             </table>
         </div>
