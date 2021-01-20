@@ -13,11 +13,10 @@
       <!-- Navbar Right Side -->
       <div class="navbar-nav">
         {% if user.is_authenticated %}
-        {% verbatim %}
-        <span class = 'logon'>Zalogowany jako: {{userData.firstName}} {{userData.lastName}} ({{userData.role}})</span>
-        {% endverbatim %}
         <ol>
-        <li><a class="nav-item nav-link" >PANEL KOMISJI</a>
+        {% verbatim %}
+        <li><a class="nav-item nav-link" ng-show="userData.role === 'Członek Komisji'" >PANEL KOMISJI</a>
+        {% endverbatim %}
           <ul class="container_panel">
             <li><a class = "decision_panel"  href="{% url 'ideasfiltered' status_pomyslu='Oczekujacy' %}">Pomysły Oczekujące</a></li>
             <li><a class = "decision_panel"  href="{% url 'ideasfiltered' status_pomyslu='Odlozony' %}">Pomysły Odłożone</a></li>
@@ -28,7 +27,10 @@
         <a class="nav-item nav-link" href="{% url 'threads'%}">FORUM</a>
         <a class="nav-item nav-link" href="{% url 'ideas' %}">POMYSŁY</a>
         <a class="nav-item nav-link" href="{% url 'my-ideas'%}">MOJE POMYSŁY</a>
-        <a class="nav-item nav-link" href="{% url 'logout'%}">WYLOGUJ</a>
+        <a class="nav-item nav-link" style="text-align: center;" href="{% url 'logout'%}">WYLOGUJ<br>
+          {% verbatim %}
+          <span class="logon">{{userData.firstName}} {{userData.lastName}}<br>({{userData.role}})</span></a>
+          {% endverbatim %}
         {% else %}
         <a class="nav-item nav-link log-link" href="{% url 'login'%}">ZALOGUJ</a>
         {% endif %}
