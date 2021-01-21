@@ -20,3 +20,7 @@ def get_user_data(user):
         data['role'] = 'Użytkownik'
 
     return json.dumps(data, cls=DjangoJSONEncoder)
+
+def is_user_jury(user):
+    uzytkownik = models.Uzytkownik.objects.get(user=user)
+    return models.CzlonekKomisji.objects.filter(uzytkownik=uzytkownik).exists()

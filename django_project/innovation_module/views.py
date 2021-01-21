@@ -44,6 +44,7 @@ def ideas(request):
     return render(request, 'app/components/ideas-list/ideasList.html')
 
 @login_required
+@decorators.user_is_jury
 def ideasfiltered(request, status_pomyslu):
     context = {
         'status': status_pomyslu

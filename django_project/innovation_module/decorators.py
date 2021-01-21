@@ -4,7 +4,7 @@ from functools import wraps
 from django.conf import settings
 from django.core.exceptions import PermissionDenied
 
-from . import models
+from . import models, user
 
 def login_required_permission_denied(function):
     """ Restricting ajax requests with permission denied error (no redirecting)
@@ -13,6 +13,15 @@ def login_required_permission_denied(function):
     def wrap(request, ajax_request, object_id=None, *args, **kwargs):
         if request.user.is_authenticated:
             return function(request, ajax_request, object_id, *args, **kwargs)
+        else:
+            raise PermissionDenied
+    return wrap
+
+def user_is_jury(function):
+    @wraps(function)
+    def wrap(request, *args, **kwargs):
+        if user.is_user_jury(request.user):
+            return function(request, *args, **kwargs)
         else:
             raise PermissionDenied
     return wrap
