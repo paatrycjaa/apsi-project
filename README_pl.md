@@ -28,6 +28,17 @@ Aby zakończyć działanie aplikacji i usunąć wszystkie utworzone przez nią e
 docker-compose down -v
 ```
 
+## Baza danych
+Dane wejściowe do bazy danych:
+| Param. | Wartość |
+| -----: | :-------- |
+| Nazwa | ideas_db |
+| Użytkownik | user |
+| Hasło użytkownika | password |
+| Hasło root | root |
+
+### Migracje
+Migracje Django konfigurujące wszystkie tabele i kolumny bazy danych znajdują się w pliku `django_project/innovation_module/migrations/0001_initial.py`.
 ## Deployment
 Aplikacja może być obsługiwana w wykorzystaniem dowolnych narzędzi, które współpracują z Django.
 
